@@ -449,7 +449,7 @@ div.tocify {
 library(dplyr)
 hr &lt;- read_csv(&quot;data/heartrate2dose.csv&quot;)
 hr</code></pre>
-<pre><code>## # A tibble: 5 x 7
+<pre><code>## # A tibble: 5 × 7
 ##    name  a_10  a_20  b_10  b_20  c_10  c_20
 ##   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
 ## 1   jon    60    55    65    60    70    70
@@ -468,7 +468,7 @@ hr</code></pre>
 <h3><code>gather()</code></h3>
 <p>The help for <code>?gather</code> tells us that we first pass in a data frame (or omit the first argument, and pipe in the data with <code>%&gt;%</code>). The next two arguments are the names of the key and value columns to create, and all the relevant arguments that come after that are the columns we want to <em>gather</em> together. Here’s one way to do it.</p>
 <pre class="r"><code>hr %&gt;% gather(key=drugdose, value=hr, a_10, a_20, b_10, b_20, c_10, c_20)</code></pre>
-<pre><code>## # A tibble: 30 x 3
+<pre><code>## # A tibble: 30 × 3
 ##     name drugdose    hr
 ##    &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;
 ## 1    jon     a_10    60
@@ -488,7 +488,7 @@ hr</code></pre>
 </blockquote>
 <p>So, we could accomplish the same thing by doing this:</p>
 <pre class="r"><code>hr %&gt;% gather(key=drugdose, value=hr, a_10:c_20)</code></pre>
-<pre><code>## # A tibble: 30 x 3
+<pre><code>## # A tibble: 30 × 3
 ##     name drugdose    hr
 ##    &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;
 ## 1    jon     a_10    60
@@ -504,7 +504,7 @@ hr</code></pre>
 ## # ... with 20 more rows</code></pre>
 <p>But what if we didn’t know the drug names or doses, but we <em>did</em> know that the only other column in there that we <em>don’t</em> want to gather is <code>name</code>?</p>
 <pre class="r"><code>hr %&gt;% gather(key=drugdose, value=hr, -name)</code></pre>
-<pre><code>## # A tibble: 30 x 3
+<pre><code>## # A tibble: 30 × 3
 ##     name drugdose    hr
 ##    &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;
 ## 1    jon     a_10    60
@@ -528,7 +528,7 @@ hr</code></pre>
 <pre class="r"><code>hr %&gt;% 
   gather(key=drugdose, value=hr, -name) %&gt;% 
   separate(drugdose, into=c(&quot;drug&quot;, &quot;dose&quot;), sep=&quot;_&quot;)</code></pre>
-<pre><code>## # A tibble: 30 x 4
+<pre><code>## # A tibble: 30 × 4
 ##     name  drug  dose    hr
 ## *  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;
 ## 1    jon     a    10    60
@@ -557,7 +557,7 @@ hrtidy &lt;- hr %&gt;%
 
 # filter
 hrtidy %&gt;% filter(drug==&quot;a&quot;)</code></pre>
-<pre><code>## # A tibble: 10 x 4
+<pre><code>## # A tibble: 10 × 4
 ##     name  drug  dose    hr
 ##    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;
 ## 1    jon     a    10    60
@@ -571,7 +571,7 @@ hrtidy %&gt;% filter(drug==&quot;a&quot;)</code></pre>
 ## 9   kate     a    20    70
 ## 10   joe     a    20    75</code></pre>
 <pre class="r"><code>hrtidy %&gt;% filter(dose==20)</code></pre>
-<pre><code>## # A tibble: 15 x 4
+<pre><code>## # A tibble: 15 × 4
 ##     name  drug  dose    hr
 ##    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;
 ## 1    jon     a    20    55
@@ -590,7 +590,7 @@ hrtidy %&gt;% filter(drug==&quot;a&quot;)</code></pre>
 ## 14  kate     c    20    85
 ## 15   joe     c    20    90</code></pre>
 <pre class="r"><code>hrtidy %&gt;% filter(hr&gt;=80)</code></pre>
-<pre><code>## # A tibble: 10 x 4
+<pre><code>## # A tibble: 10 × 4
 ##     name  drug  dose    hr
 ##    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;
 ## 1    joe     a    10    80
@@ -637,7 +637,7 @@ ydat &lt;- read_csv(&quot;data/brauer2007_tidy.csv&quot;)
 
 # Or just display to the screen
 ydat</code></pre>
-<pre><code>## # A tibble: 198,430 x 7
+<pre><code>## # A tibble: 198,430 × 7
 ##    symbol systematic_name nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
 ## 1    SFB2         YNL049C  Glucose  0.05      -0.24
@@ -655,7 +655,7 @@ ydat</code></pre>
 <pre class="r"><code>yorig &lt;- read_csv(&quot;data/brauer2007_messy.csv&quot;)
 # View(yorig)
 yorig</code></pre>
-<pre><code>## # A tibble: 5,536 x 40
+<pre><code>## # A tibble: 5,536 × 40
 ##          GID       YORF                    NAME GWEIGHT G0.05  G0.1 G0.15
 ##        &lt;chr&gt;      &lt;chr&gt;                   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1  GENE1331X A_06_P5820  SFB2::YNL049C::1082129       1 -0.24 -0.13 -0.21
@@ -693,7 +693,7 @@ yorig</code></pre>
 <p>That is, it looks like we’ve got the gene symbol, the systematic name, and some other number (that isn’t discussed in the paper). Let’s <code>separate()</code>!</p>
 <pre class="r"><code>yorig %&gt;% 
   separate(NAME, into=c(&quot;symbol&quot;, &quot;systematic_name&quot;, &quot;somenumber&quot;), sep=&quot;::&quot;)</code></pre>
-<pre><code>## # A tibble: 5,536 x 42
+<pre><code>## # A tibble: 5,536 × 42
 ##          GID       YORF symbol systematic_name somenumber GWEIGHT G0.05
 ## *      &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;           &lt;chr&gt;      &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt;
 ## 1  GENE1331X A_06_P5820   SFB2         YNL049C    1082129       1 -0.24
@@ -718,7 +718,7 @@ yorig</code></pre>
 <pre class="r"><code>yorig %&gt;% 
   separate(NAME, into=c(&quot;symbol&quot;, &quot;systematic_name&quot;, &quot;somenumber&quot;), sep=&quot;::&quot;) %&gt;% 
   select(-GID, -YORF, -somenumber, -GWEIGHT)</code></pre>
-<pre><code>## # A tibble: 5,536 x 38
+<pre><code>## # A tibble: 5,536 × 38
 ##    symbol systematic_name G0.05  G0.1 G0.15  G0.2 G0.25  G0.3 N0.05  N0.1
 ## *   &lt;chr&gt;           &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1    SFB2         YNL049C -0.24 -0.13 -0.21 -0.15 -0.05 -0.05  0.20  0.24
@@ -746,7 +746,7 @@ yorig</code></pre>
   separate(NAME, into=c(&quot;symbol&quot;, &quot;systematic_name&quot;, &quot;somenumber&quot;), sep=&quot;::&quot;) %&gt;% 
   select(-GID, -YORF, -somenumber, -GWEIGHT) %&gt;% 
   gather(key=nutrientrate, value=expression, G0.05:U0.3)</code></pre>
-<pre><code>## # A tibble: 199,296 x 4
+<pre><code>## # A tibble: 199,296 × 4
 ##    symbol systematic_name nutrientrate expression
 ##     &lt;chr&gt;           &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt;
 ## 1    SFB2         YNL049C        G0.05      -0.24
@@ -777,7 +777,7 @@ sn2go &lt;- read_csv(&quot;data/brauer2007_sysname2go.csv&quot;)
 # Take a look
 # View(sn2go)
 head(sn2go)</code></pre>
-<pre><code>## # A tibble: 6 x 3
+<pre><code>## # A tibble: 6 × 3
 ##   systematic_name                           bp
 ##             &lt;chr&gt;                        &lt;chr&gt;
 ## 1         YNL049C        ER to Golgi transport
@@ -791,7 +791,7 @@ head(sn2go)</code></pre>
 <pre class="r"><code>yjoined &lt;- inner_join(ynogo, sn2go, by=&quot;systematic_name&quot;)
 # View(yjoined)
 yjoined</code></pre>
-<pre><code>## # A tibble: 199,296 x 7
+<pre><code>## # A tibble: 199,296 × 7
 ##    symbol systematic_name nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
 ## 1    SFB2         YNL049C        G  0.05      -0.24

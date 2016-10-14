@@ -435,7 +435,7 @@ gm &lt;- read_csv(file=&quot;data/gapminder.csv&quot;)
 
 # Show the first few lines of the data
 gm</code></pre>
-<pre><code>## # A tibble: 1,704 x 6
+<pre><code>## # A tibble: 1,704 × 6
 ##        country continent  year lifeExp      pop gdpPercap
 ##          &lt;chr&gt;     &lt;chr&gt; &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
 ## 1  Afghanistan      Asia  1952    28.8  8425333       779
@@ -483,21 +483,21 @@ gm</code></pre>
   filter(continent==&quot;Asia&quot;) %&gt;%
   group_by(year) %&gt;%
   summarize(mean(lifeExp), mean(gdp))</code></pre>
-<pre><code>## # A tibble: 12 x 3
-##     year mean(lifeExp) mean(gdp)
-##    &lt;int&gt;         &lt;dbl&gt;     &lt;dbl&gt;
-## 1   1952          46.3  3.41e+10
-## 2   1957          49.3  4.73e+10
-## 3   1962          51.6  6.01e+10
-## 4   1967          54.7  8.46e+10
-## 5   1972          57.3  1.24e+11
-## 6   1977          59.6  1.60e+11
-## 7   1982          62.6  1.94e+11
-## 8   1987          64.9  2.42e+11
-## 9   1992          66.5  3.07e+11
-## 10  1997          68.0  3.88e+11
-## 11  2002          69.2  4.58e+11
-## 12  2007          70.7  6.28e+11</code></pre>
+<pre><code>## # A tibble: 12 × 3
+##     year `mean(lifeExp)` `mean(gdp)`
+##    &lt;int&gt;           &lt;dbl&gt;       &lt;dbl&gt;
+## 1   1952            46.3    3.41e+10
+## 2   1957            49.3    4.73e+10
+## 3   1962            51.6    6.01e+10
+## 4   1967            54.7    8.46e+10
+## 5   1972            57.3    1.24e+11
+## 6   1977            59.6    1.60e+11
+## 7   1982            62.6    1.94e+11
+## 8   1987            64.9    2.42e+11
+## 9   1992            66.5    3.07e+11
+## 10  1997            68.0    3.88e+11
+## 11  2002            69.2    4.58e+11
+## 12  2007            70.7    6.28e+11</code></pre>
 <p>Instead of this:</p>
 <pre class="r"><code>summarize(
   group_by(
@@ -755,7 +755,7 @@ ydat &lt;- read_csv(&quot;data/brauer2007_tidy.csv&quot;)
 
 # Display the data
 ydat</code></pre>
-<pre><code>## # A tibble: 198,430 x 7
+<pre><code>## # A tibble: 198,430 × 7
 ##    symbol systematic_name nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
 ## 1    SFB2         YNL049C  Glucose  0.05      -0.24

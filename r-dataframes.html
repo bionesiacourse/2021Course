@@ -442,7 +442,7 @@ library(dplyr)</code></pre>
 <p>Now, let’s actually load the data. You can get help for the import function with <code>?read_csv</code>. When we load data we assign it to a variable just like any other, and we can choose a name for that data. Since we’re going to be referring to this data a lot, let’s give it a short easy name to type. I’m going to call it <code>ydat</code>. Once we’ve loaded it we can type the name of the object itself (<code>ydat</code>) to see it printed to the screen.</p>
 <pre class="r"><code>ydat &lt;- read_csv(file=&quot;data/brauer2007_tidy.csv&quot;)
 ydat</code></pre>
-<pre><code>## # A tibble: 198,430 x 7
+<pre><code>## # A tibble: 198,430 × 7
 ##    symbol systematic_name nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
 ## 1    SFB2         YNL049C  Glucose  0.05      -0.24
@@ -483,7 +483,7 @@ ydat</code></pre>
 </ul></li>
 </ul>
 <pre class="r"><code>head(ydat)</code></pre>
-<pre><code>## # A tibble: 6 x 7
+<pre><code>## # A tibble: 6 × 7
 ##   symbol systematic_name nutrient  rate expression
 ##    &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
 ## 1   SFB2         YNL049C  Glucose  0.05      -0.24
@@ -494,7 +494,7 @@ ydat</code></pre>
 ## 6   PSP2         YML017W  Glucose  0.05      -0.69
 ## # ... with 2 more variables: bp &lt;chr&gt;, mf &lt;chr&gt;</code></pre>
 <pre class="r"><code>tail(ydat)</code></pre>
-<pre><code>## # A tibble: 6 x 7
+<pre><code>## # A tibble: 6 × 7
 ##   symbol systematic_name nutrient  rate expression
 ##    &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
 ## 1   DOA1         YKL213C   Uracil   0.3       0.14

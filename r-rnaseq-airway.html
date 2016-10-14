@@ -492,7 +492,7 @@ rawcounts &lt;- read_csv(&quot;data/airway_rawcounts.csv&quot;)
 metadata &lt;-  read_csv(&quot;data/airway_metadata.csv&quot;)</code></pre>
 <p>Now, take a look at each.</p>
 <pre class="r"><code>rawcounts</code></pre>
-<pre><code>## # A tibble: 64,102 x 9
+<pre><code>## # A tibble: 64,102 × 9
 ##            ensgene SRR1039508 SRR1039509 SRR1039512 SRR1039513 SRR1039516
 ##              &lt;chr&gt;      &lt;int&gt;      &lt;int&gt;      &lt;int&gt;      &lt;int&gt;      &lt;int&gt;
 ## 1  ENSG00000000003        679        448        873        408       1138
@@ -508,7 +508,7 @@ metadata &lt;-  read_csv(&quot;data/airway_metadata.csv&quot;)</code></pre>
 ## # ... with 64,092 more rows, and 3 more variables: SRR1039517 &lt;int&gt;,
 ## #   SRR1039520 &lt;int&gt;, SRR1039521 &lt;int&gt;</code></pre>
 <pre class="r"><code>metadata</code></pre>
-<pre><code>## # A tibble: 8 x 4
+<pre><code>## # A tibble: 8 × 4
 ##           id     dex celltype     geo_id
 ##        &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;
 ## 1 SRR1039508 control   N61311 GSM1275862
@@ -533,7 +533,7 @@ metadata &lt;-  read_csv(&quot;data/airway_metadata.csv&quot;)</code></pre>
   mutate(controlmean = SRR1039508+SRR1039512+SRR1039516+SRR1039520) %&gt;% 
   select(ensgene, controlmean)
 meancounts</code></pre>
-<pre><code>## # A tibble: 64,102 x 2
+<pre><code>## # A tibble: 64,102 × 2
 ##            ensgene controlmean
 ##              &lt;chr&gt;       &lt;int&gt;
 ## 1  ENSG00000000003        3460
@@ -550,7 +550,7 @@ meancounts</code></pre>
 <ol style="list-style-type: decimal">
 <li>Build off of this code, <code>mutate</code> it once more (prior to the <code>select()</code>) function, to add another column called <code>treatedmean</code> that takes the mean of the expression values of the treated samples. Then <code>select</code> only the <code>ensgene</code>, <code>controlmean</code> and <code>treatedmean</code> columns, assigning it to a new object called meancounts. It should look like this.</li>
 </ol>
-<pre><code>## # A tibble: 64,102 x 3
+<pre><code>## # A tibble: 64,102 × 3
 ##            ensgene controlmean treatedmean
 ##              &lt;chr&gt;       &lt;int&gt;       &lt;int&gt;
 ## 1  ENSG00000000003        3460        2475
@@ -567,10 +567,10 @@ meancounts</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Directly comparing the raw counts is going to be problematic if we just happened to sequence one group at a higher depth than another. Later on we’ll do this analysis properly, normalizing by sequencing depth. But for now, <code>summarize()</code> the data to show the <code>sum</code> of the mean counts across all genes for each group. Your answer should look like this:</li>
 </ol>
-<pre><code>## # A tibble: 1 x 2
-##   sum(controlmean) sum(treatedmean)
-##              &lt;int&gt;            &lt;int&gt;
-## 1         89561179         85955244</code></pre>
+<pre><code>## # A tibble: 1 × 2
+##   `sum(controlmean)` `sum(treatedmean)`
+##                &lt;int&gt;              &lt;int&gt;
+## 1           89561179           85955244</code></pre>
 <hr />
 <p>How about another?</p>
 <hr />
@@ -588,7 +588,7 @@ meancounts</code></pre>
 <hr />
 <p>We can find candidate differentially expressed genes by looking for genes with a large change between control and dex-treated samples. We usually look at the <span class="math inline">\(log_2\)</span> of the fold change, because this has better mathematical properties. On the absolute scale, upregulation goes from 1 to infinity, while downregulation is bounded by 0 and 1. On the log scale, upregulation goes from 0 to infinity, and downregulation goes from 0 to negative infinity. So, let’s mutate our <code>meancounts</code> object to add a <code>log2foldchange</code> column. Optionally pipe this to <code>View()</code>.</p>
 <pre class="r"><code>meancounts %&gt;% mutate(log2fc=log2(treatedmean/controlmean))</code></pre>
-<pre><code>## # A tibble: 64,102 x 4
+<pre><code>## # A tibble: 64,102 × 4
 ##            ensgene controlmean treatedmean  log2fc
 ##              &lt;chr&gt;       &lt;int&gt;       &lt;int&gt;   &lt;dbl&gt;
 ## 1  ENSG00000000003        3460        2475 -0.4833
@@ -608,7 +608,7 @@ meancounts &lt;- meancounts %&gt;%
   filter(controlmean&gt;0 &amp; treatedmean&gt;0) %&gt;% 
   mutate(log2fc=log2(treatedmean/controlmean))
 meancounts</code></pre>
-<pre><code>## # A tibble: 27,450 x 4
+<pre><code>## # A tibble: 27,450 × 4
 ##            ensgene controlmean treatedmean  log2fc
 ##              &lt;chr&gt;       &lt;int&gt;       &lt;int&gt;   &lt;dbl&gt;
 ## 1  ENSG00000000003        3460        2475 -0.4833
@@ -624,7 +624,7 @@ meancounts</code></pre>
 ## # ... with 27,440 more rows</code></pre>
 <p>A common threshold used for calling something differentially expressed is a <span class="math inline">\(log_2(FoldChange)\)</span> of greater than 2 or less than -2. Let’s filter the dataset both ways to see how many genes are up or down-regulated.</p>
 <pre class="r"><code>meancounts %&gt;% filter(log2fc&gt;2)</code></pre>
-<pre><code>## # A tibble: 343 x 4
+<pre><code>## # A tibble: 343 × 4
 ##            ensgene controlmean treatedmean log2fc
 ##              &lt;chr&gt;       &lt;int&gt;       &lt;int&gt;  &lt;dbl&gt;
 ## 1  ENSG00000004799        1074        5560   2.37
@@ -639,7 +639,7 @@ meancounts</code></pre>
 ## 10 ENSG00000078114           6          50   3.06
 ## # ... with 333 more rows</code></pre>
 <pre class="r"><code>meancounts %&gt;% filter(log2fc&lt;(-2))</code></pre>
-<pre><code>## # A tibble: 549 x 4
+<pre><code>## # A tibble: 549 × 4
 ##            ensgene controlmean treatedmean log2fc
 ##              &lt;chr&gt;       &lt;int&gt;       &lt;int&gt;  &lt;dbl&gt;
 ## 1  ENSG00000002079          10           2  -2.32
@@ -661,7 +661,7 @@ meancounts</code></pre>
 <p>Go back and refresh your memory on <a href="r-tidy.html#inner_join%28%29_to_go">using <code>inner_join()</code> to join two tables by a common column/key</a>. You previously downloaded <a href="data/annotables_grch37.csv">annotables_grch37.csv</a> from <a href="data.html">the data downloads page</a>. Load this data with <code>read_csv()</code> into an object called <code>anno</code>. Pipe it to <code>View</code> or click on the object in the Environment pane to view the entire dataset. This table links the unambiguous Ensembl gene ID to things like the gene symbol, full gene name, location, Entrez gene ID, etc.</p>
 <pre class="r"><code>anno &lt;- read_csv(&quot;data/annotables_grch37.csv&quot;)
 anno</code></pre>
-<pre><code>## # A tibble: 67,416 x 9
+<pre><code>## # A tibble: 67,416 × 9
 ##            ensgene entrez   symbol   chr     start       end strand
 ##              &lt;chr&gt;  &lt;int&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;     &lt;int&gt;  &lt;int&gt;
 ## 1  ENSG00000000003   7105   TSPAN6     X  99883667  99894988     -1
@@ -679,7 +679,7 @@ anno</code></pre>
 <ol style="list-style-type: decimal">
 <li>Take our newly created <code>meancounts</code> object, and arrange it <code>desc</code>ending by the absolute value (<code>abs()</code>) of the <code>log2fc</code> column. The results should look like this:</li>
 </ol>
-<pre><code>## # A tibble: 27,450 x 4
+<pre><code>## # A tibble: 27,450 × 4
 ##            ensgene controlmean treatedmean log2fc
 ##              &lt;chr&gt;       &lt;int&gt;       &lt;int&gt;  &lt;dbl&gt;
 ## 1  ENSG00000109906          22        2862   7.02
@@ -696,7 +696,7 @@ anno</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Continue on that pipeline, and <code>inner_join()</code> it to the <code>anno</code> data by the <code>ensgene</code> column. Either assign it to a temporary object or pipe the whole thing to <code>View</code> to take a look. What do you notice? Would you trust these results? Why or why not?</li>
 </ol>
-<pre><code>## # A tibble: 29,034 x 12
+<pre><code>## # A tibble: 29,034 × 12
 ##            ensgene controlmean treatedmean log2fc    entrez        symbol
 ##              &lt;chr&gt;       &lt;int&gt;       &lt;int&gt;  &lt;dbl&gt;     &lt;int&gt;         &lt;chr&gt;
 ## 1  ENSG00000109906          22        2862   7.02      7704        ZBTB16
@@ -752,7 +752,7 @@ citation(&quot;DESeq2&quot;)</code></pre>
 </div>
 <p>Let’s look at our rawcounts and metadata again.</p>
 <pre class="r"><code>rawcounts</code></pre>
-<pre><code>## # A tibble: 64,102 x 9
+<pre><code>## # A tibble: 64,102 × 9
 ##            ensgene SRR1039508 SRR1039509 SRR1039512 SRR1039513 SRR1039516
 ##              &lt;chr&gt;      &lt;int&gt;      &lt;int&gt;      &lt;int&gt;      &lt;int&gt;      &lt;int&gt;
 ## 1  ENSG00000000003        679        448        873        408       1138
@@ -768,7 +768,7 @@ citation(&quot;DESeq2&quot;)</code></pre>
 ## # ... with 64,092 more rows, and 3 more variables: SRR1039517 &lt;int&gt;,
 ## #   SRR1039520 &lt;int&gt;, SRR1039521 &lt;int&gt;</code></pre>
 <pre class="r"><code>metadata</code></pre>
-<pre><code>## # A tibble: 8 x 4
+<pre><code>## # A tibble: 8 × 4
 ##           id     dex celltype     geo_id
 ##        &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;
 ## 1 SRR1039508 control   N61311 GSM1275862
@@ -784,7 +784,7 @@ citation(&quot;DESeq2&quot;)</code></pre>
 <pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; &quot;6&quot; &quot;7&quot; &quot;8&quot;</code></pre>
 <p>Notice how these don’t match the column names of the raw count data! Also, the gene ID is in a column called <em>ensgene</em>, which is not the same as <code>row.names(rawcounts)</code>. There are other ways we could have imported the data where the row names were set as DESeq2 expects them, but I chose not to do this because such a dataset isn’t “tidy.” That is, you couldn’t do tidy-data operations like filtering, arranging, etc. when a variable is in a row name. But, this is how DESeq2 expects the data, and this is what we must provide. There’s a function (in base R) called <code>data.frame</code> that can construct a data frame from an existing data frame, but letting you specify which columns the row names are. Let’s create two new data frames where we specify which column contain our row names. Lets stick a <code>RN</code> on the end of the object name so we know the difference.</p>
 <pre class="r"><code>rawcounts</code></pre>
-<pre><code>## # A tibble: 64,102 x 9
+<pre><code>## # A tibble: 64,102 × 9
 ##            ensgene SRR1039508 SRR1039509 SRR1039512 SRR1039513 SRR1039516
 ##              &lt;chr&gt;      &lt;int&gt;      &lt;int&gt;      &lt;int&gt;      &lt;int&gt;      &lt;int&gt;
 ## 1  ENSG00000000003        679        448        873        408       1138
@@ -816,7 +816,7 @@ head(rawcountsRN)</code></pre>
 ## ENSG00000000460         63         76         60
 ## ENSG00000000938          0          0          0</code></pre>
 <pre class="r"><code>metadata</code></pre>
-<pre><code>## # A tibble: 8 x 4
+<pre><code>## # A tibble: 8 × 4
 ##           id     dex celltype     geo_id
 ##        &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;
 ## 1 SRR1039508 control   N61311 GSM1275862
@@ -876,7 +876,7 @@ dds</code></pre>
 <pre class="r"><code>res &lt;- results(dds, tidy=TRUE)
 res &lt;- tbl_df(res)
 res</code></pre>
-<pre><code>## # A tibble: 64,102 x 7
+<pre><code>## # A tibble: 64,102 × 7
 ##                row baseMean log2FoldChange  lfcSE   stat pvalue  padj
 ##              &lt;chr&gt;    &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
 ## 1  ENSG00000000003  708.602        -0.3608 0.1648 -2.189 0.0286 0.139
@@ -897,7 +897,7 @@ res</code></pre>
 <ol style="list-style-type: decimal">
 <li>Using a <code>%&gt;%</code>, <code>arrange</code> the results by the adjusted p-value.</li>
 </ol>
-<pre><code>## # A tibble: 64,102 x 7
+<pre><code>## # A tibble: 64,102 × 7
 ##                row baseMean log2FoldChange  lfcSE  stat    pvalue
 ##              &lt;chr&gt;    &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
 ## 1  ENSG00000152583      997           4.28 0.1957  21.9 4.86e-106
@@ -938,7 +938,7 @@ res</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>How many are significant with an adjusted p-value &lt;0.05? (Pipe to <code>filter()</code>).</li>
 </ol>
-<pre><code>## # A tibble: 2,851 x 15
+<pre><code>## # A tibble: 2,851 × 15
 ##                row baseMean log2FoldChange  lfcSE  stat    pvalue
 ##              &lt;chr&gt;    &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
 ## 1  ENSG00000152583      997           4.28 0.1957  21.9 4.86e-106
@@ -997,7 +997,7 @@ res &lt;- res %&gt;% mutate(sig=padj&lt;0.05)
 res %&gt;% 
   group_by(sig) %&gt;% 
   summarize(n=n())</code></pre>
-<pre><code>## # A tibble: 3 x 2
+<pre><code>## # A tibble: 3 × 2
 ##     sig     n
 ##   &lt;lgl&gt; &lt;int&gt;
 ## 1 FALSE 16990
@@ -1053,10 +1053,10 @@ res %&gt;%
 ## 
 ## other attached packages:
 ##  [1] DESeq2_1.12.4              SummarizedExperiment_1.2.3
-##  [3] Biobase_2.32.0             GenomicRanges_1.24.2      
-##  [5] GenomeInfoDb_1.8.3         IRanges_2.6.1             
+##  [3] Biobase_2.32.0             GenomicRanges_1.24.3      
+##  [5] GenomeInfoDb_1.8.7         IRanges_2.6.1             
 ##  [7] S4Vectors_0.10.3           BiocGenerics_0.18.0       
-##  [9] highcharter_0.4.0          jsonlite_1.0              
+##  [9] highcharter_0.4.0          jsonlite_1.1              
 ## [11] visNetwork_1.0.1           leaflet_1.0.1             
 ## [13] d3heatmap_0.6.1.1          magrittr_1.5              
 ## [15] tidyr_0.6.0                ggplot2_2.1.0             
@@ -1064,23 +1064,23 @@ res %&gt;%
 ## [19] knitr_1.14                
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] nlme_3.1-128         xts_0.9-7            lubridate_1.5.6     
+##  [1] nlme_3.1-128         xts_0.9-7            lubridate_1.6.0     
 ##  [4] doParallel_1.0.10    RColorBrewer_1.1-2   tools_3.3.0         
 ##  [7] R6_2.1.3             rpart_4.1-10         Hmisc_3.17-4        
-## [10] DBI_0.5              lazyeval_0.2.0       colorspace_1.2-6    
+## [10] DBI_0.5-1            lazyeval_0.2.0       colorspace_1.2-6    
 ## [13] nnet_7.3-12          gridExtra_2.2.1      mnormt_1.5-4        
-## [16] curl_1.2             chron_2.3-47         formatR_1.4         
+## [16] curl_2.1             chron_2.3-47         formatR_1.4         
 ## [19] pkgmaker_0.22        labeling_0.3         scales_0.4.0        
-## [22] psych_1.6.6          genefilter_1.54.2    NMF_0.20.6          
-## [25] stringr_1.1.0        digest_0.6.10        foreign_0.8-66      
+## [22] psych_1.6.9          genefilter_1.54.2    NMF_0.20.6          
+## [25] stringr_1.1.0        digest_0.6.10        foreign_0.8-67      
 ## [28] rmarkdown_1.0.9001   XVector_0.12.1       base64enc_0.1-3     
 ## [31] htmltools_0.3.5      highr_0.6            htmlwidgets_0.7     
-## [34] TTR_0.23-1           quantmod_0.4-5       RSQLite_1.0.0       
+## [34] TTR_0.23-1           quantmod_0.4-6       RSQLite_1.0.0       
 ## [37] zoo_1.7-13           BiocParallel_1.6.6   acepack_1.3-3.3     
-## [40] rlist_0.4.6.1        Formula_1.2-1        Matrix_1.2-6        
-## [43] Rcpp_0.12.6          munsell_0.4.3        stringi_1.1.1       
+## [40] rlist_0.4.6.1        Formula_1.2-1        Matrix_1.2-7.1      
+## [43] Rcpp_0.12.7          munsell_0.4.3        stringi_1.1.2       
 ## [46] yaml_2.1.13          zlibbioc_1.18.0      plyr_1.8.4          
-## [49] grid_3.3.0           lattice_0.20-33      splines_3.3.0       
+## [49] grid_3.3.0           lattice_0.20-34      splines_3.3.0       
 ## [52] annotate_1.50.0      locfit_1.5-9.1       igraph_1.0.1        
 ## [55] rngtools_1.2.4       geneplotter_1.50.0   reshape2_1.4.1      
 ## [58] codetools_0.2-14     XML_3.98-1.4         evaluate_0.9        
@@ -1088,7 +1088,7 @@ res %&gt;%
 ## [64] foreach_1.4.3        gtable_0.2.0         purrr_0.2.2         
 ## [67] assertthat_0.1       gridBase_0.4-7       xtable_1.8-2        
 ## [70] broom_0.4.1          survival_2.39-5      viridisLite_0.1.3   
-## [73] tibble_1.1           iterators_1.0.8      AnnotationDbi_1.34.4
+## [73] tibble_1.2           iterators_1.0.8      AnnotationDbi_1.34.4
 ## [76] registry_0.3         cluster_2.0.4</code></pre>
 </div>
 

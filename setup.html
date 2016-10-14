@@ -433,19 +433,11 @@ div.tocify {
 <li>If you’re using a Windows machine you might get some errors about not having permission to modify the existing libraries – don’t worry about this message. You can avoid this error altogether by running RStudio as an administrator (right click the RStudio icon, then click “run as administrator”).</li>
 </ul></li>
 </ol>
-<pre class="r"><code>install.packages(&quot;dplyr&quot;)
-install.packages(&quot;ggplot2&quot;)
-install.packages(&quot;tidyr&quot;)
-install.packages(&quot;readr&quot;)
-install.packages(&quot;stringr&quot;)
+<pre class="r"><code>install.packages(&quot;tidyverse&quot;)
 install.packages(&quot;knitr&quot;)
 install.packages(&quot;rmarkdown&quot;)</code></pre>
-<p>You can check that you’ve installed everything correctly by closing and reopening RStudio and entering the following commands at the console window:</p>
-<pre class="r"><code>library(dplyr)
-library(ggplot2)
-library(tidyr)
-library(readr)
-library(stringr)
+<p>You can check that you’ve installed everything correctly by closing and reopening RStudio and entering the following commands at the console window (don’t worry about the <em>Conflicts with tidy packages</em> warning):</p>
+<pre class="r"><code>library(tidyverse)
 library(knitr)
 library(rmarkdown)</code></pre>
 <p>These commands may produce some notes or other output, but as long as they work without an error message, you’re good to go. If you get a message that says something like: <code>Error in library(packageName) : there is no package called 'packageName'</code>, then the required packages did not install correctly. Please do not hesitate to <a href="people.html">email me</a> <em>prior to the course</em> if you are still having difficulty.</p>
