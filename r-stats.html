@@ -357,7 +357,9 @@ div.tocify {
     <li>
       <a href="r-shiny.html">Building Shiny Web Apps in R</a>
     </li>
-    <li class="dropdown-header">Essential Statistics with R</li>
+    <li>
+      <a href="r-stats.html">Essential Statistics with R</a>
+    </li>
     <li class="dropdown-header">Survival Analysis with TCGA Data</li>
     <li class="dropdown-header">Introduction to Bioconductor</li>
     <li class="dropdown-header">Harvesting Data from NCBI</li>
@@ -423,6 +425,7 @@ div.tocify {
 <li><a href="handouts/r-stats-cheatsheet.pdf">Cheat sheet</a></li>
 <li><a href="handouts/r-stats-exercises.pdf">Exercises handout</a></li>
 </ul>
+<p><strong>Slides</strong>: <a href="../slides/r-stats.html">click here</a>.</p>
 <div id="our-data-nhanes" class="section level2">
 <h2>Our data: NHANES</h2>
 <div id="about-nhanes" class="section level3">
@@ -1008,7 +1011,7 @@ summary(fit)</code></pre>
 <ul>
 <li><span class="math inline">\(Y\)</span> is the response</li>
 <li><span class="math inline">\(X_{1}\)</span> and <span class="math inline">\(X_{2}\)</span> are the predictors</li>
-<li><span class="math inline">\(\beta_{0}, \beta_{1}, \beta_{2}\)</span> are coefficients that describe what 1-unit changes in <span class="math inline">\(X_{1}\)</span> and <span class="math inline">\(X_{2}\)</span> do to the outcome variable <span class="math inline">\(Y\)</span>.</li>
+<li><span class="math inline">\(\beta_{0}\)</span> is the intercept, and <span class="math inline">\(\beta_{1}\)</span>, <span class="math inline">\(\beta_{2}\)</span> etc are <em>coefficients</em> that describe what 1-unit changes in <span class="math inline">\(X_{1}\)</span> and <span class="math inline">\(X_{2}\)</span> do to the outcome variable <span class="math inline">\(Y\)</span>.</li>
 <li><span class="math inline">\(\epsilon\)</span> is random error. Our model will not perfectly predict <span class="math inline">\(Y\)</span>. It will be off by some random amount. We assume this amount is a random draw from a Normal distribution with mean 0 and standard deviation <span class="math inline">\(\sigma\)</span>.</li>
 </ul>
 <p><em>Building a linear model</em> means we propose a linear model and then estimate the coefficients and the variance of the error term. Above, this means estimating <span class="math inline">\(\beta_{0}, \beta_{1}, \beta_{2}\)</span> and <span class="math inline">\(\sigma\)</span>. This is what we do in R.</p>
