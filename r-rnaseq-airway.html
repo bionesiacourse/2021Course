@@ -441,6 +441,7 @@ div.tocify {
 <ul>
 <li>Count matrix (i.e., <code>countData</code>): <a href="data/airway_rawcounts.csv">airway_rawcounts.csv</a></li>
 <li>Sample metadata (i.e., <code>colData</code>): <a href="data/airway_metadata.csv">airway_metadata.csv</a></li>
+<li>Gene Annotation data: <a href="data/annotables_grch37.csv">annotables_grch37.csv</a></li>
 </ul>
 </div>
 </div>
@@ -485,10 +486,8 @@ div.tocify {
 </div>
 <div id="import-data" class="section level2">
 <h2>Import data</h2>
-<p>First, let’s load the <strong>readr</strong>, <strong>dplyr</strong>, and <strong>ggplot2</strong> libraries, and import our data <a href="r-dataframes.html">like we’ve always done</a> with <code>read_csv()</code> (<em>note</em>: not <code>read.csv()</code>). Let’s read in the actual count data and the experimental metadata.</p>
-<pre class="r"><code>library(readr)
-library(dplyr)
-library(ggplot2)
+<p>First, let’s load the <strong>tidyverse</strong> library. (This loads <strong>readr</strong>, <strong>dplyr</strong>, <strong>ggplot2</strong>, and several other needed packages). Then let’s import our data <a href="r-dataframes.html">with <strong>readr</strong>’s <code>read_csv()</code> function</a> (<em>note</em>: not <code>read.csv()</code>). Let’s read in the actual count data and the experimental metadata.</p>
+<pre class="r"><code>library(tidyverse)
 
 rawcounts &lt;- read_csv(&quot;data/airway_rawcounts.csv&quot;)
 metadata &lt;-  read_csv(&quot;data/airway_metadata.csv&quot;)</code></pre>
@@ -528,46 +527,46 @@ metadata &lt;-  read_csv(&quot;data/airway_metadata.csv&quot;)</code></pre>
 <p>Let’s look for differential gene expression. <strong><em>Note: this analysis is for demonstration only. NEVER do differential expression analysis this way!</em></strong></p>
 <p>Let’s start with an exercise.</p>
 <hr />
-<div id="exercise-1" class="section level4">
-<h4><strong>EXERCISE 1</strong></h4>
+<div id="exercise-1" class="section level3">
+<h3><strong>EXERCISE 1</strong></h3>
 <p>If we look at our metadata, we see that the control samples are SRR1039508, SRR1039512, SRR1039516, and SRR1039520. This bit of code will take the rawcounts data, mutate it to add a column called <code>controlmean</code>, then select only the gene name and this newly created column, and assigning the result to a new object called <code>meancounts</code>.</p>
 <pre class="r"><code>meancounts &lt;- rawcounts %&gt;% 
-  mutate(controlmean = SRR1039508+SRR1039512+SRR1039516+SRR1039520) %&gt;% 
+  mutate(controlmean = (SRR1039508+SRR1039512+SRR1039516+SRR1039520)/4) %&gt;% 
   select(ensgene, controlmean)
 meancounts</code></pre>
 <pre><code>## # A tibble: 64,102 × 2
 ##            ensgene controlmean
-##              &lt;chr&gt;       &lt;int&gt;
-## 1  ENSG00000000003        3460
-## 2  ENSG00000000005           0
-## 3  ENSG00000000419        2092
-## 4  ENSG00000000457        1001
-## 5  ENSG00000000460         254
-## 6  ENSG00000000938           3
-## 7  ENSG00000000971       21325
-## 8  ENSG00000001036        5949
-## 9  ENSG00000001084        2630
-## 10 ENSG00000001167        1876
+##              &lt;chr&gt;       &lt;dbl&gt;
+## 1  ENSG00000000003      865.00
+## 2  ENSG00000000005        0.00
+## 3  ENSG00000000419      523.00
+## 4  ENSG00000000457      250.25
+## 5  ENSG00000000460       63.50
+## 6  ENSG00000000938        0.75
+## 7  ENSG00000000971     5331.25
+## 8  ENSG00000001036     1487.25
+## 9  ENSG00000001084      657.50
+## 10 ENSG00000001167      469.00
 ## # ... with 64,092 more rows</code></pre>
 <ol style="list-style-type: decimal">
 <li>Build off of this code, <code>mutate</code> it once more (prior to the <code>select()</code>) function, to add another column called <code>treatedmean</code> that takes the mean of the expression values of the treated samples. Then <code>select</code> only the <code>ensgene</code>, <code>controlmean</code> and <code>treatedmean</code> columns, assigning it to a new object called meancounts. It should look like this.</li>
 </ol>
 <pre><code>## # A tibble: 64,102 × 3
 ##            ensgene controlmean treatedmean
-##              &lt;chr&gt;       &lt;int&gt;       &lt;int&gt;
-## 1  ENSG00000000003        3460        2475
-## 2  ENSG00000000005           0           0
-## 3  ENSG00000000419        2092        2187
-## 4  ENSG00000000457        1001         935
-## 5  ENSG00000000460         254         213
-## 6  ENSG00000000938           3           0
-## 7  ENSG00000000971       21325       26953
-## 8  ENSG00000001036        5949        4491
-## 9  ENSG00000001084        2630        2291
-## 10 ENSG00000001167        1876        1264
+##              &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+## 1  ENSG00000000003      865.00       618.8
+## 2  ENSG00000000005        0.00         0.0
+## 3  ENSG00000000419      523.00       546.8
+## 4  ENSG00000000457      250.25       233.8
+## 5  ENSG00000000460       63.50        53.2
+## 6  ENSG00000000938        0.75         0.0
+## 7  ENSG00000000971     5331.25      6738.2
+## 8  ENSG00000001036     1487.25      1122.8
+## 9  ENSG00000001084      657.50       572.8
+## 10 ENSG00000001167      469.00       316.0
 ## # ... with 64,092 more rows</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Directly comparing the raw counts is going to be problematic if we just happened to sequence one group at a higher depth than another. Later on we’ll do this analysis properly, normalizing by sequencing depth. But for now, <code>summarize()</code> the data to show the <code>sum</code> of the mean counts across all genes for each group. Your answer should look like this:</li>
+<li>Directly comparing the raw counts is going to be problematic if we just happened to sequence one group at a higher depth than another. Later on we’ll do this analysis properly, normalizing by sequencing depth per sample using a better approach. But for now, <code>summarize()</code> the data to show the <code>sum</code> of the mean counts across all genes for each group. Your answer should look like this:</li>
 </ol>
 <pre><code>## # A tibble: 1 × 2
 ##   `sum(controlmean)` `sum(treatedmean)`
@@ -577,8 +576,8 @@ meancounts</code></pre>
 <p>How about another?</p>
 <hr />
 </div>
-<div id="exercise-2" class="section level4">
-<h4><strong>EXERCISE 2</strong></h4>
+<div id="exercise-2" class="section level3">
+<h3><strong>EXERCISE 2</strong></h3>
 <ol style="list-style-type: decimal">
 <li>Create a scatter plot showing the mean of the treated samples against the mean of the control samples.</li>
 </ol>
@@ -658,9 +657,9 @@ meancounts</code></pre>
 <p>In total, we’ve got 892 differentially expressed genes, in either direction.</p>
 <hr />
 </div>
-<div id="exercise-3" class="section level4">
-<h4><strong>EXERCISE 3</strong></h4>
-<p>Go back and refresh your memory on <a href="r-tidy.html#inner_join%28%29_to_go">using <code>inner_join()</code> to join two tables by a common column/key</a>. You previously downloaded <a href="data/annotables_grch37.csv">annotables_grch37.csv</a> from <a href="data.html">the data downloads page</a>. Load this data with <code>read_csv()</code> into an object called <code>anno</code>. Pipe it to <code>View</code> or click on the object in the Environment pane to view the entire dataset. This table links the unambiguous Ensembl gene ID to things like the gene symbol, full gene name, location, Entrez gene ID, etc.</p>
+<div id="exercise-3" class="section level3">
+<h3><strong>EXERCISE 3</strong></h3>
+<p>Look up help on <code>?inner_join</code> or google around for help for using <strong>dplyr</strong>’s <code>inner_join()</code> to join two tables by a common column/key. You downloaded <a href="data/annotables_grch37.csv">annotables_grch37.csv</a> from <a href="data.html">the data downloads page</a> on bioconnector.org. Load this data with <code>read_csv()</code> into an object called <code>anno</code>. Pipe it to <code>View</code> or click on the object in the Environment pane to view the entire dataset. This table links the unambiguous Ensembl gene ID to things like the gene symbol, full gene name, location, Entrez gene ID, etc.</p>
 <pre class="r"><code>anno &lt;- read_csv(&quot;data/annotables_grch37.csv&quot;)
 anno</code></pre>
 <pre><code>## # A tibble: 67,416 × 9
