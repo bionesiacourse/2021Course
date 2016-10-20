@@ -365,9 +365,7 @@ div.tocify {
     <li class="dropdown-header">Harvesting Data from NCBI</li>
     <li class="divider"></li>
     <li class="dropdown-header">--- NGS DATA ANALYSIS ---</li>
-    <li>
-      <a href="r-rnaseq-airway.html">RNA-seq: airway</a>
-    </li>
+    <li class="dropdown-header">RNA-seq: airway</li>
     <li class="dropdown-header">ChIP-seq data analysis</li>
     <li class="divider"></li>
     <li class="dropdown-header">--- OTHER CLASSES ---</li>
@@ -423,44 +421,47 @@ div.tocify {
 <h3>R+RStudio+Packages</h3>
 <p><strong>Note:</strong> R and RStudio are separate downloads and installations. <strong>R</strong> is the underlying statistical computing environment, but using R alone is no fun. <strong>RStudio</strong> is a graphical integrated development environment that makes using R much easier. You need R installed before you install RStudio.</p>
 <ol style="list-style-type: decimal">
-<li><strong>Install R.</strong> You’ll need R version 3.1.2 or higher. Download and install R for <a href="http://cran.r-project.org/bin/windows/base/">Windows</a> or <a href="http://cran.r-project.org/bin/macosx/">Mac OS X</a> (download the latest R-3.x.x.pkg file for your appropriate version of OS X).</li>
-<li><strong>Install RStudio.</strong> Download and install the latest stable version of <a href="https://www.rstudio.com/products/rstudio/download/">RStudio Desktop</a>.</li>
+<li><strong>Install R.</strong> You’ll need R version <strong>3.1.2</strong> or higher.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> Download and install R for <a href="http://cran.r-project.org/bin/windows/base/">Windows</a> or <a href="http://cran.r-project.org/bin/macosx/">Mac OS X</a> (download the latest R-3.x.x.pkg file for your appropriate version of OS X).</li>
+<li><strong>Install RStudio.</strong> Download and install <a href="https://www.rstudio.com/products/rstudio/download/">RStudio Desktop</a>.</li>
 <li><strong>Install R packages.</strong> Launch RStudio (RStudio, <em>not R itself</em>). Ensure that you have internet access, then enter the following commands into the <strong>Console</strong> panel (usually the lower-left panel, by default). <em>A few notes</em>:
 <ul>
-<li>These commands are case-sensitive.</li>
-<li>You need to be connected to the internet to do this.</li>
-<li>Even if you’ve installed these packages in the past, go ahead and re-install the most recent version. Many of these packages are updated often. For instance, <a href="http://blog.rstudio.org/2015/12/21/ggplot2-2-0-0/">ggplot2 2.0</a> (released December 2015) came with many new features and changes.</li>
-<li>At any point (especially if you’ve used R/Bioconductor in the past), R may ask you if you want to update any old packages by asking <code>Update all/some/none? [a/s/n]:</code>. If you see this, type <strong><code>a</code></strong> at the propt and hit <code>Enter</code> to update any old packages.</li>
-<li>If you see a note long the lines of “<em>binary version available but the source version is later</em>”, followed by a question, “<em>Do you want to install from sources the package which needs compilation? y/n</em>”, type <strong><code>n</code></strong> for no, and hit enter.</li>
-<li>If you’re using a Windows machine you might get some errors about not having permission to modify the existing libraries – don’t worry about this message. You can avoid this error altogether by running RStudio as an administrator (right click the RStudio icon, then click “run as administrator”).</li>
+<li>Commands are case-sensitive.</li>
+<li>You must be connected to the internet.</li>
+<li>The <a href="https://github.com/tidyverse/tidyverse#readme">tidyverse</a> package is kind of a meta-package that automatically installs/loads many core packages that we use throughout the workshops.<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></li>
+<li>Even if you’ve installed these packages in the past, do re-install the most recent version. Many of these packages are updated often, and we may use new features in the workshop that aren’t available in older versions.</li>
+<li>If you’re using Windows you might see errors about not having permission to modify the existing libraries – disregard these. You can avoid this by running RStudio as an administrator (right click the RStudio icon, then click “Run as Administrator”).</li>
 </ul></li>
 </ol>
-<pre class="r"><code>install.packages(&quot;tidyverse&quot;)
-install.packages(&quot;knitr&quot;)
-install.packages(&quot;rmarkdown&quot;)</code></pre>
+<pre class="r"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
 <p>You can check that you’ve installed everything correctly by closing and reopening RStudio and entering the following commands at the console window (don’t worry about the <em>Conflicts with tidy packages</em> warning):</p>
-<pre class="r"><code>library(tidyverse)
-library(knitr)
-library(rmarkdown)</code></pre>
-<p>These commands may produce some notes or other output, but as long as they work without an error message, you’re good to go. If you get a message that says something like: <code>Error in library(packageName) : there is no package called 'packageName'</code>, then the required packages did not install correctly. Please do not hesitate to <a href="people.html">email me</a> <em>prior to the course</em> if you are still having difficulty.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<p>This may produce some notes or other output, but as long as you don’t get an error message, you’re good to go. If you get a message that says something like: <code>Error in library(packageName) : there is no package called 'packageName'</code>, then the required packages did not install correctly. Please do not hesitate to <a href="people.html">email me</a> <em>prior to the course</em> if you are still having difficulty.</p>
 </div>
 <div id="bioconductor" class="section level3">
 <h3>Bioconductor</h3>
-<p>Additionally, you’ll need to install a few <a href="http://bioconductor.org/">Bioconductor</a> packages. These packages are installed differently than “regular” R packages from CRAN. Copy and paste these lines of code into your R console.</p>
+<p>For some classes (e.g., RNA-seq), you’ll need to install a few <a href="http://bioconductor.org/">Bioconductor</a> packages. These packages are installed differently than “regular” R packages from CRAN. Copy and paste these lines of code into your R console.</p>
 <pre class="r"><code>source(&quot;http://bioconductor.org/biocLite.R&quot;)
 biocLite()
 biocLite(&quot;DESeq2&quot;)</code></pre>
-<p>You can check that you’ve installed everything correctly by closing and reopening RStudio and entering the following commands at the console window:</p>
+<p>A few notes:</p>
+<ul>
+<li>R may ask you if you want to update any old packages by asking <code>Update all/some/none? [a/s/n]:</code>. If you see this, type <strong><code>a</code></strong> at the propt and hit <code>Enter</code> to update any old packages.</li>
+<li>If you see a note long the lines of “<em>binary version available but the source version is later</em>”, followed by a question, “<em>Do you want to install from sources the package which needs compilation? y/n</em>”, type <strong><code>n</code> for no</strong>, and hit enter.</li>
+<li>You can check that you’ve installed everything correctly by closing and reopening RStudio and entering the following commands at the console window:</li>
+</ul>
 <pre class="r"><code>library(DESeq2)</code></pre>
-<p>If you get a message that says something like: <code>Error in library(packageName) : there is no package called 'packageName'</code>, then the required packages did not install correctly. Please do not hesitate to <a href="people.html">email me</a> <em>prior to the course</em> if you are still having difficulty.</p>
+<p>If you get a message that says something like: <code>Error in library(DESeq2) : there is no package called 'DESeq2'</code>, then the required packages did not install correctly. Please do not hesitate to <a href="people.html">email me</a> <em>prior to the course</em> if you are still having difficulty.</p>
 </div>
 <div id="rmarkdown" class="section level3">
 <h3>RMarkdown</h3>
-<p>First, install R and RStudio as described above. Several additional setup steps required for the reproducible research with RMarkdown class.</p>
+<p>Several additional setup steps required for the reproducible research with RMarkdown class.</p>
 <ol style="list-style-type: decimal">
-<li>First, launch RStudio (not R). Click File, New File, R Markdown. This may tell you that you need to install additional packages (<code>knitr</code>, <code>yaml</code>, <code>htmltools</code>, <code>caTools</code>, <code>bitops</code>, and <code>rmarkdown</code>). Click “Yes” to install these.</li>
+<li><p>First, install R, RStudio, and the tidyverse package as described above. Also install the knitr and rmarkdown packages.</p>
+<pre class="r"><code>install.packages(&quot;knitr&quot;)
+install.packages(&quot;rmarkdown&quot;)</code></pre></li>
+<li>Next, launch RStudio (not R). Click File, New File, R Markdown. This may tell you that you need to install additional packages (<code>knitr</code>, <code>yaml</code>, <code>htmltools</code>, <code>caTools</code>, <code>bitops</code>, and <code>rmarkdown</code>). Click “Yes” to install these.</li>
 <li>Sign up for a free account at <strong><a href="http://rpubs.com/">RPubs.com</a></strong>.</li>
-<li>If you want to convert to PDF, you will need to install a <strong>LaTeX</strong> typesetting engine. This differs on Mac and Windows. <strong>Note that this part of the installation may take up to several hours, and isn’t strictly required for the class.</strong>
+<li><strong><em>Optional</em>:</strong> If you want to convert to PDF, you will need to install a <strong>LaTeX</strong> typesetting engine. This differs on Mac and Windows. <em>Note that this part of the installation may take up to several hours, and isn’t strictly required for the class.</em>
 <ul>
 <li><strong>Windows LaTeX instructions</strong>:
 <ol style="list-style-type: decimal">
@@ -509,10 +510,59 @@ library(lubridate)</code></pre>
 </div>
 </div>
 <div id="get-data" class="section level2">
-<h2><a href="data.html">Get Data</a></h2>
+<h2>Get Data</h2>
+<p>The data used in any of these classes can be found at the <a href="data.html">data</a> link on the navbar at the top. Create a new folder somewhere on your computer that’s easy to get to (e.g., your Desktop). Name it <code>bioconnector</code>. Inside that folder, make a folder called <code>data</code>, all lowercase. Download datasets as needed by <a href="data.html">clicking here</a> or using the link at the top. Save these data files to the new <code>bioconnector/data</code> folder you just made.</p>
+</div>
+<div id="rna-seq" class="section level2">
+<h2>RNA-seq</h2>
+<p><strong>Software setup:</strong> Follow instructions above for <a href="#r+rstudio+packages">R+RStudio+Packages</a> and <a href="#bioconductor">Bioconductor</a>. See the sections above for full instructions and troubleshooting tips, but in summary, after installing R+RStudio, you’ll need the tidyverse, Bioconductor core, and DESeq2 packages.</p>
+<pre class="r"><code># tidyverse pkg installs dplyr, tibble, tidyr, ggplot2, readr, etc.
+install.packages(&quot;tidyverse&quot;)
+# Install Bioconductor core packages and DESeq2
+source(&quot;http://bioconductor.org/biocLite.R&quot;)
+biocLite()
+biocLite(&quot;DESeq2&quot;)</code></pre>
+<p><strong>Download data we’ll use in class.</strong> Create a new folder somewhere on your computer that’s easy to get to (e.g., your Desktop). Name it <code>bioconnector</code>. Inside that folder, make a folder called <code>data</code>, all lowercase. Download the 3 data files below, saving them to the new <code>bioconnector/data</code> folder you just made.</p>
 <ol style="list-style-type: decimal">
-<li><strong>Create a new folder</strong> somewhere on your computer that’s easy to get to (e.g., your Desktop). Name it <code>bioconnector</code>. Inside that folder, make a folder called <code>data</code>, all lowercase.</li>
-<li><strong>Download datasets as needed</strong> by <a href="data.html">clicking here</a> or using the link at the top. Save these data files to the new <code>bioconnector/data</code> folder you just made.</li>
+<li>Count matrix (i.e., <code>countData</code>): <a href="data/airway_rawcounts.csv">airway_rawcounts.csv</a></li>
+<li>Sample metadata (i.e., <code>colData</code>): <a href="data/airway_metadata.csv">airway_metadata.csv</a></li>
+<li>Gene Annotation data: <a href="data/annotables_grch37.csv">annotables_grch37.csv</a></li>
+</ol>
+<p><strong>Prerequisites!</strong> This is <em>not</em> an introductory R class. This class assumes you’re comfortable working in R, using ggplot2 for visualization, and using dplyr verbs and the <strong><code>%&gt;%</code></strong> for chaining together multiple operations. Work through the workshop materials below if you need a refresher.</p>
+<ul>
+<li><a href="r-basics.html">R basics</a></li>
+<li><a href="r-dataframes.html">Data frames</a></li>
+<li><a href="r-dplyr.html">Manipulating data with dplyr and <code>%&gt;%</code></a> (also, work through the <a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">dplyr vignette</a>)</li>
+<li><a href="r-tidy.html">Tidy data &amp; advanced manipulation</a></li>
+<li><a href="r-viz-gapminder.html">Data Visualization with ggplot2</a></li>
+</ul>
+<p><strong>Recommended reading</strong> prior to class:</p>
+<ol style="list-style-type: decimal">
+<li>Conesa et al. A survey of best practices for RNA-seq data analysis. <a href="http://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0881-8">Genome Biology 17:13 (2016)</a>.
+<ul>
+<li><em>This is a good all-purpose review on RNA-seq analysis</em>.</li>
+</ul></li>
+<li>Himes et al. “RNA-Seq transcriptome profiling identifies CRISPLD2 as a glucocorticoid responsive gene that modulates cytokine function in airway smooth muscle cells.” <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0099625">PLoS ONE 9.6 (2014): e99625</a>.
+<ul>
+<li><em>The data we’ll use comes from this publication</em>.</li>
+</ul></li>
+<li>Soneson et al. “Differential analyses for RNA-seq: transcript-level estimates improve gene-level inferences.” <a href="http://f1000research.com/articles/4-1521/v1">F1000Research 4 (2015)</a>.
+<ul>
+<li><em>This paper describes more recently developed approaches for gene-level analysis using transcript-level quantification, which is probably more accurate than the approach we’re using here</em>.</li>
+</ul></li>
+</ol>
+</div>
+<div id="survival-analysis" class="section level2">
+<h2>Survival Analysis</h2>
+<p><em>Stay tuned…</em></p>
+<hr />
+<hr />
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>R version 3.1.2 was released October 2014. If you have not updated your R installation since then, you need to upgrade to a more recent version, since several of the required packages depend on a version at least this recent. You can check your R version with the <code>sessionInfo()</code> command.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>Installing/loading the tidyverse <strong>tidyverse</strong> will install/load the core tidyverse packages that you are likely to use in almost every analysis: <strong>ggplot2</strong> (for data visualisation), <strong>dplyr</strong> (for data manipulation), <strong>tidyr</strong> (for data tidying), <strong>readr</strong> (for data import), <strong>purrr</strong> (for functional programming), and <strong>tibble</strong> (for tibbles, a modern re-imagining of data frames). It also installs a selection of other tidyverse packages that you’re likely to use frequently, but probably not in every analysis (these are installed, but you’ll have to load them separately with <code>library(packageName)</code>). This includes: <strong>hms</strong> (for times), <strong>stringr</strong> (for strings), <strong>lubridate</strong> (for date/times), <strong>forcats</strong> (for factors), <strong>DBI</strong> (for databases), <strong>haven</strong> (for SPSS, SAS and Stata files), <strong>httr</strong> (for web apis), <strong>jsonlite</strong> (or JSON), <strong>readxl</strong> (for .xls and .xlsx files), <strong>rvest</strong> (for web scraping), <strong>xml2</strong> (for XML), <strong>modelr</strong> (for modelling within a pipeline), and <strong>broom</strong> (for turning models into tidy data). After installing tidyverse with <code>install.packages(&quot;tidyverse&quot;)</code> and loading it with <code>library(tidyverse)</code>, you can use <code>tidyverse_update()</code> to update all the tidyverse packages installed on your system at once.<a href="#fnref2">↩</a></p></li>
 </ol>
 </div>
 
