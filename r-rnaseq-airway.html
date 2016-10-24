@@ -14,14 +14,15 @@
 <title>Count-Based Differential Expression Analysis of RNA-seq Data</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <!-- Font Awesome -->
 <!-- <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" /> -->
 <!-- <script src="https://use.fontawesome.com/54ee8c2dfd.js"></script> -->
@@ -479,7 +480,7 @@ div.tocify {
 <p>That is, we have <strong>two tables</strong>:</p>
 <ol style="list-style-type: decimal">
 <li>The “count matrix” (called the <code>countData</code> in DESeq-speak) – where <em>genes</em> are in <em>rows</em> and <em>samples</em> are in <em>columns</em>, and the number in each cell is the number of reads that mapped to exons in that gene for that sample: <strong><a href="data/airway_rawcounts.csv">airway_rawcounts.csv</a></strong>.</li>
-<li>The sample metadata (called the <code>colData</code> in DESeq-speak) – where <em>samples</em> are in <em>rows</em> and <em>metadata</em> about those samples are in <em>columns</em>: <strong><a href="data/airway_metadata.csv">airway_metadata.csv</a></strong>. It’s called the <code>colData</code> because this table supplies metadata/information about the columns of the <code>countData</code> matrix. Notice that the column names of the <code>countData</code> must match the row names of the <code>colData</code>. A bit later we’ll revisit this, because there’s special syntax in R for specifying row names and column names of data frames.</li>
+<li>The sample metadata (called the <code>colData</code> in DESeq-speak) – where <em>samples</em> are in <em>rows</em> and <em>metadata</em> about those samples are in <em>columns</em>: <strong><a href="data/airway_metadata.csv">airway_metadata.csv</a></strong>. It’s called the <code>colData</code> because this table supplies metadata/information about the columns of the <code>countData</code> matrix. Notice that the first column of <code>colData</code> must match the column names of <code>countData</code> (except the first, which is the gene ID column).<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></li>
 </ol>
 </div>
 </div>
@@ -728,7 +729,7 @@ citation(&quot;DESeq2&quot;)</code></pre>
 <div id="importing-data" class="section level3">
 <h3>Importing data</h3>
 <p>DESeq works on a particular type of object called a DESeqDataSet. The DESeqDataSet is a single object that contains input values, intermediate calculations like how things are normalized, and all results of a differential expression analysis. You can construct a DESeqDataSet from a count matrix, a metadata file, and a formula indicating the design of the experiment. See the help for <code>?DESeqDataSetFromMatrix</code>. If you read through the <a href="http://www.bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.pdf">DESeq2 vignette</a> you’ll read about the structure of the data that you need to construct a DESeqDataSet object.</p>
-<p><code>DESeqDataSetFromMatrix</code> requires the count matrix (<code>countData</code> argument) to be a matrix or numeric data frame. either the row names or the first column of the <code>countData</code> must be the identifier you’ll use for each gene. The column names of <code>countData</code> are the sample IDs, and they must match the row names of <code>colData</code> (or the first column when <code>tidy=TRUE</code>). <code>colData</code> is an additional dataframe describing sample metadata.</p>
+<p><code>DESeqDataSetFromMatrix</code> requires the count matrix (<code>countData</code> argument) to be a matrix or numeric data frame. either the row names or the first column of the <code>countData</code> must be the identifier you’ll use for each gene. The column names of <code>countData</code> are the sample IDs, and they must match the row names of <code>colData</code> (or the first column when <code>tidy=TRUE</code>). <code>colData</code> is an additional dataframe describing sample metadata. Both <code>colData</code> and <code>countData</code> must be regular <code>data.frame</code> objects – they can’t have the special <code>tbl_df</code> class wrapper created when importing with <code>readr::read_*</code>.</p>
 <div class="figure">
 <img src="img/countdatacoldata.png" />
 
@@ -782,8 +783,13 @@ class(metadata)</code></pre>
 ## [6] &quot;SRR1039517&quot; &quot;SRR1039520&quot; &quot;SRR1039521&quot;</code></pre>
 <pre class="r"><code>names(rawcounts)[-1]==metadata$id</code></pre>
 <pre><code>## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
+<pre class="r"><code>all(names(rawcounts)[-1]==metadata$id)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
 <p>Now we can move on to constructing the actual DESeqDataSet object. The last thing we’ll need to specify is a <em>design</em> – a <em>formula</em> which expresses how the counts for each gene depend on the variables in colData. Take a look at <code>metadata</code> again. The thing we’re interested in is the <code>dex</code> column, which tells us which samples are treated with dexamethasone versus which samples are untreated controls. We’ll specify the design with a tilde, like this: <code>design=~dex</code>. (The tilde is the shifted key to the left of the number 1 key on my keyboard. It looks like a little squiggly line). So let’s contruct the object and call it <code>dds</code>, short for our DESeqDataSet. If you get a warning about “some variables in design formula are characters, converting to factors” don’t worry about it. Take a look at the <code>dds</code> object once you create it.</p>
-<pre class="r"><code>dds &lt;- DESeqDataSetFromMatrix(countData=rawcounts, colData=metadata, design=~dex, tidy=TRUE)
+<pre class="r"><code>dds &lt;- DESeqDataSetFromMatrix(countData=rawcounts, 
+                              colData=metadata, 
+                              design=~dex, 
+                              tidy=TRUE)
 dds</code></pre>
 <pre><code>## class: DESeqDataSet 
 ## dim: 64102 8 
@@ -1036,6 +1042,13 @@ res %&gt;%
 ## [70] rsconnect_0.4.3      survival_2.39-5      viridisLite_0.1.3   
 ## [73] iterators_1.0.8      AnnotationDbi_1.34.4 registry_0.3        
 ## [76] cluster_2.0.4</code></pre>
+<hr />
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>This only works when using the argument <code>tidy=TRUE</code> when creating the <code>DESeqDataSetFromMatrix()</code>.<a href="#fnref1">↩</a></p></li>
+</ol>
 </div>
 
 <div class="footer">
