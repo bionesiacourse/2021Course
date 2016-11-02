@@ -424,7 +424,7 @@ div.tocify {
 <p><strong>Note:</strong> R and RStudio are separate downloads and installations. <strong>R</strong> is the underlying statistical computing environment, but using R alone is no fun. <strong>RStudio</strong> is a graphical integrated development environment that makes using R much easier. You need R installed before you install RStudio.</p>
 <ol style="list-style-type: decimal">
 <li><strong>Install R.</strong> You’ll need R version <strong>3.1.2</strong> or higher.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> Download and install R for <a href="http://cran.r-project.org/bin/windows/base/">Windows</a> or <a href="http://cran.r-project.org/bin/macosx/">Mac OS X</a> (download the latest R-3.x.x.pkg file for your appropriate version of OS X).</li>
-<li><strong>Install RStudio.</strong> Download and install <a href="https://www.rstudio.com/products/rstudio/download/">RStudio Desktop</a>.</li>
+<li><strong>Install RStudio.</strong> Download and install <a href="https://www.rstudio.com/products/rstudio/download/">RStudio Desktop</a>. RStudio version 1.0 was released November 1 2016, and contains many improvements over the 0.99 release. Please download version 1.0+.</li>
 <li><strong>Install R packages.</strong> Launch RStudio (RStudio, <em>not R itself</em>). Ensure that you have internet access, then enter the following commands into the <strong>Console</strong> panel (usually the lower-left panel, by default). <em>A few notes</em>:
 <ul>
 <li>Commands are case-sensitive.</li>
@@ -556,7 +556,27 @@ biocLite(&quot;DESeq2&quot;)</code></pre>
 </div>
 <div id="survival-analysis" class="section level2">
 <h2>Survival Analysis</h2>
-<p><em>Stay tuned…</em></p>
+<p><strong>Software setup:</strong> Follow instructions at the top for <a href="#r">R+RStudio+Packages</a>. Next, install the additional packages listed below from CRAN and Bioconductor by typing the commands below into your RStudio console window.</p>
+<pre class="r"><code># Install from CRAN
+install.packages(&quot;tidyverse&quot;)
+install.packages(&quot;survminer&quot;)
+
+# Install from Bioconductor
+# Install Bioconductor core packages
+source(&quot;http://bioconductor.org/biocLite.R&quot;)
+biocLite()
+# Install RTCGA and RTCGA data packages
+biocLite(&quot;RTCGA&quot;)
+biocLite(&quot;RTCGA.clinical&quot;)
+biocLite(&quot;RTCGA.mRNA&quot;)</code></pre>
+<p><strong>Prerequisites!</strong> This is <em>not</em> an introductory R class. Work through the workshop materials below if you need a refresher on R, data frames, data manipulation and visualization.</p>
+<ul>
+<li><a href="r-basics.html">R basics</a></li>
+<li><a href="r-dataframes.html">Data frames</a></li>
+<li><a href="r-dplyr.html">Manipulating data with dplyr and <code>%&gt;%</code></a> (also, work through the <a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">dplyr vignette</a>)</li>
+<li><a href="r-tidy.html">Tidy data &amp; advanced manipulation</a></li>
+<li><a href="r-viz-gapminder.html">Data Visualization with ggplot2</a></li>
+</ul>
 <hr />
 <hr />
 </div>
