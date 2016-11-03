@@ -662,7 +662,7 @@ fit</code></pre>
 <h3>Exercise set 2</h3>
 <p>Let’s go back to the <code>colon</code> cancer dataset. Remember, you created a <code>colondeath</code> object in the first exercise that only includes survival, not recurrence data points. See <code>?colon</code> for more information about this dataset.</p>
 <ol style="list-style-type: decimal">
-<li>Take a look at <code>levels(colondeath$rs)</code>. This tells you that the <code>rx</code> variable is the type of treatment the patient was on, which is either nothing (coded <code>Obs</code>, short for Observation), Levamisole (coded <code>Lev</code>), or Levamisole + 5-fluorouracil (coded <code>Lev+5FU</code>). This is a factor variable coded with these levels, in that order. This means that <code>Obs</code> is treated as the baseline group, and other groups are dummy-coded to represent.</li>
+<li>Take a look at <code>levels(colondeath$rs)</code>. This tells you that the <code>rx</code> variable is the type of treatment the patient was on, which is either nothing (coded <code>Obs</code>, short for Observation), Levamisole (coded <code>Lev</code>), or Levamisole + 5-fluorouracil (coded <code>Lev+5FU</code>). This is a factor variable coded with these levels, in that order. This means that <code>Obs</code> is treated as the baseline group, and other groups are dummy-coded to represent the respective group.</li>
 </ol>
 <table>
 <caption>With <em>k</em> levels of a categorical factor variable, you get <em>k-1</em> dummy variables created, each 0/1, indicating that the sample is a particular non-reference category. Having value 0 for all dummy variables indicates that the sample is baseline.</caption>
