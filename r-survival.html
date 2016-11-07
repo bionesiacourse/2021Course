@@ -452,7 +452,7 @@ div.tocify {
 <p><span class="math display">\[ h_1(t) = h_0(t) + e^{\beta_1 x_1} \]</span></p>
 <p>Rearranging that equation lets you estimate the <strong>hazard ratio</strong>, comparing the exposed to the unexposed individuals at time <em>t</em>:</p>
 <p><span class="math display">\[ HR(t) = \frac{h_0(t) e^{\beta_1}}{h_0(t)} = e^{\beta_1} \]</span></p>
-<p>This model shows that <strong>the hazard ratio is <span class="math inline">\(e^{\beta_1}\)</span>,</strong> and remains constant over time <em>t</em> (hence the name <em>proportional hazards regression</em>). The <span class="math inline">\(\beta\)</span> values are the regression coefficients that are estimated from the model, and represent the <span class="math inline">\(log hazard ratio\)</span> for each unit increase in the corresponding predictor variable. The interpretation of the hazards ratio depends on the measurement scale of the predictor variable, but in simple terms, a positive coefficient indicates worse survival and a negative coefficient indicates better survival for the variable in question.</p>
+<p>This model shows that <strong>the hazard ratio is <span class="math inline">\(e^{\beta_1}\)</span>,</strong> and remains constant over time <em>t</em> (hence the name <em>proportional hazards regression</em>). The <span class="math inline">\(\beta\)</span> values are the regression coefficients that are estimated from the model, and represent the <span class="math inline">\(log(Hazard\, Ratio)\)</span> for each unit increase in the corresponding predictor variable. The interpretation of the hazards ratio depends on the measurement scale of the predictor variable, but in simple terms, a positive coefficient indicates worse survival and a negative coefficient indicates better survival for the variable in question.</p>
 </div>
 </div>
 <div id="survival-analysis-in-r" class="section level2">
@@ -476,7 +476,8 @@ library(survminer)</code></pre>
 <div id="getting-started" class="section level3">
 <h3>Getting started</h3>
 <p>We’re going to be using the built-in lung cancer dataset<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a> that ships with the survival package. You can get some more information about the dataset by running <code>?lung</code>. The help tells us there are 10 variables in this data:</p>
-<pre class="r"><code>?lung</code></pre>
+<pre class="r"><code>library(survival)
+?lung</code></pre>
 <ol style="list-style-type: decimal">
 <li><code>inst</code>: Institution code</li>
 <li><strong><code>time</code>: Survival time in days</strong></li>

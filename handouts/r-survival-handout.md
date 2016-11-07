@@ -56,7 +56,7 @@ Rearranging that equation lets you estimate the **hazard ratio**, comparing the 
 
 $$ HR(t) = \frac{h_0(t) e^{\beta_1}}{h_0(t)} = e^{\beta_1} $$
 
-This model shows that **the hazard ratio is $e^{\beta_1}$,** and remains constant over time _t_ (hence the name _proportional hazards regression_). The $\beta$ values are the regression coefficients that are estimated from the model, and represent the $log hazard ratio$ for each unit increase in the corresponding predictor variable. The interpretation of the hazards ratio depends on the measurement scale of the predictor variable, but in simple terms, a positive coefficient indicates worse survival and a negative coefficient indicates better survival for the variable in question.
+This model shows that **the hazard ratio is $e^{\beta_1}$,** and remains constant over time _t_ (hence the name _proportional hazards regression_). The $\beta$ values are the regression coefficients that are estimated from the model, and represent the $log(Hazard\, Ratio)$ for each unit increase in the corresponding predictor variable. The interpretation of the hazards ratio depends on the measurement scale of the predictor variable, but in simple terms, a positive coefficient indicates worse survival and a negative coefficient indicates better survival for the variable in question.
 
 # Survival analysis in R
 
@@ -68,4 +68,4 @@ The core survival analysis functions are in the **[survival](https://cran.r-proj
 
 `Surv()` creates the response variable, and typical usage takes the time to event,[^time2] and whether or not the event occured (i.e., death vs censored). `survfit()` creates a survival curve that you could then display or plot. `coxph()` implements the regression analysis, and models specified the same way as in regular linear models, but using the `coxph()` function.
 
-
+[^time2]: `Surv()` can also take start and stop times, to account for left censoring. See the help for `?Surv`.
