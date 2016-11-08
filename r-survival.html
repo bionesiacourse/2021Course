@@ -848,7 +848,7 @@ summary(sfit, times=seq(0,365*5,365))</code></pre>
 <pre class="r"><code>dim(BRCA.mRNA)
 BRCA.mRNA[1:5, 1:5]</code></pre>
 <blockquote>
-<p><strong>Extra credit assignment</strong>: Take a look at the <a href="">advanced data manipulation</a> and <a href="">tidy data</a> workshops, and see if you can figure out how to join the gene expression data to the clinical data for any particular cancer type.</p>
+<p><strong>Extra credit assignment</strong>: Take a look at the <a href="r-dplyr-yeast.html">advanced data manipulation</a> and <a href="r-tidy.html">tidy data</a> workshops, and see if you can figure out how to join the gene expression data to the clinical data for any particular cancer type.</p>
 </blockquote>
 <p>Similar to how <code>survivalTCGA()</code> was a nice helper function to pull out survival information from multiple different clinical datasets, <code>expressionsTCGA()</code> can pull out specific gene expression measurements across different cancer types. See the help for <code>?expressionsTCGA</code>. Let’s pull out data for PAX8, GATA-3, and the estrogen receptor genes from breast, ovarian, and endometrial cancer, and plot the expression of each with a box plot.</p>
 <pre class="r"><code>expr &lt;- expressionsTCGA(BRCA.mRNA, OV.mRNA, UCEC.mRNA,
