@@ -22,6 +22,9 @@
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <!-- Font Awesome -->
 <!-- <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" /> -->
@@ -44,10 +47,6 @@
 </script>
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="site_libs/highlight/default.css"
-      type="text/css" />
-<script src="site_libs/highlight/highlight.js"></script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -176,7 +175,6 @@ $(document).ready(function () {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -202,7 +200,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
@@ -261,8 +259,9 @@ div.tocify {
 }
 
 .tocify-subheader .tocify-item {
-  font-size: 0.9em;
-  padding-left: 5px;
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -274,7 +273,6 @@ div.tocify {
 }
 .tocify-subheader .tocify-item {
   font-size: 0.95em;
-  padding-left: 10px;
 }
 
 </style>
@@ -328,7 +326,7 @@ div.tocify {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-book"></span>
      
-    Lessons
+    Workshops
      
     <span class="caret"></span>
   </a>
@@ -373,7 +371,72 @@ div.tocify {
     <li class="divider"></li>
     <li class="dropdown-header">--- NGS DATA ANALYSIS ---</li>
     <li>
-      <a href="r-rnaseq-airway.html">RNA-seq: airway</a>
+      <a href="r-rnaseq-airway.html">RNA-seq (airway data)</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">--- FUTURE COURSES ---</li>
+    <li class="dropdown-header">ChIP-seq data analysis</li>
+    <li class="dropdown-header">Introduction to Bioconductor</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-university"></span>
+     
+    BIMS8382
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="bims8382.html">
+        <span class="fa fa-graduation-cap"></span>
+         
+        Syllabus
+      </a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">--- Lessons ---</li>
+    <li>
+      <a href="r-basics.html">R Basics</a>
+    </li>
+    <li>
+      <a href="r-dataframes.html">Data Frames</a>
+    </li>
+    <li>
+      <a href="r-dplyr-yeast.html">Data Manipulation</a>
+    </li>
+    <li>
+      <a href="r-tidy.html">Tidying data</a>
+    </li>
+    <li>
+      <a href="r-viz-gapminder.html">Data Visualization</a>
+    </li>
+    <li>
+      <a href="r-rmarkdown.html">Reproducible Research &amp; RMarkdown</a>
+    </li>
+    <li>
+      <a href="r-stats.html">Essential Statistics with R</a>
+    </li>
+    <li>
+      <a href="r-survival.html">Survival Analysis with TCGA Data</a>
+    </li>
+    <li>
+      <a href="r-rnaseq-airway.html">RNA-Seq Data Analysis</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">--- Homework ---</li>
+    <li>
+      <a href="r-dplyr-homework.html">Data Manipulation</a>
+    </li>
+    <li>
+      <a href="r-dataviz-homework.html">Data Visualization</a>
+    </li>
+    <li>
+      <a href="r-rmarkdown-homework.html">Reproducible Research &amp; RMarkdown</a>
+    </li>
+    <li>
+      <a href="r-stat-homework.html">Essential Statistics</a>
     </li>
   </ul>
 </li>
@@ -739,7 +802,7 @@ nuclinkid &lt;- yfmlinks2$links$genome_nuccore</code></pre>
 <h3>web_history</h3>
 <p>As mentioned above, NCBI places limits on large queries to its databases. However, the servers allow users to store long lists of IDs as “web history” objects. When we ran our original <code>entrez_search()</code> we toggled “use_history” to TRUE. Because we did that, our original search object contains a “web_history” element.</p>
 <pre class="r"><code>res$web_history</code></pre>
-<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_22337...)</code></pre>
+<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_12298...)</code></pre>
 <p>So if we wanted to retrieve all records from our original search, regardless of how many there are, we can pass the web history object in the “web_history” argument to <code>entrez_fetch()</code> rather than a list of IDs.</p>
 <pre class="r"><code>recs &lt;- entrez_fetch(db = &quot;pubmed&quot;, web_history = res$web_history, rettype = &quot;xml&quot;, parsed = TRUE)</code></pre>
 <p>Did we get all of the titles?</p>
@@ -754,7 +817,7 @@ length(plosidtitles) == res$count</code></pre>
 <pre class="r"><code>res &lt;- entrez_search(db = &quot;clinvar&quot;, term= &quot;atherosclerosis[Disease/Phenotype]&quot;)
 postids &lt;- entrez_post(db = &quot;clinvar&quot;, res$ids)
 postids</code></pre>
-<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_22397...)</code></pre>
+<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_25560...)</code></pre>
 </div>
 <div id="entrez_info" class="section level3">
 <h3><code>entrez_info()</code></h3>
@@ -767,15 +830,15 @@ postids</code></pre>
 ##     &lt;DbName&gt;mesh&lt;/DbName&gt;
 ##     &lt;MenuName&gt;MeSH&lt;/MenuName&gt;
 ##     &lt;Description&gt;MeSH Database&lt;/Description&gt;
-##     &lt;DbBuild&gt;Build161114-0315.1&lt;/DbBuild&gt;
-##     &lt;Count&gt;266733&lt;/Count&gt;
-##     &lt;LastUpdate&gt;2016/11/14 03:44&lt;/LastUpdate&gt;
+##     &lt;DbBuild&gt;Build170125-0420.1&lt;/DbBuild&gt;
+##     &lt;Count&gt;268311&lt;/Count&gt;
+##     &lt;LastUpdate&gt;2017/01/25 04:50&lt;/LastUpdate&gt;
 ##     &lt;FieldList&gt;
 ##       &lt;Field&gt;
 ##         &lt;Name&gt;ALL&lt;/Name&gt;
 ##         &lt;FullName&gt;All Fields&lt;/FullName&gt;
 ##         &lt;Description&gt;All terms from all searchable fields&lt;/Description&gt;
-##         &lt;TermCount&gt;2292278&lt;/TermCount&gt;
+##         &lt;TermCount&gt;2309015&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;N&lt;/SingleToken&gt;
@@ -797,7 +860,7 @@ postids</code></pre>
 ##         &lt;Name&gt;FILT&lt;/Name&gt;
 ##         &lt;FullName&gt;Filter&lt;/FullName&gt;
 ##         &lt;Description&gt;Limits the records&lt;/Description&gt;
-##         &lt;TermCount&gt;17&lt;/TermCount&gt;
+##         &lt;TermCount&gt;16&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -808,7 +871,7 @@ postids</code></pre>
 ##         &lt;Name&gt;TN&lt;/Name&gt;
 ##         &lt;FullName&gt;Tree Number&lt;/FullName&gt;
 ##         &lt;Description&gt;Tree Number&lt;/Description&gt;
-##         &lt;TermCount&gt;295192&lt;/TermCount&gt;
+##         &lt;TermCount&gt;297696&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -819,7 +882,7 @@ postids</code></pre>
 ##         &lt;Name&gt;MESH&lt;/Name&gt;
 ##         &lt;FullName&gt;MeSH Terms&lt;/FullName&gt;
 ##         &lt;Description&gt;MeSH Terms&lt;/Description&gt;
-##         &lt;TermCount&gt;214722&lt;/TermCount&gt;
+##         &lt;TermCount&gt;216343&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -830,7 +893,7 @@ postids</code></pre>
 ##         &lt;Name&gt;SUBS&lt;/Name&gt;
 ##         &lt;FullName&gt;Substance Name&lt;/FullName&gt;
 ##         &lt;Description&gt;Substance Name&lt;/Description&gt;
-##         &lt;TermCount&gt;571249&lt;/TermCount&gt;
+##         &lt;TermCount&gt;574287&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -841,7 +904,7 @@ postids</code></pre>
 ##         &lt;Name&gt;WORD&lt;/Name&gt;
 ##         &lt;FullName&gt;Text Word&lt;/FullName&gt;
 ##         &lt;Description&gt;Free text&lt;/Description&gt;
-##         &lt;TermCount&gt;1014254&lt;/TermCount&gt;
+##         &lt;TermCount&gt;1019691&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -852,7 +915,7 @@ postids</code></pre>
 ##         &lt;Name&gt;ALSO&lt;/Name&gt;
 ##         &lt;FullName&gt;See Also&lt;/FullName&gt;
 ##         &lt;Description&gt;See Also&lt;/Description&gt;
-##         &lt;TermCount&gt;9581&lt;/TermCount&gt;
+##         &lt;TermCount&gt;9769&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -863,7 +926,7 @@ postids</code></pre>
 ##         &lt;Name&gt;PREV&lt;/Name&gt;
 ##         &lt;FullName&gt;Previous Indexing&lt;/FullName&gt;
 ##         &lt;Description&gt;Previous Indexing&lt;/Description&gt;
-##         &lt;TermCount&gt;8215&lt;/TermCount&gt;
+##         &lt;TermCount&gt;8392&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -874,7 +937,7 @@ postids</code></pre>
 ##         &lt;Name&gt;NOTE&lt;/Name&gt;
 ##         &lt;FullName&gt;Scope Note&lt;/FullName&gt;
 ##         &lt;Description&gt;Scope Note&lt;/Description&gt;
-##         &lt;TermCount&gt;437900&lt;/TermCount&gt;
+##         &lt;TermCount&gt;442598&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -885,7 +948,7 @@ postids</code></pre>
 ##         &lt;Name&gt;REG&lt;/Name&gt;
 ##         &lt;FullName&gt;Registry Number&lt;/FullName&gt;
 ##         &lt;Description&gt;Registry Number&lt;/Description&gt;
-##         &lt;TermCount&gt;98819&lt;/TermCount&gt;
+##         &lt;TermCount&gt;100663&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -896,7 +959,7 @@ postids</code></pre>
 ##         &lt;Name&gt;MULT&lt;/Name&gt;
 ##         &lt;FullName&gt;Multi&lt;/FullName&gt;
 ##         &lt;Description&gt;Multi&lt;/Description&gt;
-##         &lt;TermCount&gt;785929&lt;/TermCount&gt;
+##         &lt;TermCount&gt;790587&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -918,7 +981,7 @@ postids</code></pre>
 ##         &lt;Name&gt;MHUI&lt;/Name&gt;
 ##         &lt;FullName&gt;MeSH Unique ID&lt;/FullName&gt;
 ##         &lt;Description&gt;NLM MeSH Browser Unique ID&lt;/Description&gt;
-##         &lt;TermCount&gt;266199&lt;/TermCount&gt;
+##         &lt;TermCount&gt;267751&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -1001,8 +1064,11 @@ For more information, visit <a href="https://www.bioconnector.virginia.edu/" tar
 <script>
 
 // add bootstrap table styles to pandoc tables
-$(document).ready(function () {
+function bootstrapStylePandocTables() {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
 });
 
 

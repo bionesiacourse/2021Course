@@ -11,7 +11,7 @@
 
 
 
-<title>Biomedical Data Science Workshops</title>
+<title>Bioconnector Workshops &amp; Courses</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <!-- Font Awesome -->
 <!-- <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" /> -->
 <!-- <script src="https://use.fontawesome.com/54ee8c2dfd.js"></script> -->
@@ -40,10 +43,6 @@
 </script>
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="site_libs/highlight/default.css"
-      type="text/css" />
-<script src="site_libs/highlight/highlight.js"></script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -172,7 +171,6 @@ $(document).ready(function () {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -223,7 +221,7 @@ $(document).ready(function () {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-book"></span>
      
-    Lessons
+    Workshops
      
     <span class="caret"></span>
   </a>
@@ -276,6 +274,67 @@ $(document).ready(function () {
     <li class="dropdown-header">Introduction to Bioconductor</li>
   </ul>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-university"></span>
+     
+    BIMS8382
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="bims8382.html">
+        <span class="fa fa-graduation-cap"></span>
+         
+        Syllabus
+      </a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">--- Lessons ---</li>
+    <li>
+      <a href="r-basics.html">R Basics</a>
+    </li>
+    <li>
+      <a href="r-dataframes.html">Data Frames</a>
+    </li>
+    <li>
+      <a href="r-dplyr-yeast.html">Data Manipulation</a>
+    </li>
+    <li>
+      <a href="r-tidy.html">Tidying data</a>
+    </li>
+    <li>
+      <a href="r-viz-gapminder.html">Data Visualization</a>
+    </li>
+    <li>
+      <a href="r-rmarkdown.html">Reproducible Research &amp; RMarkdown</a>
+    </li>
+    <li>
+      <a href="r-stats.html">Essential Statistics with R</a>
+    </li>
+    <li>
+      <a href="r-survival.html">Survival Analysis with TCGA Data</a>
+    </li>
+    <li>
+      <a href="r-rnaseq-airway.html">RNA-Seq Data Analysis</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">--- Homework ---</li>
+    <li>
+      <a href="r-dplyr-homework.html">Data Manipulation</a>
+    </li>
+    <li>
+      <a href="r-dataviz-homework.html">Data Visualization</a>
+    </li>
+    <li>
+      <a href="r-rmarkdown-homework.html">Reproducible Research &amp; RMarkdown</a>
+    </li>
+    <li>
+      <a href="r-stat-homework.html">Essential Statistics</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -306,15 +365,22 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Biomedical Data Science Workshops</h1>
+<h1 class="title toc-ignore">Bioconnector Workshops &amp; Courses</h1>
 
 </div>
 
 
+<div id="workshops" class="section level3">
+<h3>Workshops</h3>
 <p>These workshops introduce methods, tools, and software for reproducibly managing, manipulating, analyzing, and visualizing large-scale biomedical data using the R statistical computing environment. Visit <a href="https://www.bioconnector.virginia.edu/workshops-and-events">bioconnector.virginia.edu</a> to register.</p>
 <p><strong><em>IMPORTANT</em>: <a href="setup.html">Click here for instructions on setting up your computer for any of these workshops</a>.</strong> Each workshop involves lots of hands-on practice coding, and you’ll need to download and install some free software <strong><em>prior to our first class</em></strong>. This may take up to an hour or so, and please do not hesitate to <a href="people.html">email us</a> <em>prior to the workshop</em> if you are having difficulty.</p>
+</div>
+<div id="bims-8382" class="section level3">
+<h3>BIMS 8382</h3>
+<p><a href="bims8382.html">BIMS 8382</a> is a graduate class built in part on the workshop material here. Please see the <a href="bims8382.html">BIMS 8382 syllabus</a> for more information.</p>
 <hr />
-<p><strong><em>Attribution</em>:</strong> Course material is inspired by and/or modified in part from <a href="http://stat545-ubc.github.io/">Jenny Bryan’s Stat 545 course</a>, <a href="http://software-carpentry.org/">Software Carpentry</a>, <a href="http://datacarpentry.org/">Data Carpentry</a>, <a href="http://varianceexplained.org/">David Robinson’s blog</a>, <a href="https://github.com/marschmi/NGS2015_RMarkdown_Reproducibility">Marian Schmidt’s MSU NGS Workshop</a>, and likely many others.</p>
+<p><strong><em>Attribution</em>:</strong> Course material is inspired by and/or modified in part from <a href="http://stat545-ubc.github.io/">Jenny Bryan’s Stat 545 course</a>, <a href="http://software-carpentry.org/">Software Carpentry</a>, <a href="http://datacarpentry.org/">Data Carpentry</a>, <a href="http://varianceexplained.org/">David Robinson’s blog</a>, <a href="https://github.com/marschmi/NGS2015_RMarkdown_Reproducibility">Marian Schmidt’s MSU NGS Workshop</a>, <a href="http://biostat.mc.vanderbilt.edu/wiki/Main/DataSets?CGISESSID=10713f6d891653ddcbb7ddbdd9cffb79">Vanderbilt Department of BioStatistics Datasets</a>, and likely many others.</p>
+</div>
 
 <div class="footer">
 This work is licensed under the  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0 Creative Commons License</a>.<br>
@@ -333,8 +399,11 @@ For more information, visit <a href="https://www.bioconnector.virginia.edu/" tar
 <script>
 
 // add bootstrap table styles to pandoc tables
-$(document).ready(function () {
+function bootstrapStylePandocTables() {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
 });
 
 
