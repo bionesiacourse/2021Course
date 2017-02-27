@@ -436,7 +436,7 @@ div.tocify {
       <a href="r-rmarkdown-homework.html">Reproducible Research &amp; RMarkdown</a>
     </li>
     <li>
-      <a href="r-stat-homework.html">Essential Statistics</a>
+      <a href="r-stats-homework.html">Essential Statistics</a>
     </li>
   </ul>
 </li>
@@ -1037,7 +1037,7 @@ rm(had1, had2)</code></pre>
 ## [1] FALSE
 ## 
 ## $forks_count
-## [1] 7
+## [1] 8
 ## 
 ## $mirror_url
 ## NULL
@@ -1046,7 +1046,7 @@ rm(had1, had2)</code></pre>
 ## [1] 0
 ## 
 ## $forks
-## [1] 7
+## [1] 8
 ## 
 ## $open_issues
 ## [1] 0
@@ -1062,32 +1062,32 @@ rm(had1, had2)</code></pre>
 <pre><code>## [1] &quot;Python&quot;</code></pre>
 <p>We mentioned <code>sapply()</code> above, and now we can put it into action. This function will be useful in extracting the same child elements from different parents. To do so, we’ll need to define an anonymous function to apply across the list. Note that <em><code>sapply()</code> is similar to <code>lapply()</code> but always returns a vector, matrix or array rather than a list</em>.</p>
 <pre class="r"><code>sapply(had, function(x) x$watchers)</code></pre>
-<pre><code>##   [1]   24   13    0  883    5   67   47    8    4  252    5   12    6    1
-##  [15]    0    8   13    1    0    8    4    6    5   34  101   20   17    4
-##  [29]   38  107    2   44    7 1408    5    3   17    1 1591    0    1   70
-##  [43]    5   39    1    4   11    2    0    5   18    3   56    3    3    3
-##  [57]   14    7  323    4    3   73    7   23    3    8    8    0   28    4
-##  [71]    4    2    2    0  567    9    2    1   11    8   73    0    3    4
-##  [85]   92    3    0   27    6  278   21    9    5   11   60    7  161   37
-##  [99]   13  216   10    3    8   26   32    3   39    4    0  184  447    4
-## [113]   28    6   23   31    7  107  382    6    3   64   29  161   56    2
-## [127]    6    1  171  503    7   26    6    4    1    1    0    5    1    0
-## [141]    3    1   28    1  326   15    0  144    5    6    6    0    1   20
-## [155]    1    7   22   29    1    7  714    3    0    7   71   78   27    0
-## [169]    3   22    0   14    5    1    3    6    3    5    1  105    2    6
-## [183]  368  170    7    2    1   17   16    1    4    8    1    1    0    4
-## [197]    0    8    6    0</code></pre>
+<pre><code>##   [1]   24   13    0  901    5   69   49    8    4  253    5   12    6    1
+##  [15]    0    8   13    1    0    8    4    6    5   34  102   20   17    4
+##  [29]   38  112    2   44    7 1419    5    3   17    1 1640    0    1   72
+##  [43]    5   40    1    4   11    3    0    5   18    3   57    3    3    3
+##  [57]   14    7  338    4    3   74    7   24    3    8    8    0   28    4
+##  [71]    4    2    2    0  579    9    2    1   11    8   76    0    3    4
+##  [85]   91    3    0   27    6  281   21    9    5   11   62    7    0  167
+##  [99]   37   13  223   10    3    8   25   33    3   39    4    0  191  449
+## [113]    4   29    6   23   30    7  110  400    6    3   67   29  163   57
+## [127]    2    6    1  171  574    7   26    6    4    1    1    0    5    1
+## [141]    0    4    1   28    1   15    0  145    5    6    7    0    1   28
+## [155]    1    7   22   29    1    7  739    3    0   16    7   73   83   27
+## [169]    0    3   22    0   14    5    1    3    6    3    5    1  106    2
+## [183]    6  377  171    7    2    1   17   16    1    4    8    1    1    0
+## [197]    4    0    8    6</code></pre>
 <p>We’ve successfully extracted the child element of interest from each of the parent elements in the list. However, this vector could be hard to interpret since the elements are divorced from the larger context. One solution might be to assign names to the original list, which will give <code>sapply()</code> a named vector output.</p>
 <pre class="r"><code>names(had) &lt;- sapply(had, function(x) x$name)
 sapply(had, function(x) x$watchers)</code></pre>
 <pre><code>##  15-state-of-the-union      15-student-papers               500lines 
 ##                     24                     13                      0 
 ##                  adv-r                appdirs             assertthat 
-##                    883                      5                     67 
+##                    901                      5                     69 
 ##              babynames         beautiful-data                  bench 
-##                     47                      8                      4 
+##                     49                      8                      4 
 ##                 bigvis         bigvis-infovis         boxplots-paper 
-##                    252                      5                     12 
+##                    253                      5                     12 
 ##                  broom                builder             cellranger 
 ##                      6                      1                      0 
 ##              classifly             clusterfly       cocktail-balance 
@@ -1097,123 +1097,123 @@ sapply(had, function(x) x$watchers)</code></pre>
 ##          cran-packages              cranatics             crantastic 
 ##                      6                      5                     34 
 ##        data-baby-names          data-counties      data-fuel-economy 
-##                    101                     20                     17 
+##                    102                     20                     17 
 ##               data-gbd    data-housing-crisis            data-movies 
-##                      4                     38                    107 
+##                      4                     38                    112 
 ##            data-stride                decumar             densityvis 
 ##                      2                     44                      7 
 ##               devtools           directlabels              distpower 
-##                   1408                      5                      3 
+##                   1419                      5                      3 
 ##                 docker                   docs                  dplyr 
-##                     17                      1                   1591 
+##                     17                      1                   1640 
 ##          dplyrimpaladb                   drat                 dtplyr 
-##                      0                      1                     70 
+##                      0                      1                     72 
 ##                eggnogr               evaluate              example-r 
-##                      5                     39                      1 
+##                      5                     40                      1 
 ##              extrafont              fec-dplyr        fivethirtyeight 
-##                      4                     11                      2 
+##                      4                     11                      3 
 ##                 foobar                fortify            fueleconomy 
 ##                      0                      5                     18 
 ##                gdtools                   gg2v             ggenealogy 
-##                      3                     56                      3 
+##                      3                     57                      3 
 ##                  ggmap                 ggplot                ggplot1 
 ##                      3                      3                     14 
 ##        ggplot2-bayarea           ggplot2-book           ggplot2-docs 
-##                      7                    323                      4 
+##                      7                    338                      4 
 ##          ggplot2movies                 ggstat               ggthemes 
-##                      3                     73                      7 
+##                      3                     74                      7 
 ##                 gtable              gun-sales              hadladdin 
-##                     23                      3                      8 
+##                     24                      3                      8 
 ##      hadley.github.com              hclpicker                  helpr 
 ##                      8                      0                     28 
 ##     herndon-ash-pollin               hflights      highlighting-kate 
 ##                      4                      4                      2 
 ##                httpbin                 httpuv                   httr 
-##                      2                      0                    567 
+##                      2                      0                    579 
 ##                  ideas              imvisoned                 kmeans 
 ##                      9                      2                      1 
 ##                   l1tf                 layers               lazyeval 
-##                     11                      8                     73 
+##                     11                      8                     76 
 ##                leaflet          leaflet-shiny                legends 
 ##                      0                      3                      4 
 ##               lineprof                 linval                   lme4 
-##                     92                      3                      0 
+##                     91                      3                      0 
 ##                 lobstr               localmds              lubridate 
-##                     27                      6                    278 
+##                     27                      6                    281 
 ##                 lvplot           lvplot-paper          maplight-data 
 ##                     21                      9                      5 
 ##                 meifly                memoise       mexico-mortality 
-##                     11                     60                      7 
-##                 modelr                 monads                 mturkr 
-##                    161                     37                     13 
-##             multidplyr                 mutatr              mutatrGui 
-##                    216                     10                      3 
-##            nasaweather                  neiss           nycflights13 
-##                      8                     26                     32 
-##               olctools            oldbookdown                packman 
-##                      3                     39                      4 
-##               PivotalR                pkgdown                   plyr 
-##                      0                    184                    447 
-##              pop-flows                 precis          prodplotpaper 
-##                      4                     28                      6 
-##           productplots                  profr                  proto 
-##                     23                     31                      7 
-##                   pryr                  purrr          qtpaint-demos 
-##                    107                    382                      6 
-##      r-devel-san-clang            r-internals            r-on-github 
-##                      3                     64                     29 
-##                 r-pkgs               r-python               r-source 
-##                    161                     56                      2 
-##               r-travis                 r-yaml                   r2d3 
-##                      6                      1                    171 
-##                   r4ds    ranking-correlation               rappdirs 
-##                    503                      7                     26 
-##              rastermap                rblocks                Rcereal 
-##                      6                      4                      1 
-##                   Rcpp           rcpp-gallery           RcppDateTime 
-##                      1                      0                      5 
-##           rcpplonglong           RcppProgress            rcrunchbase 
-##                      1                      0                      3 
-##                  RCurl          reactive-docs               ReadStat 
-##                      1                     28                      1 
-##                 readxl                recipes                 reprex 
-##                    326                     15                      0 
+##                     11                     62                      7 
+##                minimal                 modelr                 monads 
+##                      0                    167                     37 
+##                 mturkr             multidplyr                 mutatr 
+##                     13                    223                     10 
+##              mutatrGui            nasaweather                  neiss 
+##                      3                      8                     25 
+##           nycflights13               olctools            oldbookdown 
+##                     33                      3                     39 
+##                packman               PivotalR                pkgdown 
+##                      4                      0                    191 
+##                   plyr              pop-flows                 precis 
+##                    449                      4                     29 
+##          prodplotpaper           productplots                  profr 
+##                      6                     23                     30 
+##                  proto                   pryr                  purrr 
+##                      7                    110                    400 
+##          qtpaint-demos      r-devel-san-clang            r-internals 
+##                      6                      3                     67 
+##            r-on-github                 r-pkgs               r-python 
+##                     29                    163                     57 
+##               r-source               r-travis                 r-yaml 
+##                      2                      6                      1 
+##                   r2d3                   r4ds    ranking-correlation 
+##                    171                    574                      7 
+##               rappdirs              rastermap                rblocks 
+##                     26                      6                      4 
+##                Rcereal                   Rcpp           rcpp-gallery 
+##                      1                      1                      0 
+##           RcppDateTime           rcpplonglong           RcppProgress 
+##                      5                      1                      0 
+##            rcrunchbase                  RCurl          reactive-docs 
+##                      4                      1                     28 
+##               ReadStat                recipes                 reprex 
+##                      1                     15                      0 
 ##                reshape                  rfmt2               rifftron 
-##                    144                      5                      6 
+##                    145                      5                      6 
 ##                    rio riotworkshop.github.io                  rJava 
-##                      6                      0                      1 
+##                      7                      0                      1 
 ##                  rlang              rmarkdown                 rminds 
-##                     20                      1                      7 
+##                     28                      1                      7 
 ##               roxygen3                 rsmith                RSQLite 
 ##                     22                     29                      1 
 ##                    rv2                  rvest              rworldmap 
-##                      7                    714                      3 
-##                   rydn            scagnostics                 scales 
-##                      0                      7                     71 
-##                 secure              sfhousing                    sfr 
-##                     78                     27                      0 
-##                  shiny           shinySignals               simpleS4 
-##                      3                     22                      0 
-##               sinartra             spatialVis               sqlutils 
-##                     14                      5                      1 
-##       stat405-practice      stat405-resources  STAT545-UBC.github.io 
-##                      3                      6                      3 
-##             stationaRy              strptimer                svglite 
-##                      5                      1                    105 
-##                syuzhet              tanglekit               testthat 
-##                      2                      6                    368 
-##              tidy-data                toc-vis               unittest 
-##                    170                      7                      2 
-##          USAboundaries          usdanutrients                  vctrs 
-##                      1                     17                     16 
-##                   vega          vis-migration                   vita 
-##                      1                      4                      8 
-##                warncpp               webreadr                 webuse 
-##                      1                      1                      0 
-##                 weeder         weight-and-see            wesanderson 
-##                      4                      0                      8 
-##                whisker               wishlist 
-##                      6                      0</code></pre>
+##                      7                    739                      3 
+##                   rydn                     S3            scagnostics 
+##                      0                     16                      7 
+##                 scales                 secure              sfhousing 
+##                     73                     83                     27 
+##                    sfr                  shiny           shinySignals 
+##                      0                      3                     22 
+##               simpleS4               sinartra             spatialVis 
+##                      0                     14                      5 
+##               sqlutils       stat405-practice      stat405-resources 
+##                      1                      3                      6 
+##  STAT545-UBC.github.io             stationaRy              strptimer 
+##                      3                      5                      1 
+##                svglite                syuzhet              tanglekit 
+##                    106                      2                      6 
+##               testthat              tidy-data                toc-vis 
+##                    377                    171                      7 
+##               unittest          USAboundaries          usdanutrients 
+##                      2                      1                     17 
+##                  vctrs                   vega          vis-migration 
+##                     16                      1                      4 
+##                   vita                warncpp               webreadr 
+##                      8                      1                      1 
+##                 webuse                 weeder         weight-and-see 
+##                      0                      4                      0 
+##            wesanderson                whisker 
+##                      8                      6</code></pre>
 </div>
 <div id="exercise" class="section level3">
 <h3>Exercise</h3>

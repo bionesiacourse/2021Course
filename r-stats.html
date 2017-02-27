@@ -436,7 +436,7 @@ div.tocify {
       <a href="r-rmarkdown-homework.html">Reproducible Research &amp; RMarkdown</a>
     </li>
     <li>
-      <a href="r-stat-homework.html">Essential Statistics</a>
+      <a href="r-stats-homework.html">Essential Statistics</a>
     </li>
   </ul>
 </li>
@@ -664,7 +664,7 @@ nh</code></pre>
 ## #   AlcoholDay &lt;int&gt;, AlcoholYear &lt;int&gt;, SmokingStatus &lt;fctr&gt;</code></pre>
 <p>Alternatively, you <em>could</em> still read in the data with <strong>readr</strong>’s <code>read_csv()</code>, but you’ll want to convert the character variables to factors for the remainder of the lesson.</p>
 <pre class="r"><code>library(readr)
-nh &lt;- read_csv(&quot;data/nhanes.csv&quot;) %&gt;% mutate_if(is.character, factor)
+nh &lt;- read_csv(&quot;data/nhanes.csv&quot;) %&gt;% mutate_if(is.character, as.factor)
 nh</code></pre>
 <p>Take a look at that output. The nice thing about loading dplyr and wrapping the object with <code>tbl_df()</code> is that data frames are displayed in a much more friendly way. This dataset has 5,000 rows and 32 columns. When you import/convert data this way and try to display the object in the console, instead of trying to display all 5,000 rows, you’ll only see about 10 by default. Also, if you have so many columns that the data would wrap off the edge of your screen, those columns will not be displayed, but you’ll see at the bottom of the output which, if any, columns were hidden from view. If you want to see the whole dataset, there are two ways to do this. First, you can click on the name of the data.frame in the <strong>Environment</strong> panel in RStudio. Or you could use the <code>View()</code> function (<em>with a capital V</em>).</p>
 <pre class="r"><code>View(nh)</code></pre>
@@ -781,14 +781,14 @@ library(Tmisc)</code></pre>
 <h4>Histograms</h4>
 <p>We can learn a lot from the data just looking at the value distributions of particular variables. Let’s make some histograms with ggplot2. Looking at BMI shows a few extreme outliers. Looking at weight initially shows us that the units are probably in kg. Replotting that in lbs with more bins shows a clear bimodal distribution. Are there kids in this data? The age distribution shows us the answer is <em>yes</em>.</p>
 <pre class="r"><code>library(ggplot2)
-ggplot(nh, aes(BMI)) + geom_histogram()</code></pre>
+ggplot(nh, aes(BMI)) + geom_histogram(bins=30)</code></pre>
 <p><img src="r-stats_files/figure-html/histograms-1.png" width="672" /></p>
-<pre class="r"><code>ggplot(nh, aes(Weight)) + geom_histogram()</code></pre>
+<pre class="r"><code>ggplot(nh, aes(Weight)) + geom_histogram(bins=30)</code></pre>
 <p><img src="r-stats_files/figure-html/histograms-2.png" width="672" /></p>
 <pre class="r"><code># In pounds, more bins
 ggplot(nh, aes(Weight*2.2)) + geom_histogram(bins=80)</code></pre>
 <p><img src="r-stats_files/figure-html/histograms-3.png" width="672" /></p>
-<pre class="r"><code>ggplot(nh, aes(Age)) + geom_histogram()</code></pre>
+<pre class="r"><code>ggplot(nh, aes(Age)) + geom_histogram(bins=30)</code></pre>
 <p><img src="r-stats_files/figure-html/histograms-4.png" width="672" /></p>
 </div>
 <div id="scatterplots" class="section level4">
@@ -897,6 +897,7 @@ rm(nh)
 </div>
 <div id="linear-models" class="section level3">
 <h3>Linear models</h3>
+<p><a href="slides/r-stats.html#(6)"><em>(See slides)</em></a></p>
 <blockquote>
 <p>Analysis of variance and linear modeling are complex topics that deserve an entire semester dedicated to theory, design, and interpretation. A very good resource is <a href="https://www.amazon.com/Introduction-Statistical-Learning-Applications-Statistics/dp/1461471370/ref=sr_1_1?ie=UTF8&amp;qid=1473087847&amp;sr=8-1&amp;keywords=introduction+statistical+learning&amp;tag=gettgenedone-20"><em>An Introduction to Statistical Learning: with Applications in R</em></a> by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani. The <a href="http://www-bcf.usc.edu/~gareth/ISL/ISLR%20Sixth%20Printing.pdf">PDF</a> of the book and all the R code used throughout are <a href="http://www-bcf.usc.edu/~gareth/ISL/">available <strong>free</strong> on the author’s website</a>. What follows is a necessary over-simplification with more focus on implementation, and less on theory and design.</p>
 </blockquote>
@@ -957,7 +958,7 @@ rm(nh)
 <ol style="list-style-type: decimal">
 <li>The p-values from all three tests (t-test, ANOVA, and linear regression) are all identical (p=0.1256). This is because they’re all identical: a t-test is a specific case of ANOVA, which is a specific case of linear regression. There may be some rounding error, but we’ll talk about extracting the exact values from a model object later on.</li>
 <li>The test statistics are all related. The <em>t</em> statistic from the t-test is <strong>1.532</strong>, which is the same as the t-statistic from the linear regression. If you square that, you get <strong>2.347</strong>, the <em>F</em> statistic from the ANOVA.</li>
-<li>The <code>t.test()</code> output shows you the means for the two groups, Committed and Single. Just displaying the <code>fit</code> object itself or running <code>summary(fit)</code> shows you the coefficients for a linear model. Here, the model assumes the “baseline” RelationshipStatus level is <em>Committed</em>, and that the <em>intercept</em> in a regression model (e.g., <span class="math inline">\(\beta_{0}\)</span> in the model <span class="math inline">\(Y = \beta_{0} + \beta_{1}X\)</span>) is the mean of the baseline group. Being <em>Single</em> results in an increase in BMI of 0.3413. This is the <span class="math inline">\(\beta_{1}\)</span> coefficient in the model. You can easily change the ordering of the levels. See the help for <code>?factor</code>, and check out the new <a href="https://hadley.github.io/forcats/"><strong>forcats</strong> package</a>, which provides tools <strong>for</strong> manipulating <strong>cat</strong>egorical variables.</li>
+<li>The <code>t.test()</code> output shows you the means for the two groups, Committed and Single. Just displaying the <code>fit</code> object itself or running <code>summary(fit)</code> shows you the coefficients for a linear model. Here, the model assumes the “baseline” RelationshipStatus level is <em>Committed</em>, and that the <em>intercept</em> in a regression model (e.g., <span class="math inline">\(\beta_{0}\)</span> in the model <span class="math inline">\(Y = \beta_{0} + \beta_{1}X\)</span>) is the mean of the baseline group. Being <em>Single</em> results in an increase in BMI of 0.3413. This is the <span class="math inline">\(\beta_{1}\)</span> coefficient in the model. You can easily change the ordering of the levels. See the help for <code>?factor</code>, and check out the new <a href="http://forcats.tidyverse.org/"><strong>forcats</strong> package</a>, which provides tools <strong>for</strong> manipulating <strong>cat</strong>egorical variables.</li>
 </ol>
 <pre class="r"><code># P-value computed on a t-statistic with 3552 degrees of freedom
 # (multiply times 2 because t-test is assuming two-tailed)
@@ -1006,6 +1007,12 @@ anova(fit)</code></pre>
 <pre class="r"><code># Re-level the SmokingStatus variable
 nha$SmokingStatus &lt;- factor(nha$SmokingStatus, 
                             levels=c(&quot;Never&quot;, &quot;Former&quot;, &quot;Current&quot;))
+
+# Or, using forcats in a tidy way
+# library(forcats)
+# nha %&gt;% 
+#   mutate(SmokingStatus = fct_relevel(SmokingStatus, 
+#                                      &quot;Never&quot;, &quot;Former&quot;, &quot;Current&quot;))
 
 # Re-fit the model
 fit &lt;- lm(BMI~SmokingStatus, data=nha)
@@ -1062,6 +1069,7 @@ summary(fit)</code></pre>
 </div>
 <div id="linear-regression" class="section level3">
 <h3>Linear regression</h3>
+<p><a href="slides/r-stats.html#(7)"><em>(See slides)</em></a></p>
 <p>Linear models are mathematical representations of the process that (<em>we think</em>) gave rise to our data. The model seeks to explain the relationship between a variable of interest, our <em>Y</em>, <em>outcome</em>, <em>response</em>, or <em>dependent</em> variable, and one or more <em>X</em>, <em>predictor</em>, or <em>independent</em> variables. Previously we talked about t-tests or ANOVA in the context of a simple linear regression model with only a single predictor variable, <span class="math inline">\(X\)</span>:</p>
 <p><span class="math display">\[Y = \beta_{0} +  \beta_{1}X\]</span></p>
 <p>But you can have multiple predictors in a linear model that are all additive, accounting for the effects of the others:</p>
@@ -1323,6 +1331,7 @@ addmargins(xt)</code></pre>
 </div>
 <div id="logistic-regression" class="section level3">
 <h3>Logistic regression</h3>
+<p><a href="slides/r-stats.html#(8)"><em>(See slides)</em></a></p>
 <p>What if we wanted to model the discrete outcome, e.g., whether someone is insured, against several other variables, similar to how we did with multiple linear regression? We can’t use linear regression because the outcome isn’t continuous – it’s binary, either <em>Yes</em> or <em>No</em>. For this we’ll use <em>logistic regression</em> to model the <em>log odds</em> of binary response. That is, instead of modeling the outcome variable, <span class="math inline">\(Y\)</span>, directly against the inputs, we’ll model the <em>log odds</em> of the outcome variable.</p>
 <p>If <span class="math inline">\(p\)</span> is the probability that the individual is insured, then <span class="math inline">\(\frac{p}{1-p}\)</span> is the <a href="https://en.wikipedia.org/wiki/Odds"><em>odds</em></a> that person is insured. Then it follows that the linear model is expressed as:</p>
 <p><span class="math display">\[log(\frac{p}{1-p}) = \beta_0 + \beta_1 x_1 + \cdots + \beta_k x_k\]</span></p>
@@ -1429,6 +1438,7 @@ summary(fit)</code></pre>
 </div>
 <div id="power-sample-size" class="section level2">
 <h2>Power &amp; sample size</h2>
+<p><a href="slides/r-stats.html#(10)"><em>(See slides)</em></a></p>
 <p>This is a necessarily short introduction to the concept of power and sample size calculations. <a href="https://en.wikipedia.org/wiki/Statistical_power">Statistical power</a>, also sometimes called sensitivity, is defined as the probability that your test correctly rejects the null hypothesis when the alternative hypothesis is true. That is, if there really is an effect (difference in means, association between categorical variables, etc.), how likely are you to be able to <em>detect</em> that effect at a given statistical significance level, given certain assumptions. Generally there are a few moving pieces, and if you know all but one of them, you can calculate what that last one is.</p>
 <ol style="list-style-type: decimal">
 <li>Power: How likely are you to detect the effect? (Usually like to see 80% or greater).</li>
@@ -1560,6 +1570,7 @@ summary(fit)</code></pre>
 </div>
 <div id="tidying-models" class="section level2">
 <h2>Tidying models</h2>
+<p><a href="slides/r-stats.html#(11)"><em>(See slides)</em></a></p>
 <p>We spent a lot of time in <a href="r-tidy.html">other lessons</a> on <em>tidy <strong>data</strong></em>, where each column is a variable and each row is an observation. Tidy data is easy to filter observations based on values in a column (e.g., we could get just adult males with <code>filter(nha, Gender==&quot;male&quot; &amp; Age&gt;=18)</code>, and easy to select particular variables/features of interest by their column name.</p>
 <p>Even when we start with tidy <em>data</em>, we don’t end up with tidy <em>models</em>. The output from tests like <code>t.test</code> or <code>lm</code> are not data.frames, and it’s difficult to get the information out of the model object that we want. The <a href="https://github.com/dgrtwo/broom"><strong>broom</strong> package</a> bridges this gap.</p>
 <div class="figure">
@@ -1743,6 +1754,10 @@ tidy(glmfit) %&gt;%
   ggplot(aes(term, logp)) + geom_bar(stat=&quot;identity&quot;) + coord_flip()</code></pre>
 <p><img src="r-stats_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 <p>Check out some of the other <a href="https://cran.r-project.org/web/packages/broom/index.html"><strong>broom</strong> vignettes on CRAN</a>, and also check out the <a href="http://bioconductor.org/packages/release/bioc/html/biobroom.html"><strong>biobroom</strong> package</a> on bioconductor for turning bioconductor objects and analytical results into tidy data frames.</p>
+</div>
+<div id="homework" class="section level2">
+<h2>Homework</h2>
+<p><a href="r-stats-homework.html">Try this homework assignment</a>.</p>
 </div>
 
 <div class="footer">
