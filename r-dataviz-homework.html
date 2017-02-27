@@ -497,16 +497,18 @@ div.tocify {
 <li><strong>Respond differently when different nutrients are being limited</strong>. If you see particular genes that respond very differently when a nutrient is sharply restricted, these genes might be involved in the transport or metabolism of that specific nutrient.</li>
 </ol>
 <p>You can download the cleaned up version of the data at <a href="data.html">the link above</a>. The file is called <a href="data/brauer2007_tidy.csv"><strong>brauer2007_tidy.csv</strong></a>. Load the <strong>ggplot2</strong>, <strong>dplyr</strong>, <strong>readr</strong> packages, and read the tidy <em>Brauer</em> data into R using the <code>read_csv()</code> function (<em>note, <strong>not</strong> <code>read.csv()</code></em>). Assign the data to an object called <code>ydat</code>.</p>
-<pre class="r"><code>library(ggplot2)
-library(dplyr)
-library(readr)
+<pre class="r"><code>library(tidyverse)
+# or ...
+# library(ggplot2)
+# library(dplyr)
+# library(readr)
 library(ggthemes)
 
-# Read data from file
-ydat &lt;- read_csv(&quot;data/brauer2007_tidy.csv&quot;)
+# Preferably read data from the web
+ydat &lt;- read_csv(&quot;http://bioconnector.org/workshops/data/brauer2007_tidy.csv&quot;)
 
-# Alternatively read data from web 
-# ydat &lt;- read_csv(&quot;http://bioconnector.org/workshops/data/brauer2007_tidy.csv&quot;)
+# Alternatively read data from file
+# ydat &lt;- read_csv(&quot;data/brauer2007_tidy.csv&quot;)
 
 # Display the data
 ydat</code></pre>
