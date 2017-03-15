@@ -582,11 +582,11 @@ source(&quot;http://bioconductor.org/biocLite.R&quot;)
 biocLite()
 biocLite(&quot;DESeq2&quot;)</code></pre>
 <p><strong>Download data we’ll use in class.</strong> Create a new folder somewhere on your computer that’s easy to get to (e.g., your Desktop). Name it <code>bioconnector</code>. Inside that folder, make a folder called <code>data</code>, all lowercase. Download the 3 data files below, saving them to the new <code>bioconnector/data</code> folder you just made.</p>
-<ol style="list-style-type: decimal">
-<li>Count matrix (i.e., <code>countData</code>): <a href="data/airway_rawcounts.csv">airway_rawcounts.csv</a></li>
+<ul>
+<li>Length-scaled count matrix (i.e., <code>countData</code>): <a href="data/airway_scaledcounts.csv">airway_scaledcounts.csv</a></li>
 <li>Sample metadata (i.e., <code>colData</code>): <a href="data/airway_metadata.csv">airway_metadata.csv</a></li>
-<li>Gene Annotation data: <a href="data/annotables_grch37.csv">annotables_grch37.csv</a></li>
-</ol>
+<li>Gene Annotation data: <a href="data/annotables_grch38.csv">annotables_grch38.csv</a></li>
+</ul>
 <p><strong>Prerequisites!</strong> This is <em>not</em> an introductory R class. This class assumes you’re comfortable working in R, using ggplot2 for visualization, and using dplyr verbs and the <strong><code>%&gt;%</code></strong> for chaining together multiple operations. Work through the workshop materials below if you need a refresher.</p>
 <ul>
 <li><a href="r-basics.html">R basics</a></li>
@@ -597,18 +597,9 @@ biocLite(&quot;DESeq2&quot;)</code></pre>
 </ul>
 <p><strong>Recommended reading</strong> prior to class:</p>
 <ol style="list-style-type: decimal">
-<li>Conesa et al. A survey of best practices for RNA-seq data analysis. <a href="http://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0881-8">Genome Biology 17:13 (2016)</a>.
-<ul>
-<li><em>This is a good all-purpose review on RNA-seq analysis</em>.</li>
-</ul></li>
-<li>Himes et al. “RNA-Seq transcriptome profiling identifies CRISPLD2 as a glucocorticoid responsive gene that modulates cytokine function in airway smooth muscle cells.” <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0099625">PLoS ONE 9.6 (2014): e99625</a>.
-<ul>
-<li><em>The data we’ll use comes from this publication</em>.</li>
-</ul></li>
-<li>Soneson et al. “Differential analyses for RNA-seq: transcript-level estimates improve gene-level inferences.” <a href="http://f1000research.com/articles/4-1521/v1">F1000Research 4 (2015)</a>.
-<ul>
-<li><em>This paper describes more recently developed approaches for gene-level analysis using transcript-level quantification, which is probably more accurate than the approach we’re using here</em>.</li>
-</ul></li>
+<li><a href="http://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0881-8">Conesa et al. A survey of best practices for RNA-seq data analysis. <em>Genome Biology</em> 17:13 (2016)</a>.</li>
+<li><a href="https://f1000research.com/articles/4-1521/v2">Soneson et al. “Differential analyses for RNA-seq: transcript-level estimates improve gene-level inferences.” <em>F1000Research</em> 4 (2015)</a>.</li>
+<li>Abstract and introduction sections of <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0099625">Himes et al. “RNA-Seq transcriptome profiling identifies CRISPLD2 as a glucocorticoid responsive gene that modulates cytokine function in airway smooth muscle cells.” <em>PLoS ONE</em> 9.6 (2014): e99625</a>.</li>
 </ol>
 </div>
 <div id="survival-analysis" class="section level2">

@@ -475,14 +475,14 @@ div.tocify {
 </div>
 
 
-<p>This is an introduction to RNAseq analysis involving reading in count data from an RNAseq experiment, exploring the data using base R functions and then analysis with the DESeq2 package. This lesson assumes a <a href="r-basics.html">basic familiarity with R</a>, <a href="r-dataframes.html">data frames</a>, and <a href="r-dplyr-yeast.html">manipulating data with dplyr and <code>%&gt;%</code></a>. See also the <a href="setup.html#bioconductor"><em>Bioconductor</em> heading on the setup page</a> – you’ll need a few additional packages that are available through Bioconductor, not CRAN (the installation process is slightly different).</p>
+<p>This is an introduction to RNAseq analysis involving reading in quantitated gene expression data from an RNA-seq experiment, exploring the data using base R functions and then analysis with the DESeq2 package. This lesson assumes a <a href="r-basics.html">basic familiarity with R</a>, <a href="r-dataframes.html">data frames</a>, and <a href="r-dplyr-yeast.html">manipulating data with dplyr and <code>%&gt;%</code></a>. See also the <a href="setup.html#bioconductor"><em>Bioconductor</em> heading on the setup page</a> – you’ll need a few additional packages that are available through Bioconductor, not CRAN (the installation process is slightly different).</p>
 <p><strong>Recommended reading prior to class:</strong></p>
 <ol style="list-style-type: decimal">
 <li><a href="http://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0881-8">Conesa et al. A survey of best practices for RNA-seq data analysis. <em>Genome Biology</em> 17:13 (2016)</a>.</li>
+<li><a href="https://f1000research.com/articles/4-1521/v2">Soneson et al. “Differential analyses for RNA-seq: transcript-level estimates improve gene-level inferences.” <em>F1000Research</em> 4 (2015)</a>.</li>
 <li>Abstract and introduction sections of <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0099625">Himes et al. “RNA-Seq transcriptome profiling identifies CRISPLD2 as a glucocorticoid responsive gene that modulates cytokine function in airway smooth muscle cells.” <em>PLoS ONE</em> 9.6 (2014): e99625</a>.</li>
-<li><a href="http://f1000research.com/articles/4-1521/v1">Soneson et al. “Differential analyses for RNA-seq: transcript-level estimates improve gene-level inferences.” <em>F1000Research</em> 4 (2015)</a>.</li>
 </ol>
-<p><strong>Slides</strong>: <a href="slides/r-rnaseq-airway.html">click here</a>.</p>
+<p><strong>Slides</strong>: <a href="slides/r-rnaseq-airway.pdf">click here</a>.</p>
 <div id="review" class="section level2">
 <h2>Review</h2>
 <div id="prerequsite-skills" class="section level3">
@@ -490,7 +490,7 @@ div.tocify {
 <ul>
 <li><a href="r-basics.html">R basics</a></li>
 <li><a href="r-dataframes.html">Data frames</a></li>
-<li><a href="r-dplyr.html">Manipulating data with dplyr and <code>%&gt;%</code></a></li>
+<li><a href="r-dplyr-yeast.html">Manipulating data with dplyr and <code>%&gt;%</code></a></li>
 <li><a href="r-tidy.html">Tidy data &amp; advanced manipulation</a></li>
 <li><a href="r-viz-gapminder.html">Data Visualization with ggplot2</a></li>
 </ul>
@@ -498,9 +498,9 @@ div.tocify {
 <div id="data-needed" class="section level3">
 <h3>Data needed</h3>
 <ul>
-<li>Count matrix (i.e., <code>countData</code>): <a href="data/airway_rawcounts.csv">airway_rawcounts.csv</a></li>
+<li>Length-scaled count matrix (i.e., <code>countData</code>): <a href="data/airway_scaledcounts.csv">airway_scaledcounts.csv</a></li>
 <li>Sample metadata (i.e., <code>colData</code>): <a href="data/airway_metadata.csv">airway_metadata.csv</a></li>
-<li>Gene Annotation data: <a href="data/annotables_grch37.csv">annotables_grch37.csv</a></li>
+<li>Gene Annotation data: <a href="data/annotables_grch38.csv">annotables_grch38.csv</a></li>
 </ul>
 </div>
 </div>
@@ -517,17 +517,13 @@ div.tocify {
 </div>
 <div id="data-pre-processing" class="section level3">
 <h3>Data pre-processing</h3>
-<p>Analyzing an RNAseq experiment begins with sequencing reads. There are many ways to begin analyzing this data, and you should check out the three papers below to get a sense of other analysis strategies. In the workflow we’ll use here, sequencing reads were aligned to a reference genome, then the number of reads that mapped to each gene region were counted. This is the starting point - a “count matrix,” where each cell indicates the number of reads mapping to a particular gene (in rows) for each sample (in columns). This workflow was chosen because of its widespread use, and because of recent data showing that it’s relatively robust to potential gene length biases [3]. However, there are many well-established alternative analysis paths, and the goal here is to provide a reference point to acquire fundamental skills that will be applicable to other bioinformatics tools and workflows.</p>
+<p>Analyzing an RNAseq experiment begins with sequencing reads. There are many ways to begin analyzing this data, and you should check out the three papers below to get a sense of other analysis strategies. In the workflow we’ll use here, sequencing reads were pseudoaligned to a reference transcriptome and the abundance of each transcript quantified using <strong>kallisto</strong> (<a href="https://pachterlab.github.io/kallisto/about">software</a>, <a href="http://www.nature.com/nbt/journal/v34/n5/full/nbt.3519.html">paper</a>). Transcript-level abundance estimates were then summarized to the gene level to produce length-scaled counts using <strong>txImport</strong> (<a href="https://bioconductor.org/packages/tximport">software</a>, <a href="https://f1000research.com/articles/4-1521/v2">paper</a>), suitable for using in count-based analysis tools like DESeq. This is the starting point - a “count matrix,” where each cell indicates the number of reads mapping to a particular gene (in rows) for each sample (in columns). This is one of several potential workflows, and relies on having a well-annotated reference transcriptome. However, there are many well-established alternative analysis paths, and the goal here is to provide a reference point to acquire fundamental skills that will be applicable to other bioinformatics tools and workflows.</p>
 <ol style="list-style-type: decimal">
-<li>Griffith, Malachi, et al. “Informatics for RNA sequencing: a web resource for analysis on the cloud.” <a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004393"><em>PLoS Comput Biol</em> 11.8: e1004393</a> (2015).</li>
 <li>Conesa, A. et al. “A survey of best practices for RNA-seq data analysis.” <a href="http://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0881-8"><em>Genome Biology</em> 17:13</a> (2016).</li>
-<li>Soneson, C., Love, M. I. &amp; Robinson, M. D. “Differential analyses for RNA-seq: transcript-level estimates improve gene-level inferences.” <a href="http://f1000research.com/articles/4-1521/v1"><em>F1000Res.</em> 4:1521</a> (2016).</li>
+<li>Soneson, C., Love, M. I. &amp; Robinson, M. D. “Differential analyses for RNA-seq: transcript-level estimates improve gene-level inferences.” <a href="https://f1000research.com/articles/4-1521/v2"><em>F1000Res.</em> 4:1521</a> (2016).</li>
+<li>Griffith, Malachi, et al. “Informatics for RNA sequencing: a web resource for analysis on the cloud.” <a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004393"><em>PLoS Comput Biol</em> 11.8: e1004393</a> (2015).</li>
 </ol>
-<p>This data was downloaded from GEO (<a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE52778">GSE:GSE52778</a>). You can read more about how the data was processed <a href="https://www.bioconductor.org/packages/3.3/data/experiment/vignettes/airway/inst/doc/airway.html">here</a>. In summary, the process looks something like this. We have reads; we use an aligner and a reference genome to figure out where in the genome the reads come from (chromosome and position), and we cross-reference that against a reference annotation, which tells the chromosome/position location of exons for known genes.</p>
-<div class="figure">
-<img src="img/aligncount.png" />
-
-</div>
+<p>This data was downloaded from GEO (<a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE52778">GSE:GSE52778</a>). You can read more about how the data was processed by going over the <a href="slides/r-rnaseq-airway.pdf">slides</a>. If you’d like to see the code used for the upstream pre-processing with kallisto and txImport, see <a href="https://github.com/bioconnector/workshops/blob/0785f9ffbab87f451f35d52bf48f2fa228e8327a/_dev/airway_kallisto/airway_kallisto_tximport.R">the code</a>.</p>
 </div>
 <div id="data-structure" class="section level3">
 <h3>Data structure</h3>
@@ -548,25 +544,25 @@ div.tocify {
 <p>First, let’s load the <strong>tidyverse</strong> library. (This loads <strong>readr</strong>, <strong>dplyr</strong>, <strong>ggplot2</strong>, and several other needed packages). Then let’s import our data <a href="r-dataframes.html">with <strong>readr</strong>’s <code>read_csv()</code> function</a> (<em>note</em>: not <code>read.csv()</code>). Let’s read in the actual count data and the experimental metadata.</p>
 <pre class="r"><code>library(tidyverse)
 
-rawcounts &lt;- read_csv(&quot;data/airway_rawcounts.csv&quot;)
+rawcounts &lt;- read_csv(&quot;data/airway_scaledcounts.csv&quot;)
 metadata &lt;-  read_csv(&quot;data/airway_metadata.csv&quot;)</code></pre>
 <p>Now, take a look at each.</p>
 <pre class="r"><code>rawcounts</code></pre>
-<pre><code>## # A tibble: 64,102 × 9
+<pre><code>## # A tibble: 38,694 × 9
 ##            ensgene SRR1039508 SRR1039509 SRR1039512 SRR1039513 SRR1039516
-##              &lt;chr&gt;      &lt;int&gt;      &lt;int&gt;      &lt;int&gt;      &lt;int&gt;      &lt;int&gt;
-## 1  ENSG00000000003        679        448        873        408       1138
+##              &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1  ENSG00000000003        723        486        904        445       1170
 ## 2  ENSG00000000005          0          0          0          0          0
-## 3  ENSG00000000419        467        515        621        365        587
-## 4  ENSG00000000457        260        211        263        164        245
-## 5  ENSG00000000460         60         55         40         35         78
-## 6  ENSG00000000938          0          0          2          0          1
-## 7  ENSG00000000971       3251       3679       6177       4252       6721
-## 8  ENSG00000001036       1433       1062       1733        881       1424
-## 9  ENSG00000001084        519        380        595        493        820
-## 10 ENSG00000001167        394        236        464        175        658
-## # ... with 64,092 more rows, and 3 more variables: SRR1039517 &lt;int&gt;,
-## #   SRR1039520 &lt;int&gt;, SRR1039521 &lt;int&gt;</code></pre>
+## 3  ENSG00000000419        467        523        616        371        582
+## 4  ENSG00000000457        347        258        364        237        318
+## 5  ENSG00000000460         96         81         73         66        118
+## 6  ENSG00000000938          0          0          1          0          2
+## 7  ENSG00000000971       3413       3916       6000       4308       6424
+## 8  ENSG00000001036       2328       1714       2640       1381       2165
+## 9  ENSG00000001084        670        372        692        448        917
+## 10 ENSG00000001167        426        295        531        178        740
+## # ... with 38,684 more rows, and 3 more variables: SRR1039517 &lt;dbl&gt;,
+## #   SRR1039520 &lt;dbl&gt;, SRR1039521 &lt;dbl&gt;</code></pre>
 <pre class="r"><code>metadata</code></pre>
 <pre><code>## # A tibble: 8 × 4
 ##           id     dex celltype     geo_id
@@ -593,44 +589,44 @@ metadata &lt;-  read_csv(&quot;data/airway_metadata.csv&quot;)</code></pre>
   mutate(controlmean = (SRR1039508+SRR1039512+SRR1039516+SRR1039520)/4) %&gt;% 
   select(ensgene, controlmean)
 meancounts</code></pre>
-<pre><code>## # A tibble: 64,102 × 2
+<pre><code>## # A tibble: 38,694 × 2
 ##            ensgene controlmean
 ##              &lt;chr&gt;       &lt;dbl&gt;
-## 1  ENSG00000000003      865.00
+## 1  ENSG00000000003      900.75
 ## 2  ENSG00000000005        0.00
-## 3  ENSG00000000419      523.00
-## 4  ENSG00000000457      250.25
-## 5  ENSG00000000460       63.50
+## 3  ENSG00000000419      520.50
+## 4  ENSG00000000457      339.75
+## 5  ENSG00000000460       97.25
 ## 6  ENSG00000000938        0.75
-## 7  ENSG00000000971     5331.25
-## 8  ENSG00000001036     1487.25
-## 9  ENSG00000001084      657.50
-## 10 ENSG00000001167      469.00
-## # ... with 64,092 more rows</code></pre>
+## 7  ENSG00000000971     5219.00
+## 8  ENSG00000001036     2327.00
+## 9  ENSG00000001084      755.75
+## 10 ENSG00000001167      527.75
+## # ... with 38,684 more rows</code></pre>
 <ol style="list-style-type: decimal">
-<li>Build off of this code, <code>mutate()</code> it once more (prior to the <code>select()</code>) function, to add another column called <code>treatedmean</code> that takes the mean of the expression values of the treated samples. Then <code>select()</code> only the <code>ensgene</code>, <code>controlmean</code> and <code>treatedmean</code> columns, assigning it to a new object called meancounts. It should look like this.</li>
+<li>Build off of this code, <code>mutate()</code> it once more (prior to the <code>select()</code>) function, to add another column called <code>treatedmean</code> that takes the mean of the expression values of the treated samples. Then <code>select()</code> only the <code>ensgene</code>, <code>controlmean</code> and <code>treatedmean</code> columns, assigning it to a new object called meancounts.</li>
 </ol>
-<pre><code>## # A tibble: 64,102 × 3
+<pre><code>## # A tibble: 38,694 × 3
 ##            ensgene controlmean treatedmean
 ##              &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;
-## 1  ENSG00000000003      865.00       618.8
-## 2  ENSG00000000005        0.00         0.0
-## 3  ENSG00000000419      523.00       546.8
-## 4  ENSG00000000457      250.25       233.8
-## 5  ENSG00000000460       63.50        53.2
-## 6  ENSG00000000938        0.75         0.0
-## 7  ENSG00000000971     5331.25      6738.2
-## 8  ENSG00000001036     1487.25      1122.8
-## 9  ENSG00000001084      657.50       572.8
-## 10 ENSG00000001167      469.00       316.0
-## # ... with 64,092 more rows</code></pre>
+## 1  ENSG00000000003      900.75      658.00
+## 2  ENSG00000000005        0.00        0.00
+## 3  ENSG00000000419      520.50      546.00
+## 4  ENSG00000000457      339.75      316.50
+## 5  ENSG00000000460       97.25       78.75
+## 6  ENSG00000000938        0.75        0.00
+## 7  ENSG00000000971     5219.00     6687.50
+## 8  ENSG00000001036     2327.00     1785.75
+## 9  ENSG00000001084      755.75      578.00
+## 10 ENSG00000001167      527.75      348.25
+## # ... with 38,684 more rows</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Directly comparing the raw counts is going to be problematic if we just happened to sequence one group at a higher depth than another. Later on we’ll do this analysis properly, normalizing by sequencing depth per sample using a better approach. But for now, <code>summarize()</code> the data to show the <code>sum</code> of the mean counts across all genes for each group. Your answer should look like this:</li>
 </ol>
 <pre><code>## # A tibble: 1 × 2
 ##   `sum(controlmean)` `sum(treatedmean)`
 ##                &lt;dbl&gt;              &lt;dbl&gt;
-## 1           22390295           21488811</code></pre>
+## 1           23005324           22196524</code></pre>
 <hr />
 <p>How about another?</p>
 <hr />
@@ -648,128 +644,120 @@ meancounts</code></pre>
 <hr />
 <p>We can find candidate differentially expressed genes by looking for genes with a large change between control and dex-treated samples. We usually look at the <span class="math inline">\(log_2\)</span> of the fold change, because this has better mathematical properties. On the absolute scale, upregulation goes from 1 to infinity, while downregulation is bounded by 0 and 1. On the log scale, upregulation goes from 0 to infinity, and downregulation goes from 0 to negative infinity. So, let’s mutate our <code>meancounts</code> object to add a <code>log2foldchange</code> column. Optionally pipe this to <code>View()</code>.</p>
 <pre class="r"><code>meancounts %&gt;% mutate(log2fc=log2(treatedmean/controlmean))</code></pre>
-<pre><code>## # A tibble: 64,102 × 4
-##            ensgene controlmean treatedmean  log2fc
-##              &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;
-## 1  ENSG00000000003      865.00       618.8 -0.4833
-## 2  ENSG00000000005        0.00         0.0     NaN
-## 3  ENSG00000000419      523.00       546.8  0.0641
-## 4  ENSG00000000457      250.25       233.8 -0.0984
-## 5  ENSG00000000460       63.50        53.2 -0.2540
-## 6  ENSG00000000938        0.75         0.0    -Inf
-## 7  ENSG00000000971     5331.25      6738.2  0.3379
-## 8  ENSG00000001036     1487.25      1122.8 -0.4056
-## 9  ENSG00000001084      657.50       572.8 -0.1991
-## 10 ENSG00000001167      469.00       316.0 -0.5697
-## # ... with 64,092 more rows</code></pre>
+<pre><code>## # A tibble: 38,694 × 4
+##            ensgene controlmean treatedmean      log2fc
+##              &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+## 1  ENSG00000000003      900.75      658.00 -0.45303916
+## 2  ENSG00000000005        0.00        0.00         NaN
+## 3  ENSG00000000419      520.50      546.00  0.06900279
+## 4  ENSG00000000457      339.75      316.50 -0.10226805
+## 5  ENSG00000000460       97.25       78.75 -0.30441833
+## 6  ENSG00000000938        0.75        0.00        -Inf
+## 7  ENSG00000000971     5219.00     6687.50  0.35769358
+## 8  ENSG00000001036     2327.00     1785.75 -0.38194109
+## 9  ENSG00000001084      755.75      578.00 -0.38683958
+## 10 ENSG00000001167      527.75      348.25 -0.59973132
+## # ... with 38,684 more rows</code></pre>
 <p>There are a couple of “weird” results. Namely, the <code>NaN</code> (“not a number”) and <code>-Inf</code> (negative infinity) results. The <code>NaN</code> is returned when you divide by zero and try to take the log. The <code>-Inf</code> is returned when you try to take the log of zero. It turns out that there are a lot of genes with zero expression. Let’s filter our <code>meancounts</code> data, mutate it to add the <span class="math inline">\(log_2(Fold Change)\)</span>, and when we’re happy with what we see, let’s <em>reassign</em> the result of that operation <em>back to the meancounts object</em>. (<em>Note: this is destructive. If you’re coding interactively like we’re doing now, before you do this it’s good practice to see what the result of the operation is prior to making the reassignment</em>.)</p>
 <pre class="r"><code># Try running the code first, prior to reassigning.
 meancounts &lt;- meancounts %&gt;% 
   filter(controlmean&gt;0 &amp; treatedmean&gt;0) %&gt;% 
   mutate(log2fc=log2(treatedmean/controlmean))
 meancounts</code></pre>
-<pre><code>## # A tibble: 27,450 × 4
-##            ensgene controlmean treatedmean  log2fc
-##              &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;
-## 1  ENSG00000000003       865.0       618.8 -0.4833
-## 2  ENSG00000000419       523.0       546.8  0.0641
-## 3  ENSG00000000457       250.2       233.8 -0.0984
-## 4  ENSG00000000460        63.5        53.2 -0.2540
-## 5  ENSG00000000971      5331.2      6738.2  0.3379
-## 6  ENSG00000001036      1487.2      1122.8 -0.4056
-## 7  ENSG00000001084       657.5       572.8 -0.1991
-## 8  ENSG00000001167       469.0       316.0 -0.5697
-## 9  ENSG00000001460       208.0       168.2 -0.3060
-## 10 ENSG00000001461      3112.8      2545.0 -0.2905
-## # ... with 27,440 more rows</code></pre>
+<pre><code>## # A tibble: 21,817 × 4
+##            ensgene controlmean treatedmean      log2fc
+##              &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+## 1  ENSG00000000003      900.75      658.00 -0.45303916
+## 2  ENSG00000000419      520.50      546.00  0.06900279
+## 3  ENSG00000000457      339.75      316.50 -0.10226805
+## 4  ENSG00000000460       97.25       78.75 -0.30441833
+## 5  ENSG00000000971     5219.00     6687.50  0.35769358
+## 6  ENSG00000001036     2327.00     1785.75 -0.38194109
+## 7  ENSG00000001084      755.75      578.00 -0.38683958
+## 8  ENSG00000001167      527.75      348.25 -0.59973132
+## 9  ENSG00000001460      226.75      185.50 -0.28968336
+## 10 ENSG00000001461     3169.50     2701.25 -0.23062810
+## # ... with 21,807 more rows</code></pre>
 <p>A common threshold used for calling something differentially expressed is a <span class="math inline">\(log_2(FoldChange)\)</span> of greater than 2 or less than -2. Let’s filter the dataset both ways to see how many genes are up or down-regulated.</p>
 <pre class="r"><code>meancounts %&gt;% filter(log2fc&gt;2)</code></pre>
-<pre><code>## # A tibble: 343 × 4
-##            ensgene controlmean treatedmean log2fc
-##              &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-## 1  ENSG00000004799      268.50     1390.00   2.37
-## 2  ENSG00000006788        2.25       18.25   3.02
-## 3  ENSG00000008438        0.50        2.75   2.46
-## 4  ENSG00000009950        0.75        3.75   2.32
-## 5  ENSG00000015592        0.25        1.25   2.32
-## 6  ENSG00000046653      345.50     2061.00   2.58
-## 7  ENSG00000060718      129.00      544.25   2.08
-## 8  ENSG00000067798      266.00     1185.75   2.16
-## 9  ENSG00000070388        1.50       10.00   2.74
-## 10 ENSG00000078114        1.50       12.50   3.06
-## # ... with 333 more rows</code></pre>
+<pre><code>## # A tibble: 250 × 4
+##            ensgene controlmean treatedmean   log2fc
+##              &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;
+## 1  ENSG00000004799      270.50     1429.25 2.401558
+## 2  ENSG00000006788        2.75       19.75 2.844349
+## 3  ENSG00000008438        0.50        2.75 2.459432
+## 4  ENSG00000011677        0.50        2.25 2.169925
+## 5  ENSG00000015413        0.50        3.00 2.584963
+## 6  ENSG00000015592        0.50        2.25 2.169925
+## 7  ENSG00000046653      323.00     2126.50 2.718875
+## 8  ENSG00000070190        0.50        3.00 2.584963
+## 9  ENSG00000070388        3.50       17.50 2.321928
+## 10 ENSG00000074317        0.25        1.75 2.807355
+## # ... with 240 more rows</code></pre>
 <pre class="r"><code>meancounts %&gt;% filter(log2fc&lt;(-2))</code></pre>
-<pre><code>## # A tibble: 549 × 4
-##            ensgene controlmean treatedmean log2fc
-##              &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-## 1  ENSG00000002079        2.50        0.50  -2.32
-## 2  ENSG00000004846       30.75        7.00  -2.14
-## 3  ENSG00000005844        1.25        0.25  -2.32
-## 4  ENSG00000006047        1.25        0.25  -2.32
-## 5  ENSG00000013293      455.75       57.00  -3.00
-## 6  ENSG00000015520       33.50        5.75  -2.54
-## 7  ENSG00000016391      153.25       33.50  -2.19
-## 8  ENSG00000019186       27.75        1.25  -4.47
-## 9  ENSG00000025423      300.75       54.50  -2.46
-## 10 ENSG00000027644        1.25        0.25  -2.32
-## # ... with 539 more rows</code></pre>
-<p>In total, we’ve got 892 differentially expressed genes, in either direction.</p>
+<pre><code>## # A tibble: 367 × 4
+##            ensgene controlmean treatedmean    log2fc
+##              &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1  ENSG00000015520       32.00        6.00 -2.415037
+## 2  ENSG00000019186       26.50        1.75 -3.920566
+## 3  ENSG00000025423      295.00       54.25 -2.443020
+## 4  ENSG00000028277       88.25       22.00 -2.004093
+## 5  ENSG00000029559        1.25        0.25 -2.321928
+## 6  ENSG00000049246      405.00       93.00 -2.122619
+## 7  ENSG00000049247        1.25        0.25 -2.321928
+## 8  ENSG00000052344        2.25        0.25 -3.169925
+## 9  ENSG00000054179        3.00        0.25 -3.584963
+## 10 ENSG00000064201       30.00        6.50 -2.206451
+## # ... with 357 more rows</code></pre>
+<p>In total, we’ve got 617 differentially expressed genes, in either direction.</p>
 <hr />
 </div>
 <div id="exercise-3" class="section level3">
 <h3>Exercise 3</h3>
-<p>Look up help on <code>?inner_join</code> or Google around for help for using <strong>dplyr</strong>’s <code>inner_join()</code> to join two tables by a common column/key. You downloaded <a href="data/annotables_grch37.csv">annotables_grch37.csv</a> from <a href="data.html">the data downloads page</a> on bioconnector.org. Load this data with <code>read_csv()</code> into an object called <code>anno</code>. Pipe it to <code>View()</code> or click on the object in the Environment pane to view the entire dataset. This table links the unambiguous Ensembl gene ID to things like the gene symbol, full gene name, location, Entrez gene ID, etc.</p>
-<pre class="r"><code>anno &lt;- read_csv(&quot;data/annotables_grch37.csv&quot;)
+<p>Look up help on <code>?inner_join</code> or Google around for help for using <strong>dplyr</strong>’s <code>inner_join()</code> to join two tables by a common column/key. You downloaded <a href="data/annotables_grch38.csv">annotables_grch38.csv</a> from <a href="data.html">the data downloads page</a> on bioconnector.org. Load this data with <code>read_csv()</code> into an object called <code>anno</code>. Pipe it to <code>View()</code> or click on the object in the Environment pane to view the entire dataset. This table links the unambiguous Ensembl gene ID to things like the gene symbol, full gene name, location, Entrez gene ID, etc.</p>
+<pre class="r"><code>anno &lt;- read_csv(&quot;data/annotables_grch38.csv&quot;)
 anno</code></pre>
-<pre><code>## # A tibble: 67,416 × 9
+<pre><code>## # A tibble: 66,531 × 9
 ##            ensgene entrez   symbol   chr     start       end strand
 ##              &lt;chr&gt;  &lt;int&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;     &lt;int&gt;  &lt;int&gt;
-## 1  ENSG00000000003   7105   TSPAN6     X  99883667  99894988     -1
-## 2  ENSG00000000005  64102     TNMD     X  99839799  99854882      1
-## 3  ENSG00000000419   8813     DPM1    20  49551404  49575092     -1
-## 4  ENSG00000000457  57147    SCYL3     1 169818772 169863408     -1
-## 5  ENSG00000000460  55732 C1orf112     1 169631245 169823221      1
-## 6  ENSG00000000938   2268      FGR     1  27938575  27961788     -1
-## 7  ENSG00000000971   3075      CFH     1 196621008 196716634      1
-## 8  ENSG00000001036   2519    FUCA2     6 143815948 143832827     -1
-## 9  ENSG00000001084   2729     GCLC     6  53362139  53481768     -1
-## 10 ENSG00000001167   4800     NFYA     6  41040684  41067715      1
-## # ... with 67,406 more rows, and 2 more variables: biotype &lt;chr&gt;,
+## 1  ENSG00000000003   7105   TSPAN6     X 100627109 100639991     -1
+## 2  ENSG00000000005  64102     TNMD     X 100584802 100599885      1
+## 3  ENSG00000000419   8813     DPM1    20  50934867  50958555     -1
+## 4  ENSG00000000457  57147    SCYL3     1 169849631 169894267     -1
+## 5  ENSG00000000460  55732 C1orf112     1 169662007 169854080      1
+## 6  ENSG00000000938   2268      FGR     1  27612064  27635277     -1
+## 7  ENSG00000000971   3075      CFH     1 196651878 196747504      1
+## 8  ENSG00000001036   2519    FUCA2     6 143494811 143511690     -1
+## 9  ENSG00000001084   2729     GCLC     6  53497341  53616970     -1
+## 10 ENSG00000001167   4800     NFYA     6  41072945  41099976      1
+## # ... with 66,521 more rows, and 2 more variables: biotype &lt;chr&gt;,
 ## #   description &lt;chr&gt;</code></pre>
 <ol style="list-style-type: decimal">
-<li>Take our newly created <code>meancounts</code> object, and <code>arrange()</code> it <code>desc</code>ending by the absolute value (<code>abs()</code>) of the <code>log2fc</code> column. The results should look like this:</li>
+<li>Take our newly created <code>meancounts</code> object, and <code>arrange()</code> it <code>desc</code>ending by the absolute value (<code>abs()</code>) of the <code>log2fc</code> column. The first few rows should look like this:</li>
 </ol>
-<pre><code>## # A tibble: 27,450 × 4
-##            ensgene controlmean treatedmean log2fc
-##              &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-## 1  ENSG00000109906        5.50      715.50   7.02
-## 2  ENSG00000250978        1.50      102.75   6.10
-## 3  ENSG00000128285       13.75        0.25  -5.78
-## 4  ENSG00000260802        0.25       12.00   5.58
-## 5  ENSG00000171819        9.50      417.50   5.46
-## 6  ENSG00000137673        0.25       10.25   5.36
-## 7  ENSG00000127954       15.00      449.25   4.90
-## 8  ENSG00000249364        0.50       14.75   4.88
-## 9  ENSG00000267339       55.50        2.00  -4.79
-## 10 ENSG00000100033        3.75       93.75   4.64
-## # ... with 27,440 more rows</code></pre>
+<pre><code>## # A tibble: 3 × 4
+##           ensgene controlmean treatedmean   log2fc
+##             &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;
+## 1 ENSG00000179593        0.25      129.50 9.016808
+## 2 ENSG00000277196        0.50       63.75 6.994353
+## 3 ENSG00000109906       14.75      808.75 5.776907</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Continue on that pipeline, and <code>inner_join()</code> it to the <code>anno</code> data by the <code>ensgene</code> column. Either assign it to a temporary object or pipe the whole thing to <code>View</code> to take a look. What do you notice? Would you trust these results? Why or why not?</li>
 </ol>
-<pre><code>## # A tibble: 29,034 × 12
-##            ensgene controlmean treatedmean log2fc    entrez        symbol
-##              &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;     &lt;int&gt;         &lt;chr&gt;
-## 1  ENSG00000109906        5.50      715.50   7.02      7704        ZBTB16
-## 2  ENSG00000250978        1.50      102.75   6.10        NA RP11-357D18.1
-## 3  ENSG00000128285       13.75        0.25  -5.78      2847         MCHR1
-## 4  ENSG00000260802        0.25       12.00   5.58    401613     LINC00890
-## 5  ENSG00000171819        9.50      417.50   5.46     10218       ANGPTL7
-## 6  ENSG00000137673        0.25       10.25   5.36      4316          MMP7
-## 7  ENSG00000127954       15.00      449.25   4.90     79689        STEAP4
-## 8  ENSG00000249364        0.50       14.75   4.88 101928858  RP11-434D9.1
-## 9  ENSG00000267339       55.50        2.00  -4.79    148145     LINC00906
-## 10 ENSG00000100033        3.75       93.75   4.64      5625         PRODH
-## # ... with 29,024 more rows, and 6 more variables: chr &lt;chr&gt;, start &lt;int&gt;,
+<pre><code>## # A tibble: 21,995 × 12
+##            ensgene controlmean treatedmean    log2fc    entrez     symbol
+##              &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;int&gt;      &lt;chr&gt;
+## 1  ENSG00000179593        0.25      129.50  9.016808       247    ALOX15B
+## 2  ENSG00000277196        0.50       63.75  6.994353 102724788 AC007325.2
+## 3  ENSG00000109906       14.75      808.75  5.776907      7704     ZBTB16
+## 4  ENSG00000128285       12.75        0.25 -5.672425      2847      MCHR1
+## 5  ENSG00000171819        9.00      427.25  5.569012     10218    ANGPTL7
+## 6  ENSG00000137673        0.25       10.25  5.357552      4316       MMP7
+## 7  ENSG00000241713        0.25        7.25  4.857981     58496     LY6G5B
+## 8  ENSG00000277399        0.50       13.25  4.727920    440435     GPR179
+## 9  ENSG00000118729       25.50        1.00 -4.672425       845      CASQ2
+## 10 ENSG00000127954       34.25      826.75  4.593275     79689     STEAP4
+## # ... with 21,985 more rows, and 6 more variables: chr &lt;chr&gt;, start &lt;int&gt;,
 ## #   end &lt;int&gt;, strand &lt;int&gt;, biotype &lt;chr&gt;, description &lt;chr&gt;</code></pre>
 <hr />
 </div>
@@ -795,21 +783,21 @@ citation(&quot;DESeq2&quot;)</code></pre>
 </div>
 <p>Let’s look at our rawcounts and metadata again.</p>
 <pre class="r"><code>rawcounts</code></pre>
-<pre><code>## # A tibble: 64,102 × 9
+<pre><code>## # A tibble: 38,694 × 9
 ##            ensgene SRR1039508 SRR1039509 SRR1039512 SRR1039513 SRR1039516
-##              &lt;chr&gt;      &lt;int&gt;      &lt;int&gt;      &lt;int&gt;      &lt;int&gt;      &lt;int&gt;
-## 1  ENSG00000000003        679        448        873        408       1138
+##              &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1  ENSG00000000003        723        486        904        445       1170
 ## 2  ENSG00000000005          0          0          0          0          0
-## 3  ENSG00000000419        467        515        621        365        587
-## 4  ENSG00000000457        260        211        263        164        245
-## 5  ENSG00000000460         60         55         40         35         78
-## 6  ENSG00000000938          0          0          2          0          1
-## 7  ENSG00000000971       3251       3679       6177       4252       6721
-## 8  ENSG00000001036       1433       1062       1733        881       1424
-## 9  ENSG00000001084        519        380        595        493        820
-## 10 ENSG00000001167        394        236        464        175        658
-## # ... with 64,092 more rows, and 3 more variables: SRR1039517 &lt;int&gt;,
-## #   SRR1039520 &lt;int&gt;, SRR1039521 &lt;int&gt;</code></pre>
+## 3  ENSG00000000419        467        523        616        371        582
+## 4  ENSG00000000457        347        258        364        237        318
+## 5  ENSG00000000460         96         81         73         66        118
+## 6  ENSG00000000938          0          0          1          0          2
+## 7  ENSG00000000971       3413       3916       6000       4308       6424
+## 8  ENSG00000001036       2328       1714       2640       1381       2165
+## 9  ENSG00000001084        670        372        692        448        917
+## 10 ENSG00000001167        426        295        531        178        740
+## # ... with 38,684 more rows, and 3 more variables: SRR1039517 &lt;dbl&gt;,
+## #   SRR1039520 &lt;dbl&gt;, SRR1039521 &lt;dbl&gt;</code></pre>
 <pre class="r"><code>metadata</code></pre>
 <pre><code>## # A tibble: 8 × 4
 ##           id     dex celltype     geo_id
@@ -851,10 +839,11 @@ class(metadata)</code></pre>
                               tidy=TRUE)
 dds</code></pre>
 <pre><code>## class: DESeqDataSet 
-## dim: 64102 8 
+## dim: 38694 8 
 ## metadata(1): version
 ## assays(1): counts
-## rownames(64102): ENSG00000000003 ENSG00000000005 ... LRG_98 LRG_99
+## rownames(38694): ENSG00000000003 ENSG00000000005 ...
+##   ENSG00000283120 ENSG00000283123
 ## rowData names(0):
 ## colnames(8): SRR1039508 SRR1039509 ... SRR1039520 SRR1039521
 ## colData names(4): id dex celltype geo_id</code></pre>
@@ -882,20 +871,21 @@ dds</code></pre>
 <pre class="r"><code>res &lt;- results(dds, tidy=TRUE)
 res &lt;- tbl_df(res)
 res</code></pre>
-<pre><code>## # A tibble: 64,102 × 7
-##                row baseMean log2FoldChange  lfcSE   stat pvalue  padj
-##              &lt;chr&gt;    &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-## 1  ENSG00000000003  708.602        -0.3608 0.1649 -2.188 0.0287 0.139
-## 2  ENSG00000000005    0.000             NA     NA     NA     NA    NA
-## 3  ENSG00000000419  520.298         0.2004 0.0989  2.026 0.0428 0.183
-## 4  ENSG00000000457  237.163         0.0332 0.1230  0.270 0.7874 0.931
-## 5  ENSG00000000460   57.933        -0.1017 0.2615 -0.389 0.6974 0.896
-## 6  ENSG00000000938    0.318        -0.0898 0.1615 -0.556 0.5781    NA
-## 7  ENSG00000000971 5817.353         0.3965 0.2328  1.703 0.0886 0.300
-## 8  ENSG00000001036 1282.106        -0.2363 0.1168 -2.022 0.0431 0.184
-## 9  ENSG00000001084  609.892        -0.0272 0.2125 -0.128 0.8982 0.971
-## 10 ENSG00000001167  369.343        -0.4558 0.1963 -2.322 0.0202 0.108
-## # ... with 64,092 more rows</code></pre>
+<pre><code>## # A tibble: 38,694 × 7
+##                row     baseMean log2FoldChange      lfcSE       stat
+##              &lt;chr&gt;        &lt;dbl&gt;          &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1  ENSG00000000003  747.1941954    -0.33376443 0.16010027 -2.0847212
+## 2  ENSG00000000005    0.0000000             NA         NA         NA
+## 3  ENSG00000000419  520.1341601     0.20240308 0.09919741  2.0404069
+## 4  ENSG00000000457  322.6648439     0.02363325 0.13982813  0.1690165
+## 5  ENSG00000000460   87.6826252    -0.13150685 0.22973643 -0.5724249
+## 6  ENSG00000000938    0.3191666    -0.08436522 0.15106555 -0.5584676
+## 7  ENSG00000000971 5760.1483616     0.41809283 0.21331511  1.9599776
+## 8  ENSG00000001036 2025.3917938    -0.22201865 0.12157890 -1.8261281
+## 9  ENSG00000001084  652.1733084    -0.23567438 0.18868000 -1.2490692
+## 10 ENSG00000001167  411.6843953    -0.48798323 0.20913136 -2.3333814
+## # ... with 38,684 more rows, and 2 more variables: pvalue &lt;dbl&gt;,
+## #   padj &lt;dbl&gt;</code></pre>
 <p>Either click on the <code>res</code> object in the environment pane or pass it to <code>View()</code> to bring it up in a data viewer. Why do you think so many of the adjusted p-values are missing (<code>NA</code>)? Try looking at the <code>baseMean</code> column, which tells you the average overall expression of this gene, and how that relates to whether or not the p-value was missing. Go to the <a href="http://www.bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.pdf">DESeq2 vignette</a> and read the section about “Independent filtering and multiple testing.”</p>
 <blockquote>
 <p>The goal of independent filtering is to filter out those tests from the procedure that have no, or little chance of showing significant evidence, without even looking at the statistical result. Genes with very low counts are not likely to see significant differences typically due to high dispersion. This results in increased detection power at the same experiment-wide type I error [<em>i.e., better FDRs</em>].</p>
@@ -907,63 +897,56 @@ res</code></pre>
 <ol style="list-style-type: decimal">
 <li>Using a <code>%&gt;%</code>, <code>arrange</code> the results by the adjusted p-value.</li>
 </ol>
-<pre><code>## # A tibble: 64,102 × 7
-##                row baseMean log2FoldChange  lfcSE  stat    pvalue
-##              &lt;chr&gt;    &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
-## 1  ENSG00000152583      997           4.28 0.1956  21.9 3.59e-106
-## 2  ENSG00000148175    11194           1.43 0.0838  17.1  1.13e-65
-## 3  ENSG00000179094      777           2.98 0.1883  15.8  1.81e-56
-## 4  ENSG00000109906      385           5.10 0.3294  15.5  3.82e-54
-## 5  ENSG00000134686     2738           1.37 0.0903  15.2  7.50e-52
-## 6  ENSG00000125148     3656           2.13 0.1422  15.0  1.55e-50
-## 7  ENSG00000120129     3409           2.76 0.1887  14.6  1.80e-48
-## 8  ENSG00000189221     2342           3.04 0.2097  14.5  1.27e-47
-## 9  ENSG00000178695     2650          -2.37 0.1698 -14.0  2.18e-44
-## 10 ENSG00000101347    12703           3.41 0.2472  13.8  2.89e-43
-## # ... with 64,092 more rows, and 1 more variables: padj &lt;dbl&gt;</code></pre>
+<pre><code>## # A tibble: 38,694 × 7
+##                row   baseMean log2FoldChange      lfcSE      stat
+##              &lt;chr&gt;      &lt;dbl&gt;          &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;
+## 1  ENSG00000152583   954.7709       3.967218 0.21418203  18.52265
+## 2  ENSG00000179094   743.2527       2.713796 0.16604531  16.34371
+## 3  ENSG00000116584  2277.9135      -1.026906 0.06455769 -15.90680
+## 4  ENSG00000189221  2383.7537       3.090899 0.19634159  15.74246
+## 5  ENSG00000120129  3440.7038       2.759464 0.18951296  14.56082
+## 6  ENSG00000148175 13493.9204       1.401834 0.09858337  14.21978
+## 7  ENSG00000109906   439.5415       4.417136 0.31408462  14.06352
+## 8  ENSG00000178695  2685.4097      -2.355112 0.16841404 -13.98406
+## 9  ENSG00000134686  2933.6425       1.411139 0.10373478  13.60334
+## 10 ENSG00000101347 14134.9918       3.356839 0.24864303  13.50063
+## # ... with 38,684 more rows, and 2 more variables: pvalue &lt;dbl&gt;,
+## #   padj &lt;dbl&gt;</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Continue piping to <code>inner_join()</code>, joining the results to the <code>anno</code> object. See the help for <code>?inner_join</code>, specifically the <code>by=</code> argument. You’ll have to do something like <code>... %&gt;% inner_join(anno, by=c(&quot;row&quot;=&quot;ensgene&quot;))</code>. Once you’re happy with this result, reassign the result back to <code>res</code>. It’ll look like this.</li>
 </ol>
-<pre><code>##               row baseMean log2FoldChange  lfcSE stat    pvalue      padj
-## 1 ENSG00000152583      997           4.28 0.1956 21.9 3.59e-106 6.66e-102
-## 2 ENSG00000148175    11194           1.43 0.0838 17.1  1.13e-65  1.05e-61
-## 3 ENSG00000179094      777           2.98 0.1883 15.8  1.81e-56  1.12e-52
-## 4 ENSG00000179094      777           2.98 0.1883 15.8  1.81e-56  1.12e-52
-## 5 ENSG00000109906      385           5.10 0.3294 15.5  3.82e-54  1.78e-50
-## 6 ENSG00000134686     2738           1.37 0.0903 15.2  7.50e-52  2.79e-48
-##      entrez  symbol chr     start       end strand        biotype
-## 1      8404 SPARCL1   4  88394487  88452213     -1 protein_coding
-## 2      2040    STOM   9 124101355 124132531     -1 protein_coding
-## 3 102465532    PER1  17   8043790   8059824     -1 protein_coding
-## 4      5187    PER1  17   8043790   8059824     -1 protein_coding
-## 5      7704  ZBTB16  11 113930315 114121398      1 protein_coding
-## 6      1912    PHC2   1  33789224  33896653     -1 protein_coding
-##                                                               description
-## 1                     SPARC-like 1 (hevin) [Source:HGNC Symbol;Acc:11220]
-## 2                                  stomatin [Source:HGNC Symbol;Acc:3383]
-## 3                  period circadian clock 1 [Source:HGNC Symbol;Acc:8845]
-## 4                  period circadian clock 1 [Source:HGNC Symbol;Acc:8845]
-## 5 zinc finger and BTB domain containing 16 [Source:HGNC Symbol;Acc:12930]
-## 6       polyhomeotic homolog 2 (Drosophila) [Source:HGNC Symbol;Acc:3183]</code></pre>
+<pre><code>##               row   baseMean log2FoldChange      lfcSE      stat
+## 1 ENSG00000152583   954.7709       3.967218 0.21418203  18.52265
+## 2 ENSG00000179094   743.2527       2.713796 0.16604531  16.34371
+## 3 ENSG00000116584  2277.9135      -1.026906 0.06455769 -15.90680
+## 4 ENSG00000189221  2383.7537       3.090899 0.19634159  15.74246
+## 5 ENSG00000120129  3440.7038       2.759464 0.18951296  14.56082
+## 6 ENSG00000148175 13493.9204       1.401834 0.09858337  14.21978
+##         pvalue         padj entrez  symbol chr     start       end strand
+## 1 1.356017e-76 2.051382e-72   8404 SPARCL1   4  87473335  87531061     -1
+## 2 4.822927e-60 3.648062e-56   5187    PER1  17   8140472   8156506     -1
+## 3 5.684877e-57 2.866694e-53   9181 ARHGEF2   1 155946851 156007070     -1
+## 4 7.738138e-56 2.926564e-52   4128    MAOA   X  43654907  43746824      1
+## 5 4.985827e-48 1.508512e-44   1843   DUSP1   5 172768090 172771195     -1
+## 6 6.906757e-46 1.741424e-42   2040    STOM   9 121338988 121370304     -1
+##          biotype
+## 1 protein_coding
+## 2 protein_coding
+## 3 protein_coding
+## 4 protein_coding
+## 5 protein_coding
+## 6 protein_coding
+##                                                                            description
+## 1                             SPARC-like 1 (hevin) [Source:HGNC Symbol;Acc:HGNC:11220]
+## 2                          period circadian clock 1 [Source:HGNC Symbol;Acc:HGNC:8845]
+## 3 Rho/Rac guanine nucleotide exchange factor (GEF) 2 [Source:HGNC Symbol;Acc:HGNC:682]
+## 4                               monoamine oxidase A [Source:HGNC Symbol;Acc:HGNC:6833]
+## 5                    dual specificity phosphatase 1 [Source:HGNC Symbol;Acc:HGNC:3064]
+## 6                                          stomatin [Source:HGNC Symbol;Acc:HGNC:3383]</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>How many are significant with an adjusted p-value &lt;0.05? (Pipe to <code>filter()</code>).</li>
 </ol>
-<pre><code>## # A tibble: 2,828 × 15
-##                row baseMean log2FoldChange  lfcSE  stat    pvalue
-##              &lt;chr&gt;    &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
-## 1  ENSG00000152583      997           4.28 0.1956  21.9 3.59e-106
-## 2  ENSG00000148175    11194           1.43 0.0838  17.1  1.13e-65
-## 3  ENSG00000179094      777           2.98 0.1883  15.8  1.81e-56
-## 4  ENSG00000179094      777           2.98 0.1883  15.8  1.81e-56
-## 5  ENSG00000109906      385           5.10 0.3294  15.5  3.82e-54
-## 6  ENSG00000134686     2738           1.37 0.0903  15.2  7.50e-52
-## 7  ENSG00000125148     3656           2.13 0.1422  15.0  1.55e-50
-## 8  ENSG00000120129     3409           2.76 0.1887  14.6  1.80e-48
-## 9  ENSG00000189221     2342           3.04 0.2097  14.5  1.27e-47
-## 10 ENSG00000178695     2650          -2.37 0.1698 -14.0  2.18e-44
-## # ... with 2,818 more rows, and 9 more variables: padj &lt;dbl&gt;,
-## #   entrez &lt;int&gt;, symbol &lt;chr&gt;, chr &lt;chr&gt;, start &lt;int&gt;, end &lt;int&gt;,
-## #   strand &lt;int&gt;, biotype &lt;chr&gt;, description &lt;chr&gt;</code></pre>
+<pre><code>## [1] 2184</code></pre>
 <hr />
 <p>Finally, let’s write out the significant results. See the help for <code>?write_csv</code>, which is part of the <strong>readr</strong> package (note: this is <em>not</em> the same as <code>write.csv</code> with a dot.). We can continue that pipe and write out the significant results to a file like so:</p>
 <pre class="r"><code>res %&gt;% 
@@ -982,15 +965,15 @@ res</code></pre>
 <p>That’s just okay. Keep looking at the help for <code>?plotCounts</code>. Notice that we could have actually returned the data instead of plotting. We could then pipe this to ggplot and make our own figure. Let’s make a boxplot.</p>
 <pre class="r"><code># Return the data
 plotCounts(dds, gene=&quot;ENSG00000103196&quot;, intgroup=&quot;dex&quot;, returnData=TRUE)</code></pre>
-<pre><code>##            count     dex
-## SRR1039508   762 control
-## SRR1039509  6432 treated
-## SRR1039512   990 control
-## SRR1039513  6285 treated
-## SRR1039516   754 control
-## SRR1039517  2690 treated
-## SRR1039520   782 control
-## SRR1039521  5964 treated</code></pre>
+<pre><code>##                count     dex
+## SRR1039508  774.5002 control
+## SRR1039509 6258.7915 treated
+## SRR1039512 1100.2741 control
+## SRR1039513 6093.0324 treated
+## SRR1039516  736.9483 control
+## SRR1039517 2742.1908 treated
+## SRR1039520  842.5452 control
+## SRR1039521 6224.9923 treated</code></pre>
 <pre class="r"><code># Plot it
 plotCounts(dds, gene=&quot;ENSG00000103196&quot;, intgroup=&quot;dex&quot;, returnData=TRUE) %&gt;% 
   ggplot(aes(dex, count)) + geom_boxplot(aes(fill=dex)) + scale_y_log10() + ggtitle(&quot;CRISPLD2&quot;)</code></pre>
@@ -1009,16 +992,16 @@ res %&gt;%
 <pre><code>## # A tibble: 3 × 2
 ##     sig     n
 ##   &lt;lgl&gt; &lt;int&gt;
-## 1 FALSE 17013
-## 2  TRUE  2828
-## 3    NA 47575</code></pre>
+## 1 FALSE 13089
+## 2  TRUE  2184
+## 3    NA 23684</code></pre>
 <hr />
 </div>
 <div id="exercise-5" class="section level3">
 <h3>Exercise 5</h3>
 <p>Look up the Wikipedia articles on <a href="https://en.wikipedia.org/wiki/MA_plot">MA plots</a> and <a href="https://en.wikipedia.org/wiki/Volcano_plot_(statistics)">volcano plots</a>. An MA plot shows the average expression on the X-axis and the log fold change on the y-axis. A volcano plot shows the log fold change on the X-axis, and the <span class="math inline">\(-log_{10}\)</span> of the p-value on the Y-axis (the more significant the p-value, the larger the <span class="math inline">\(-log_{10}\)</span> of that value will be).</p>
 <ol style="list-style-type: decimal">
-<li>Make an MA plot. Use a <span class="math inline">\(log_{10}\)</span>-scaled x-axis, color-code by whether the gene is significant, and give your plot a title. It should look like this. What’s the deal with the gray points?</li>
+<li>Make an MA plot. Use a <span class="math inline">\(log_{10}\)</span>-scaled x-axis, color-code by whether the gene is significant, and give your plot a title. It should look like this. What’s the deal with the gray points? Why are they missing? Go to the DESeq2 website on Bioconductor and look through the vignette for “Independent Filtering.”</li>
 </ol>
 <p><img src="r-rnaseq-airway_files/figure-html/maplot-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
@@ -1066,48 +1049,39 @@ res %&gt;%
 ##  [3] Biobase_2.34.0             GenomicRanges_1.26.3      
 ##  [5] GenomeInfoDb_1.10.3        IRanges_2.8.1             
 ##  [7] S4Vectors_0.12.1           BiocGenerics_0.20.0       
-##  [9] purrr_0.2.2                tibble_1.2                
-## [11] tidyverse_1.1.1            XML_3.98-1.5              
-## [13] rentrez_1.0.4              highcharter_0.5.0         
-## [15] jsonlite_1.2               visNetwork_1.0.3          
-## [17] leaflet_1.1.0              d3heatmap_0.6.1.1         
-## [19] magrittr_1.5               tidyr_0.6.1               
-## [21] ggthemes_3.4.0             ggplot2_2.2.1             
-## [23] readr_1.0.0                dplyr_0.5.0               
-## [25] knitr_1.15.1              
+##  [9] dplyr_0.5.0                purrr_0.2.2               
+## [11] readr_1.0.0                tidyr_0.6.1               
+## [13] tibble_1.2                 tidyverse_1.1.1           
+## [15] ggplot2_2.2.1              knitr_1.15.1              
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] colorspace_1.3-2     rprojroot_1.2        htmlTable_1.9       
-##  [4] XVector_0.14.0       base64enc_0.1-3      AnnotationDbi_1.36.2
-##  [7] lubridate_1.6.0      xml2_1.1.1           codetools_0.2-15    
-## [10] splines_3.3.2        doParallel_1.0.10    mnormt_1.5-5        
-## [13] geneplotter_1.52.0   rlist_0.4.6.1        Formula_1.2-1       
-## [16] gridBase_0.4-7       broom_0.4.2          annotate_1.52.1     
-## [19] cluster_2.0.5        png_0.1-7            shiny_1.0.0         
-## [22] httr_1.2.1           backports_1.0.5      assertthat_0.1      
-## [25] Matrix_1.2-8         lazyeval_0.2.0       formatR_1.4         
-## [28] acepack_1.4.1        htmltools_0.3.5      tools_3.3.2         
-## [31] igraph_1.0.1         gtable_0.2.0         reshape2_1.4.2      
-## [34] Rcpp_0.12.9          NMF_0.20.6           nlme_3.1-131        
-## [37] iterators_1.0.8      crosstalk_1.0.0      psych_1.6.12        
-## [40] stringr_1.2.0        rvest_0.3.2          mime_0.5            
-## [43] rngtools_1.2.4       zlibbioc_1.20.0      zoo_1.7-14          
-## [46] scales_0.4.1         hms_0.3              RColorBrewer_1.1-2  
-## [49] yaml_2.1.14          quantmod_0.4-7       curl_2.3            
-## [52] memoise_1.0.0        gridExtra_2.2.1      pkgmaker_0.22       
-## [55] rpart_4.1-10         latticeExtra_0.6-28  stringi_1.1.2       
-## [58] RSQLite_1.1-2        highr_0.6            genefilter_1.56.0   
-## [61] foreach_1.4.3        checkmate_1.8.2      TTR_0.23-1          
-## [64] BiocParallel_1.8.1   bitops_1.0-6         evaluate_0.10       
-## [67] lattice_0.20-34      htmlwidgets_0.8      labeling_0.3        
-## [70] plyr_1.8.4           R6_2.2.0             Hmisc_4.0-2         
-## [73] DBI_0.5-1            haven_1.0.0          foreign_0.8-67      
-## [76] xts_0.9-7            survival_2.40-1      RCurl_1.95-4.8      
-## [79] nnet_7.3-12          modelr_0.1.0         rmarkdown_1.3       
-## [82] locfit_1.5-9.1       grid_3.3.2           readxl_0.1.1        
-## [85] data.table_1.10.0    forcats_0.2.0        digest_0.6.12       
-## [88] xtable_1.8-2         httpuv_1.3.3         munsell_0.4.3       
-## [91] registry_0.3</code></pre>
+##  [1] nlme_3.1-131         bitops_1.0-6         lubridate_1.6.0     
+##  [4] doParallel_1.0.10    RColorBrewer_1.1-2   httr_1.2.1          
+##  [7] rprojroot_1.2        tools_3.3.2          backports_1.0.5     
+## [10] R6_2.2.0             rpart_4.1-10         Hmisc_4.0-2         
+## [13] DBI_0.6              lazyeval_0.2.0       colorspace_1.3-2    
+## [16] nnet_7.3-12          gridExtra_2.2.1      mnormt_1.5-5        
+## [19] rvest_0.3.2          htmlTable_1.9        xml2_1.1.1          
+## [22] pkgmaker_0.22        labeling_0.3         scales_0.4.1        
+## [25] checkmate_1.8.2      psych_1.6.12         genefilter_1.56.0   
+## [28] NMF_0.20.6           stringr_1.2.0        digest_0.6.12       
+## [31] foreign_0.8-67       rmarkdown_1.3        XVector_0.14.0      
+## [34] base64enc_0.1-3      htmltools_0.3.5      htmlwidgets_0.8     
+## [37] readxl_0.1.1         RSQLite_1.1-2        jsonlite_1.3        
+## [40] BiocParallel_1.8.1   acepack_1.4.1        RCurl_1.95-4.8      
+## [43] magrittr_1.5         Formula_1.2-1        Matrix_1.2-8        
+## [46] Rcpp_0.12.9          munsell_0.4.3        stringi_1.1.2       
+## [49] yaml_2.1.14          zlibbioc_1.20.0      plyr_1.8.4          
+## [52] grid_3.3.2           forcats_0.2.0        lattice_0.20-34     
+## [55] haven_1.0.0          splines_3.3.2        annotate_1.52.1     
+## [58] hms_0.3              locfit_1.5-9.1       rngtools_1.2.4      
+## [61] geneplotter_1.52.0   reshape2_1.4.2       codetools_0.2-15    
+## [64] XML_3.98-1.5         evaluate_0.10        latticeExtra_0.6-28 
+## [67] data.table_1.10.0    modelr_0.1.0         foreach_1.4.3       
+## [70] gtable_0.2.0         assertthat_0.1       gridBase_0.4-7      
+## [73] xtable_1.8-2         broom_0.4.2          survival_2.40-1     
+## [76] iterators_1.0.8      AnnotationDbi_1.36.2 registry_0.3        
+## [79] memoise_1.0.0        cluster_2.0.5</code></pre>
 <hr />
 </div>
 <div class="footnotes">

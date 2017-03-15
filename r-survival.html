@@ -475,7 +475,7 @@ div.tocify {
 </div>
 
 
-<p>This workshop will provide hands-on instruction and exercises covering survival analysis using R. The data to be used here will come from The Cancer Genome Atlas (TCGA), where we may also cover programmatic access to TCGA through Bioconductor if time allows.</p>
+<p>This class will provide hands-on instruction and exercises covering survival analysis using R. Some of the data to be used here will come from The Cancer Genome Atlas (TCGA), where we may also cover programmatic access to TCGA through Bioconductor if time allows.</p>
 <p><strong>Prerequisites: <a href="r-basics.html">Familiarity with R</a> is <em>required</em></strong> (including working with <a href="r-dataframes.html">data frames</a>, installing/using packages, importing data, and saving results); familiarity with <a href="r-dplyr-yeast.html">dplyr</a> and <a href="r-viz-gapminder.html">ggplot2</a> packages is highly recommended.</p>
 <p><strong>You must <a href="setup.html#survival_analysis">complete the setup here</a> <em>prior to class</em>.</strong> This includes installing R, RStudio, and the required packages under the <a href="setup.html#survival_analysis">“Survival Analysis” heading</a>. Please <a href="people.html">contact one of the instructors</a> <em>prior to class</em> if you are having difficulty with any of the setup. Please bring your laptop and charger cable to class.</p>
 <p><strong>Handouts</strong>: Download and print out these handouts and bring them to class:</p>
@@ -497,7 +497,7 @@ div.tocify {
 <p><span class="math display">\[ S(t) = Pr(T&gt;t) \]</span></p>
 <p>The <strong>Kaplan-Meier</strong> curve illustrates the survival function. It’s a step function illustrating the cumulative survival probability over time. The curve is horizontal over periods where no event occurs, then drops vertically corresponding to a change in the survival function at each time an event occurs.</p>
 <p><strong>Censoring</strong> is a type of missing data problem unique to survival analysis. This happens when you track the sample/subject through the end of the study and the event never occurs. This could also happen due to the sample/subject dropping out of the study for reasons other than death, or some other loss to followup. The sample is <em>censored</em> in that you only know that the individual survived up to the loss to followup, but you don’t know anything about survival after that.<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
-<p><strong>Proportional hazards assumption</strong>: The main goal of survival analysis is to compare the survival functions in different groups, e.g., leukemia patients as compared to cancer-free controls. If you followed both groups until everyone died, both survival curves would end at 0%, but one group might have survived on average a lot longer than the other group. Survival analysis does this by comparing the <em>hazard</em> at different times over the observation period. Survival analysis doesn’t assume that the hazard is constant, but <em>does</em> assume that the <em>ratio</em> of hazards between groups is constant over time.<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> This workshop does <em>not</em> cover methods to deal with non-proportional hazards, or interactions of covariates with the time to event.</p>
+<p><strong>Proportional hazards assumption</strong>: The main goal of survival analysis is to compare the survival functions in different groups, e.g., leukemia patients as compared to cancer-free controls. If you followed both groups until everyone died, both survival curves would end at 0%, but one group might have survived on average a lot longer than the other group. Survival analysis does this by comparing the <em>hazard</em> at different times over the observation period. Survival analysis doesn’t assume that the hazard is constant, but <em>does</em> assume that the <em>ratio</em> of hazards between groups is constant over time.<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> This class does <em>not</em> cover methods to deal with non-proportional hazards, or interactions of covariates with the time to event.</p>
 <p><strong>Proportional hazards regression</strong> a.k.a. <strong>Cox regression</strong> is the most common approach to assess the effect of different variables on survival.</p>
 </div>
 <div id="cox-ph-model" class="section level3">
@@ -690,7 +690,7 @@ fit</code></pre>
 ## 
 ## Likelihood ratio test=10.6  on 1 df, p=0.00111
 ## n= 228, number of events= 165</code></pre>
-<p>The <code>exp(coef)</code> column contains <span class="math inline">\(e^{\beta_1}\)</span> (see <a href="#background">background</a> section above for more info). This is the <strong>hazard ratio</strong> – the multiplicative effect of that variable on the hazard rate (for each unit increase in that variable). So, for a categorical variable like sex, going from male (baseline) to female results in approximately 43% reduction in hazard. You could also flip the sign on the <code>coef</code> column, and take <code>exp(0.551)</code>, which you can interpret as being male resulting in a 1.73-fold increase in hazard, or that males die ad approximately 1.73x the rate per unit time as females (females die at 0.551x the rate per unit time as males).</p>
+<p>The <code>exp(coef)</code> column contains <span class="math inline">\(e^{\beta_1}\)</span> (see <a href="#background">background</a> section above for more info). This is the <strong>hazard ratio</strong> – the multiplicative effect of that variable on the hazard rate (for each unit increase in that variable). So, for a categorical variable like sex, going from male (baseline) to female results in approximately ~40% reduction in hazard. You could also flip the sign on the <code>coef</code> column, and take <code>exp(0.531)</code>, which you can interpret as being male resulting in a 1.7-fold increase in hazard, or that males die ad approximately 1.7x the rate per unit time as females (females die at 0.531x the rate per unit time as males).</p>
 <p>Just remember:</p>
 <ul>
 <li>HR=1: No effect</li>
@@ -790,20 +790,36 @@ fit</code></pre>
 <pre class="r"><code>ggsurvplot(survfit(Surv(time, status)~age, data=lung))</code></pre>
 <p>One thing you might see here is an attempt to categorize a continuous variable into different groups – tertiles, upper quartile vs lower quartile, a median split, etc – so you can make the KM plot. But, how you make that cut is meaningful! Check out the help for <code>?cut</code>. <code>cut()</code> takes a continuous variable and some breakpoints and creats a categorical variable from that. Let’s get the average age in the dataset, and plot a histogram showing the distribution of age.</p>
 <pre class="r"><code>mean(lung$age)
-hist(lung$age)</code></pre>
+hist(lung$age)
+ggplot(lung, aes(age)) + geom_histogram(bins=20)</code></pre>
 <p>Now, let’s try creating a categorical variable on <code>lung$age</code> with cut pounts at 0, 62 (the mean), and +Infinity (no upper limit). We could continue adding a <code>labels=</code> option here to label the groupings we create, for instance, as “young” and “old”. Finally, we could assign the result of this to a new object in the lung dataset.</p>
 <pre class="r"><code>cut(lung$age, breaks=c(0, 62, Inf))
 cut(lung$age, breaks=c(0, 62, Inf), labels=c(&quot;young&quot;, &quot;old&quot;))
+
+# the base r way:
 lung$agecat &lt;- cut(lung$age, breaks=c(0, 62, Inf), labels=c(&quot;young&quot;, &quot;old&quot;))
+
+# or the tidyverse way:
+lung &lt;- lung %&gt;% 
+  mutate(agecat=cut(age, breaks=c(0, 62, Inf), labels=c(&quot;young&quot;, &quot;old&quot;)))
+
 head(lung)</code></pre>
 <p>Now, what happens when we make a KM plot with this new categorization? It looks like there’s some differences in the curves between “old” and “young” patients, with older patients having slightly worse survival odds. But at p=.39, the difference in survival between those younger than 62 and older than 62 are not significant.</p>
 <pre class="r"><code>ggsurvplot(survfit(Surv(time, status)~agecat, data=lung), pval=TRUE)</code></pre>
 <p><img src="r-survival_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>But, what if we chose a different cut point, say, 70 years old, which is roughly the cutoff for the upper quartile of the age distribution (see <code>?quantile</code>). The result is now marginally significant!</p>
-<pre class="r"><code>lung$agecat &lt;- cut(lung$age, breaks=c(0, 70, Inf), labels=c(&quot;young&quot;, &quot;old&quot;))
+<pre class="r"><code># the base r way:
+lung$agecat &lt;- cut(lung$age, breaks=c(0, 70, Inf), labels=c(&quot;young&quot;, &quot;old&quot;))
+
+# or the tidyverse way:
+lung &lt;- lung %&gt;% 
+  mutate(agecat=cut(age, breaks=c(0, 70, Inf), labels=c(&quot;young&quot;, &quot;old&quot;)))
+
+# plot!
 ggsurvplot(survfit(Surv(time, status)~agecat, data=lung), pval=TRUE)</code></pre>
 <p><img src="r-survival_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <p>Remember, the Cox regression analyzes the continuous variable over the whole range of its distribution, where the log-rank test on the Kaplan-Meier plot can change depending on how you categorize your continuous variable. They’re answering a similar question in a different way: the regression model is asking, <em>“what is the effect of age on survival?”</em>, while the log-rank test and the KM plot is asking, <em>“are there differences in survival between those less than 70 and those greater than 70 years old?”</em>.</p>
+<p><em>(New in survminer 0.2.4: the survminer package can now determine the optimal cutpoint for one or multiple continuous variables at once, using the <code>surv_cutpoint()</code> and <code>surv_categorize()</code> functions. Refer to <a href="http://www.sthda.com/english/wiki/survminer-0-2-4#determine-the-optimal-cutpoint-for-continuous-variables">this blog post</a> for more information.)</em></p>
 </div>
 </div>
 <div id="tcga" class="section level2">
@@ -897,7 +913,7 @@ summary(sfit, times=seq(0,365*5,365))</code></pre>
 ##  1460    133      49    0.451  0.0261        0.402        0.505
 ##  1825     78      39    0.310  0.0260        0.263        0.365</code></pre>
 <pre class="r"><code>ggsurvplot(sfit, conf.int=TRUE, pval=TRUE)</code></pre>
-<p><img src="r-survival_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="r-survival_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 </div>
 <div id="gene-expression-data" class="section level4">
 <h4>Gene Expression Data</h4>
@@ -908,21 +924,31 @@ summary(sfit, times=seq(0,365*5,365))</code></pre>
 <pre class="r"><code>dim(BRCA.mRNA)
 BRCA.mRNA[1:5, 1:5]</code></pre>
 <blockquote>
-<p><strong>Extra credit assignment</strong>: Take a look at the <a href="r-dplyr-yeast.html">advanced data manipulation</a> and <a href="r-tidy.html">tidy data</a> workshops, and see if you can figure out how to join the gene expression data to the clinical data for any particular cancer type.</p>
+<p><strong>Extra credit assignment</strong>: Take a look at the <a href="r-dplyr-yeast.html">advanced data manipulation</a> and <a href="r-tidy.html">tidy data</a> classes, and see if you can figure out how to join the gene expression data to the clinical data for any particular cancer type.</p>
 </blockquote>
+<pre class="r"><code># Take the mRNA data
+BRCA.mRNA %&gt;% 
+  # then make it a tibble (nice printing while debugging)
+  tbl_df() %&gt;% 
+  # then get just a few genes
+  select(bcr_patient_barcode, PAX8, GATA3, ESR1) %&gt;% 
+  # then trim the barcode (see head(clin), and ?substr)
+  mutate(bcr_patient_barcode = substr(bcr_patient_barcode, 1, 12)) %&gt;% 
+  # then join back to clinical data
+  inner_join(clin, by=&quot;bcr_patient_barcode&quot;)</code></pre>
 <p>Similar to how <code>survivalTCGA()</code> was a nice helper function to pull out survival information from multiple different clinical datasets, <code>expressionsTCGA()</code> can pull out specific gene expression measurements across different cancer types. See the help for <code>?expressionsTCGA</code>. Let’s pull out data for PAX8, GATA-3, and the estrogen receptor genes from breast, ovarian, and endometrial cancer, and plot the expression of each with a box plot.</p>
 <pre class="r"><code>expr &lt;- expressionsTCGA(BRCA.mRNA, OV.mRNA, UCEC.mRNA,
                         extract.cols = c(&quot;PAX8&quot;, &quot;GATA3&quot;, &quot;ESR1&quot;))
 head(expr)</code></pre>
 <pre><code>## # A tibble: 6 × 5
-##            bcr_patient_barcode   dataset   PAX8 GATA3   ESR1
-##                          &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-## 1 TCGA-A1-A0SD-01A-11R-A115-07 BRCA.mRNA -0.542  2.87  3.084
-## 2 TCGA-A1-A0SE-01A-11R-A084-07 BRCA.mRNA -0.595  2.17  2.386
-## 3 TCGA-A1-A0SH-01A-11R-A084-07 BRCA.mRNA  0.500  1.32  0.791
-## 4 TCGA-A1-A0SJ-01A-11R-A084-07 BRCA.mRNA -0.589  1.84  2.495
-## 5 TCGA-A1-A0SK-01A-12R-A084-07 BRCA.mRNA -0.965 -6.03 -4.861
-## 6 TCGA-A1-A0SM-01A-11R-A084-07 BRCA.mRNA  0.573  1.80  2.797</code></pre>
+##            bcr_patient_barcode   dataset     PAX8     GATA3      ESR1
+##                          &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+## 1 TCGA-A1-A0SD-01A-11R-A115-07 BRCA.mRNA -0.54225  2.870500  3.084250
+## 2 TCGA-A1-A0SE-01A-11R-A084-07 BRCA.mRNA -0.59475  2.166250  2.386000
+## 3 TCGA-A1-A0SH-01A-11R-A084-07 BRCA.mRNA  0.49975  1.323500  0.791250
+## 4 TCGA-A1-A0SJ-01A-11R-A084-07 BRCA.mRNA -0.58850  1.841625  2.495417
+## 5 TCGA-A1-A0SK-01A-12R-A084-07 BRCA.mRNA -0.96475 -6.025250 -4.860667
+## 6 TCGA-A1-A0SM-01A-11R-A084-07 BRCA.mRNA  0.57275  1.804500  2.797000</code></pre>
 <pre class="r"><code>table(expr$dataset)</code></pre>
 <pre><code>## 
 ## BRCA.mRNA   OV.mRNA UCEC.mRNA 
@@ -935,6 +961,14 @@ head(expr)</code></pre>
 <p><img src="r-survival_files/figure-html/geneExprBoxplots-3.png" width="672" /></p>
 <pre class="r"><code>ggplot(expr, aes(dataset, ESR1, fill=dataset)) + geom_violin()</code></pre>
 <p><img src="r-survival_files/figure-html/geneExprBoxplots-4.png" width="672" /></p>
+<p>We could also use tidyr to do this all in one go.</p>
+<pre class="r"><code>expr %&gt;% 
+  tbl_df() %&gt;% 
+  gather(gene, expression, PAX8, GATA3, ESR1) %&gt;% 
+  ggplot(aes(dataset, expression, fill=dataset)) + 
+    geom_boxplot() + 
+    facet_wrap(~gene)</code></pre>
+<p><img src="r-survival_files/figure-html/tidyGeneExprBoxplots-1.png" width="960" /></p>
 </div>
 </div>
 <div id="exercise-set-3" class="section level3">
