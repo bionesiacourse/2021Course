@@ -1082,12 +1082,32 @@ res %&gt;%
 ## [73] xtable_1.8-2         broom_0.4.2          survival_2.40-1     
 ## [76] iterators_1.0.8      AnnotationDbi_1.36.2 registry_0.3        
 ## [79] memoise_1.0.0        cluster_2.0.5</code></pre>
+</div>
+<div id="pathway-analysis" class="section level2">
+<h2>Pathway Analysis</h2>
+<p><em>Pathway analysis</em> or <em>gene set analysis</em> means many different things, general approaches are nicely reviewed in: Khatri, et al. “Ten years of pathway analysis: current approaches and outstanding challenges.” <a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002375"><em>PLoS Comput Biol</em> 8.2 (2012): e1002375</a>.</p>
+<p>There are many freely available tools for pathway or over-representation analysis. Bioconductor alone has over <a href="http://bioconductor.org/packages/release/BiocViews.html#___GeneSetEnrichment">70 packages categorized under <em>gene set enrichment</em></a> and <a href="http://bioconductor.org/packages/release/BiocViews.html#___Pathways">over 100 packages categorized under <em>pathways</em></a>. I wrote <a href="http://www.gettinggeneticsdone.com/2015/12/tutorial-rna-seq-differential.html">this tutorial</a> in 2015 showing how to use the GAGE (Generally Applicable Gene set Enrichment)<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> package to do KEGG pathway enrichment analysis on differential expression results.</p>
+<p>While there are many freely available tools to do this, and some are truly fantastic, many of them are poorly maintained or rarely updated. The <a href="https://david.ncifcrf.gov/">DAVID</a> tool that a lot of folks use wasn’t updated at all between Jan 2010 and Oct 2016.</p>
+<p>UVA has a site license to <a href="https://www.qiagenbioinformatics.com/products/ingenuity-pathway-analysis/">Ingenuity Pathway Analysis</a>. Statistically, IPA isn’t doing anything revolutionary methodologically, but the real value comes in with its (1) ease of use, and (2) highly curated knowledgebase. You can get access to IPA through the Health Sciences Library <a href="https://www.bioconnector.virginia.edu/content/ingenuity-pathway-analysis-0">at this link</a>, and there are also links to UVA support resources for using IPA.</p>
+<p><strong><a href="img/r-rnaseq-airway-ipa-all.pdf">This summary report</a></strong> is the first thing you would get out of IPA after running a core analysis on the results of this analysis. Open it up and take a look.</p>
+<p>It shows, among other things, that the endothelial nitric-oxide synthase signaling pathway is highly over-represented among the most differentially expressed genes. For this, or any pathway you’re interested in, IPA will give you a <a href="img/r-rnaseq-airway-ipa-enos-report.pdf">report like this one for eNOS</a> with a very detailed description of the pathway, what kind of diseases it’s involved in, which molecules are in the pathway, what drugs might perturb the pathway, and more. If you’re logged into IPA, clicking any of the links will take you to IPA’s knowledge base where you can learn more about the connection between that molecule, the pathway, and a disease, and further overlay any of your gene expression data on top of the pathway.</p>
+<div class="figure">
+<img src="img/r-rnaseq-airway-ipa-enos-pathway.jpg" />
+
+</div>
+<p>The report also shows us some <a href="img/r-rnaseq-airway-ipa-upstream.csv">upstream regulators</a>, which serves as a great positive control that this stuff actually works, because it’s inferring that dexamethasone might be an upstream regulator based on the target molecules that are dysregulated in our data.</p>
+<p>You can also start to visualize networks in the context of biology and how your gene expression data looks in those molecules. Here’s a network related to “Connective Tissue Disorders, Inflammatory Disease, Inflammatory Response” showing dysregulation of some of the genes in our data.</p>
+<div class="figure">
+<img src="img/r-rnaseq-airway-ipa-inflam-network.jpg" />
+
+</div>
 <hr />
 </div>
 <div class="footnotes">
 <hr />
 <ol>
 <li id="fn1"><p>This only works when using the argument <code>tidy=TRUE</code> when creating the <code>DESeqDataSetFromMatrix()</code>.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>Luo, W. et al., 2009. GAGE: generally applicable gene set enrichment for pathway analysis. <a href="https://www.ncbi.nlm.nih.gov/pubmed/19473525"><em>BMC bioinformatics</em>, 10:161</a>. Package: <a href="http://bioconductor.org/packages/gage">bioconductor.org/packages/gage</a>.<a href="#fnref2">↩</a></p></li>
 </ol>
 </div>
 

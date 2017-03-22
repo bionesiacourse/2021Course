@@ -531,7 +531,7 @@ div.tocify {
 <li>What is the p-value for this test? Make sure this is accessed from the results (using the <code>$</code> operator) rather than simply re-typing the value. Feel free to extract the p-value directly from the t-test, or first use <strong>broom::tidy()</strong> to tidy the model first.</li>
 </ol>
 <pre><code>## [1] 0.0389</code></pre>
-<ol start="7" style="list-style-type: decimal">
+<ol start="6" style="list-style-type: decimal">
 <li>The smoking history column (<code>hxofCig</code>) is represented categorically as “heavy”, “moderate” and “non-smoker”. Create a margin table showing the total counts of individuals in each smoking history category, for all individuals who either did or did not have any cardiac event by smoking status. Next, show proportions over the row margin (what percentage of each category had any cardiac event?).</li>
 </ol>
 <pre><code>##             any.event
@@ -545,11 +545,11 @@ div.tocify {
 ##   heavy      0.803 0.197
 ##   moderate   0.833 0.167
 ##   non-smoker 0.859 0.141</code></pre>
-<ol start="8" style="list-style-type: decimal">
+<ol start="7" style="list-style-type: decimal">
 <li>Create a mosaic plot to explore the tabulated counts visually.</li>
 </ol>
 <p><img src="r-stats-homework_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<ol start="9" style="list-style-type: decimal">
+<ol start="8" style="list-style-type: decimal">
 <li>Now use a chi-squared test for the independence of smoking history and cardiac event.</li>
 </ol>
 <pre><code>## 
@@ -557,7 +557,7 @@ div.tocify {
 ## 
 ## data:  xt
 ## X-squared = 2, df = 2, p-value = 0.4</code></pre>
-<ol start="10" style="list-style-type: decimal">
+<ol start="9" style="list-style-type: decimal">
 <li>Load the <strong>broom</strong> package and “tidy” the model output above.</li>
 </ol>
 <pre><code>##   statistic p.value parameter                     method
@@ -584,7 +584,7 @@ div.tocify {
 <li>All of these columns have outliers and are (at least slightly) skewed. But <code>ck</code> seems to require the most attention. Try using a log transformation on that column and create another histogram.</li>
 </ol>
 <p><img src="r-stats-homework_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
-<ol start="5" style="list-style-type: decimal">
+<ol start="4" style="list-style-type: decimal">
 <li>Even when transformed, the cytokine kinase is a little skewed. Assuming we can tolerate this, let’s try fitting a binary logistic regression model that predicts the mother’s status as carrier based on the values of the four blood serum markers. Don’t forget to use the log version of <code>ck</code>, and to use <code>summary()</code> on the model object to view the coefficients.</li>
 </ol>
 <pre><code>## 
@@ -614,7 +614,7 @@ div.tocify {
 ## AIC: 109
 ## 
 ## Number of Fisher Scoring iterations: 7</code></pre>
-<ol start="6" style="list-style-type: decimal">
+<ol start="5" style="list-style-type: decimal">
 <li>The coefficient (estimate) for each explanatory variable gives us the log of the odds ratio. Exponentiate the estimates to make them more interpretable (i.e. the odds ratio for each 1-unit increase in the predictor variable).</li>
 </ol>
 <pre><code>## (Intercept)     log(ck)           h          pk          ld 
