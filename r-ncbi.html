@@ -438,6 +438,9 @@ div.tocify {
     <li>
       <a href="r-stats-homework.html">Essential Statistics</a>
     </li>
+    <li>
+      <a href="r-rnaseq-homework.html">RNA-seq Data Analysis</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -803,7 +806,7 @@ nuclinkid &lt;- yfmlinks2$links$genome_nuccore</code></pre>
 <h3>web_history</h3>
 <p>As mentioned above, NCBI places limits on large queries to its databases. However, the servers allow users to store long lists of IDs as “web history” objects. When we ran our original <code>entrez_search()</code> we toggled “use_history” to TRUE. Because we did that, our original search object contains a “web_history” element.</p>
 <pre class="r"><code>res$web_history</code></pre>
-<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_10485...)</code></pre>
+<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_17113...)</code></pre>
 <p>So if we wanted to retrieve all records from our original search, regardless of how many there are, we can pass the web history object in the “web_history” argument to <code>entrez_fetch()</code> rather than a list of IDs.</p>
 <pre class="r"><code>recs &lt;- entrez_fetch(db = &quot;pubmed&quot;, web_history = res$web_history, rettype = &quot;xml&quot;, parsed = TRUE)</code></pre>
 <p>Did we get all of the titles?</p>
@@ -818,7 +821,7 @@ length(plosidtitles) == res$count</code></pre>
 <pre class="r"><code>res &lt;- entrez_search(db = &quot;clinvar&quot;, term= &quot;atherosclerosis[Disease/Phenotype]&quot;)
 postids &lt;- entrez_post(db = &quot;clinvar&quot;, res$ids)
 postids</code></pre>
-<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_10542...)</code></pre>
+<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_10907...)</code></pre>
 </div>
 <div id="entrez_info" class="section level3">
 <h3><code>entrez_info()</code></h3>
@@ -831,15 +834,15 @@ postids</code></pre>
 ##     &lt;DbName&gt;mesh&lt;/DbName&gt;
 ##     &lt;MenuName&gt;MeSH&lt;/MenuName&gt;
 ##     &lt;Description&gt;MeSH Database&lt;/Description&gt;
-##     &lt;DbBuild&gt;Build170227-0310.1&lt;/DbBuild&gt;
-##     &lt;Count&gt;268831&lt;/Count&gt;
-##     &lt;LastUpdate&gt;2017/02/27 03:38&lt;/LastUpdate&gt;
+##     &lt;DbBuild&gt;Build170327-0315.1&lt;/DbBuild&gt;
+##     &lt;Count&gt;269250&lt;/Count&gt;
+##     &lt;LastUpdate&gt;2017/03/27 03:40&lt;/LastUpdate&gt;
 ##     &lt;FieldList&gt;
 ##       &lt;Field&gt;
 ##         &lt;Name&gt;ALL&lt;/Name&gt;
 ##         &lt;FullName&gt;All Fields&lt;/FullName&gt;
 ##         &lt;Description&gt;All terms from all searchable fields&lt;/Description&gt;
-##         &lt;TermCount&gt;2311806&lt;/TermCount&gt;
+##         &lt;TermCount&gt;2314175&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;N&lt;/SingleToken&gt;
@@ -861,7 +864,7 @@ postids</code></pre>
 ##         &lt;Name&gt;FILT&lt;/Name&gt;
 ##         &lt;FullName&gt;Filter&lt;/FullName&gt;
 ##         &lt;Description&gt;Limits the records&lt;/Description&gt;
-##         &lt;TermCount&gt;16&lt;/TermCount&gt;
+##         &lt;TermCount&gt;15&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -872,7 +875,7 @@ postids</code></pre>
 ##         &lt;Name&gt;TN&lt;/Name&gt;
 ##         &lt;FullName&gt;Tree Number&lt;/FullName&gt;
 ##         &lt;Description&gt;Tree Number&lt;/Description&gt;
-##         &lt;TermCount&gt;298216&lt;/TermCount&gt;
+##         &lt;TermCount&gt;298635&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -894,7 +897,7 @@ postids</code></pre>
 ##         &lt;Name&gt;SUBS&lt;/Name&gt;
 ##         &lt;FullName&gt;Substance Name&lt;/FullName&gt;
 ##         &lt;Description&gt;Substance Name&lt;/Description&gt;
-##         &lt;TermCount&gt;575151&lt;/TermCount&gt;
+##         &lt;TermCount&gt;575830&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -905,7 +908,7 @@ postids</code></pre>
 ##         &lt;Name&gt;WORD&lt;/Name&gt;
 ##         &lt;FullName&gt;Text Word&lt;/FullName&gt;
 ##         &lt;Description&gt;Free text&lt;/Description&gt;
-##         &lt;TermCount&gt;1020808&lt;/TermCount&gt;
+##         &lt;TermCount&gt;1021792&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -938,7 +941,7 @@ postids</code></pre>
 ##         &lt;Name&gt;NOTE&lt;/Name&gt;
 ##         &lt;FullName&gt;Scope Note&lt;/FullName&gt;
 ##         &lt;Description&gt;Scope Note&lt;/Description&gt;
-##         &lt;TermCount&gt;443019&lt;/TermCount&gt;
+##         &lt;TermCount&gt;443381&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -960,7 +963,7 @@ postids</code></pre>
 ##         &lt;Name&gt;MULT&lt;/Name&gt;
 ##         &lt;FullName&gt;Multi&lt;/FullName&gt;
 ##         &lt;Description&gt;Multi&lt;/Description&gt;
-##         &lt;TermCount&gt;791451&lt;/TermCount&gt;
+##         &lt;TermCount&gt;792130&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -982,7 +985,7 @@ postids</code></pre>
 ##         &lt;Name&gt;MHUI&lt;/Name&gt;
 ##         &lt;FullName&gt;MeSH Unique ID&lt;/FullName&gt;
 ##         &lt;Description&gt;NLM MeSH Browser Unique ID&lt;/Description&gt;
-##         &lt;TermCount&gt;268271&lt;/TermCount&gt;
+##         &lt;TermCount&gt;268690&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;

@@ -438,6 +438,9 @@ div.tocify {
     <li>
       <a href="r-stats-homework.html">Essential Statistics</a>
     </li>
+    <li>
+      <a href="r-rnaseq-homework.html">RNA-seq Data Analysis</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -941,14 +944,14 @@ BRCA.mRNA %&gt;%
                         extract.cols = c(&quot;PAX8&quot;, &quot;GATA3&quot;, &quot;ESR1&quot;))
 head(expr)</code></pre>
 <pre><code>## # A tibble: 6 × 5
-##            bcr_patient_barcode   dataset     PAX8     GATA3      ESR1
-##                          &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-## 1 TCGA-A1-A0SD-01A-11R-A115-07 BRCA.mRNA -0.54225  2.870500  3.084250
-## 2 TCGA-A1-A0SE-01A-11R-A084-07 BRCA.mRNA -0.59475  2.166250  2.386000
-## 3 TCGA-A1-A0SH-01A-11R-A084-07 BRCA.mRNA  0.49975  1.323500  0.791250
-## 4 TCGA-A1-A0SJ-01A-11R-A084-07 BRCA.mRNA -0.58850  1.841625  2.495417
-## 5 TCGA-A1-A0SK-01A-12R-A084-07 BRCA.mRNA -0.96475 -6.025250 -4.860667
-## 6 TCGA-A1-A0SM-01A-11R-A084-07 BRCA.mRNA  0.57275  1.804500  2.797000</code></pre>
+##            bcr_patient_barcode   dataset   PAX8 GATA3   ESR1
+##                          &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1 TCGA-A1-A0SD-01A-11R-A115-07 BRCA.mRNA -0.542  2.87  3.084
+## 2 TCGA-A1-A0SE-01A-11R-A084-07 BRCA.mRNA -0.595  2.17  2.386
+## 3 TCGA-A1-A0SH-01A-11R-A084-07 BRCA.mRNA  0.500  1.32  0.791
+## 4 TCGA-A1-A0SJ-01A-11R-A084-07 BRCA.mRNA -0.589  1.84  2.495
+## 5 TCGA-A1-A0SK-01A-12R-A084-07 BRCA.mRNA -0.965 -6.03 -4.861
+## 6 TCGA-A1-A0SM-01A-11R-A084-07 BRCA.mRNA  0.573  1.80  2.797</code></pre>
 <pre class="r"><code>table(expr$dataset)</code></pre>
 <pre><code>## 
 ## BRCA.mRNA   OV.mRNA UCEC.mRNA 

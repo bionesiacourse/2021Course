@@ -9,18 +9,18 @@ geometry: margin=.75in
 
 # Exercise 1
 
-If we look at our metadata, we see that the control samples are SRR1039508, SRR1039512, SRR1039516, and SRR1039520. This bit of code will take the rawcounts data, `mutate()` it to add a column called `controlmean`, then `select()` only the gene name and this newly created column, and assigning the result to a new object called `meancounts`. (_Hint_: `rawcounts %>% mutate(...) %>% select(...)`)
+If we look at our metadata, we see that the control samples are SRR1039508, SRR1039512, SRR1039516, and SRR1039520. This bit of code will take the mycounts data, `mutate()` it to add a column called `controlmean`, then `select()` only the gene name and this newly created column, and assigning the result to a new object called `mycounts`. (_Hint_: `mycounts %>% mutate(...) %>% select(...)`)
 
 
 ```r
-meancounts <- rawcounts %>% 
+meancounts <- mycounts %>% 
   mutate(controlmean = (SRR1039508+SRR1039512+SRR1039516+SRR1039520)/4) %>% 
   select(ensgene, controlmean)
 meancounts
 ```
 
 ```
-## # A tibble: 38,694 × 2
+## # A tibble: 38,694 X 2
 ##            ensgene controlmean
 ##              <chr>       <dbl>
 ## 1  ENSG00000000003      900.75
@@ -40,7 +40,7 @@ meancounts
 
 
 ```
-## # A tibble: 38,694 × 3
+## # A tibble: 38,694 X 3
 ##            ensgene controlmean treatedmean
 ##              <chr>       <dbl>       <dbl>
 ## 1  ENSG00000000003      900.75      658.00
@@ -60,7 +60,7 @@ meancounts
 
 
 ```
-## # A tibble: 1 × 2
+## # A tibble: 1 X 2
 ##   `sum(controlmean)` `sum(treatedmean)`
 ##                <dbl>              <dbl>
 ## 1           23005324           22196524
@@ -89,7 +89,7 @@ anno
 ```
 
 ```
-## # A tibble: 66,531 × 9
+## # A tibble: 66,531 X 9
 ##            ensgene entrez   symbol   chr     start       end strand
 ##              <chr>  <int>    <chr> <chr>     <int>     <int>  <int>
 ## 1  ENSG00000000003   7105   TSPAN6     X 100627109 100639991     -1
@@ -110,7 +110,7 @@ anno
 
 
 ```
-## # A tibble: 3 × 4
+## # A tibble: 3 X 4
 ##           ensgene controlmean treatedmean   log2fc
 ##             <chr>       <dbl>       <dbl>    <dbl>
 ## 1 ENSG00000179593        0.25      129.50 9.016808
@@ -122,7 +122,7 @@ anno
 
 
 ```
-## # A tibble: 21,995 × 12
+## # A tibble: 21,995 X 12
 ##            ensgene controlmean treatedmean    log2fc    entrez     symbol
 ##              <chr>       <dbl>       <dbl>     <dbl>     <int>      <chr>
 ## 1  ENSG00000179593        0.25      129.50  9.016808       247    ALOX15B
@@ -147,7 +147,7 @@ anno
 
 
 ```
-## # A tibble: 38,694 × 7
+## # A tibble: 38,694 X 7
 ##                row   baseMean log2FoldChange      lfcSE      stat
 ##              <chr>      <dbl>          <dbl>      <dbl>     <dbl>
 ## 1  ENSG00000152583   954.7709       3.967218 0.21418203  18.52265
