@@ -1,9 +1,7 @@
-# See http://rmarkdown.rstudio.com/rmarkdown_websites.html
-
-name: "Bioconnector Workshops"
+name: "VWC 2017 2-day Training"
 
 navbar:
-  title: "BIOCONNECTOR"
+  title: "VWC2017"
   icon: fa-home
   type: inverse
   left:
@@ -16,71 +14,10 @@ navbar:
     - text: "Data"
       icon: fa-download
       href: "data.html"
-    - text: "Workshops"
+    - text: "Topics"
       icon: fa-book
       menu:
-        - text: "--- R ---"
-        - text: "R Basics"
-          href: r-basics.html
-        - text: "Data Frames"
-          href: r-dataframes.html
-        - text: "Data Manipulation"
-          href: r-dplyr-yeast.html
-        - text: "Tidying data"
-          href: r-tidy.html
-        - text: "List Manipulation"
-          href: r-lists.html
-        - text: "Data Visualization"
-          href: r-viz-gapminder.html
-        - text: "Interactive Visualization with JavaScript and R"
-          href: r-interactive-viz.html
-        - text: "Reproducible Research & RMarkdown"
-          href: r-rmarkdown.html
-        - text: "Building Shiny Web Apps in R"
-          href: r-shiny.html
-        - text: "Essential Statistics with R"
-          href: r-stats.html
-        - text: "Survival Analysis with TCGA Data"
-          href: r-survival.html
-        - text: "Harvesting Data from NCBI"
-          href: r-ncbi.html
-        - text: "----"
-        - text: "--- NGS DATA ANALYSIS ---"
-        - text: "RNA-seq (airway data)"
-          href: r-rnaseq-airway.html
-        - text: "----"
-        - text: "--- FUTURE COURSES ---"
-        - text: "ChIP-seq data analysis"
-        - text: "Introduction to Bioconductor"
-#        - text: "----"
-#        - text: "--- OTHER CLASSES ---"
-#        - text: "Data Cleaning w/ OpenRefine"
-#          href:
-#        - text: "HPC & Parallel Computing"
-#          href:
-#        - text: "HPC at UVA Best Practices"
-#          href:
-#        - text: "Automated Image Analysis w/ ImageJ"
-#          href:
-#        - text: "Power & Sample Size Analysis"
-#          href:
-#        - text: "Intro to Categorical Data Analysis"
-#          href:
-#        - text: "Beginner Python"
-#          href:
-#        - text: "Advanced Python"
-#          href:
-#        - text: "Introduction to SPSS"
-#          href:
-    - text: "BIMS8382"
-      icon: fa-university
-      #icon: fa-graduation-cap
-      menu:
-        - text: "Syllabus"
-          icon: fa-graduation-cap
-          href: bims8382.html
-        - text: "----"
-        - text: "--- Lessons ---"
+        - text: "--- Core Lessons ---"
         - text: "R Basics"
           href: r-basics.html
         - text: "Data Frames"
@@ -91,14 +28,14 @@ navbar:
           href: r-tidy.html
         - text: "Data Visualization"
           href: r-viz-gapminder.html
+        - text: "RNA-seq"
+          href: r-rnaseq-airway.html
+        - text: "----"
+        - text: "--- Optional Lessons ---"
         - text: "Reproducible Research & RMarkdown"
           href: r-rmarkdown.html
         - text: "Essential Statistics with R"
           href: r-stats.html
-        - text: "Survival Analysis with TCGA Data"
-          href: r-survival.html
-        - text: "RNA-Seq Data Analysis"
-          href: r-rnaseq-airway.html
         - text: "----"
         - text: "--- Homework ---"
         - text: "Data Manipulation"
@@ -111,16 +48,11 @@ navbar:
           href: r-stats-homework.html
         - text: "RNA-seq Data Analysis"
           href: r-rnaseq-homework.html
-#    - text: "Syllabus"
-#      icon: fa-book
-#      href: syllabus.html
   right:
     - icon: fa-question fa-lg
       menu:
         - text: "FAQ"
-          href: faq.html
-        - text: "People"
-          href: people.html
+          href: index.html#faq
         - text: "Further resources"
           href: help.html
 output:
