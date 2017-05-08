@@ -1,7 +1,7 @@
 ---
 title: Reproducible Research
 # date: Spring 2017
-author: "[bioconnector.org/workshops/r-rmarkdown](http://bioconnector.org/workshops/r-rmarkdown)"
+# author: "[bioconnector.org/workshops/r-rmarkdown](http://bioconnector.org/workshops/r-rmarkdown)"
 output:
   pdf_document:
     fig_caption: yes
@@ -39,10 +39,10 @@ Consider the figure below. How do we reproduce it? What do we need?
 
 ![Life expectancy vs GDP by Continent. See bioconnector.org/workshops/r-viz-gapminder.](../img/gm-lifeexp-vs-gdp.png)
 
-- The **[data](https://github.com/bioconnector/bioconnector.github.io/blob/master/data/gapminder.csv)**:
+- The **data**:
     - Data points themselves
     - Other metadata
-- The **[code](https://raw.githubusercontent.com/bioconnector/workshops/master/lessons/r/r-viz.Rmd)**:
+- The **code**:
     - Should be readable
     - Comments in the code / well-documented so a normal person can figure out how it runs.
     - How were the trend lines drawn?

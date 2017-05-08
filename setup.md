@@ -127,7 +127,7 @@ These commands may produce some notes or other output, but as long as they work 
 
 ## Get Data
 
-The data used in any of these classes can be found at the [data](data.html) link on the navbar at the top. Create a new folder somewhere on your computer that's easy to get to (e.g., your Desktop). Name it `bioconnector`. Inside that folder, make a folder called `data`, all lowercase. Download datasets as needed by [clicking here](data.html) or using the link at the top. Save these data files to the new `bioconnector/data` folder you just made.
+The data used in any of these classes can be found at the [data](data.html) link on the navbar at the top. Create a new folder somewhere on your computer that's easy to get to (e.g., your Desktop). Name it `workshop`. Inside that folder, make a folder called `data`, all lowercase. Download datasets as needed by [clicking here](data.html) or using the link at the top. Save these data files to the new `workshop/data` folder you just made.
 
 
 ## RNA-seq
@@ -143,7 +143,7 @@ biocLite()
 biocLite("DESeq2")
 ```
 
-**Download data we'll use in class.** Create a new folder somewhere on your computer that's easy to get to (e.g., your Desktop). Name it `bioconnector`. Inside that folder, make a folder called `data`, all lowercase. Download the 3 data files below, saving them to the new `bioconnector/data` folder you just made.
+**Download data we'll use in class.** Create a new folder somewhere on your computer that's easy to get to (e.g., your Desktop). Name it `workshop`. Inside that folder, make a folder called `data`, all lowercase. Download the 3 data files below, saving them to the new `workshop/data` folder you just made.
 
 - Length-scaled count matrix (i.e., `countData`): [airway_scaledcounts.csv](data/airway_scaledcounts.csv)
 - Sample metadata (i.e., `colData`): [airway_metadata.csv](data/airway_metadata.csv)

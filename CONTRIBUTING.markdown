@@ -1,6 +1,6 @@
 # Contributing
 
-This repository contains all the source code used to build [bioconnector.org/workshops](http://bioconnector.org/workshops) using RStudio to render a collection of RMarkdown files as a standalone website. This requires RMarkdown >=v0.9.6, and optionally, the RStudio IDE preview, which has integrated support for building websites (i.e., a "Build Website" button that does it all).
+This repository contains all the source code used to build the rendered workshop site using RStudio to render a collection of RMarkdown files as a standalone website. This requires RMarkdown >=v0.9.6, and optionally, the RStudio IDE preview, which has integrated support for building websites (i.e., a "Build Website" button that does it all).
 
 To contribute:
 
