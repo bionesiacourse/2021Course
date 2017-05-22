@@ -56,6 +56,8 @@ navbar:
           href: index.html#faq
         - text: "Further resources"
           href: help.html
+        - text: "Source code for this site"
+          href: https://github.com/stephenturner/vwc2017
 output:
   html_document:
     theme: default
