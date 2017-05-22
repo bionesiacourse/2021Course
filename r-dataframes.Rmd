@@ -4,7 +4,7 @@ title: "Data Frames"
 
 ```{r init, include=F}
 library(knitr)
-opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=TRUE, cache=TRUE)
+opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=TRUE, cache=TRUE, results='hide')
 options(digits=3)
 options(max.print=200)
 .ex <- 1 # Track ex numbers w/ hidden var. Increment each ex: `r .ex``r .ex=.ex+1`
@@ -44,7 +44,7 @@ If you see a warning that looks like this: `Error in library(packageName) : ther
 
 Now, let's actually load the data. You can get help for the import function with `?read_csv`. When we load data we assign it to a variable just like any other, and we can choose a name for that data. Since we're going to be referring to this data a lot, let's give it a short easy name to type. I'm going to call it `ydat`. Once we've loaded it we can type the name of the object itself (`ydat`) to see it printed to the screen. 
 
-```{r loaddata}
+```{r loaddata, results='markup'}
 ydat <- read_csv(file="data/brauer2007_tidy.csv")
 ydat
 ```
@@ -125,7 +125,7 @@ ydat %>%
   summarize(mean=mean(expression), sd=sd(expression), r=cor(rate, expression))
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, results="markup"}
 ydat %>% 
   filter(bp=="leucine biosynthesis") %>% 
   group_by(nutrient, symbol) %>% 

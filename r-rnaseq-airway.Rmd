@@ -4,7 +4,7 @@ title: "Count-Based Differential Expression Analysis of RNA-seq Data"
 
 ```{r init, include=F}
 library(knitr)
-opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=TRUE, cache=TRUE)
+opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=TRUE, cache=TRUE, results='hide')
 .ex <- 1
 library(ggplot2)
 theme_set(theme_bw(base_size=16) + theme(strip.background = element_blank()))
@@ -125,7 +125,7 @@ metadata <-  read_csv("data/airway_metadata.csv")
 
 Now, take a look at each.
 
-```{r viewImportedData}
+```{r viewImportedData, results='markup'}
 mycounts
 metadata
 ```

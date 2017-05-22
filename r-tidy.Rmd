@@ -4,7 +4,7 @@ title: "Tidy Data and Advanced Data Manipulation"
 
 ```{r init, include=F}
 library(knitr)
-opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=TRUE, cache=TRUE)
+opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=TRUE, cache=TRUE, results='hide')
 .ex <- 1
 # library(ggplot2)
 # theme_set(theme_bw(base_size=16) + theme(strip.background = element_blank()))
@@ -38,7 +38,7 @@ So far we've dealt exclusively with tidy data -- data that's easy to work with, 
 
 You can read a lot more about tidy data [in this paper](http://www.jstatsoft.org/v59/i10/paper). Let's load some untidy data and see if we can see the difference. This is some made-up data for five different patients (Jon, Ann, Bill, Kate, and Joe) given three different drugs (A, B, and C), at two doses (10 and 20), and measuring their heart rate. Download the [heartrate2dose.csv](data/heartrate2dose.csv) file directly from [the data downloads page](data.html). Load **readr** and **dplyr**, and import and display the data.
 
-```{r untidy}
+```{r untidy, results='markup'}
 library(readr)
 library(dplyr)
 hr <- read_csv("data/heartrate2dose.csv")
@@ -209,7 +209,7 @@ It's rare that a data analysis involves only a single table of data. You normall
 
 First, let's import the dataset that links the systematic name to gene ontology information. It's the [brauer2007_sysname2go.csv](data/brauer2007_sysname2go.csv) file available at [the data downloads page](data.html). Let's call the imported data frame `sn2go`.
 
-```{r}
+```{r, results='markup'}
 # Import the data
 sn2go <- read_csv("data/brauer2007_sysname2go.csv")
 

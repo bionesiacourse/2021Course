@@ -4,7 +4,7 @@ title: "Data Manipulation with dplyr"
 
 ```{r init, include=F}
 library(knitr)
-opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=TRUE, cache=TRUE)
+opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=TRUE, cache=TRUE, results='hide')
 options(digits=3)
 options(max.print=200)
 .ex <- 1 # Track ex numbers w/ hidden var. Increment each ex: `r .ex``r .ex=.ex+1`
@@ -410,6 +410,10 @@ ydat %>%
 ### Piping exercises
 
 **EXERCISE `r .ex``r .ex=.ex+1`**
+
+```{r, include=FALSE}
+opts_chunk$set(results='markup')
+```
 
 Here's a warm-up round. Try the following.
 
