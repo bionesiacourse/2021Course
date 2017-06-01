@@ -1,10 +1,10 @@
 ---
-title: "**VWC 2017 Workshop**"
+title: "**4-VA JMU 2017 Biological Data Science Workshop**"
 author: "<small>May 24-25 2017<br>9:00am - 5:00pm</small>"
 date: "_Please let me know if you had installation issues._"
 output: 
   slidy_presentation:
-    footer: "stephenturner.us/vwc2017 | VWC 8382"
+    footer: "4va.github.io/biodatasci | JMU2017"
     font_adjustment: +2
 
 ---
@@ -27,7 +27,7 @@ Stephen Turner (Bioinformatics Core Director, PHS)
 
 ### Course Website
 
-**[stephenturner.us/vwc2017](http://stephenturner.us/vwc2017)**
+**[4va.github.io/biodatasci](http://4va.github.io/biodatasci)**
 
 ## Agenda
 

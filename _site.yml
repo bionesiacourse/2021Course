@@ -1,7 +1,7 @@
-name: "VWC 2017 2-day Training"
+name: "4-VA JMU 2017 Biological Data Science Workshop"
 
 navbar:
-  title: "VWC2017"
+  title: "JMU2017"
   icon: fa-home
   type: inverse
   left:
@@ -56,7 +56,7 @@ navbar:
         - text: "Further resources"
           href: help.html
         - text: "Source code for this site"
-          href: https://github.com/stephenturner/vwc2017
+          href: https://github.com/4va/biodatasci
 output:
   html_document:
     theme: default

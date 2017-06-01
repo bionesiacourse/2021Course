@@ -1,6 +1,6 @@
-# VWC 2017 workshop
+# 4-VA JMU 2017 Biological Data Science Workshop
 
-This repo contains all the source material and rendered content for the VWC 2017 bioinformatics workshop.
+This repo contains all the source material and rendered content for the 4-VA JMU 2017 Biological Data Science Workshop.
 
-- Rendered site: [stephenturner.us/vwc2017](http://stephenturner.us/vwc2017)
+- Rendered site: [4va.github.io/biodatasci](http://4va.github.io/biodatasci)
 - [How to contribute to this repo](CONTRIBUTING.markdown#contributing)

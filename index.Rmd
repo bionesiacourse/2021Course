@@ -1,5 +1,5 @@
 ---
-title: "VWC 2017 Bioinformatics Workshop"
+title: "4-VA JMU 2017 Biological Data Science Workshop"
 output: 
   html_document:
     toc: yes
@@ -10,10 +10,16 @@ This workshop introduces methods, tools, and software for reproducibly managing,
 ## General Information
 
 
-**_When_: May 24-25, 2017, 9:00am - 5:00pm**
+**_When_: June 2017.** Classroom dates are reserved all day June 14, 15, 20, 21, 22. We will not use all day each day. Course dates/times will be updated shortly.
 
-**_Where_: BioConnector Classroom, 1212 Health Sciences Library**  
-<small>If you are driving please allow an extra 30 minutes to find parking and walk to the HSL building. The HSL's street address is [1350 Jefferson Park Avenue](https://goo.gl/maps/iZqX6RhDuJ22). The closest parking garage is the [11th Street Parking Garage](http://www.virginia.edu/parking/facilities/11thstreet.html). You'll need to grab a parking ticket when you drive in, take the ticket with you, and then pay at the customer service or "Pay-On-Foot Station" before exiting the garage. Alternatively, there may be street parking or other garage parking options available nearby off [West Main St](https://goo.gl/maps/2ew6MhXGAmA2). Once at the entrance to the HSL, [call Stephen](https://med.virginia.edu/phs/faculty-and-staff-directory/stephen-d-turner-ph-d/) to let you in. The 1212 BioConnector room is in the HSL, downstairs one floor, to the right.</small>
+- June 14 (?), 9:00am - 5:00pm (?)
+- June 15 (?), 9:00am - 5:00pm (?)
+- June 20 (?), 9:00am - 5:00pm (?)
+- June 21 (?), 9:00am - 5:00pm (?)
+- June 22 (?), 9:00am - 5:00pm (?)
+
+**_Where_: Health Sciences Library Carter Classroom**  
+<small>If you are driving please allow an extra 30 minutes to find parking and walk to the HSL building. The HSL's street address is [1350 Jefferson Park Avenue](https://goo.gl/maps/iZqX6RhDuJ22). The closest parking garage is the [11th Street Parking Garage](http://www.virginia.edu/parking/facilities/11thstreet.html). You'll need to grab a parking ticket when you drive in, take the ticket with you, and then pay at the customer service or "Pay-On-Foot Station" before exiting the garage. Alternatively, there may be street parking or other garage parking options available nearby off [West Main St](https://goo.gl/maps/2ew6MhXGAmA2). Once at the entrance to the HSL, [call Stephen](https://med.virginia.edu/phs/faculty-and-staff-directory/stephen-d-turner-ph-d/) to let you in. The Carter classroom is in the HSL, downstairs one floor, to the right, across from my office.</small>
 
 **_Instructor_: Stephen Turner**&nbsp;
 <a href="http://www.google.com/recaptcha/mailhide/d?k=01Wp6BFjxhU6BE1ONDOeDAZg==&amp;c=hClvy-RObaqm8ONK69PMtLKUh74mVHLjokUJXLgkUHk=" onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k\07501Wp6BFjxhU6BE1ONDOeDAZg\75\75\46c\75hClvy-RObaqm8ONK69PMtLKUh74mVHLjokUJXLgkUHk\075', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address"><i class="fa fa-envelope"></i></a>
