@@ -18,36 +18,44 @@ navbar:
       icon: fa-book
       menu:
         - text: "--- Core Lessons ---"
-        - text: "R Basics"
-          href: r-basics.html
-        - text: "Data Frames"
-          href: r-dataframes.html
-        - text: "Data Manipulation"
-          href: r-dplyr-yeast.html
-        - text: "Tidying data"
-          href: r-tidy.html
-        - text: "Data Visualization"
-          href: r-viz-gapminder.html
-        - text: "RNA-seq"
-          href: r-rnaseq-airway.html
+        - text: "(Check back later...)"
         - text: "----"
         - text: "--- Optional Lessons ---"
-        - text: "Reproducible Research & RMarkdown"
-          href: r-rmarkdown.html
-        - text: "Essential Statistics with R"
-          href: r-stats.html
+        - text: "(Check back later...)"
         - text: "----"
         - text: "--- Homework ---"
-        - text: "Data Manipulation"
-          href: r-dplyr-homework.html
-        - text: "Data Visualization"
-          href: r-dataviz-homework.html
-        - text: "Reproducible Research & RMarkdown"
-          href: r-rmarkdown-homework.html
-        - text: "Essential Statistics"
-          href: r-stats-homework.html
-        - text: "RNA-seq Data Analysis"
-          href: r-rnaseq-homework.html
+        - text: "(Check back later...)"
+#        - text: "--- Core Lessons ---"
+#        - text: "R Basics"
+#          href: r-basics.html
+#        - text: "Data Frames"
+#          href: r-dataframes.html
+#        - text: "Data Manipulation"
+#          href: r-dplyr-yeast.html
+#        - text: "Tidying data"
+#          href: r-tidy.html
+#        - text: "Data Visualization"
+#          href: r-viz-gapminder.html
+#        - text: "RNA-seq"
+#          href: r-rnaseq-airway.html
+#        - text: "----"
+#        - text: "--- Optional Lessons ---"
+#        - text: "Reproducible Research & RMarkdown"
+#          href: r-rmarkdown.html
+#        - text: "Essential Statistics with R"
+#          href: r-stats.html
+#        - text: "----"
+#        - text: "--- Homework ---"
+#        - text: "Data Manipulation"
+#          href: r-dplyr-homework.html
+#        - text: "Data Visualization"
+#          href: r-dataviz-homework.html
+#        - text: "Reproducible Research & RMarkdown"
+#          href: r-rmarkdown-homework.html
+#        - text: "Essential Statistics"
+#          href: r-stats-homework.html
+#        - text: "RNA-seq Data Analysis"
+#          href: r-rnaseq-homework.html
   right:
     - icon: fa-question fa-lg
       menu:
