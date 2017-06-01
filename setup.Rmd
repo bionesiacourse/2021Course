@@ -2,6 +2,8 @@
 title: 'Setup Instructions'
 ---
 
+<big><mark>**_PLEASE NOTE THAT THESE SETUP INSTRUCTIONS ARE INCOMPLETE AS OF JUNE 1 2017. THEY WILL BE UPDATED PRIOR TO THE COURSE, AND YOU WILL BE NOTIFIED. PLEASE DON'T WORRY ABOUT COMPLETING THIS JUST YET._**</mark></big>
+
 ## Software
 
 ### R
@@ -46,7 +48,7 @@ This may produce some notes or other output, but as long as you don't get an err
 
 ### Bioconductor
 
-For some classes (e.g., RNA-seq), you'll need to install a few [Bioconductor](http://bioconductor.org/) packages. These packages are installed differently than "regular" R packages from CRAN. Copy and paste these lines of code into your R console one at a time. 
+For some classes (e.g., RNA-seq), you'll need to install a few [Bioconductor](http://bioconductor.org/) packages. These packages are installed differently than "regular" R packages from CRAN. Copy and paste these lines of code into your R console **one at a time**. 
 
 ```r
 source("http://bioconductor.org/biocLite.R")
@@ -57,6 +59,7 @@ biocLite("DESeq2")
 A few notes:
 
 - We will be using the latest versions of Bioconductor from the 3.5 release. This requires R version 3.4.0 or higher. If you have R 3.4.0 installed, running the commands above will install Bioconductor 3.5. See <http://bioconductor.org/news/bioc_3_5_release/>.
+- If at any point in the Bioconductor package installations you get prompts in the console asking you to update any existing packages, type `n` at the prompt at hit enter.
 - If you see a note long the lines of "_binary version available but the source version is later_", followed by a question, "_Do you want to install from sources the package which needs compilation? y/n_", type **`n` for no**, and hit enter.
 
 Check that you've installed everything correctly by closing and reopening RStudio and entering the following commands at the console window:
@@ -69,8 +72,6 @@ If you get a message that says something like: `Error in library(DESeq2) : there
 
 
 ### RMarkdown
-
-**_This will be an optional session, so you can skip this section for now._**
 
 Several additional setup steps required for the reproducible research with RMarkdown class.
 
