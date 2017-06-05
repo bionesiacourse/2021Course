@@ -5,11 +5,13 @@ output:
     toc: yes
 ---
 
-This workshop introduces methods, tools, and software for reproducibly managing, manipulating, analyzing, and visualizing large-scale biomedical data using the R statistical computing environment. [More below in the FAQ](#faq).
+This workshop 4-VA sponsored workshop introduces methods, tools, and software for reproducibly managing, manipulating, analyzing, and visualizing large-scale biomedical data using the R statistical computing environment.
 
 ## General Information
 
-**_When_: June 2017.** Classroom dates are reserved all day June 14, 15, 20, 21, 22. **We will not use all day, all five days. Course dates/times will be updated shortly**.
+### Logistics
+
+**_When_: June 2017.** Classroom dates are reserved all day June 14, 15, 20, 21, 22. _We will not use all day, all five days. Course dates/times will be updated._
 
 - June 14 (?), 9:00am - 5:00pm,
 - June 15 (?), 9:00am - 5:00pm
@@ -27,6 +29,14 @@ This workshop introduces methods, tools, and software for reproducibly managing,
 <a href="https://github.com/stephenturner/" target="_blank"><i class="fa fa-github"></i></a>
 <a href="http://www.gettinggeneticsdone.com/" target="_blank"><i class="fa fa-rss"></i></a>  
 <small>Stephen Turner, Ph.D. is faculty in the Department of Public Health Sciences, and director of the [Bioinformatics Core](http://bioinformatics.virginia.edu) at the UVA School of Medicine.</small>
+
+### About this workshop 
+
+This workshop introduces methods, tools, and software for reproducibly managing, manipulating, analyzing, and visualizing large-scale biomedical data. Specifically, the course introduces the R statistical computing environment and packages for manipulating and visualizing high-dimensional data, covers strategies for reproducible research, and culminates with analyses of real experimental NGS data using R and Bioconductor packages.
+
+**This is not a statistics class.** Some general knowledge of statistics and study design is helpful, but isn't strictly required. If time allows, there is an optional session on statistics that we can cover.
+
+**This is not a _"Tool X"_ or _"Software Y"_ class.** I want you to take away from this workshop the ability to use an extremely powerful scientific computing environment (R) to do many of the things that you'll do _across study designs and disciplines_ -- managing, manipulating, visualizing, and analyzing large, sometimes high-dimensional data. Whether that data is gene expression data from yeast, microbial genomics data from _B. pertussis_, public health data from [Gapminder](http://www.gapminder.org/), RNA-seq data from humans, or truck routing data from FedEx, you'll need the same computational know-how and data literacy to do the same kinds of basic tasks in each. I might show you how to use specific tools here and there (DESeq2 for RNA-seq analysis, Biomart for data retrieval, etc.), but these are not important -- you probably won't be using the same specific software or methods 10 years from now, but you'll still use the same underlying data and computational foundation. **That** is the point of this workshop -- to arm you with a basic foundation, and more importantly, to **enable you to figure out how to use _this tool_ or _that tool_ on your own**, when you need to.
 
 ## Setup
 
@@ -63,7 +73,7 @@ Contemporary life sciences research is plagued by reproducibility issues. This s
 
 This session focuses on analyzing real data from a biological application - analyzing RNA-seq data for differentially expressed genes. This session provides an introduction to RNA-seq data analysis, involving reading in count data from an RNA-seq experiment, exploring the data using base R functions and then analysis with the DESeq2 Bioconductor package. The session will conclude with downstream pathway analysis and exploring the biological and functional context of the results.
 
-#### Session 6: TBA, some kind of microbial genomics analysis
+#### Session 6: TBA
 
 TBA. Check back later.
 
@@ -74,14 +84,6 @@ TBA. Check back later.
 This session will provide hands-on instruction and exercises covering basic statistical analysis in R. This will cover descriptive statistics, t-tests, linear models, chi-square, clustering, dimensionality reduction, and resampling strategies. We will also cover methods for "tidying" model results for downstream visualization and summarization.
 
 ## FAQ
-
-#### What's this workshop all about? 
-
-This workshop introduces methods, tools, and software for reproducibly managing, manipulating, analyzing, and visualizing large-scale biomedical data. Specifically, the course introduces the R statistical computing environment and packages for manipulating and visualizing high-dimensional data, covers strategies for reproducible research, and culminates with analyses of real experimental gene expression and microbial datasets using R and Bioconductor packages.
-
-**This is not a statistics class.** Some general knowledge of statistics and study design is helpful, but isn't strictly required. If time allows, there is an optional session on statistics that we can cover.
-
-**This is not a _"Tool X"_ or _"Software Y"_ class.** I want you to take away from this workshop the ability to use an extremely powerful scientific computing environment (R) to do many of the things that you'll do _across study designs and disciplines_ -- managing, manipulating, visualizing, and analyzing large, sometimes high-dimensional data. Whether that data is gene expression data from yeast, microbial genomics data from _B. pertussis_, public health data from [Gapminder](http://www.gapminder.org/), RNA-seq data from humans, or truck routing data from FedEx, you'll need the same computational know-how and data literacy to do the same kinds of basic tasks in each. I might show you how to use specific tools here and there (DESeq2 for RNA-seq analysis, Phyloseq for microbial genomics, Biomart for data retrieval, etc.), but these are not important -- you probably won't be using the same specific software or methods 10 years from now, but you'll still use the same underlying data and computational foundation. **That** is the point of this workshop -- to arm you with a basic foundation, and more importantly, to **enable you to figure out how to use _this tool_ or _that tool_ on your own**, when you need to.
 
 #### What are the pre-requisites?
 
