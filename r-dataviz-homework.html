@@ -413,18 +413,18 @@ ydat &lt;- read_csv(&quot;http://bioconnector.org/workshops/data/brauer2007_tidy
 
 # Display the data
 ydat</code></pre>
-<pre><code>## # A tibble: 198,430 × 7
+<pre><code>## # A tibble: 198,430 x 7
 ##    symbol systematic_name nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
-## 1    SFB2         YNL049C  Glucose  0.05      -0.24
-## 2    &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
-## 3    QRI7         YDL104C  Glucose  0.05      -0.02
-## 4    CFT2         YLR115W  Glucose  0.05      -0.33
-## 5    SSO2         YMR183C  Glucose  0.05       0.05
-## 6    PSP2         YML017W  Glucose  0.05      -0.69
-## 7    RIB2         YOL066C  Glucose  0.05      -0.55
-## 8   VMA13         YPR036W  Glucose  0.05      -0.75
-## 9    EDC3         YEL015W  Glucose  0.05      -0.24
+##  1   SFB2         YNL049C  Glucose  0.05      -0.24
+##  2   &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
+##  3   QRI7         YDL104C  Glucose  0.05      -0.02
+##  4   CFT2         YLR115W  Glucose  0.05      -0.33
+##  5   SSO2         YMR183C  Glucose  0.05       0.05
+##  6   PSP2         YML017W  Glucose  0.05      -0.69
+##  7   RIB2         YOL066C  Glucose  0.05      -0.55
+##  8  VMA13         YPR036W  Glucose  0.05      -0.75
+##  9   EDC3         YEL015W  Glucose  0.05      -0.24
 ## 10   VPS5         YOR069W  Glucose  0.05      -0.16
 ## # ... with 198,420 more rows, and 2 more variables: bp &lt;chr&gt;, mf &lt;chr&gt;</code></pre>
 </div>
@@ -466,7 +466,7 @@ ydat</code></pre>
     summarise(meanexp = mean(expression)) %&gt;%
     arrange(desc(meanexp)) %&gt;%
     filter(row_number() == 1 | row_number() == n())</code></pre>
-<pre><code>## # A tibble: 2 × 2
+<pre><code>## # A tibble: 2 x 2
 ##   symbol meanexp
 ##    &lt;chr&gt;   &lt;dbl&gt;
 ## 1   HXT3    4.01

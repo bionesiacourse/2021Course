@@ -416,7 +416,7 @@ gm</code></pre>
 <ol style="list-style-type: decimal">
 <li>How many unique countries are represented per continent?</li>
 </ol>
-<pre><code>## # A tibble: 5 × 2
+<pre><code>## # A tibble: 5 x 2
 ##   continent     n
 ##       &lt;chr&gt; &lt;int&gt;
 ## 1    Africa    52
@@ -427,14 +427,14 @@ gm</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Which European nation had the lowest GDP per capita in 1997?</li>
 </ol>
-<pre><code>## # A tibble: 1 × 6
+<pre><code>## # A tibble: 1 x 6
 ##   country continent  year lifeExp     pop gdpPercap
 ##     &lt;chr&gt;     &lt;chr&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;
 ## 1 Albania    Europe  1997      73 3428038      3193</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>According to the data available, what was the average life expectancy across each continent in the 1980s?</li>
 </ol>
-<pre><code>## # A tibble: 5 × 2
+<pre><code>## # A tibble: 5 x 2
 ##   continent mean.lifeExp
 ##       &lt;chr&gt;        &lt;dbl&gt;
 ## 1    Africa         52.5
@@ -445,7 +445,7 @@ gm</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>What 5 countries have the highest total GDP over all years combined?</li>
 </ol>
-<pre><code>## # A tibble: 5 × 2
+<pre><code>## # A tibble: 5 x 2
 ##          country Total.GDP
 ##            &lt;chr&gt;     &lt;dbl&gt;
 ## 1  United States  7.68e+13
@@ -456,57 +456,57 @@ gm</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>What countries and years had life expectancies of <em>at least</em> 80 years? <em>N.b. only output the columns of interest: country, life expectancy and year (in that order).</em></li>
 </ol>
-<pre><code>## # A tibble: 22 × 3
+<pre><code>## # A tibble: 22 x 3
 ##             country lifeExp  year
 ##               &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt;
-## 1         Australia    80.4  2002
-## 2         Australia    81.2  2007
-## 3            Canada    80.7  2007
-## 4            France    80.7  2007
-## 5  Hong Kong, China    80.0  1997
-## 6  Hong Kong, China    81.5  2002
-## 7  Hong Kong, China    82.2  2007
-## 8           Iceland    80.5  2002
-## 9           Iceland    81.8  2007
+##  1        Australia    80.4  2002
+##  2        Australia    81.2  2007
+##  3           Canada    80.7  2007
+##  4           France    80.7  2007
+##  5 Hong Kong, China    80.0  1997
+##  6 Hong Kong, China    81.5  2002
+##  7 Hong Kong, China    82.2  2007
+##  8          Iceland    80.5  2002
+##  9          Iceland    81.8  2007
 ## 10           Israel    80.7  2007
 ## # ... with 12 more rows</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li>What 10 countries have the strongest correlation (in either direction) between life expectancy and per capita GDP?</li>
 </ol>
-<pre><code>## # A tibble: 10 × 2
+<pre><code>## # A tibble: 10 x 2
 ##           country     r
 ##             &lt;chr&gt; &lt;dbl&gt;
-## 1          France 0.996
-## 2         Austria 0.993
-## 3         Belgium 0.993
-## 4          Norway 0.992
-## 5            Oman 0.991
-## 6  United Kingdom 0.990
-## 7           Italy 0.990
-## 8          Israel 0.988
-## 9         Denmark 0.987
+##  1         France 0.996
+##  2        Austria 0.993
+##  3        Belgium 0.993
+##  4         Norway 0.992
+##  5           Oman 0.991
+##  6 United Kingdom 0.990
+##  7          Italy 0.990
+##  8         Israel 0.988
+##  9        Denmark 0.987
 ## 10      Australia 0.986</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li>Which combinations of continent (besides Asia) and year have the highest average population across all countries? <em>N.b. your output should include all results sorted by highest average population</em>. With what you already know, this one may stump you. See <a href="http://stackoverflow.com/q/27207963/654296">this Q&amp;A</a> for how to <code>ungroup</code> before <code>arrange</code>ing. This also <a href="https://github.com/hadley/dplyr/releases/tag/v0.5.0">behaves differently in more recent versions of dplyr</a>.</li>
 </ol>
-<pre><code>## # A tibble: 48 × 3
+<pre><code>## # A tibble: 48 x 3
 ##    continent  year mean.pop
 ##        &lt;chr&gt; &lt;int&gt;    &lt;dbl&gt;
-## 1   Americas  2007 35954847
-## 2   Americas  2002 33990910
-## 3   Americas  1997 31876016
-## 4   Americas  1992 29570964
-## 5   Americas  1987 27310159
-## 6   Americas  1982 25211637
-## 7   Americas  1977 23122708
-## 8   Americas  1972 21175368
-## 9     Europe  2007 19536618
+##  1  Americas  2007 35954847
+##  2  Americas  2002 33990910
+##  3  Americas  1997 31876016
+##  4  Americas  1992 29570964
+##  5  Americas  1987 27310159
+##  6  Americas  1982 25211637
+##  7  Americas  1977 23122708
+##  8  Americas  1972 21175368
+##  9    Europe  2007 19536618
 ## 10    Europe  2002 19274129
 ## # ... with 38 more rows</code></pre>
 <ol start="8" style="list-style-type: decimal">
 <li>Which three countries have had the most consistent population estimates (i.e. lowest standard deviation) across the years of available data?</li>
 </ol>
-<pre><code>## # A tibble: 3 × 2
+<pre><code>## # A tibble: 3 x 2
 ##                 country sd.pop
 ##                   &lt;chr&gt;  &lt;dbl&gt;
 ## 1 Sao Tome and Principe  45906
@@ -522,17 +522,18 @@ gm</code></pre>
 <pre><code>## Source: local data frame [36 x 6]
 ## Groups: country [22]
 ## 
+## # A tibble: 36 x 6
 ##                   country continent  year lifeExp      pop gdpPercap
 ##                     &lt;chr&gt;     &lt;chr&gt; &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
-## 1             Afghanistan      Asia  1982    39.9 12881816       978
-## 2  Bosnia and Herzegovina    Europe  1992    72.2  4256013      2547
-## 3  Bosnia and Herzegovina    Europe  1997    73.2  3607000      4766
-## 4                Bulgaria    Europe  2002    72.1  7661799      7697
-## 5                Bulgaria    Europe  2007    73.0  7322858     10681
-## 6                 Croatia    Europe  1997    73.7  4444595      9876
-## 7          Czech Republic    Europe  1997    74.0 10300707     16049
-## 8          Czech Republic    Europe  2002    75.5 10256295     17596
-## 9          Czech Republic    Europe  2007    76.5 10228744     22833
+##  1            Afghanistan      Asia  1982    39.9 12881816       978
+##  2 Bosnia and Herzegovina    Europe  1992    72.2  4256013      2547
+##  3 Bosnia and Herzegovina    Europe  1997    73.2  3607000      4766
+##  4               Bulgaria    Europe  2002    72.1  7661799      7697
+##  5               Bulgaria    Europe  2007    73.0  7322858     10681
+##  6                Croatia    Europe  1997    73.7  4444595      9876
+##  7         Czech Republic    Europe  1997    74.0 10300707     16049
+##  8         Czech Republic    Europe  2002    75.5 10256295     17596
+##  9         Czech Republic    Europe  2007    76.5 10228744     22833
 ## 10      Equatorial Guinea    Africa  1977    42.0   192675       959
 ## # ... with 26 more rows</code></pre>
 </div>
