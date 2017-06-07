@@ -54,6 +54,7 @@ For some classes (e.g., RNA-seq), you'll need to install a few [Bioconductor](ht
 source("http://bioconductor.org/biocLite.R")
 biocLite()
 biocLite("DESeq2")
+biocLite("ggtree")
 ```
 
 A few notes:
@@ -62,13 +63,14 @@ A few notes:
 - If at any point in the Bioconductor package installations you get prompts in the console asking you to update any existing packages, type `n` at the prompt at hit enter.
 - If you see a note long the lines of "_binary version available but the source version is later_", followed by a question, "_Do you want to install from sources the package which needs compilation? y/n_", type **`n` for no**, and hit enter.
 
-Check that you've installed everything correctly by closing and reopening RStudio and entering the following commands at the console window:
+Check that you've installed everything correctly by closing and reopening RStudio and entering the following commands at the console window, one at a time:
 
 ```r
 library(DESeq2)
+library(ggtree)
 ```
 
-If you get a message that says something like: `Error in library(DESeq2) : there is no package called 'DESeq2'`, then the required packages did not install correctly. Please do not hesitate to email me _prior to the course_ if you are still having difficulty. In this email, please copy and paste what you typed in the console, and all of the output that streams by in the console.
+If you get a message that says something like: `Error in library(somePackageName) : there is no package called 'somePackageName'`, then the required packages did not install correctly. Please do not hesitate to email me _prior to the course_ if you are still having difficulty. In this email, please copy and paste what you typed in the console, and all of the output that streams by in the console.
 
 
 ### RMarkdown
