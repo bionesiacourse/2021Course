@@ -97,9 +97,13 @@ Click the **[<i class="fa fa-download"></i> Data](data.html)** link on the navba
 
 ### Tidy Data
 
-- "For Big-Data Scientists, Janitor Work Is Key Hurdle to Insights." _The New York Times_, August 8, 2014. Available at: <https://nyti.ms/2jNUfHo>.
-- Sections 1-3 of [Wickham, H. "Tidy Data." _Journal of Statistical Software_ 59:10 (2014)](http://www.jstatsoft.org/article/view/v059i10/v59i10.pdf).
-- Click through each section of [stephenturner.us/dataorganization/](http://stephenturner.us/dataorganization/).
+1. "For Big-Data Scientists, Janitor Work Is Key Hurdle to Insights." _The New York Times_, August 8, 2014. Available at: <https://nyti.ms/2jNUfHo>.
+1. Sections 1-3 of [Wickham, H. "Tidy Data." _Journal of Statistical Software_ 59:10 (2014)](http://www.jstatsoft.org/article/view/v059i10/v59i10.pdf).
+1. Click through each section of [stephenturner.us/dataorganization/](http://stephenturner.us/dataorganization/).
+
+### Phylogenetic trees
+
+1. How to read a phylogeny [epidemic.bio.ed.ac.uk/how_to_read_a_phylogeny](http://epidemic.bio.ed.ac.uk/how_to_read_a_phylogeny).
 
 ### RNA-seq
 
