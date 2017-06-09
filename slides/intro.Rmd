@@ -1,10 +1,10 @@
 ---
 title: "**4-VA JMU 2017 Biological Data Science Workshop**"
-author: "<small>May 24-25 2017<br>9:00am - 5:00pm</small>"
+author: "<small>June 2017</small>"
 date: "_Please let me know if you had installation issues._"
 output: 
   slidy_presentation:
-    footer: "4va.github.io/biodatasci | JMU2017"
+    footer: "http://git.io/4va | JMU2017"
     font_adjustment: +2
 
 ---
@@ -17,8 +17,13 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ### Meetings
 
-- May 24-25, 2017
-- 9am - 5pm in the BioConnector Classroom (1212 HSL)
+Date | Time
+---------|---------
+Weds, June 14  | 8:30am - 5:00pm
+Thurs, June 15 | 8:30am - 12:00pm
+Weds, June 21  | 8:30am - 5:00pm
+Thurs, June 22 | 8:30am - 12:00pm
+
 
 ### Instructor
 
@@ -27,21 +32,22 @@ Stephen Turner (Bioinformatics Core Director, PHS)
 
 ### Course Website
 
-**[4va.github.io/biodatasci](http://4va.github.io/biodatasci)**
+**[git.io/4va](http://git.io/biodatasci)**
 
 ## Agenda
 
 ### Core curriculum
 
-1. Session 1 : Intro to R
-1. Session 2 : Advanced Data Manipulation & Tidy Data
-1. Session 3 : Advanced Data Visualization with ggplot2
-1. Session 4 : Introduction to RNA-seq Data Analysis
+1. Intro to R
+1. Advanced Data Manipulation & Tidy Data
+1. Reproducible Research & Dynamic Documents
+1. Advanced Data Visualization with ggplot2
+1. Visualizing and annotating phylogenetic trees
+1. Introduction to RNA-seq data analysis
 
 ### Optional lessons
 
-1. Elective 1: Reproducible Research & Dynamic Documents
-1. Elective 2: Essential Statistics
+1. Essential Statistics
 
 ## Session 1: Intro to R
 
@@ -63,11 +69,22 @@ Novice-level introduction to the R, RStudio, and basic functionality such as cre
 
 <img height=800, src="../img/dplyr-cheatsheet.png">
 
-## Session 3: Advanced Data Visualization with ggplot2
+## Session 3: Reproducible Research & Dynamic Documents {.bigger}
+
+- What's reproducible research all about?
+- How to do it with **[RMarkdown](http://rmarkdown.rstudio.com/)**.
+
+## Session 4: Advanced Data Visualization with ggplot2
 
 <img height=800, src="../img/ggplot2-cheatsheet.png">
 
-## Session 4: Introduction to RNA-seq Data Analysis
+## Session 5: Phylogenetic trees with ggtree
+
+- Google image search "ggtree"
+
+<img height=800, src="../img/ggtree.png">
+
+## Session 6: Introduction to RNA-seq Data Analysis
 
 1. Our data: source, pre-processing, structure
 1. Importing & exploring
@@ -79,12 +96,8 @@ Novice-level introduction to the R, RStudio, and basic functionality such as cre
 1. Alternative approaches
 1. Pathway analysis
 
-## Elective 1: Reproducible Research & Dynamic Documents {.bigger}
 
-- What's reproducible research all about?
-- How to do it with **[RMarkdown](http://rmarkdown.rstudio.com/)**.
-
-## Elective 2: Essential Statistics
+## Elective 1: Essential Statistics
 
 1. Descriptive statistics & Exploratory data analysis (EDA)
 1. Continuous variable statistics
