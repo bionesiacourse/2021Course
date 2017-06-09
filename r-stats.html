@@ -844,11 +844,9 @@ rm(nh)
 ## -12.81  -4.61  -0.95   3.29  52.09 
 ## 
 ## Coefficients:
-##                          Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)                28.513      0.139  205.44   &lt;2e-16 ***
-## RelationshipStatusSingle    0.341      0.223    1.53     0.13    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##                          Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)                28.513      0.139  205.44   &lt;2e-16
+## RelationshipStatusSingle    0.341      0.223    1.53     0.13
 ## 
 ## Residual standard error: 6.47 on 3552 degrees of freedom
 ##   (153 observations deleted due to missingness)
@@ -878,11 +876,9 @@ anova(fit)</code></pre>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: BMI
-##                 Df Sum Sq Mean Sq F value  Pr(&gt;F)    
-## SmokingStatus    2   1411     706      17 4.5e-08 ***
-## Residuals     3553 147551      42                    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+##                 Df Sum Sq Mean Sq F value  Pr(&gt;F)
+## SmokingStatus    2   1411     706      17 4.5e-08
+## Residuals     3553 147551      42</code></pre>
 <pre class="r"><code>summary(fit)</code></pre>
 <pre><code>## 
 ## Call:
@@ -893,12 +889,10 @@ anova(fit)</code></pre>
 ## -12.56  -4.56  -1.06   3.32  51.74 
 ## 
 ## Coefficients:
-##                     Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)           27.391      0.245  111.97  &lt; 2e-16 ***
-## SmokingStatusFormer    1.774      0.329    5.39  7.6e-08 ***
-## SmokingStatusNever     1.464      0.284    5.16  2.6e-07 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##                     Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)           27.391      0.245  111.97  &lt; 2e-16
+## SmokingStatusFormer    1.774      0.329    5.39  7.6e-08
+## SmokingStatusNever     1.464      0.284    5.16  2.6e-07
 ## 
 ## Residual standard error: 6.44 on 3553 degrees of freedom
 ##   (151 observations deleted due to missingness)
@@ -923,11 +917,9 @@ anova(fit)</code></pre>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: BMI
-##                 Df Sum Sq Mean Sq F value  Pr(&gt;F)    
-## SmokingStatus    2   1411     706      17 4.5e-08 ***
-## Residuals     3553 147551      42                    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+##                 Df Sum Sq Mean Sq F value  Pr(&gt;F)
+## SmokingStatus    2   1411     706      17 4.5e-08
+## Residuals     3553 147551      42</code></pre>
 <pre class="r"><code># Print the full model statistics
 summary(fit)</code></pre>
 <pre><code>## 
@@ -939,12 +931,10 @@ summary(fit)</code></pre>
 ## -12.56  -4.56  -1.06   3.32  51.74 
 ## 
 ## Coefficients:
-##                      Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)            28.856      0.144  200.60  &lt; 2e-16 ***
-## SmokingStatusFormer     0.309      0.263    1.17     0.24    
-## SmokingStatusCurrent   -1.464      0.284   -5.16  2.6e-07 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##                      Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)            28.856      0.144  200.60  &lt; 2e-16
+## SmokingStatusFormer     0.309      0.263    1.17     0.24
+## SmokingStatusCurrent   -1.464      0.284   -5.16  2.6e-07
 ## 
 ## Residual standard error: 6.44 on 3553 degrees of freedom
 ##   (151 observations deleted due to missingness)
@@ -994,11 +984,9 @@ summary(fit)</code></pre>
 ## -40.34 -13.11  -2.66   9.31 127.97 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   -73.71       5.08   -14.5   &lt;2e-16 ***
-## Height          0.92       0.03    30.6   &lt;2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)   -73.71       5.08   -14.5   &lt;2e-16
+## Height          0.92       0.03    30.6   &lt;2e-16
 ## 
 ## Residual standard error: 18.6 on 3674 degrees of freedom
 ##   (31 observations deleted due to missingness)
@@ -1040,11 +1028,9 @@ summary(fit)</code></pre>
 ##   -224   -196   -116    167   1588 
 ## 
 ## Coefficients:
-##               Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)     207.56       5.87   35.34   &lt;2e-16 ***
-## PhysActiveYes    19.27       7.93    2.43    0.015 *  
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##               Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)     207.56       5.87   35.34   &lt;2e-16
+## PhysActiveYes    19.27       7.93    2.43    0.015
 ## 
 ## Residual standard error: 231 on 3436 degrees of freedom
 ##   (269 observations deleted due to missingness)
@@ -1061,12 +1047,10 @@ summary(fit)</code></pre>
 ##   -239   -197   -112    167   1598 
 ## 
 ## Coefficients:
-##               Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)    247.883     13.085   18.94  &lt; 2e-16 ***
-## PhysActiveYes   13.674      8.081    1.69  0.09073 .  
-## Age             -0.800      0.232   -3.45  0.00057 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##               Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)    247.883     13.085   18.94  &lt; 2e-16
+## PhysActiveYes   13.674      8.081    1.69  0.09073
+## Age             -0.800      0.232   -3.45  0.00057
 ## 
 ## Residual standard error: 231 on 3435 degrees of freedom
 ##   (269 observations deleted due to missingness)
@@ -1084,13 +1068,11 @@ summary(fit)</code></pre>
 ## -397.9  -31.0   -4.4   20.5 1400.9 
 ## 
 ## Coefficients:
-##               Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)     46.693      7.573    6.17  7.8e-10 ***
-## PhysActiveYes    9.275      4.462    2.08    0.038 *  
-## Age             -0.590      0.128   -4.60  4.3e-06 ***
-## Gendermale     385.199      4.351   88.53  &lt; 2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##               Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)     46.693      7.573    6.17  7.8e-10
+## PhysActiveYes    9.275      4.462    2.08    0.038
+## Age             -0.590      0.128   -4.60  4.3e-06
+## Gendermale     385.199      4.351   88.53  &lt; 2e-16
 ## 
 ## Residual standard error: 128 on 3434 degrees of freedom
 ##   (269 observations deleted due to missingness)
@@ -1255,15 +1237,13 @@ summary(fit)</code></pre>
 ## -2.038   0.518   0.518   0.518   1.195  
 ## 
 ## Coefficients:
-##              Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)     1.942      0.061   31.82  &lt; 2e-16 ***
-## RaceAsian      -0.641      0.177   -3.62    3e-04 ***
-## RaceBlack      -0.597      0.136   -4.41  1.1e-05 ***
-## RaceHispanic   -1.413      0.147   -9.62  &lt; 2e-16 ***
-## RaceMexican    -1.984      0.133  -14.95  &lt; 2e-16 ***
-## RaceOther      -1.264      0.222   -5.69  1.3e-08 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##              Estimate Std. Error z value Pr(&gt;|z|)
+## (Intercept)     1.942      0.061   31.82  &lt; 2e-16
+## RaceAsian      -0.641      0.177   -3.62    3e-04
+## RaceBlack      -0.597      0.136   -4.41  1.1e-05
+## RaceHispanic   -1.413      0.147   -9.62  &lt; 2e-16
+## RaceMexican    -1.984      0.133  -14.95  &lt; 2e-16
+## RaceOther      -1.264      0.222   -5.69  1.3e-08
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
@@ -1286,18 +1266,16 @@ summary(fit)</code></pre>
 ## -2.482   0.302   0.437   0.625   1.687  
 ## 
 ## Coefficients:
-##                Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)   -3.50e-01   2.92e-01   -1.20    0.230    
-## RaceAsian     -4.55e-01   2.03e-01   -2.24    0.025 *  
-## RaceBlack     -2.39e-01   1.54e-01   -1.55    0.120    
-## RaceHispanic  -1.01e+00   1.64e-01   -6.18  6.6e-10 ***
-## RaceMexican   -1.40e+00   1.48e-01   -9.47  &lt; 2e-16 ***
-## RaceOther     -9.89e-01   2.42e-01   -4.08  4.5e-05 ***
-## Age            3.37e-02   2.95e-03   11.43  &lt; 2e-16 ***
-## Income         1.53e-05   1.54e-06    9.98  &lt; 2e-16 ***
-## SleepHrsNight -1.76e-02   3.52e-02   -0.50    0.616    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##                Estimate Std. Error z value Pr(&gt;|z|)
+## (Intercept)   -3.50e-01   2.92e-01   -1.20    0.230
+## RaceAsian     -4.55e-01   2.03e-01   -2.24    0.025
+## RaceBlack     -2.39e-01   1.54e-01   -1.55    0.120
+## RaceHispanic  -1.01e+00   1.64e-01   -6.18  6.6e-10
+## RaceMexican   -1.40e+00   1.48e-01   -9.47  &lt; 2e-16
+## RaceOther     -9.89e-01   2.42e-01   -4.08  4.5e-05
+## Age            3.37e-02   2.95e-03   11.43  &lt; 2e-16
+## Income         1.53e-05   1.54e-06    9.98  &lt; 2e-16
+## SleepHrsNight -1.76e-02   3.52e-02   -0.50    0.616
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
@@ -1499,13 +1477,11 @@ summary(fit)</code></pre>
 ## -397.9  -31.0   -4.4   20.5 1400.9 
 ## 
 ## Coefficients:
-##               Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)     46.693      7.573    6.17  7.8e-10 ***
-## PhysActiveYes    9.275      4.462    2.08    0.038 *  
-## Age             -0.590      0.128   -4.60  4.3e-06 ***
-## Gendermale     385.199      4.351   88.53  &lt; 2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##               Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)     46.693      7.573    6.17  7.8e-10
+## PhysActiveYes    9.275      4.462    2.08    0.038
+## Age             -0.590      0.128   -4.60  4.3e-06
+## Gendermale     385.199      4.351   88.53  &lt; 2e-16
 ## 
 ## Residual standard error: 128 on 3434 degrees of freedom
 ##   (269 observations deleted due to missingness)
@@ -1621,15 +1597,13 @@ summary(glmfit)</code></pre>
 ## -2.038   0.518   0.518   0.518   1.195  
 ## 
 ## Coefficients:
-##              Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)     1.942      0.061   31.82  &lt; 2e-16 ***
-## RaceAsian      -0.641      0.177   -3.62    3e-04 ***
-## RaceBlack      -0.597      0.136   -4.41  1.1e-05 ***
-## RaceHispanic   -1.413      0.147   -9.62  &lt; 2e-16 ***
-## RaceMexican    -1.984      0.133  -14.95  &lt; 2e-16 ***
-## RaceOther      -1.264      0.222   -5.69  1.3e-08 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##              Estimate Std. Error z value Pr(&gt;|z|)
+## (Intercept)     1.942      0.061   31.82  &lt; 2e-16
+## RaceAsian      -0.641      0.177   -3.62    3e-04
+## RaceBlack      -0.597      0.136   -4.41  1.1e-05
+## RaceHispanic   -1.413      0.147   -9.62  &lt; 2e-16
+## RaceMexican    -1.984      0.133  -14.95  &lt; 2e-16
+## RaceOther      -1.264      0.222   -5.69  1.3e-08
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
