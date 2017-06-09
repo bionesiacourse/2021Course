@@ -421,18 +421,18 @@ ydat &lt;- read_csv(&quot;data/brauer2007_tidy.csv&quot;)</code></pre>
   summarize(n=n_distinct(symbol)) %&gt;% 
   arrange(desc(n)) %&gt;% 
   head(20)</code></pre>
-<pre><code>## # A tibble: 20 × 2
+<pre><code>## # A tibble: 20 x 2
 ##                                                              bp     n
 ##                                                           &lt;chr&gt; &lt;int&gt;
-## 1                                    biological process unknown   269
-## 2                                          protein biosynthesis   182
-## 3                           protein amino acid phosphorylation*    78
-## 4                                         protein biosynthesis*    73
-## 5                        cell wall organization and biogenesis*    64
-## 6  regulation of transcription from RNA polymerase II promoter*    49
-## 7                        nuclear mRNA splicing, via spliceosome    47
-## 8                                                   DNA repair*    44
-## 9                                          aerobic respiration*    42
+##  1                                   biological process unknown   269
+##  2                                         protein biosynthesis   182
+##  3                          protein amino acid phosphorylation*    78
+##  4                                        protein biosynthesis*    73
+##  5                       cell wall organization and biogenesis*    64
+##  6 regulation of transcription from RNA polymerase II promoter*    49
+##  7                       nuclear mRNA splicing, via spliceosome    47
+##  8                                                  DNA repair*    44
+##  9                                         aerobic respiration*    42
 ## 10                                       ER to Golgi transport*    42
 ## 11                                                 endocytosis*    41
 ## 12                                         mRNA-nucleus export*    41

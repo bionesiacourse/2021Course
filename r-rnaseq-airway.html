@@ -449,23 +449,23 @@ mycounts &lt;- read_csv(&quot;data/airway_scaledcounts.csv&quot;)
 metadata &lt;-  read_csv(&quot;data/airway_metadata.csv&quot;)</code></pre>
 <p>Now, take a look at each.</p>
 <pre class="r"><code>mycounts</code></pre>
-<pre><code>## # A tibble: 38,694 × 9
+<pre><code>## # A tibble: 38,694 x 9
 ##            ensgene SRR1039508 SRR1039509 SRR1039512 SRR1039513 SRR1039516
 ##              &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-## 1  ENSG00000000003        723        486        904        445       1170
-## 2  ENSG00000000005          0          0          0          0          0
-## 3  ENSG00000000419        467        523        616        371        582
-## 4  ENSG00000000457        347        258        364        237        318
-## 5  ENSG00000000460         96         81         73         66        118
-## 6  ENSG00000000938          0          0          1          0          2
-## 7  ENSG00000000971       3413       3916       6000       4308       6424
-## 8  ENSG00000001036       2328       1714       2640       1381       2165
-## 9  ENSG00000001084        670        372        692        448        917
+##  1 ENSG00000000003        723        486        904        445       1170
+##  2 ENSG00000000005          0          0          0          0          0
+##  3 ENSG00000000419        467        523        616        371        582
+##  4 ENSG00000000457        347        258        364        237        318
+##  5 ENSG00000000460         96         81         73         66        118
+##  6 ENSG00000000938          0          0          1          0          2
+##  7 ENSG00000000971       3413       3916       6000       4308       6424
+##  8 ENSG00000001036       2328       1714       2640       1381       2165
+##  9 ENSG00000001084        670        372        692        448        917
 ## 10 ENSG00000001167        426        295        531        178        740
 ## # ... with 38,684 more rows, and 3 more variables: SRR1039517 &lt;dbl&gt;,
 ## #   SRR1039520 &lt;dbl&gt;, SRR1039521 &lt;dbl&gt;</code></pre>
 <pre class="r"><code>metadata</code></pre>
-<pre><code>## # A tibble: 8 × 4
+<pre><code>## # A tibble: 8 x 4
 ##           id     dex celltype     geo_id
 ##        &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;
 ## 1 SRR1039508 control   N61311 GSM1275862
@@ -490,41 +490,41 @@ metadata &lt;-  read_csv(&quot;data/airway_metadata.csv&quot;)</code></pre>
   mutate(controlmean = (SRR1039508+SRR1039512+SRR1039516+SRR1039520)/4) %&gt;% 
   select(ensgene, controlmean)
 meancounts</code></pre>
-<pre><code>## # A tibble: 38,694 × 2
+<pre><code>## # A tibble: 38,694 x 2
 ##            ensgene controlmean
 ##              &lt;chr&gt;       &lt;dbl&gt;
-## 1  ENSG00000000003      900.75
-## 2  ENSG00000000005        0.00
-## 3  ENSG00000000419      520.50
-## 4  ENSG00000000457      339.75
-## 5  ENSG00000000460       97.25
-## 6  ENSG00000000938        0.75
-## 7  ENSG00000000971     5219.00
-## 8  ENSG00000001036     2327.00
-## 9  ENSG00000001084      755.75
+##  1 ENSG00000000003      900.75
+##  2 ENSG00000000005        0.00
+##  3 ENSG00000000419      520.50
+##  4 ENSG00000000457      339.75
+##  5 ENSG00000000460       97.25
+##  6 ENSG00000000938        0.75
+##  7 ENSG00000000971     5219.00
+##  8 ENSG00000001036     2327.00
+##  9 ENSG00000001084      755.75
 ## 10 ENSG00000001167      527.75
 ## # ... with 38,684 more rows</code></pre>
 <ol style="list-style-type: decimal">
 <li>Build off of this code, <code>mutate()</code> it once more (prior to the <code>select()</code>) function, to add another column called <code>treatedmean</code> that takes the mean of the expression values of the treated samples. Then <code>select()</code> only the <code>ensgene</code>, <code>controlmean</code> and <code>treatedmean</code> columns, assigning it to a new object called meancounts.</li>
 </ol>
-<pre><code>## # A tibble: 38,694 × 3
+<pre><code>## # A tibble: 38,694 x 3
 ##            ensgene controlmean treatedmean
 ##              &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;
-## 1  ENSG00000000003      900.75       658.0
-## 2  ENSG00000000005        0.00         0.0
-## 3  ENSG00000000419      520.50       546.0
-## 4  ENSG00000000457      339.75       316.5
-## 5  ENSG00000000460       97.25        78.8
-## 6  ENSG00000000938        0.75         0.0
-## 7  ENSG00000000971     5219.00      6687.5
-## 8  ENSG00000001036     2327.00      1785.8
-## 9  ENSG00000001084      755.75       578.0
+##  1 ENSG00000000003      900.75       658.0
+##  2 ENSG00000000005        0.00         0.0
+##  3 ENSG00000000419      520.50       546.0
+##  4 ENSG00000000457      339.75       316.5
+##  5 ENSG00000000460       97.25        78.8
+##  6 ENSG00000000938        0.75         0.0
+##  7 ENSG00000000971     5219.00      6687.5
+##  8 ENSG00000001036     2327.00      1785.8
+##  9 ENSG00000001084      755.75       578.0
 ## 10 ENSG00000001167      527.75       348.2
 ## # ... with 38,684 more rows</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Directly comparing the raw counts is going to be problematic if we just happened to sequence one group at a higher depth than another. Later on we’ll do this analysis properly, normalizing by sequencing depth per sample using a better approach. But for now, <code>summarize()</code> the data to show the <code>sum</code> of the mean counts across all genes for each group. Your answer should look like this:</li>
 </ol>
-<pre><code>## # A tibble: 1 × 2
+<pre><code>## # A tibble: 1 x 2
 ##   `sum(controlmean)` `sum(treatedmean)`
 ##                &lt;dbl&gt;              &lt;dbl&gt;
 ## 1            2.3e+07           22196524</code></pre>
@@ -562,25 +562,25 @@ meancounts %&gt;% filter(log2fc&lt;(-2))</code></pre>
 <p>Look up help on <code>?inner_join</code> or Google around for help for using <strong>dplyr</strong>’s <code>inner_join()</code> to join two tables by a common column/key. You downloaded <a href="data/annotables_grch38.csv">annotables_grch38.csv</a> from <a href="data.html">the data downloads page</a>. Load this data with <code>read_csv()</code> into an object called <code>anno</code>. Pipe it to <code>View()</code> or click on the object in the Environment pane to view the entire dataset. This table links the unambiguous Ensembl gene ID to things like the gene symbol, full gene name, location, Entrez gene ID, etc.</p>
 <pre class="r"><code>anno &lt;- read_csv(&quot;data/annotables_grch38.csv&quot;)
 anno</code></pre>
-<pre><code>## # A tibble: 66,531 × 9
+<pre><code>## # A tibble: 66,531 x 9
 ##            ensgene entrez   symbol   chr     start       end strand
 ##              &lt;chr&gt;  &lt;int&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;     &lt;int&gt;  &lt;int&gt;
-## 1  ENSG00000000003   7105   TSPAN6     X 100627109 100639991     -1
-## 2  ENSG00000000005  64102     TNMD     X 100584802 100599885      1
-## 3  ENSG00000000419   8813     DPM1    20  50934867  50958555     -1
-## 4  ENSG00000000457  57147    SCYL3     1 169849631 169894267     -1
-## 5  ENSG00000000460  55732 C1orf112     1 169662007 169854080      1
-## 6  ENSG00000000938   2268      FGR     1  27612064  27635277     -1
-## 7  ENSG00000000971   3075      CFH     1 196651878 196747504      1
-## 8  ENSG00000001036   2519    FUCA2     6 143494811 143511690     -1
-## 9  ENSG00000001084   2729     GCLC     6  53497341  53616970     -1
+##  1 ENSG00000000003   7105   TSPAN6     X 100627109 100639991     -1
+##  2 ENSG00000000005  64102     TNMD     X 100584802 100599885      1
+##  3 ENSG00000000419   8813     DPM1    20  50934867  50958555     -1
+##  4 ENSG00000000457  57147    SCYL3     1 169849631 169894267     -1
+##  5 ENSG00000000460  55732 C1orf112     1 169662007 169854080      1
+##  6 ENSG00000000938   2268      FGR     1  27612064  27635277     -1
+##  7 ENSG00000000971   3075      CFH     1 196651878 196747504      1
+##  8 ENSG00000001036   2519    FUCA2     6 143494811 143511690     -1
+##  9 ENSG00000001084   2729     GCLC     6  53497341  53616970     -1
 ## 10 ENSG00000001167   4800     NFYA     6  41072945  41099976      1
 ## # ... with 66,521 more rows, and 2 more variables: biotype &lt;chr&gt;,
 ## #   description &lt;chr&gt;</code></pre>
 <ol style="list-style-type: decimal">
 <li>Take our newly created <code>meancounts</code> object, and <code>arrange()</code> it <code>desc</code>ending by the absolute value (<code>abs()</code>) of the <code>log2fc</code> column. The first few rows should look like this:</li>
 </ol>
-<pre><code>## # A tibble: 3 × 4
+<pre><code>## # A tibble: 3 x 4
 ##           ensgene controlmean treatedmean log2fc
 ##             &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;
 ## 1 ENSG00000179593        0.25       129.5   9.02
@@ -589,18 +589,18 @@ anno</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Continue on that pipeline, and <code>inner_join()</code> it to the <code>anno</code> data by the <code>ensgene</code> column. Either assign it to a temporary object or pipe the whole thing to <code>View</code> to take a look. What do you notice? Would you trust these results? Why or why not?</li>
 </ol>
-<pre><code>## # A tibble: 21,995 × 12
+<pre><code>## # A tibble: 21,995 x 12
 ##            ensgene controlmean treatedmean log2fc    entrez     symbol
 ##              &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;     &lt;int&gt;      &lt;chr&gt;
-## 1  ENSG00000179593        0.25      129.50   9.02       247    ALOX15B
-## 2  ENSG00000277196        0.50       63.75   6.99 102724788 AC007325.2
-## 3  ENSG00000109906       14.75      808.75   5.78      7704     ZBTB16
-## 4  ENSG00000128285       12.75        0.25  -5.67      2847      MCHR1
-## 5  ENSG00000171819        9.00      427.25   5.57     10218    ANGPTL7
-## 6  ENSG00000137673        0.25       10.25   5.36      4316       MMP7
-## 7  ENSG00000241713        0.25        7.25   4.86     58496     LY6G5B
-## 8  ENSG00000277399        0.50       13.25   4.73    440435     GPR179
-## 9  ENSG00000118729       25.50        1.00  -4.67       845      CASQ2
+##  1 ENSG00000179593        0.25      129.50   9.02       247    ALOX15B
+##  2 ENSG00000277196        0.50       63.75   6.99 102724788 AC007325.2
+##  3 ENSG00000109906       14.75      808.75   5.78      7704     ZBTB16
+##  4 ENSG00000128285       12.75        0.25  -5.67      2847      MCHR1
+##  5 ENSG00000171819        9.00      427.25   5.57     10218    ANGPTL7
+##  6 ENSG00000137673        0.25       10.25   5.36      4316       MMP7
+##  7 ENSG00000241713        0.25        7.25   4.86     58496     LY6G5B
+##  8 ENSG00000277399        0.50       13.25   4.73    440435     GPR179
+##  9 ENSG00000118729       25.50        1.00  -4.67       845      CASQ2
 ## 10 ENSG00000127954       34.25      826.75   4.59     79689     STEAP4
 ## # ... with 21,985 more rows, and 6 more variables: chr &lt;chr&gt;, start &lt;int&gt;,
 ## #   end &lt;int&gt;, strand &lt;int&gt;, biotype &lt;chr&gt;, description &lt;chr&gt;</code></pre>
@@ -682,18 +682,18 @@ res</code></pre>
 <ol style="list-style-type: decimal">
 <li>Using a <code>%&gt;%</code>, <code>arrange</code> the results by the adjusted p-value.</li>
 </ol>
-<pre><code>## # A tibble: 38,694 × 7
+<pre><code>## # A tibble: 38,694 x 7
 ##                row baseMean log2FoldChange  lfcSE  stat   pvalue     padj
 ##              &lt;chr&gt;    &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-## 1  ENSG00000152583      955           4.37 0.2371  18.4 8.87e-76 1.34e-71
-## 2  ENSG00000179094      743           2.86 0.1756  16.3 7.97e-60 6.04e-56
-## 3  ENSG00000116584     2278          -1.03 0.0651 -15.9 5.80e-57 2.93e-53
-## 4  ENSG00000189221     2384           3.34 0.2124  15.7 9.24e-56 3.50e-52
-## 5  ENSG00000120129     3441           2.97 0.2037  14.6 5.31e-48 1.61e-44
-## 6  ENSG00000148175    13494           1.43 0.1004  14.2 6.93e-46 1.75e-42
-## 7  ENSG00000178695     2685          -2.49 0.1781 -14.0 2.11e-44 4.56e-41
-## 8  ENSG00000109906      440           5.93 0.4282  13.8 1.40e-43 2.65e-40
-## 9  ENSG00000134686     2934           1.44 0.1058  13.6 3.88e-42 6.53e-39
+##  1 ENSG00000152583      955           4.37 0.2371  18.4 8.87e-76 1.34e-71
+##  2 ENSG00000179094      743           2.86 0.1756  16.3 7.97e-60 6.04e-56
+##  3 ENSG00000116584     2278          -1.03 0.0651 -15.9 5.80e-57 2.93e-53
+##  4 ENSG00000189221     2384           3.34 0.2124  15.7 9.24e-56 3.50e-52
+##  5 ENSG00000120129     3441           2.97 0.2037  14.6 5.31e-48 1.61e-44
+##  6 ENSG00000148175    13494           1.43 0.1004  14.2 6.93e-46 1.75e-42
+##  7 ENSG00000178695     2685          -2.49 0.1781 -14.0 2.11e-44 4.56e-41
+##  8 ENSG00000109906      440           5.93 0.4282  13.8 1.40e-43 2.65e-40
+##  9 ENSG00000134686     2934           1.44 0.1058  13.6 3.88e-42 6.53e-39
 ## 10 ENSG00000101347    14135           3.85 0.2849  13.5 1.28e-41 1.94e-38
 ## # ... with 38,684 more rows</code></pre>
 <ol start="2" style="list-style-type: decimal">

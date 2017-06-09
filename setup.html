@@ -376,7 +376,6 @@ div.tocify {
 </div>
 
 
-<p><big><mark><strong><em>PLEASE NOTE THAT THESE SETUP INSTRUCTIONS ARE INCOMPLETE AS OF JUNE 1 2017. THEY WILL BE UPDATED PRIOR TO THE COURSE, AND YOU WILL BE NOTIFIED. PLEASE DON’T WORRY ABOUT COMPLETING THIS JUST YET.</em></strong></mark></big></p>
 <div id="software" class="section level2">
 <h2>Software</h2>
 <div id="r" class="section level3">
@@ -409,16 +408,18 @@ div.tocify {
 <p>For some classes (e.g., RNA-seq), you’ll need to install a few <a href="http://bioconductor.org/">Bioconductor</a> packages. These packages are installed differently than “regular” R packages from CRAN. Copy and paste these lines of code into your R console <strong>one at a time</strong>.</p>
 <pre class="r"><code>source(&quot;http://bioconductor.org/biocLite.R&quot;)
 biocLite()
-biocLite(&quot;DESeq2&quot;)</code></pre>
+biocLite(&quot;DESeq2&quot;)
+biocLite(&quot;ggtree&quot;)</code></pre>
 <p>A few notes:</p>
 <ul>
 <li>We will be using the latest versions of Bioconductor from the 3.5 release. This requires R version 3.4.0 or higher. If you have R 3.4.0 installed, running the commands above will install Bioconductor 3.5. See <a href="http://bioconductor.org/news/bioc_3_5_release/" class="uri">http://bioconductor.org/news/bioc_3_5_release/</a>.</li>
 <li>If at any point in the Bioconductor package installations you get prompts in the console asking you to update any existing packages, type <code>n</code> at the prompt at hit enter.</li>
 <li>If you see a note long the lines of “<em>binary version available but the source version is later</em>”, followed by a question, “<em>Do you want to install from sources the package which needs compilation? y/n</em>”, type <strong><code>n</code> for no</strong>, and hit enter.</li>
 </ul>
-<p>Check that you’ve installed everything correctly by closing and reopening RStudio and entering the following commands at the console window:</p>
-<pre class="r"><code>library(DESeq2)</code></pre>
-<p>If you get a message that says something like: <code>Error in library(DESeq2) : there is no package called 'DESeq2'</code>, then the required packages did not install correctly. Please do not hesitate to email me <em>prior to the course</em> if you are still having difficulty. In this email, please copy and paste what you typed in the console, and all of the output that streams by in the console.</p>
+<p>Check that you’ve installed everything correctly by closing and reopening RStudio and entering the following commands at the console window, one at a time:</p>
+<pre class="r"><code>library(DESeq2)
+library(ggtree)</code></pre>
+<p>If you get a message that says something like: <code>Error in library(somePackageName) : there is no package called 'somePackageName'</code>, then the required packages did not install correctly. Please do not hesitate to email me <em>prior to the course</em> if you are still having difficulty. In this email, please copy and paste what you typed in the console, and all of the output that streams by in the console.</p>
 </div>
 <div id="rmarkdown" class="section level3">
 <h3>RMarkdown</h3>
@@ -444,11 +445,17 @@ install.packages(&quot;rmarkdown&quot;)</code></pre></li>
 <h2>Required Reading</h2>
 <div id="tidy-data" class="section level3">
 <h3>Tidy Data</h3>
-<ul>
+<ol style="list-style-type: decimal">
 <li>“For Big-Data Scientists, Janitor Work Is Key Hurdle to Insights.” <em>The New York Times</em>, August 8, 2014. Available at: <a href="https://nyti.ms/2jNUfHo" class="uri">https://nyti.ms/2jNUfHo</a>.</li>
 <li>Sections 1-3 of <a href="http://www.jstatsoft.org/article/view/v059i10/v59i10.pdf">Wickham, H. “Tidy Data.” <em>Journal of Statistical Software</em> 59:10 (2014)</a>.</li>
 <li>Click through each section of <a href="http://stephenturner.us/dataorganization/">stephenturner.us/dataorganization/</a>.</li>
-</ul>
+</ol>
+</div>
+<div id="phylogenetic-trees" class="section level3">
+<h3>Phylogenetic trees</h3>
+<ol style="list-style-type: decimal">
+<li>How to read a phylogeny <a href="http://epidemic.bio.ed.ac.uk/how_to_read_a_phylogeny">epidemic.bio.ed.ac.uk/how_to_read_a_phylogeny</a>.</li>
+</ol>
 </div>
 <div id="rna-seq" class="section level3">
 <h3>RNA-seq</h3>
