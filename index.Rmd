@@ -11,13 +11,15 @@ This workshop 4-VA sponsored workshop introduces methods, tools, and software fo
 
 ### Logistics
 
-**_When_: June 2017.** Classroom dates are reserved all day June 14, 15, 20, 21, 22. _We will not use all day, all five days. Course dates/times will be updated._
+**_When_: June 2017**
 
-- June 14 (?), 9:00am - 5:00pm,
-- June 15 (?), 9:00am - 5:00pm
-- June 20 (?), 9:00am - 5:00pm
-- June 21 (?), 9:00am - 5:00pm
-- June 22 (?), 9:00am - 5:00pm
+Date | Time
+---------|---------
+Weds, June 14  | 8:30am - 5:00pm
+Thurs, June 15 | 8:30am - 12:00pm
+Weds, June 21  | 8:30am - 5:00pm
+Thurs, June 22 | 8:30am - 12:00pm
+
 
 **_Where_: Health Sciences Library Carter Classroom**  
 <small>If you are driving please allow an extra 30 minutes to find parking and walk to the HSL building. The HSL's street address is [1350 Jefferson Park Avenue](https://goo.gl/maps/iZqX6RhDuJ22). The closest parking garage is the [11th Street Parking Garage](http://www.virginia.edu/parking/facilities/11thstreet.html). You'll need to grab a parking ticket when you drive in, take the ticket with you, and then pay at the customer service or "Pay-On-Foot Station" before exiting the garage. Alternatively, there may be street parking or other garage parking options available nearby off [West Main St](https://goo.gl/maps/2ew6MhXGAmA2). Once at the entrance to the HSL, [call Stephen](https://med.virginia.edu/phs/faculty-and-staff-directory/stephen-d-turner-ph-d/) to let you in. The Carter classroom is in the HSL, downstairs one floor, to the right, across from my office.</small>
@@ -36,7 +38,7 @@ This workshop introduces methods, tools, and software for reproducibly managing,
 
 **This is not a statistics class.** Some general knowledge of statistics and study design is helpful, but isn't strictly required. If time allows, there is an optional session on statistics that we can cover.
 
-**This is not a _"Tool X"_ or _"Software Y"_ class.** I want you to take away from this workshop the ability to use an extremely powerful scientific computing environment (R) to do many of the things that you'll do _across study designs and disciplines_ -- managing, manipulating, visualizing, and analyzing large, sometimes high-dimensional data. Whether that data is gene expression data from yeast, microbial genomics data from _B. pertussis_, public health data from [Gapminder](http://www.gapminder.org/), RNA-seq data from humans, or truck routing data from FedEx, you'll need the same computational know-how and data literacy to do the same kinds of basic tasks in each. I might show you how to use specific tools here and there (DESeq2 for RNA-seq analysis, Biomart for data retrieval, etc.), but these are not important -- you probably won't be using the same specific software or methods 10 years from now, but you'll still use the same underlying data and computational foundation. **That** is the point of this workshop -- to arm you with a basic foundation, and more importantly, to **enable you to figure out how to use _this tool_ or _that tool_ on your own**, when you need to.
+**This is not a _"Tool X"_ or _"Software Y"_ class.** I want you to take away from this workshop the ability to use an extremely powerful scientific computing environment (R) to do many of the things that you'll do _across study designs and disciplines_ -- managing, manipulating, visualizing, and analyzing large, sometimes high-dimensional data. Whether that data is gene expression data from yeast, microbial genomics data from _B. pertussis_, public health data from [Gapminder](http://www.gapminder.org/), RNA-seq data from humans, or truck routing data from FedEx, you'll need the same computational know-how and data literacy to do the same kinds of basic tasks in each. I might show you how to use specific tools here and there (DESeq2 for RNA-seq analysis, ggtree for drawing phylogenetic trees, etc.), but these are not important -- you probably won't be using the same specific software or methods 10 years from now, but you'll still use the same underlying data and computational foundation. **That** is the point of this workshop -- to arm you with a basic foundation, and more importantly, to **enable you to figure out how to use _this tool_ or _that tool_ on your own**, when you need to.
 
 ## Setup
 
@@ -48,8 +50,6 @@ After installing and testing the software we'll be using, please download the da
 
 
 ## Course Schedule
-
-<mark>**_Note, work in progress, check back later..._**</mark>
 
 ### Core sessions
 
@@ -69,13 +69,14 @@ This session will cover fundamental concepts for creating effective data visuali
 
 Contemporary life sciences research is plagued by reproducibility issues. This session covers some of the barriers to reproducible research and how to start to address some of those problems during the data management and analysis phases of the research life cycle. In this session we will cover using R and dynamic document generation with RMarkdown and RStudio to weave together reporting text with executable R code to automatically generate reports in the form of PDF, Word, or HTML documents.
 
-#### Session 5: Introduction to RNA-seq Data Analysis
+#### Session 5: Visualizing and Annotating Phylogenetic Trees
+
+This lesson demonstrates how to use R and ggtree, an extension of the ggplot2 package, to visualize and annotate phylogenetic trees. This lesson does _not_ cover methods and software for _generating_ phylogenetic trees, nor does it it cover _interpreting_ phylogenies. Genome-wide sequencing allows for examination of the entire genome, and from this, many methods and software tools exist for comparative genomics using SNP- and gene-based phylogenetic analysis, either from unassembled sequencing reads, draft assemblies/contigs, or complete genome sequences. These methods are beyond the scope of this lesson.
+
+#### Session 6: Introduction to RNA-seq Data Analysis
 
 This session focuses on analyzing real data from a biological application - analyzing RNA-seq data for differentially expressed genes. This session provides an introduction to RNA-seq data analysis, involving reading in count data from an RNA-seq experiment, exploring the data using base R functions and then analysis with the DESeq2 Bioconductor package. The session will conclude with downstream pathway analysis and exploring the biological and functional context of the results.
 
-#### Session 6: TBA
-
-TBA. Check back later.
 
 ### Optional sessions
 
@@ -87,7 +88,7 @@ This session will provide hands-on instruction and exercises covering basic stat
 
 #### What are the pre-requisites?
 
-_There are none!_ This class doesn't assume any knowledge of programming or using a command-line interface, but if you've ever had any experience here, the content won't come as so much of a shock. But _don't panic._ Command-line interfaces and programming languages like R are _incredibly powerful_ and will be utterly transformative on your research. There's a learning curve, and it's near-vertical in the beginning, but it's surmountable and the payoff is worth it! 
+_There are none!_ [(But there is some required reading and software setup required before the workshop)](setup.html). This class doesn't assume any knowledge of programming or using a command-line interface, but if you've ever had any experience here, the content won't come as so much of a shock. But _don't panic._ Command-line interfaces and programming languages like R are _incredibly powerful_ and will be utterly transformative on your research. There's a learning curve, and it's near-vertical in the beginning, but it's surmountable and the payoff is worth it! 
 
 #### Do I need a laptop?
 
