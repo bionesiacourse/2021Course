@@ -34,14 +34,16 @@ navbar:
 #          href: r-dplyr-yeast.html
 #        - text: "Tidying data"
 #          href: r-tidy.html
+#        - text: "Reproducible Research & RMarkdown"
+#          href: r-rmarkdown.html
 #        - text: "Data Visualization"
 #          href: r-viz-gapminder.html
+#        - text: "Phylogenetic Trees"
+#          href: r-ggtree.html
 #        - text: "RNA-seq"
 #          href: r-rnaseq-airway.html
 #        - text: "----"
 #        - text: "--- Optional Lessons ---"
-#        - text: "Reproducible Research & RMarkdown"
-#          href: r-rmarkdown.html
 #        - text: "Essential Statistics with R"
 #          href: r-stats.html
 #        - text: "----"
