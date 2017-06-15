@@ -541,3 +541,5 @@ ydat %>%
 Looking for more practice? [Try this homework assignment](r-dplyr-homework.html).
 
 ----
+
+Source: <https://raw.githubusercontent.com/4va/biodatasci/master/r-dplyr-yeast.Rmd>
