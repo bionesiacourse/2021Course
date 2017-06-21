@@ -347,13 +347,21 @@ div.tocify {
     <li>
       <a href="r-rmarkdown.html">Reproducible Research &amp; RMarkdown</a>
     </li>
+    <li>
+      <a href="r-viz-gapminder.html">Data Visualization</a>
+    </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Optional Lessons ---</li>
-    <li class="dropdown-header">Essential Statistics with R</li>
+    <li>
+      <a href="r-stats.html">Essential Statistics with R</a>
+    </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Homework ---</li>
     <li>
       <a href="r-dplyr-homework.html">Data Manipulation</a>
+    </li>
+    <li>
+      <a href="r-dataviz-homework.html">Data Visualization</a>
     </li>
     <li>
       <a href="r-rmarkdown-homework.html">Reproducible Research &amp; RMarkdown</a>
@@ -620,7 +628,7 @@ p + geom_tiplab()</code></pre>
 <h2>Advanced tree annotation</h2>
 <p>Let’s use a previously published dataset from this paper:</p>
 <p>Liang et al. “Expansion of genotypic diversity and establishment of 2009 H1N1 pandemic-origin internal genes in pigs in China.” <em>Journal of virology</em> (2014): <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4178866/">88(18):10864-74</a>.</p>
-<p><a href="http://onlinelibrary.wiley.com/doi/10.1111/2041-210X.12628/full" class="uri">http://onlinelibrary.wiley.com/doi/10.1111/2041-210X.12628/full</a></p>
+<p>This data was reanalyzed in the <a href="http://onlinelibrary.wiley.com/doi/10.1111/2041-210X.12628/full">ggtree paper</a>.</p>
 <p>The subset of the data used here contains 76 H3 hemagglutinin gene sequences of a lineage containing both swine and human influenza A viruses. The sequence data set was re-analyzed by using BEAST (available at <a href="http://beast.bio.ed.ac.uk/" class="uri">http://beast.bio.ed.ac.uk/</a>). BEAST (Bayesian Evolutionary Analysis Sampling Trees) can give you rooted, time-measured phylogenies inferred using molecular clock models.</p>
 <p>For this you’ll need the <code>flu_tree_beast.tree</code> output file from BEAST and the <code>flu_aasequence.fasta</code> FASTA file with the multiple sequence alignment. These are both available on the <a href="data.html">data downloads page</a>. First let’s read in the tree with <code>read.beast()</code> (instead of the <code>read.tree()</code> we used before). Let’s add a scale bar with theme_tree2(). This gives you genetic distance. But, we have time measured here with molecular clock models. We’ve only estimated the <em>relative</em> time between branching events, so if we want to actually see <em>dates</em> on the x-axis, we need to supply the most recent sampling date to the <code>ggtree()</code> call. Do this by setting <code>mrsd=&quot;YYYY-MM-DD&quot;</code> inside <code>ggtree()</code>.</p>
 <p>Finally, let’s add some tip labels. We’ll want to right-align them, and by default the dotted line is a little too thick. Let’s reduce the <code>linesize</code> a bit. Now, some of the labels might be falling off the margin. Set the <code>xlim</code> to limit the axis to show between 1990 and 2020. You could get MRCAs and node numbers and do all the annotations that we did before the same way here.</p>
