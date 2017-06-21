@@ -28,8 +28,8 @@ navbar:
           href: r-tidy.html
         - text: "Reproducible Research & RMarkdown"
           href: r-rmarkdown.html
-#        - text: "Data Visualization"
-#          href: r-viz-gapminder.html
+        - text: "Data Visualization"
+          href: r-viz-gapminder.html
 #        - text: "Phylogenetic Trees"
 #          href: r-ggtree.html
 #        - text: "RNA-seq"
@@ -37,13 +37,13 @@ navbar:
         - text: "----"
         - text: "--- Optional Lessons ---"
         - text: "Essential Statistics with R"
-#          href: r-stats.html
+          href: r-stats.html
         - text: "----"
         - text: "--- Homework ---"
         - text: "Data Manipulation"
           href: r-dplyr-homework.html
-#        - text: "Data Visualization"
-#          href: r-dataviz-homework.html
+        - text: "Data Visualization"
+          href: r-dataviz-homework.html
         - text: "Reproducible Research & RMarkdown"
           href: r-rmarkdown-homework.html
 #        - text: "Essential Statistics"
