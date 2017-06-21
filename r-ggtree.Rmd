@@ -346,7 +346,7 @@ Let's use a previously published dataset from this paper:
 
 Liang et al. "Expansion of genotypic diversity and establishment of 2009 H1N1 pandemic-origin internal genes in pigs in China." _Journal of virology_ (2014): [88(18):10864-74](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4178866/).
 
-http://onlinelibrary.wiley.com/doi/10.1111/2041-210X.12628/full
+This data was reanalyzed in the [ggtree paper](http://onlinelibrary.wiley.com/doi/10.1111/2041-210X.12628/full).
 
 The subset of the data used here contains 76 H3 hemagglutinin gene sequences of a lineage containing both swine and human influenza A viruses. The sequence data set was re-analyzed by using BEAST (available at <http://beast.bio.ed.ac.uk/>). BEAST (Bayesian Evolutionary Analysis Sampling Trees) can give you rooted, time-measured phylogenies inferred using molecular clock models. 
 
