@@ -32,8 +32,8 @@ navbar:
           href: r-viz-gapminder.html
 #        - text: "Phylogenetic Trees"
 #          href: r-ggtree.html
-#        - text: "RNA-seq"
-#          href: r-rnaseq-airway.html
+        - text: "RNA-seq"
+          href: r-rnaseq-airway.html
         - text: "----"
         - text: "--- Optional Lessons ---"
         - text: "Essential Statistics with R"
@@ -46,10 +46,10 @@ navbar:
           href: r-dataviz-homework.html
         - text: "Reproducible Research & RMarkdown"
           href: r-rmarkdown-homework.html
-#        - text: "Essential Statistics"
-#          href: r-stats-homework.html
-#        - text: "RNA-seq Data Analysis"
-#          href: r-rnaseq-homework.html
+        - text: "Essential Statistics"
+          href: r-stats-homework.html
+        - text: "RNA-seq Data Analysis"
+          href: r-rnaseq-homework.html
   right:
     - icon: fa-question fa-lg
       menu:
