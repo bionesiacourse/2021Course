@@ -30,8 +30,8 @@ navbar:
           href: r-rmarkdown.html
         - text: "Data Visualization"
           href: r-viz-gapminder.html
-        - text: "Phylogenetic Trees"
-          href: r-ggtree.html
+#        - text: "Phylogenetic Trees"
+#          href: r-ggtree.html
         - text: "RNA-seq"
           href: r-rnaseq-airway.html
         - text: "----"
