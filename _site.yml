@@ -1,7 +1,7 @@
-name: "Biological Data Science Workshop"
+name: "Metabarcoding Data Processing Workshop"
 
 navbar:
-  title: "ICor2020"
+  title: "ICoR2020"
   icon: fa-home
   type: inverse
   left:
