@@ -426,20 +426,11 @@ p3 <- facet_plot(p2, panel='bar', data=d2, geom=geom_segment,
 p3 + theme_tree2()
 ```
 
-### Overlay organism silouhettes
+<!-- ### Overlay organism silouhettes -->
 
-[phylopic.org](http://phylopic.org/) hosts free silhouette images of animals, plants, and other life forms, all under Creative Commons or Public Domain. You can use ggtree to overlay a phylopic image on your plot at a node of your choosing. Let's show some gram-negative bacteria over the whole plot, and put a _Homo sapiens_ and a dog on those clades we're working with.
+<!-- [phylopic.org](http://phylopic.org/) hosts free silhouette images of animals, plants, and other life forms, all under Creative Commons or Public Domain. You can use ggtree to overlay a phylopic image on your plot at a node of your choosing. Let's show some gram-negative bacteria over the whole plot, and put a _Homo sapiens_ and a dog on those clades we're working with. -->
 
-```{r phylopic, fig.width=10, fig.height=8}
-read.tree("data/tree_newick.nwk") %>% 
-  ggtree() %>% 
-  phylopic("ba0a446e-18d7-4db9-9937-5adec24721b5", 
-           color="gold2", alpha = .25) %>% 
-  phylopic("c089caae-43ef-4e4e-bf26-973dd4cb65c5", 
-           color="purple3", alpha = .5, node=17) %>% 
-  phylopic("6c9cb19d-1d8a-4215-88ba-d49cd4917a5e", 
-           color="purple3", alpha = .5, node=21)
-```
+
 
 
 
