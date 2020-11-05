@@ -1,5 +1,5 @@
 ---
-title: "4-VA JMU 2017 Biological Data Science Workshop"
+title: "Biological Data Science Workshop"
 output: 
   html_document:
     toc: yes
@@ -11,7 +11,7 @@ This workshop 4-VA sponsored workshop introduces methods, tools, and software fo
 
 ### Logistics
 
-**_When_: June 2017**
+**_When_: Dec 2020**
 
 Date | Time
 ---------|---------

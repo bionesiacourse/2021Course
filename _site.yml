@@ -1,7 +1,7 @@
-name: "4-VA JMU 2017 Biological Data Science Workshop"
+name: "Biological Data Science Workshop"
 
 navbar:
-  title: "JMU2017"
+  title: "ICor2020"
   icon: fa-home
   type: inverse
   left:
