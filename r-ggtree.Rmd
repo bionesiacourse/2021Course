@@ -93,7 +93,8 @@ Let's first import our tree data. We're going to work with a made-up phylogeny w
 ```{r read.tree}
 library(tidyverse)
 library(ggtree)
-
+library(phylobase)
+library(ape)
 tree <- read.tree("data/tree_newick.nwk")
 tree
 ```
