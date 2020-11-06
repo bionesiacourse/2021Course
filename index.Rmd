@@ -1,5 +1,5 @@
 ---
-title: "Metabarcoding Data Processing Workshop"
+title: "Metabarcoding Data Processing Workshopssss"
 output: 
   html_document:
     toc: yes
