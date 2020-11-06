@@ -14,6 +14,9 @@ navbar:
     - text: "Data"
       icon: fa-download
       href: "data.html"
+    - text: "courses"
+      icon: fa-download
+      href: r-basics.html
     - text: "Lessons"
       icon: fa-book
       menu:
@@ -50,6 +53,7 @@ navbar:
           href: r-stats-homework.html
         - text: "RNA-seq Data Analysis"
           href: r-rnaseq-homework.html
+
   right:
     - icon: fa-question fa-lg
       menu:
@@ -58,7 +62,7 @@ navbar:
         - text: "Further resources"
           href: help.html
         - text: "Source code for this site"
-          href: https://github.com/4va/biodatasci
+          href: https://github.com/metabarcodingcourse/2020Course
 output:
   html_document:
     theme: default
