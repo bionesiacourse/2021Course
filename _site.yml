@@ -1,7 +1,7 @@
 name: "Metabarcoding Data Processing Workshop"
 
 navbar:
-  title: "ICoR2020"
+  title: "ICoRRR2020"
   icon: fa-home
   type: inverse
   left:
@@ -50,9 +50,9 @@ navbar:
           href: r-stats-homework.html
         - text: "RNA-seq Data Analysis"
           href: r-rnaseq-homework.html
-      - text: "Past Courses"
-        icon: fa-book
-        menu:
+    - text: "Past Courses"
+      icon: fa-book
+      menu:
         - text: "--- Core Lessons ---"
         - text: "R Basics"
           href: r-basics.html

@@ -1,5 +1,10 @@
 ---
 title: 'R: The Basics'
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
 ---
 
 ```{r, echo=FALSE, message=FALSE, eval=TRUE}
