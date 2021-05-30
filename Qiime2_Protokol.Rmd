@@ -1,5 +1,5 @@
 ---
-title: 'QIIME2 Tutorial'
+#title: 'QIIME2 Tutorial'
 output:
   html_document:
     df_print: paged
@@ -7,14 +7,8 @@ output:
   word_document: default
 ---
 
-```{r, echo=FALSE, message=FALSE, eval=TRUE}
-library(knitr)
-opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=TRUE, results="hide", cache=TRUE)
-options(digits=3)
-options(max.print=200)
-.ex <- 1 # Track ex numbers w/ hidden var. Increment each ex: `r .ex``r .ex=.ex+1`
-```
-## Analisis DNA Metabarcoding dengan QIIME2 
+
+## QIIME2 Tutorial
 
 
 Analisis bioinformatic merupakan tantangan baru dalam penelitian yang berbasiskan *Next Generation Sequencing (NGS)*. Pengolahan data sekuen DNA dalam jumlah besar memerlukan sarana dan prasarana yang memadai. Misalnya, dibutuhkan komputer dengan *memory* yang cukup besar untuk menyimpan data mentah, melakukan pengolahan data, menyimpan data yang sedang diolah dan meyimpan hasil akhir dari analisis. 
@@ -36,17 +30,17 @@ Ukuran produk sekuen: kurang lebih 380 bp (313 bp COI + 67 bp tails)
 * **Reverse**: i7 (R) NexTail 	jgCOIR_
     + GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG  TAIACYTCIGGRTGICCRAARAAYCA
 
-### 2. Paired-end atau Single end
+### 2. Paired atau Single end
 
 Ini berhubungan dengan metode yang digunakan dalam mengamplifikasi sequence DNA pada proses PCR (*Polymerase Chain Reaction*). Sequence umumnya diamplifikasi dari dua arah atau memakai sepasang primer (*paired-end*). Akan tetapi, sekuen juga dapat diamplifikasi hanya dari satu arah dan memakai 1 primer (*single end*). 
 
-### 3. Protokol laboratorium secara umum
+### 3. Protokol laboratorium 
 
 Protokol atau langkah-langkah yang dilakukan saat mempersiapkan sekuen (*library preparation*) sangat mempengaruhi langkah-langkah dalam melakukan analisis bioinformatika. Beberapa laboratorium memiliki pendekatan yang berbeda-beda dalam menyiapkan library. Salah satu contohnya adalah sistem *dual indexing*, dimana PCR dilakukan dua kali. PCR pertama memakai primer universal, seperti yang disebutkan di atas, lengkap dengan *Nextera barcode*-nya. Kemudian proses selanjutnya adalah menggabungkan beberapa sample menjadi satu (*multiplex*) dengan memberikan barcode yang unik pada tiap sample yang digabungkan. 
 
 Dari protocol ini, yang harus diperhatikan adalah pencatatan identitas sample atau *sample_ID* yang konsisten, lengkap dengan barcode yang dipasangkan pada *sample_ID* tersebut, sehingga tidak terjadi kerancuan ketika sample di-unduh dari mesin sekuensing.
 
-### 4. Mesin sekuensing dan data yang dihasilkan 
+### 4. Mesin sekuensing dan Jenis Data  
 
 Mesin sekuensing yang digunakan dalam riset NGS memiliki spesifikasi berbeda-beda. Mulai dari kemampuan menganalisis data, besar data yang ampu dianalisis, hingga reagen spesifik yang harus digunakan. Saat ini, umumnya NGS memakai *Illumina platform* yang memiliki reagen dan protocol yang cukup umum.
 
@@ -67,9 +61,9 @@ https://docs.qiime2.org/2020.2/install/
 **Catatan:** cara meng-install Qiime2 pada windows dapat dilihat pada akhir tutorial ini.
 
 
-## Langkah-langkah analisis dengan QIIME2
+## langkah analisis dengan QIIME2
 
-### 1.	Mengunduh data dan demultiplexing
+### 1.	Demultiplexing
 
 Jika data mentah masih dalam bentuk gabungan beberapa sample atau *multiplexed*, maka kita perlu melakukan *demultiplexing* atau pemisahan data atau sampel menjadi individual sample. Pada proses ini yang diperlukan adalah *list barcode* yang digunakan sesuai dengan *sample_ID*.
 
@@ -96,11 +90,11 @@ Disini kita akan memakai contoh, 2 sampel yang dianalisis dari dua arah (*paired
 
 Fastq memiliki 4 baris, yang terdiri dari label atau *sequence identifier* di baris pertama; urutan sekuen di baris kedua; tanda + pada baris ketiga berfungsi sebagai separator; dan kualitas dari sekuen (*Phred scores* atau *Q scores*) di baris ke empat. *Q scores* disesuaikan dengan **ASCII standard** (*American Standard Code for Information Interchange*).  https://www.drive5.com/usearch/manual/quality_score.html
 
-![](/Users/ditacahyani/Desktop/Markdown/Slide1.png)
+![](img/Slide1.png)
 
 **Contoh manifest file**
 
-![](/Users/ditacahyani/Desktop/Markdown/Slide2.png)
+![](img/Slide2.png)
 
 
 **Catatan:**
@@ -137,7 +131,7 @@ qiime demux summarize \
 
 kita bisa melihat hasil visualisasi dari setiap format data .qzv melalui https://view.qiime2.org/, drag file tersebut kedalam web browser tersebut.
 
-### 2. Quality control - DADA2
+### 2. Quality control 
 
 DADA2 (Callahan et al., 2016) merupakan sebuah pipeline yang dipakai untuk melakukan deteksi dan koreksi terhadap sekuen amplicon yang dihasilkan oleh Illumina platform. Pada proses ini akan dilakukan *quality control* yang akan mem-filter phiX reads serta mem-filter chimera. PhiX merupakan *single-stranded* DNA (ssDNA) virus yang digunakan secara komersial dalam proses sekuensing sebagai control positif.
 
@@ -160,7 +154,7 @@ qiime demux summarize \
 
 Jika tidak, kita dapat langsung masuk ke DADA2 dan memberikan parameter panjang primer *forward* dan *reverse* yang akan dipotong. Parameter `trunc-len-f` dan `trunc-len-r` merupakan parameter “panjang sekuen” yang akan digunakan dan dipilih karena memiliki kualitas yang baik. Panjang sekuen yang akan dipotong ditentukan oleh visualization data pada analisis sebelumnya (“paired-end-workshop.qzv” atau “demux-trimmed-workshop.qv”).
 
-![](/Users/ditacahyani/Desktop/Markdown/Slide3.png) 
+![](img/Slide3.png) 
 
 Guna visualisasi data, pada proses ini kita akan membutuhkan metadata atau map.txt yang berisi keterangan tentang sample kita. Terlampir contoh dari map.txt.
 
@@ -269,7 +263,7 @@ qiime phylogeny align-to-tree-mafft-fasttree \
   --o-rooted-tree rooted-tree.qza
 ```
 
-### 6. Mengubah file hasil Qiime2 untuk dapat dipakai pada program statistic dan visualisasi hasil
+### 6. Konversi hasil
 
 ```
 qiime tools export \
@@ -339,7 +333,7 @@ qiime emperor plot \
 
 Untuk dapat melihat hasil analisis, silakan masuk ke https://view.qiime2.org/ dan masukkan file.qzv yang ingin di-visualisasi.
 
-### 10. Tambahan: Cara install WSL dan qiime2 di windows
+### 10. Menginstall WSL dan qiime2 di windows
 
 * Pastikan windows terintall sebagai Windows Subsytem Linux (WSL) 1 atau 2 (pilih salah satu saja). Note : WSL 2 lebih ter-update. Link tutorial install WSL 2 : https://www.youtube.com/watch?v=_fntjriRe48
 * Setelah itu buka CMD (run as administrator), download file conda  melalui wget (ex: miniconda), link (https://docs.conda.io/en/latest/miniconda.html). Ketik kata seperti ini di CMD kita: wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
