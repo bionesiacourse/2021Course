@@ -1,7 +1,21 @@
-# QIIME2 Tutorial untuk Data DNA Metabarcoding
+---
+title: 'QIIME2 Tutorial'
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
+---
 
+```{r, echo=FALSE, message=FALSE, eval=TRUE}
+library(knitr)
+opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=TRUE, results="hide", cache=TRUE)
+options(digits=3)
+options(max.print=200)
+.ex <- 1 # Track ex numbers w/ hidden var. Increment each ex: `r .ex``r .ex=.ex+1`
+```
+## Analisis DNA Metabarcoding dengan QIIME2 
 
-## Pendahuluan
 
 Analisis bioinformatic merupakan tantangan baru dalam penelitian yang berbasiskan *Next Generation Sequencing (NGS)*. Pengolahan data sekuen DNA dalam jumlah besar memerlukan sarana dan prasarana yang memadai. Misalnya, dibutuhkan komputer dengan *memory* yang cukup besar untuk menyimpan data mentah, melakukan pengolahan data, menyimpan data yang sedang diolah dan meyimpan hasil akhir dari analisis. 
 
