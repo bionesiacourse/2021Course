@@ -76,7 +76,7 @@ navbar:
           href: r-basics.html
         - text: "--- Advance Course ---"
         - text: "Get to know Qiime2"
-          href: r-basics.html
+          href: Qiime2_Protokol.html
   right:
     - icon: fa-question fa-lg
       menu:
