@@ -61,7 +61,8 @@ https://docs.qiime2.org/2020.2/install/
 **Catatan:** cara meng-install Qiime2 pada windows dapat dilihat pada akhir tutorial ini.
 
 
-## langkah analisis dengan QIIME2
+## Langkah Analisis 
+
 
 ### 1.	Demultiplexing
 
@@ -329,18 +330,19 @@ qiime emperor plot \
   --o-visualization core-metrics-results/bray-curtis-emperor-days-since-experiment-start.qzv
 ```
 
-### 9. Visualization
+### 9. Visualisasi
 
 Untuk dapat melihat hasil analisis, silakan masuk ke https://view.qiime2.org/ dan masukkan file.qzv yang ingin di-visualisasi.
 
-### 10. Menginstall WSL dan qiime2 di windows
+### 10. QIIME2 di OS windows
 
 * Pastikan windows terintall sebagai Windows Subsytem Linux (WSL) 1 atau 2 (pilih salah satu saja). Note : WSL 2 lebih ter-update. Link tutorial install WSL 2 : https://www.youtube.com/watch?v=_fntjriRe48
 * Setelah itu buka CMD (run as administrator), download file conda  melalui wget (ex: miniconda), link (https://docs.conda.io/en/latest/miniconda.html). Ketik kata seperti ini di CMD kita: wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 * Setelah di download gunakan WSL di CMD kita dengan ketik "bash" dan install file .sh miniconda yg telah di download. Ketik pada CMD kita: bash Miniconda3-latest-Linux-x86_64.sh
 * Setelah terinstal silakan ketik "conda" pada CMD versi WSL kita apakah conda kita sudah terinstall. Jika sudah silakan install qiime2 melalui link https://docs.qiime2.org/2021.2/install/native/
 
-### Daftar Pustaka
+Daftar Pustaka
+
 Bolyen, E., Rideout, J. R., Dillon, M. R., Bokulich, N. A., Abnet, C., Ghalith, G. A. Al, … Naimey, A. T. (2018). QIIME 2 : Reproducible , interactive , scalable , and extensible microbiome data science. PeerJ. https://doi.org/10.7287/peerj.preprints.27295v2
 
 Callahan, B. J., McMurdie, P. J., & Holmes, S. P. (2017). Exact sequence variants should replace operational taxonomic units in marker-gene data analysis. ISME Journal. https://doi.org/10.1038/ismej.2017.119
