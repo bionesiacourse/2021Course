@@ -78,7 +78,7 @@ navbar:
         - text: "Get to know Qiime2"
           href: Qiime2_Protokol.html
         - text: "Get to know Qiime234"
-          href: Qiime2_Protokol_23.html
+          href: Basic_Molecular.html
   right:
     - icon: fa-question fa-lg
       menu:
