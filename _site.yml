@@ -77,8 +77,16 @@ navbar:
         - text: "--- Advance Courses ---"
         - text: "Get to know Qiime2"
           href: Qiime2_Protokol.html
-        - text: "Get to know Qiime23465"
+    - text: "CSS Course"
+      icon: fa-book
+      menu:
+        - text: "Why Molecular Approaches"
           href: Basic_Molecular.html
+        - text: "Lets move on"
+          href: Editing_Sequence.html
+        - text: "Lets move on"
+          href: DNA_Barcoding.html
+
   right:
     - icon: fa-question fa-lg
       menu:
