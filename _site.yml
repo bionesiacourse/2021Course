@@ -74,7 +74,7 @@ navbar:
         - text: "--- Intermediate Course ---"
         - text: "R Basics"
           href: r-basics.html
-        - text: "--- Advance Coursesss ---"
+        - text: "--- Advance Courses ---"
         - text: "Get to know Qiime2"
           href: Qiime2_Protokol.html
         - text: "Get to know Qiime234"
