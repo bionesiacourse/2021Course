@@ -77,7 +77,7 @@ navbar:
         - text: "--- Advance Courses ---"
         - text: "Get to know Qiime2"
           href: Qiime2_Protokol.html
-        - text: "Get to know Qiime2345"
+        - text: "Get to know Qiime23465"
           href: Basic_Molecular.html
   right:
     - icon: fa-question fa-lg
