@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Basic_Molecular.utf8</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<!-- Font Awesome -->
+<!-- <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" /> -->
+<!-- <script src="https://use.fontawesome.com/54ee8c2dfd.js"></script> -->
+
+<!-- Google fonts -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic|Oswald:400,700' rel='stylesheet' type='text/css'>
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+<!-- Google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-8298649-8', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Bionesia2020</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fas fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="setup.html">
+    <span class="fas fa-cog"></span>
+     
+    Setup
+  </a>
+</li>
+<li>
+  <a href="data.html">
+    <span class="fas fa-download"></span>
+     
+    Data
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-book"></span>
+     
+    Lessons
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">--- Core Lessons ---</li>
+    <li>
+      <a href="r-basics.html">R Basics</a>
+    </li>
+    <li>
+      <a href="r-dataframes.html">Data Frames</a>
+    </li>
+    <li>
+      <a href="r-dplyr-yeast.html">Data Manipulation</a>
+    </li>
+    <li>
+      <a href="r-tidy.html">Tidying data</a>
+    </li>
+    <li>
+      <a href="r-rmarkdown.html">Reproducible Research &amp; RMarkdown</a>
+    </li>
+    <li>
+      <a href="r-viz-gapminder.html">Data Visualization</a>
+    </li>
+    <li>
+      <a href="r-ggtree.html">Phylogenetic Trees</a>
+    </li>
+    <li>
+      <a href="r-rnaseq-airway.html">RNA-seq</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">--- Optional Lessons ---</li>
+    <li>
+      <a href="r-stats.html">Essential Statistics with R</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">--- Homework ---</li>
+    <li>
+      <a href="r-dplyr-homework.html">Data Manipulation</a>
+    </li>
+    <li>
+      <a href="r-dataviz-homework.html">Data Visualization</a>
+    </li>
+    <li>
+      <a href="r-rmarkdown-homework.html">Reproducible Research &amp; RMarkdown</a>
+    </li>
+    <li>
+      <a href="r-stats-homework.html">Essential Statistics</a>
+    </li>
+    <li>
+      <a href="r-rnaseq-homework.html">RNA-seq Data Analysis</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-book"></span>
+     
+    Courses
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">--- Basic Course ---</li>
+    <li>
+      <a href="r-basics.html">R Basics</a>
+    </li>
+    <li>
+      <a href="r-dataframes.html">Data Frames</a>
+    </li>
+    <li>
+      <a href="r-dplyr-yeast.html">Data Manipulation</a>
+    </li>
+    <li>
+      <a href="r-tidy.html">Tidying data</a>
+    </li>
+    <li>
+      <a href="r-rmarkdown.html">Reproducible Research &amp; RMarkdown</a>
+    </li>
+    <li>
+      <a href="r-viz-gapminder.html">Data Visualization</a>
+    </li>
+    <li>
+      <a href="r-ggtree.html">Phylogenetic Trees</a>
+    </li>
+    <li>
+      <a href="r-rnaseq-airway.html">RNA-seq</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">--- Intermediate Course ---</li>
+    <li>
+      <a href="r-basics.html">R Basics</a>
+    </li>
+    <li class="dropdown-header">--- Advance Course ---</li>
+    <li>
+      <a href="Qiime2_Protokol.html">Get to know Qiime2</a>
+    </li>
+    <li>
+      <a href="Basic_Molecular.html">Get to know Qiime234</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-question fa-lg"></span>
+     
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="index.html#faq">FAQ</a>
+    </li>
+    <li>
+      <a href="help.html">Further resources</a>
+    </li>
+    <li>
+      <a href="https://github.com/metabarcodingcourse/2020Course">Source code for this site</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div id="biologi-molekuler-dasar" class="section level1">
+<h1>Biologi Molekuler Dasar</h1>
+<div id="pendahuluan" class="section level2">
+<h2>Pendahuluan</h2>
+<p><strong>Biologi molekuler</strong> atau genetika molekuler adalah ilmu yang mempelajari fungsi dan organisasi dari organisme ditinjau dari struktur dan regulasi molekuler dari komponen penyusunnya (Yuwono, 2006). <strong>Dogma sentral</strong> dalam biologi menjelaskan bagaimana informasi genetik disampaikan di dalam sel, yang meliputi rangkaian proses perubahan dari molekul DNA (<em>Deoxyribonecleic Acid</em>) menjadi RNA (<em>Ribonucleic Acid</em>) atau proses <strong>transkripsi</strong>, kemudian perubahan dari RNA menjadi protein atau proses <strong>translasi</strong>.</p>
+</div>
+<div id="struktur-dna" class="section level2">
+<h2>Struktur DNA</h2>
+<p><strong>Deoxyribonucleic Acid</strong> (DNA) adalah polimer nukleotida yang berperan dalam penyimpanan dan pewarisan informasi genetik di dalam sel. Satu nukleotida terdiri dari tiga bagian, yaitu <strong>basa nitrogen, molekul gula dan gugus fospat</strong>. Basa nitrogen dapat berupa basa <strong>Purine (Adenine dan Guanine)</strong> atau <strong>Pirimidin (Tymine dan Cytosin)</strong>. Struktur DNA berbentuk <em>double helix</em> atau rantai ganda berpilin. Struktur molekul DNA pertama kali diungkapkan oleh James Watson dan Francis Crick pada tahun 1953 berdasarkan atas foto sinar X yang dibuat oleh Rosalind Franklin dan Maurice Wilkins (Yuwono, 2006). <em>Ribonucleic Acid</em> (RNA) berbeda dengan DNA dilihat dari molekul gula penyusunnya. RNA menngunakan gula ribose, beratai tunggal dan basa nitrogen T diganti menjadi U (Urasil).</p>
+<p><strong>Mutasi</strong> adalah perubahan yang terjadi dalam susunan DNA yang disebabkan karena beberapa hal, seperti kesalahan dalam duplikasi sel, radiasi, mutagen atau infeksi virus. <strong>Gen</strong> adalah sekuen dari DNA atau RNA yang merupakan unit dasar dari penurunan sifat dalam sel. Gen berada dalam DNA atau RNA yang mengkode hasil sintesa dari produk gen, baik berupa RNA atau protein. <strong>Penanda genetik</strong> adalah gen atau sekuen DNA yang berada dalam kromosom yang digunakan untuk mengidentifikasi individu atau spesies.</p>
+</div>
+<div id="teknik-perbanyakan-dna" class="section level2">
+<h2>Teknik Perbanyakan DNA</h2>
+<p><em>Polymerase Chain Reaction</em> (PCR) atau reaksi berantai polymerase adalah sebuah teknik perbanyakan urutan DNA melalui proses enzimatik yang dilakukan secara in vitro (Sambrook and Russell, 2001). Teknik ini menggunakan sepasang oligonukleotida pendek (primer) sebagai cetakan untuk mengkopi dan memperbanyak bagian tertentu dari DNA target. Sebelum melakukan proses PCR, langkah pertama yang harus dilakukan adalah melakukan ekstraksi DNA dari dalam sel.</p>
+<div id="ekstraksi-dna" class="section level3">
+<h3>Ekstraksi DNA</h3>
+<p>Fungsi dari ektraksi DNA adalah mengeluarkan DNA dari dalam sel. Pertama-tama dinding sel dihancurkan dengan beberapa metode, seperti pemanasan, sonifikasi, tekanan osmosis, atau digerus secara manual. Kemudian, membran lipid dipisahkan dengan menggunakan sejenis detergen atau SDS (<em>Sodium Dodecyl Sulfate</em>), dan Protein dihilangkan dengan menggunakan enzim Proteinase-K. Pada proses selanjutnya, ethanol digunakan untuk memisahkan DNA dengan bahan-bahan sel lainnya. Pada akhir proses ekstraksi, DNA akan dilarutkan di dalam air (H2O) dan siap digunakan untuk proses selanjutnya.</p>
+</div>
+<div id="tahapan-penting-dalam-pcr-polymerase-chain-reaction" class="section level3">
+<h3>Tahapan penting dalam PCR (Polymerase Chain Reaction)</h3>
+<ul>
+<li><strong>Denaturation</strong> (Pemisahan rantai ganda DNA). Proses ini merupakan proses pemisahan rantai ganda DNA (<em>double stranded</em>) menjadi rantai tunggal (<em>single stranded</em>) dengan menngunakan bantuan temperatur tinggi (~94 – 95°C ) selama kurang lebih 1-2 menit.</li>
+<li><strong>Annealing</strong> (Penempelan). Tahan ini adalah tahap penempelan primer pada DNA cetakan pada suhu sekitar 45-55°C selama 1-2 menit. Umumnya primer berjumlah sepasang (primer depan atau <em>Forward primer</em> dan primer belakang atau <em>Reverse primer</em>), yang masing-masing akan menempel pada setiap rantai tunggal DNA.</li>
+<li><strong>Extention</strong> (Pemanjangan). Pada proses ini, terjadi pemanjangan rantai tunggal DNA. Pemanjangan akan dimulai dari ujung 3’ ke 5’. Dalam tahap ini, enzim DNA polimerase akan berperan dalam proses polimerasi atau pemanjangan rantai DNA baru berdasarkan informasi yang ada pada DNA cetakan.</li>
+<li><strong>Duplikasi</strong> (Penggandaan). Tahap terakhir ini dimaksudkan untuk menduplikasi rantai DNA yang dihasilkan secara ekponensial, sesuai dengan cetakan dan primer yang digunakan.</li>
+</ul>
+</div>
+<div id="gel-electroforesis" class="section level3">
+<h3>Gel Electroforesis</h3>
+<p>Hasil amplifikasi PCR kemudian dibaca dengan menggunakan metode elektroforesis gel, yang merupakan teknik untuk memisahkan DNA berdasarkan ukuran berat molekul dan struktur fisik molekulnya. Molekul DNA yang bermuatan negatif, jika diletakkan dalam medan listrik, akan bergerak melalui gel agarosa menuju kutub positif. DNA akan diberi warna menggunakan pewarna flouresence yang akan berikatan dengan fragmen DNA dan akan berpendar di bawah cahaya LED (Light Emitting Diode), sebagai tanda bahwa DNA telah teramplifikasi dalam proses PCR.</p>
+</div>
+<div id="sequencing-sanger-sequencing." class="section level3">
+<h3>Sequencing (Sanger Sequencing).</h3>
+<p>Proses sekuensing dimaksudkan untuk membaca urutan nukleotida dari sekuen target DNA yang sudah diamplifikasi. Metode yang dipakai saat ini, dikenal dengan metode <strong>Sanger Sequencing</strong> yang ditemukan oleh Federick Sanger pada tahun 1977. Metode ini menggunakan metode <em>cycle sequencing</em>. Pada prinsipnya, proses yang terjadi di dalam sekuensing merupakan proses yang hampir mirip dengan proses yang terjadi di dalam PCR, yaitu adanya tahapan <em>denaturation, annealing, dan extension</em>. Perbedaan dari kedua proses ini terdapat pada adanya bahan tambahan yang disebut ddNTPs (<em>dideoxyribonucleotides</em>). ddNTP merupakan dNTP yang dimodifikasi dan kehilangan salah satu gugus OH-nya. ddNTP ini akan menempel pada ujung 5’ dari tiap fragmen nukleotida dan akan menghentikan proses pemanjangan DNA. ddNTP ini akan terbaca pada mesin sekuensing karena bahan ini dilabel dengan radioaktif atau pewarna flouresence (Sanger and Coulson, 1975; Sanger et al., 1977).</p>
+</div>
+</div>
+<div id="next-generation-sequencing-ngs" class="section level2">
+<h2>Next Generation Sequencing (NGS)</h2>
+<p><strong>Next Generation Sequencing</strong> (NGS) adalah teknik sekuensing (pembacaan urutan DNA) terbaru setelah Sanger Sequencing. NGS menggunakan teknologi <em>high-throughput DNA sequencing</em> (HTS) yang dapat membaca atau men-sekuen jutaan molekul DNA dalam satu waktu secara bersamaan.</p>
+<p>Perbedaan Sanger Sequencing dengan NGS adalah Sanger sequencing hanya dapat mensekuen satu fragment DNA dalam satu waktu. Sedangkan NGS dapat mensekuen jutaan sekuen secara bersamaan dalam satu waktu.</p>
+<p>Ada dua pendekatan dalam metode NGS:</p>
+<ul>
+<li><strong>Amplicon sequencing</strong>. Metode ini menggunakan primer spesifik yang mentarget gen spesifik dari sample yang terdiri dari ribuan bahkan jutaan sel dari organisme berbeda. Contoh penggunaan <em>amplicon-based method</em> adalah pada analysis mikrobiome untuk melihat komposisi mikrobia dalam sebuah komunitas dengan menggunakan gen 16S rRNA.</li>
+<li><strong>Shotgun sequencing</strong>. Metode ini dilakukan dengan memotong (<em>fragmenting</em>) DNA secara acak hingga menjadi potongan-potongan kecil. Potongan-potongan fragmen DNA ini kemudian disusun kembali menggunakan bioinformatic. Berbeda dengan <em>Amplicon-based</em>, shotgun sekuensing dapat membaca keseluruhan genome DNA. Shotgun sekuensing dapat digunakan untuk melihat <em>fungsional diversity</em> dari mikrobia atau juga <em>population genomic</em> sebuah spesies.</li>
+</ul>
+<p>Kapan kita menggunakan Sanger atau NGS:</p>
+<ul>
+<li>Sanger sekuensing digunakan jika kita ingin mensekuen <em>single gen</em> dari satu individu dengan panjang sekuen sekitar 700-1000 bp (<em>bais pair</em> atau pasang basa). NGS dilakukan jika kita ingin mensekuen lebih dari 100 gen secara bersamaan, atau puluhan sample dengan gen yang sama secara simultan. NGS juga menjadi pilihan ketika kita ingin mensekuen sample yang memiliki jumlah DNA yang kecil (misal: Environmental DNA atau eDNA).</li>
+</ul>
+<p>Beberapa istilah dalam teknik NGS:</p>
+<ul>
+<li><strong>DNA metabarcoding</strong>: merupakan cara mengidentifikasi taxa secara bersamaan dan dalam jumlah besar dengan mentarget gen tertentu (<em>amplicon-based</em>). Istilah DNA metabarcoding meliputi dua metode, yaitu (a) <em>bulk sample metabarcoding</em>, dimana sample merupakan campuran dari organisme, misalnya plankton, arthropods atau gut material. Metode kedua adalah (b) <em>environmental DNA</em> (eDNA) metabarcoding, dimana sample merupakan sel yang lepas dan berada di lingkungan (air atau tanah), dimana kita tidak selalu bisa melihat organisme yang ada.</li>
+<li><strong>Metagenomic</strong>: merupakan studi tentang metagenome, yaitu kumpulan genom dari mikroorganisme yang diambil dari sample lingkungan, untuk mendapatkan informasi tentang microbial diversity dan kondisi ekologi dari sebuah ekosistem.</li>
+<li><strong>Microbiome</strong>: adalah kumpulan dari materi genetik dari mikroorganisme di sebuah lingkungan. Salah satu metode yang digunakan dalam microbiome adalah DNA metabarcoding yang umumnya mentarget gen 16S rRNA.<br />
+</li>
+<li><strong>Transciptome</strong>: metode ini mentarget RNA untuk melihat functional diversity dari sebuah komunitas.</li>
+<li><strong>Proteomic</strong>: merupakan study tentang proteomes atau protein dan fungsinya.</li>
+<li><strong>Whole Genome Sequencing</strong>: dikenal juga sebagai <em>full genome sequencing</em>, <em>complete genome sequencing</em>, atau <em>entire genome sequencing</em>. Ini merupakan proses untuk mengetahui keseluruhan sekuen DNA dari genome sebuah organisme.</li>
+</ul>
+</div>
+<div id="references" class="section level2">
+<h2>References:</h2>
+<p>Sambrook, J., and Russell, D. W. (2001). Molecular cloning: a laboratory manual. Cold Spring Harbour.</p>
+<p>Sanger, F., and Coulson, A. R. (1975). A rapid method for determining sequences in DNA by primed synthesis with DNA polymerase. Journal of Molecular Biology, 94(3).</p>
+<p>Sanger, F., Nicklen, S., and Coulson, A. R. (1977). DNA sequencing with chain-terminating inhibitors. Proceedings of the National Academy of Sciences, 74(12): 5463–5467.</p>
+<p>Yuwono, T. (2006) Biologi Molekular. Penerbit Erlangga. Pp. 269.</p>
+<div id="how-to-cite-this-page" class="section level3">
+<h3>How to cite this page?</h3>
+<p><strong>Contoh dari:</strong> SILVA Terms of Use/License Information As of release 138 the SILVA databases, its taxonomy, and all files provided for download are licensed under Create Commons Attribution 4.0 (CC-BY 4.0).</p>
+<p>All data is freely available for academic and commercial use as long as SILVA is credited as original author and a link to the full license is provided. Releases before SILVA 138 are not affected by the new license. Please refer to the license file provided in each download directory for the license associated with the provided files.</p>
+</div>
+</div>
+</div>
+
+<div class="footer">
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><i class="fa fa-creative-commons fa-2x"></i></a>&nbsp;
+<a href="https://twitter.com/genetics_blog" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>&nbsp;
+<a href="https://github.com/4va/biodatasci" target="_blank"><i class="fa fa-github fa-2x"></i></a>&nbsp;
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
