@@ -1,0 +1,75 @@
+# Biologi Molekuler Dasar
+
+## Pendahuluan
+
+**Biologi molekuler** atau genetika molekuler adalah ilmu yang mempelajari fungsi dan organisasi dari organisme ditinjau dari struktur dan regulasi molekuler dari komponen penyusunnya (Yuwono, 2006). **Dogma sentral** dalam biologi menjelaskan bagaimana informasi genetik disampaikan di dalam sel, yang meliputi rangkaian proses perubahan dari molekul DNA (*Deoxyribonecleic Acid*) menjadi RNA (*Ribonucleic Acid*) atau proses **transkripsi**, kemudian perubahan dari RNA menjadi protein atau proses **translasi**.
+
+## Struktur DNA
+
+**Deoxyribonucleic Acid** (DNA) adalah polimer nukleotida yang berperan dalam penyimpanan dan pewarisan informasi genetik di dalam sel. Satu nukleotida terdiri dari tiga bagian, yaitu **basa nitrogen, molekul gula dan gugus fospat**. Basa nitrogen dapat berupa basa **Purine (Adenine dan Guanine)** atau **Pirimidin (Tymine dan Cytosin)**. Struktur DNA berbentuk *double helix*  atau rantai ganda berpilin. Struktur molekul DNA pertama kali diungkapkan oleh James Watson dan Francis Crick pada tahun 1953 berdasarkan atas foto sinar X yang dibuat oleh Rosalind Franklin dan Maurice Wilkins (Yuwono, 2006). *Ribonucleic Acid* (RNA) berbeda dengan DNA dilihat dari molekul gula penyusunnya. RNA menngunakan gula ribose, beratai tunggal dan basa nitrogen T diganti menjadi U (Urasil).
+
+**Mutasi** adalah perubahan yang terjadi dalam susunan DNA yang disebabkan karena beberapa hal, seperti kesalahan dalam duplikasi sel, radiasi, mutagen atau infeksi virus. **Gen** adalah sekuen dari DNA atau RNA yang merupakan unit dasar dari penurunan sifat dalam sel. Gen berada dalam DNA atau RNA yang mengkode hasil sintesa dari produk gen, baik berupa RNA atau protein. **Penanda genetik** adalah gen atau sekuen DNA yang berada dalam kromosom yang digunakan untuk mengidentifikasi individu atau spesies. 
+
+## Teknik Perbanyakan DNA
+
+*Polymerase Chain Reaction* (PCR) atau reaksi berantai polymerase adalah sebuah teknik perbanyakan urutan DNA melalui proses enzimatik yang dilakukan secara in vitro (Sambrook and Russell, 2001). Teknik ini menggunakan sepasang oligonukleotida pendek (primer) sebagai cetakan untuk mengkopi dan memperbanyak bagian tertentu dari DNA target. Sebelum melakukan proses PCR, langkah pertama yang harus dilakukan adalah melakukan ekstraksi DNA dari dalam sel.
+
+### Ekstraksi DNA
+
+Fungsi dari ektraksi DNA adalah mengeluarkan DNA dari dalam sel. Pertama-tama dinding sel dihancurkan dengan beberapa metode, seperti pemanasan, sonifikasi, tekanan osmosis, atau digerus secara manual. Kemudian, membran lipid dipisahkan dengan menggunakan sejenis detergen atau SDS (*Sodium Dodecyl Sulfate*), dan Protein dihilangkan dengan menggunakan enzim Proteinase-K. Pada proses selanjutnya, ethanol digunakan untuk memisahkan DNA dengan bahan-bahan sel lainnya. Pada akhir proses ekstraksi, DNA akan dilarutkan di dalam air (H2O) dan siap digunakan untuk proses selanjutnya.
+
+### Tahapan penting dalam PCR (Polymerase Chain Reaction)
+
+* **Denaturation** (Pemisahan rantai ganda DNA). Proses ini merupakan proses pemisahan rantai ganda DNA (*double stranded*) menjadi rantai tunggal (*single stranded*) dengan menngunakan bantuan temperatur tinggi  (~94 – 95°C ) selama kurang lebih 1-2 menit. 
+* **Annealing** (Penempelan). Tahan ini adalah tahap penempelan primer pada DNA cetakan  pada suhu sekitar 45-55°C selama 1-2 menit. Umumnya primer berjumlah sepasang (primer depan atau *Forward primer* dan primer belakang atau *Reverse primer*), yang masing-masing akan menempel pada setiap rantai tunggal DNA.
+* **Extention** (Pemanjangan). Pada proses ini, terjadi pemanjangan rantai tunggal DNA. Pemanjangan akan dimulai dari ujung 3’ ke 5’. Dalam tahap ini, enzim DNA polimerase akan berperan dalam proses polimerasi atau pemanjangan rantai DNA baru berdasarkan informasi yang ada pada DNA cetakan.
+* **Duplikasi** (Penggandaan). Tahap terakhir ini dimaksudkan untuk menduplikasi rantai DNA yang dihasilkan secara ekponensial, sesuai dengan cetakan dan primer yang digunakan. 
+
+### Gel Electroforesis
+
+Hasil amplifikasi PCR kemudian dibaca dengan menggunakan metode elektroforesis gel, yang merupakan teknik untuk memisahkan DNA berdasarkan ukuran berat molekul dan struktur fisik molekulnya. Molekul DNA yang bermuatan negatif, jika diletakkan dalam medan listrik, akan bergerak melalui gel agarosa menuju kutub positif. DNA akan diberi warna menggunakan pewarna flouresence yang akan berikatan dengan fragmen DNA dan akan berpendar di bawah cahaya LED (Light Emitting Diode), sebagai tanda bahwa DNA telah teramplifikasi dalam proses PCR.
+
+### Sequencing (Sanger Sequencing). 
+
+Proses sekuensing dimaksudkan untuk membaca urutan nukleotida dari sekuen target DNA yang sudah diamplifikasi. Metode yang dipakai saat ini, dikenal dengan metode **Sanger Sequencing** yang ditemukan oleh Federick Sanger pada tahun 1977. Metode ini menggunakan metode *cycle sequencing*. Pada prinsipnya, proses yang terjadi di dalam sekuensing merupakan proses yang hampir mirip dengan proses yang terjadi di dalam PCR, yaitu adanya tahapan *denaturation, annealing, dan extension*. Perbedaan dari kedua proses ini terdapat pada adanya bahan tambahan yang disebut ddNTPs (*dideoxyribonucleotides*). ddNTP merupakan dNTP yang dimodifikasi dan kehilangan salah satu gugus OH-nya. ddNTP ini akan menempel pada ujung 5’ dari tiap fragmen nukleotida dan akan menghentikan proses pemanjangan DNA. ddNTP ini akan terbaca pada mesin sekuensing karena bahan ini dilabel dengan radioaktif atau pewarna flouresence (Sanger and Coulson, 1975; Sanger et al., 1977).
+
+## Next Generation Sequencing (NGS)
+
+**Next Generation Sequencing** (NGS) adalah teknik sekuensing (pembacaan urutan DNA) terbaru setelah Sanger Sequencing. NGS menggunakan teknologi *high-throughput DNA sequencing* (HTS) yang dapat membaca atau men-sekuen jutaan molekul DNA dalam satu waktu secara bersamaan. 
+
+Perbedaan Sanger Sequencing dengan NGS adalah Sanger sequencing hanya dapat mensekuen satu fragment DNA dalam satu waktu. Sedangkan NGS dapat mensekuen jutaan sekuen secara bersamaan dalam satu waktu.  
+
+Ada dua pendekatan dalam metode NGS:
+
+* **Amplicon sequencing**. Metode ini menggunakan primer spesifik yang mentarget gen spesifik dari sample yang terdiri dari ribuan bahkan jutaan sel dari organisme berbeda. Contoh penggunaan *amplicon-based method* adalah pada analysis mikrobiome untuk melihat komposisi mikrobia dalam sebuah komunitas dengan menggunakan gen 16S rRNA.
+* **Shotgun sequencing**. Metode ini dilakukan dengan memotong (*fragmenting*) DNA secara acak hingga menjadi potongan-potongan kecil. Potongan-potongan fragmen DNA ini kemudian disusun kembali menggunakan bioinformatic. Berbeda dengan *Amplicon-based*, shotgun sekuensing dapat membaca keseluruhan genome DNA. Shotgun sekuensing dapat digunakan untuk melihat *fungsional diversity* dari mikrobia atau juga *population genomic* sebuah spesies. 
+
+Kapan kita menggunakan Sanger atau NGS:
+
+* Sanger sekuensing digunakan jika kita ingin mensekuen *single gen* dari satu individu dengan panjang sekuen sekitar 700-1000 bp (*bais pair* atau pasang basa). NGS dilakukan jika kita ingin mensekuen lebih dari 100 gen secara bersamaan, atau puluhan sample dengan gen yang sama secara simultan. NGS juga menjadi pilihan ketika kita ingin mensekuen sample yang memiliki jumlah DNA yang kecil (misal: Environmental DNA atau eDNA). 
+
+Beberapa istilah dalam teknik NGS:
+
+* **DNA metabarcoding**: merupakan cara mengidentifikasi taxa secara bersamaan dan dalam jumlah besar dengan mentarget gen tertentu (*amplicon-based*). Istilah DNA metabarcoding meliputi dua metode, yaitu (a) *bulk sample metabarcoding*, dimana sample merupakan campuran dari organisme, misalnya plankton, arthropods atau gut material. Metode kedua adalah (b) *environmental DNA* (eDNA) metabarcoding, dimana sample merupakan sel yang lepas dan berada di lingkungan (air atau tanah), dimana kita tidak selalu bisa melihat organisme yang ada. 
+* **Metagenomic**: merupakan studi tentang metagenome, yaitu kumpulan genom dari mikroorganisme yang diambil dari sample lingkungan, untuk mendapatkan informasi tentang microbial diversity dan kondisi ekologi dari sebuah ekosistem. 
+* **Microbiome**: adalah kumpulan dari materi genetik dari mikroorganisme di sebuah lingkungan. Salah satu metode yang digunakan dalam microbiome adalah DNA metabarcoding yang umumnya mentarget gen 16S rRNA.  
+* **Transciptome**: metode ini mentarget RNA untuk melihat functional diversity dari sebuah komunitas.
+* **Proteomic**: merupakan study tentang proteomes atau protein dan fungsinya.
+* **Whole Genome Sequencing**: dikenal juga sebagai *full genome sequencing*, *complete genome sequencing*, atau *entire genome sequencing*. Ini merupakan proses untuk mengetahui keseluruhan sekuen DNA dari genome sebuah organisme. 
+
+
+## References:
+Sambrook, J., and Russell, D. W. (2001). Molecular cloning: a laboratory manual. Cold Spring Harbour.
+
+Sanger, F., and Coulson, A. R. (1975). A rapid method for determining sequences in DNA by primed synthesis with DNA polymerase. Journal of Molecular Biology, 94(3).
+
+Sanger, F., Nicklen, S., and Coulson, A. R. (1977). DNA sequencing with chain-terminating inhibitors. Proceedings of the National Academy of Sciences, 74(12): 5463–5467.
+
+Yuwono, T. (2006) Biologi Molekular. Penerbit Erlangga. Pp. 269.
+
+### How to cite this page?
+**Contoh dari:** SILVA Terms of Use/License Information
+As of release 138 the SILVA databases, its taxonomy, and all files provided for download are licensed under Create Commons Attribution 4.0 (CC-BY 4.0).
+
+All data is freely available for academic and commercial use as long as SILVA is credited as original author and a link to the full license is provided.
+Releases before SILVA 138 are not affected by the new license. Please refer to the license file provided in each download directory for the license associated with the provided files.
