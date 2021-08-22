@@ -72,7 +72,7 @@ navbar:
           href: r-rnaseq-airway.html
         - text: "----"
         - text: "--- Intermediate Course ---"
-        - text: "R Basicssss"
+        - text: "R Basics"
           href: r-basics.html
         - text: "--- Advance Courses ---"
         - text: "Get to know Qiime2"
@@ -80,11 +80,13 @@ navbar:
     - text: "CSS Course"
       icon: fa-book
       menu:
-        - text: "Why Molecular Approaches"
+        - text: "A Starting Point"
           href: Basic_Molecular.html
-        - text: "Lets move on"
+        - text: "I Want to Understand More"
           href: Editing_Sequence.html
         - text: "Lets move on"
+          href: DNA_Barcoding.html
+        - text: "I feel Confidence"
           href: DNA_Barcoding.html
 
   right:
