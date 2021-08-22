@@ -14,79 +14,16 @@ navbar:
     - text: "Data"
       icon: fa-download
       href: "data.html"
-    - text: "Lessons"
-      icon: fa-book
-      menu:
-        - text: "--- Core Lessons ---"
-        - text: "R Basics"
-          href: r-basics.html
-        - text: "Data Frames"
-          href: r-dataframes.html
-        - text: "Data Manipulation"
-          href: r-dplyr-yeast.html
-        - text: "Tidying data"
-          href: r-tidy.html
-        - text: "Reproducible Research & RMarkdown"
-          href: r-rmarkdown.html
-        - text: "Data Visualization"
-          href: r-viz-gapminder.html
-        - text: "Phylogenetic Trees"
-          href: r-ggtree.html
-        - text: "RNA-seq"
-          href: r-rnaseq-airway.html
-        - text: "----"
-        - text: "--- Optional Lessons ---"
-        - text: "Essential Statistics with R"
-          href: r-stats.html
-        - text: "----"
-        - text: "--- Homework ---"
-        - text: "Data Manipulation"
-          href: r-dplyr-homework.html
-        - text: "Data Visualization"
-          href: r-dataviz-homework.html
-        - text: "Reproducible Research & RMarkdown"
-          href: r-rmarkdown-homework.html
-        - text: "Essential Statistics"
-          href: r-stats-homework.html
-        - text: "RNA-seq Data Analysis"
-          href: r-rnaseq-homework.html
-    - text: "Courses"
-      icon: fa-book
-      menu:
-        - text: "--- Basic Course ---"
-        - text: "R Basics"
-          href: r-basics.html
-        - text: "Data Frames"
-          href: r-dataframes.html
-        - text: "Data Manipulation"
-          href: r-dplyr-yeast.html
-        - text: "Tidying data"
-          href: r-tidy.html
-        - text: "Reproducible Research & RMarkdown"
-          href: r-rmarkdown.html
-        - text: "Data Visualization"
-          href: r-viz-gapminder.html
-        - text: "Phylogenetic Trees"
-          href: r-ggtree.html
-        - text: "RNA-seq"
-          href: r-rnaseq-airway.html
-        - text: "----"
-        - text: "--- Intermediate Course ---"
-        - text: "R Basics"
-          href: r-basics.html
-        - text: "--- Advance Courses ---"
-        - text: "Get to know Qiime2"
-          href: Qiime2_Protokol.html
     - text: "CSS Course"
       icon: fa-book
       menu:
-        - text: "A Starting Point"
+        - text: "Basic Molecular"
           href: Basic_Molecular.html
-        - text: "I Want to Understand More"
+        - text: "Editing_Sequence"
           href: Editing_Sequence.html
-        - text: "Lets move on"
+        - text: "DNA Barcoding"
           href: DNA_Barcoding.html
-        - text: "I feel Confident"
+        - text: "Research Cases"
           href: DNA_Barcoding.html
 
   right:
