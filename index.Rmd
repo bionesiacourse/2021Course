@@ -104,11 +104,11 @@ Contemporary life sciences research is plagued by reproducibility issues. This s
 
 ## FAQ
 
-#### What are the pre-requisites?
+#### Apa syarat mengikuti kursus ini?
 
 _There are none!_ [(But there is some required reading and software setup required before the workshop)](setup.html). This class doesn't assume any knowledge of programming or using a command-line interface, but if you've ever had any experience here, the content won't come as so much of a shock. But _don't panic._ Command-line interfaces and programming languages like R are _incredibly powerful_ and will be utterly transformative on your research. There's a learning curve, and it's near-vertical in the beginning, but it's surmountable and the payoff is worth it! 
 
-#### Do I need a laptop?
+#### Apakah saya membutuhkan perangkat komputer?
 
 **_YES._** You must have access to a computer on which you can install software. The class will be a mix of lecture, discussion, but primarily live coding. You must bring your laptop to each session. Bring your charging cable also. Please follow the [setup instructions](setup.html) prior to the workshop.
 
