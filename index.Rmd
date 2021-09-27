@@ -5,7 +5,7 @@ output:
     toc: yes
 ---
 
-This Metabarcoding workshop will introduces methods, tools, and software for reproducibly managing, manipulating, analyzing, and visualizing targeted sequencing data using the R statistical and unix computing environment.
+Kursus singkat ini akan memperkenalkan berbagai macam cara untuk menganalisis data genetik pada level dasar. Termasuk diantaranya adalah aplikasi yang digunakan untuk mengatur, memanipulasi, menganalisis dan memvisualisasikan data genetik dengan menggunakan aplikasi R yang tidak berbayar 
 
 ## General Information
 
@@ -112,9 +112,10 @@ _There are none!_ [(But there is some required reading and software setup requir
 
 **_YES._** You must have access to a computer on which you can install software. The class will be a mix of lecture, discussion, but primarily live coding. You must bring your laptop to each session. Bring your charging cable also. Please follow the [setup instructions](setup.html) prior to the workshop.
 
-#### Where do I get additional help?
+#### Informasi penting seputar Hak Cipta
 
-Glad you asked! [See here](help.html).
+Segala informasi dan material yang kami berikan disini dilisensi oleh Creative Commons Attribution-Share Alike 4.0 International (CC BY-SA 4.0). (CC BY-SA 4.0) Detail tentang hak cipta dapat dilihat di akses di https://creativecommons.org/licenses/by-sa/4.0/deed.id
+
 
 
 
