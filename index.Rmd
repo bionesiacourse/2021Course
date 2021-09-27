@@ -1,19 +1,10 @@
----
-title: ""
-output: html_document
----
+# Pelatihan Dasar Analisis Data Molekuler&quot
 
-_**Term of Reference (TOR)**_
-
-&quot; **Pelatihan Dasar Analisis Data Molekuler&quot;**
-
-1. **Pendahuluan**
+## Pendahuluan
 
 Sebagai salah satu kontribusi untuk memberikan akses luas dalam pembelajaran ilmu ekologi molekuler  kami bertujuan untuk menyelenggarakan workshop melalui kelas pembelajaran dalam jaringan untuk membantu para peneliti mempelajari berbagai keterampilan dasar untuk menganalisis data molekuler. Saat ini penelitian seputar ekologi molekuler memainkan peran penting untuk mendeteksi spesies ataupun hubungan antara spesies dan lokasi dimana spesies tersebut ditemukan. Studi ekologi molekuler juga menjadi bagian yang vital sebagai landasan kebijakan terkait konservasi kawasan ataupun organisme jenis. Namun studi ini masih perlu diperluas lagi pembelajarannya sehingga dapat diimplementasikan secara langsung kepada penggiat, mahasiswa, pengajar ataupun peneliti yang ada di Indonesia. Upaya ini juga dilakukan untuk memahami keanekaragaman hayati dan pemilihan tindakan konservasi yang tepat untuk melindungi biota dan ekosistem.
 
-**2. Detail Kegiatan**
-
-**2.1 Kegiatan**
+## Detail Kegiatan
 
 Kegiatan ini akan dilakukan dalam jaringan (daring) melalui aplikasi ZOOM sebanyak empat kali dalam satu bulan (setiap hari Selasa pada bulan Oktober 2021; Tanggal 5, 12, 19, dan 26 Oktober 2021; 3 jam kegiatan setiap workshop). Kegiatan ini didukung sepenuhnya oleh Code for Science &amp; Society ([https://eventfund.codeforscience.org](https://eventfund.codeforscience.org/)) melalui hibah yang diberikan kepada Yayasan Biodiversitas Indonesia (BIONESIA). Judul dari hibah ini adalah &quot;_Lessening the Gap: Nurturing Access for Young researcher in Eastern Indonesia to Analyze Molecular Data_&quot; dengan tujuan untuk mengadakan workshop tentang dasar-dasar analisis data molekuler. Hibah ini juga merupakan bagian dari _Grant Number GBMF8449 from the Gordon and Betty Moore Foundation (_[_https://doi.org/10.37807/GBMF8449_](https://doi.org/10.37807/GBMF8449)_)._
 
@@ -21,20 +12,20 @@ Kegiatan ini menargetkan total 35 orang peserta, dengan sistem rekrutmenterbuka.
 
 Tim pemateri dan pelaksana workshop berasal dari BIONESIA yaitu:
 
-1. Ni Kadek Dita Cahyani, Ph.D.--> &quot;Editing Sekuen menggunakan Software MEGA X&quot; dan &quot;DNA Barcoding&quot;.
-2. Yuliana Fitri Syamsuni, Ph.D.c. --> &quot;Genetika Populasi&quot;
-3. Aji Wahyu Anggoro, Ph.D.c. --> &quot;Pengenalan R&quot;
+1. Ni Kadek Dita Cahyani, Ph.D.--> Editing Sekuen menggunakan Software MEGA X&quot; dan &quot;DNA Barcoding
+2. Yuliana Fitri Syamsuni, Ph.D.c. --> Genetika Populasi
+3. Aji Wahyu Anggoro, Ph.D.c. --> Pengenalan R&quot
 4. Eka Maya Kurniasih, M.Si. dan Danie Al Malik, S.Kel. --> Teknis kegiatan dan _contact person_
 
 Pada setiap kegiatan, kami akan mengundang satu pembicara yang merupakan akademisi atau peneliti Indonesia yang berafiliasi dengan perguruan tinggi atau institusi di Indonesia atau luar negeri. Harapannya, akan terjalin komunikasi dan kerjasama untuk penelitian ke depannya.
 
-**2.2 Materi Workshop**
+## Materi Workshop
 
 Workshop ini akan memberikan beberapa keterampilan dasar seputar tahap-tahap yang dibutuhkan untuk menganalisis data molekuler atau sekuen DNA. Materi workshops akan melingkupi dasar-dasar analisis data molekuler yang diawali dengan Editing Sekuen dengan program MEGA X, DNA Barcoding yang meliputi BLAST ke NCBI, Teori tentang Genetika Populasi dan pengenalan tentang bahasa pemrograman R untuk statistik dan visualisasi data. Beberapa teori dan materi workshop akan bisa diunduh melalui tautan yang akan dibagikan seminggu sebelum kegiatan berlangsung, Tautan tersebut juga akan menjadi sumber untuk mengunduh dan memasang program yang dibutuhkan dalam workshop setiap minggunya.
 
-**2.3. Susunan Acara**
+### Susunan Acara
 
-**Pertemuan pertama, 5 Oktober 2021**
+#### Pertemuan pertama, 5 Oktober 2021
 
 | Jam (WITA) | Kegiatan | Keterangan |
 | --- | --- | --- |
@@ -44,7 +35,7 @@ Workshop ini akan memberikan beberapa keterampilan dasar seputar tahap-tahap yan
 | 10.00 - 11.30 | Materi 1Editing Sekuen dengan MEGA X | Ni Kadek Dita Cahyani, Ph.D. |
 | 11.30 ??? 12.00 | Tanya Jawab | Dipandu moderator (Eka Maya Kurniasih dan Danie Al Malik) |
 
-**Pertemuan ke-2, 12 Oktober 2021**
+#### Pertemuan ke-2, 12 Oktober 2021
 
 | Jam (WITA) | Kegiatan | Keterangan |
 | --- | --- | --- |
@@ -53,7 +44,7 @@ Workshop ini akan memberikan beberapa keterampilan dasar seputar tahap-tahap yan
 | 09.45 ??? 11.30 | Materi 2DNA Barcoding | Ni Kadek Dita Cahyani, Ph.D. |
 | 11.30 ??? 12.00 | Tanya Jawab | Dipandu moderator (Eka Maya Kurniasih dan Danie Al Malik) |
 
-**Pertemuan ke-3, 19 Oktober 2021**
+#### Pertemuan ke-3, 19 Oktober 2021
 
 | Jam (WITA) | Kegiatan | Keterangan |
 | --- | --- | --- |
@@ -62,7 +53,7 @@ Workshop ini akan memberikan beberapa keterampilan dasar seputar tahap-tahap yan
 | 09.45 ??? 11.30 | Materi 3Genetika Populasi | Yuliana Fitri Syamsuni, Ph.D.c. |
 | 11.30 ??? 12.00 | Tanya Jawab | Dipandu moderator (Eka Maya Kurniasih dan Danie Al Malik) |
 
-**Pertemuan ke-4, 26 Oktober 2021**
+#### Pertemuan ke-4, 26 Oktober 2021
 
 | Jam (WITA) | Kegiatan | Keterangan |
 | --- | --- | --- |
@@ -73,19 +64,19 @@ Workshop ini akan memberikan beberapa keterampilan dasar seputar tahap-tahap yan
 | 11.50 - 12.00 | Penutup | Ditutup oleh Direktur Yayasan Biodiversitas Indonesia, Andrianus Sembiring, M.Si. |
 
 
-#### Apa syarat mengikuti kursus ini?
+### Apa syarat mengikuti kursus ini?
 
 _There are none!_ [(But there is some required reading and software setup required before the workshop)](setup.html). This class doesn't assume any knowledge of programming or using a command-line interface, but if you've ever had any experience here, the content won't come as so much of a shock. But _don't panic._ Command-line interfaces and programming languages like R are _incredibly powerful_ and will be utterly transformative on your research. There's a learning curve, and it's near-vertical in the beginning, but it's surmountable and the payoff is worth it! 
 
-#### Apakah saya membutuhkan perangkat komputer?
+### Apakah saya membutuhkan komputer?
 
 **_YES._** You must have access to a computer on which you can install software. The class will be a mix of lecture, discussion, but primarily live coding. You must bring your laptop to each session. Bring your charging cable also. Please follow the [setup instructions](setup.html) prior to the workshop.
 
-#### Informasi penting seputar Hak Cipta
+###  Hak Cipta
 
 Segala informasi dan material yang kami berikan disini dilisensi oleh Creative Commons Attribution-Share Alike 4.0 International (CC BY-SA 4.0). (CC BY-SA 4.0) Detail tentang hak cipta dapat dilihat di akses di https://creativecommons.org/licenses/by-sa/4.0/deed.id
 
-**Contact Person:**
+### Nara Hubung
 
 - Eka Maya Kurniasih (WA: +6281368863448)
 - Danie Al Malik (WA: +6287875554365)
