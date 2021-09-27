@@ -1,5 +1,5 @@
 ---
-title: "Sequencing Data Processing WorkshopPP"
+title: "Sequencingggg Data Processing Workshop"
 output: 
   html_document:
     toc: yes
