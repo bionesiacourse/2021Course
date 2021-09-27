@@ -30,37 +30,37 @@ Workshop ini akan memberikan beberapa keterampilan dasar seputar tahap-tahap yan
 | Jam (WITA) | Kegiatan | Keterangan |
 | --- | --- | --- |
 | 09.00 - 09.15 | Pembukaan | Pembukaan akan dilakukan oleh Direktur Yayasan Biodiversitas Indonesia, Andrianus Sembiring, M.Si. |
-| 09.15 ??? 09.30 | Pemberitahuan Alur Kegiatan | Dipandu moderator (Eka Maya Kurniasih dan Danie Al Malik) |
-| 09.30 ??? 10.00 | Invited Speaker 1 | Daniel Lumbantobing (Smithsonian National Museum of Natural History) |
+| 09.15 - 09.30 | Pemberitahuan Alur Kegiatan | Dipandu moderator (Eka Maya Kurniasih dan Danie Al Malik) |
+| 09.30 - 10.00 | Invited Speaker 1 | Daniel Lumbantobing (Smithsonian National Museum of Natural History) |
 | 10.00 - 11.30 | Materi 1Editing Sekuen dengan MEGA X | Ni Kadek Dita Cahyani, Ph.D. |
-| 11.30 ??? 12.00 | Tanya Jawab | Dipandu moderator (Eka Maya Kurniasih dan Danie Al Malik) |
+| 11.30 - 12.00 | Tanya Jawab | Dipandu moderator (Eka Maya Kurniasih dan Danie Al Malik) |
 
 #### Pertemuan ke-2, 12 Oktober 2021
 
 | Jam (WITA) | Kegiatan | Keterangan |
 | --- | --- | --- |
 | 09.00 - 09.15 | Pre-Test | Dipandu moderator (Eka dan Danie) |
-| 09.15 ??? 09.45 | Invited Speaker 2 | Andhika Prima Prasetyo (Center for Fisheries Research, AMFRHR, MMAF) |
-| 09.45 ??? 11.30 | Materi 2DNA Barcoding | Ni Kadek Dita Cahyani, Ph.D. |
-| 11.30 ??? 12.00 | Tanya Jawab | Dipandu moderator (Eka Maya Kurniasih dan Danie Al Malik) |
+| 09.15 - 09.45 | Invited Speaker 2 | Andhika Prima Prasetyo (Center for Fisheries Research, AMFRHR, MMAF) |
+| 09.45 - 11.30 | Materi 2DNA Barcoding | Ni Kadek Dita Cahyani, Ph.D. |
+| 11.30 - 12.00 | Tanya Jawab | Dipandu moderator (Eka Maya Kurniasih dan Danie Al Malik) |
 
 #### Pertemuan ke-3, 19 Oktober 2021
 
 | Jam (WITA) | Kegiatan | Keterangan |
 | --- | --- | --- |
 | 09.00 - 09.15 | Pre-Test | Dipandu moderator (Eka dan Danie) |
-| 09.15 ??? 09.45 | Invited Speaker 3 | Sapto Andriyono (UNAIR) |
-| 09.45 ??? 11.30 | Materi 3Genetika Populasi | Yuliana Fitri Syamsuni, Ph.D.c. |
-| 11.30 ??? 12.00 | Tanya Jawab | Dipandu moderator (Eka Maya Kurniasih dan Danie Al Malik) |
+| 09.15 - 09.45 | Invited Speaker 3 | Sapto Andriyono (UNAIR) |
+| 09.45 - 11.30 | Materi 3Genetika Populasi | Yuliana Fitri Syamsuni, Ph.D.c. |
+| 11.30 - 12.00 | Tanya Jawab | Dipandu moderator (Eka Maya Kurniasih dan Danie Al Malik) |
 
 #### Pertemuan ke-4, 26 Oktober 2021
 
 | Jam (WITA) | Kegiatan | Keterangan |
 | --- | --- | --- |
 | 09.00 - 09.15 | Pre-Test | Dipandu moderator (Eka dan Danie) |
-| 09.15 ??? 09.45 | Invited Speaker 4 | Rian Prasetia (WCS) |
-| 09.45 ??? 11.30 | Materi 4Pengenalan R | Aji Wahyu Anggoro, Ph.D.c. |
-| 11.30 ??? 11.50 | Tanya Jawab, Kesan dan Pesan | Dipandu moderator (Eka Maya Kurniasih dan Danie Al Malik) |
+| 09.15 - 09.45 | Invited Speaker 4 | Rian Prasetia (WCS) |
+| 09.45 - 11.30 | Materi 4Pengenalan R | Aji Wahyu Anggoro, Ph.D.c. |
+| 11.30 - 11.50 | Tanya Jawab, Kesan dan Pesan | Dipandu moderator (Eka Maya Kurniasih dan Danie Al Malik) |
 | 11.50 - 12.00 | Penutup | Ditutup oleh Direktur Yayasan Biodiversitas Indonesia, Andrianus Sembiring, M.Si. |
 
 
