@@ -68,8 +68,4 @@ Sanger, F., Nicklen, S., and Coulson, A. R. (1977). DNA sequencing with chain-te
 Yuwono, T. (2006) Biologi Molekular. Penerbit Erlangga. Pp. 269.
 
 ### How to cite this page?
-**Contoh dari:** SILVA Terms of Use/License Information
-As of release 138 the SILVA databases, its taxonomy, and all files provided for download are licensed under Create Commons Attribution 4.0 (CC-BY 4.0).
-
-All data is freely available for academic and commercial use as long as SILVA is credited as original author and a link to the full license is provided.
-Releases before SILVA 138 are not affected by the new license. Please refer to the license file provided in each download directory for the license associated with the provided files.
+Lihat halaman depan web ini untuk mendapatkan detail tentang hak cipta
