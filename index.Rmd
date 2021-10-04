@@ -2,7 +2,7 @@
 
 ## Pendahuluan
 
-Sebagai salah satu kontribusi untuk memberikan akses luas dalam pembelajaran ilmu ekologi molekuler  kami bertujuan untuk menyelenggarakan workshop melalui kelas pembelajaran dalam jaringan untuk membantu para peneliti mempelajari berbagai keterampilan dasar untuk menganalisis data molekuler. Saat ini penelitian seputar ekologi molekuler memainkan peran penting untuk mendeteksi spesies ataupun hubungan antara spesies dan lokasi dimana spesies tersebut ditemukan. Studi ekologi molekuler juga menjadi bagian yang vital sebagai landasan kebijakan terkait konservasi kawasan ataupun organisme jenis. Namun studi ini masih perlu diperluas lagi pembelajarannya sehingga dapat diimplementasikan secara langsung kepada penggiat, mahasiswa, pengajar ataupun peneliti yang ada di Indonesia. Upaya ini juga dilakukan untuk memahami keanekaragaman hayati dan pemilihan tindakan konservasi yang tepat untuk melindungi biota dan ekosistem.
+Sebagai salah satu kontribusi untuk memberikan akses luas dalam pembelajaran ilmu ekologi molekuler kami bertujuan untuk menyelenggarakan workshop untuk membantu para peneliti mempelajari berbagai keterampilan dasar untuk menganalisis data molekuler. Saat ini penelitian seputar ekologi molekuler memainkan peran penting untuk mendeteksi spesies ataupun hubungan antara spesies dan lokasi dimana spesies tersebut ditemukan. Studi ekologi molekuler juga menjadi bagian yang vital sebagai landasan kebijakan terkait konservasi kawasan ataupun organisme jenis. Namun studi ini masih perlu diperluas lagi pembelajarannya sehingga dapat diimplementasikan secara langsung kepada penggiat, mahasiswa, pengajar ataupun peneliti yang ada di Indonesia. Upaya ini juga dilakukan untuk memahami keanekaragaman hayati dan pemilihan tindakan konservasi yang tepat untuk melindungi biota dan ekosistem.
 
 ## Detail Kegiatan
 
@@ -12,9 +12,9 @@ Kegiatan ini menargetkan total 35 orang peserta, dengan sistem rekrutmenterbuka.
 
 Tim pemateri dan pelaksana workshop berasal dari BIONESIA yaitu:
 
-1. Ni Kadek Dita Cahyani, Ph.D.--> Editing Sekuen menggunakan Software MEGA X&quot; dan &quot;DNA Barcoding
+1. Ni Kadek Dita Cahyani, Ph.D.--> Editing Sekuen menggunakan Software MEGA X dan DNA Barcoding
 2. Yuliana Fitri Syamsuni, Ph.D.c. --> Genetika Populasi
-3. Aji Wahyu Anggoro, Ph.D.c. --> Pengenalan R&quot
+3. Aji Wahyu Anggoro, Ph.D.c. --> Pengenalan R
 4. Eka Maya Kurniasih, M.Si. dan Danie Al Malik, S.Kel. --> Teknis kegiatan dan _contact person_
 
 Pada setiap kegiatan, kami akan mengundang satu pembicara yang merupakan akademisi atau peneliti Indonesia yang berafiliasi dengan perguruan tinggi atau institusi di Indonesia atau luar negeri. Harapannya, akan terjalin komunikasi dan kerjasama untuk penelitian ke depannya.
@@ -29,7 +29,7 @@ Workshop ini akan memberikan beberapa keterampilan dasar seputar tahap-tahap yan
 
 | Jam (WITA) | Kegiatan | Keterangan |
 | --- | --- | --- |
-| 09.00 - 09.15 | Pembukaan | Pembukaan akan dilakukan oleh Direktur Yayasan Biodiversitas Indonesia, Andrianus Sembiring, M.Si. |
+| 09.00 - 09.15 | Pembukaan |  Direktur Yayasan Biodiversitas Indonesia, Andrianus Sembiring, M.Si. |
 | 09.15 - 09.30 | Pemberitahuan Alur Kegiatan | Dipandu moderator (Eka Maya Kurniasih dan Danie Al Malik) |
 | 09.30 - 10.00 | Invited Speaker 1 | Daniel Lumbantobing (Smithsonian National Museum of Natural History) |
 | 10.00 - 11.30 | Editing Sekuen dengan MEGA X | Ni Kadek Dita Cahyani, Ph.D. |
@@ -58,19 +58,11 @@ Workshop ini akan memberikan beberapa keterampilan dasar seputar tahap-tahap yan
 | Jam (WITA) | Kegiatan | Keterangan |
 | --- | --- | --- |
 | 09.00 - 09.15 | Pre-Test | Dipandu moderator (Eka dan Danie) |
-| 09.15 - 09.45 | Invited Speaker 4 | Rian Prasetia (WCS) |
+| 09.15 - 09.45 | Invited Speaker 4 | Rian Prasetia (Former NUS Post Doctoral Studies) |
 | 09.45 - 11.30 | Pengenalan R | Aji Wahyu Anggoro, Ph.D.c. |
 | 11.30 - 11.50 | Tanya Jawab, Kesan dan Pesan | Dipandu moderator (Eka Maya Kurniasih dan Danie Al Malik) |
 | 11.50 - 12.00 | Penutup | Ditutup oleh Direktur Yayasan Biodiversitas Indonesia, Andrianus Sembiring, M.Si. |
 
-
-### Apa syarat mengikuti kursus ini?
-
-_There are none!_ [(But there is some required reading and software setup required before the workshop)](setup.html). This class doesn't assume any knowledge of programming or using a command-line interface, but if you've ever had any experience here, the content won't come as so much of a shock. But _don't panic._ Command-line interfaces and programming languages like R are _incredibly powerful_ and will be utterly transformative on your research. There's a learning curve, and it's near-vertical in the beginning, but it's surmountable and the payoff is worth it! 
-
-### Apakah saya membutuhkan komputer?
-
-**_YES._** You must have access to a computer on which you can install software. The class will be a mix of lecture, discussion, but primarily live coding. You must bring your laptop to each session. Bring your charging cable also. Please follow the [setup instructions](setup.html) prior to the workshop.
 
 ###  Hak Cipta
 

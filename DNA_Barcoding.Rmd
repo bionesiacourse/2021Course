@@ -56,7 +56,7 @@ Tahap selanjutnya dalam menganalisis data DNA barcoding adalah menghitung jarak 
 Bukalah file “Tugas_barcoding_1.fasta”, kemudian lakukan BLAST terhadap masing-masing sekuen dan masukkan sekuen yang paling mirip dengan masing-masing sekuen ke dalam sebuah fasta file dan mega file (untuk ke-lima sekuen). Cobalah membuat jarak genetik (simpan dalam bentuk excel), dan pohon filogenetik menggunakan *Neighor Joining* (simpan dalam bentuk newick tree). Jika ada yang belum jelas, silakan menghubungi tim pengajar.
 
 ## Data citation:
-Data yang digunakan dalam latihan ini merupakan data yang sudah dipublikasikan pada: Yusmalinda, N.L.A., Anggoro, A.W., Suhendro, D.M., Jaya Ratha, I.M., Suprapti, D., Kreb, D. and Cahyani, N.K.D. (2017) Identifikasi jenis pada kejadian Cetacea terdampar di Indonesia dengan teknik molekuler. *Jurnal Ilmu dan Teknologi Kelautan Tropis* 9(2).
+Lihat halaman depan web ini untuk mendapatkan detail tentang hak cipta atau lihat di tautan berikut.
 
 ## References:
 Bucklin A, Steinke D, Blanco-bercial L (2011) DNA Barcoding of Marine Metazoa. *Annu Rev Mar Sci* 3:471–508
