@@ -100,6 +100,7 @@ Hasil editing sekuen dapat disimpan dalam bentuk:
 * Selanjutnya kita dapat melihat komposisi nukelotida dengan membuka: `Latihan_tree_2.meg` dan melakukan beberapa analysis.
 * Jika kita memiliki data pohon filogeni dalam bentuk mega tree session `(MTSX file)` kita bisa membukanya dalam Mega.
 * Pada umumnya semua program pembuatan pohon dan editing pohon, bisa membaca newick tree. 
+* Langkah langkah dalam protokol ini juga dapat di lihat pada link [berikut](https://www.youtube.com/watch?v=kYTkMTsgKJs)
 
 ## Data citation:
 
