@@ -20,11 +20,10 @@ navbar:
         - text: "Basic Molecular"
           href: Basic_Molecular.html
         - text: "Editing_Sequence"
-          href: Editing_Sequence.html
+          href: Editing Sequence.html
         - text: "DNA Barcoding"
           href: DNA_Barcoding.html
-        - text: "Research Cases"
-          href: DNA_Barcoding.html
+
 
   right:
     - icon: fa-question fa-lg
