@@ -19,8 +19,8 @@ navbar:
       menu:
         - text: "Basic Molecular"
           href: Basic_Molecular.html
-        - text: "Editing_Sequence"
-          href: Editing Sequence.html
+        - text: "Editing Sequence"
+          href: Editing_Sequence.html
         - text: "DNA Barcoding"
           href: DNA_Barcoding.html
 
