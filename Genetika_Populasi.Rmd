@@ -21,12 +21,12 @@ Gambar 1. Ilustrasi kemunculan alel berbeda pada suatu populasi
 
 Perubahan frekuensi alel terjadi dari waktu ke waktu pada level populasi yang menuntun kepada terjadinya **evolusi**. Evolusi tidak disebabkan oleh perubahan pada level individu. Faktor - faktor yang menyebabkan perubahan pada frekuensi alel adalah sebagai berikut:
 
-1. Seleksi alami ??? memihak pada alel yang memberikan keunggulan fitness
-2. Mutasi ??? munculnya alel baru karena ???kesalahan&quot; dalam mengcopy DNA
-3. _Gene Flow_ ??? munculnya alel baru karena adanya persebaran (imigrasi/emigrasi)
-4. _Genetic Drift_ ??? Perubahan acak pada frekuensi alel, misal isolasi demografik
-5. _Genetic Bottleneck_ ??? Penurunan keragaman dikarenakan adanya peristiwa pemusnahan atau penurunan jumlah populasi
-6. Seleksi Seksual ??? lebih memihak kepada alel yang &quot;menarik&quot; saja, missal bentuk tubuh
+1. Seleksi alami --- memihak pada alel yang memberikan keunggulan fitness
+2. Mutasi  munculnya alel baru karena --- kesalahan&quot; dalam mengcopy DNA
+3. _Gene Flow_ --- munculnya alel baru karena adanya persebaran (imigrasi/emigrasi)
+4. _Genetic Drift_ --- Perubahan acak pada frekuensi alel, misal isolasi demografik
+5. _Genetic Bottleneck_ --- Penurunan keragaman dikarenakan adanya peristiwa pemusnahan atau penurunan jumlah populasi
+6. Seleksi Seksual --- lebih memihak kepada alel yang &quot;menarik&quot; saja, missal bentuk tubuh
 
 - **Prinsip Hardy Weinberg Equilibrium**
 
