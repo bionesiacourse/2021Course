@@ -28,7 +28,7 @@ Perubahan frekuensi alel terjadi dari waktu ke waktu pada level populasi yang me
 5. _Genetic Bottleneck_ --- Penurunan keragaman dikarenakan adanya peristiwa pemusnahan atau penurunan jumlah populasi
 6. Seleksi Seksual --- lebih memihak kepada alel yang &quot;menarik&quot; saja, missal bentuk tubuh
 
-- **Prinsip Hardy Weinberg Equilibrium**
+**Prinsip Hardy Weinberg Equilibrium**
 
 **Prinsip Hardy-Weinberg**  menyatakan bahwa frekuensi alel dan frekuensi [**genotipe**](https://wiki.edunitas.com/ind/114-10/Genotipe_225874__eduNitas.html) dalam suatu populasi akan tetap konstan, yakni berada dalam kesetimbangan dari satu generasi ke generasi lainnya kecuali apabila terdapat pengaruh-pengaruh tertentu yang mengganggu kesetimbangan tersebut. Pengaruh-pengaruh tersebut mencakup _perkawinan tak acak_, _mutasi_, _seleksi_, _jumlah populasi terbatas_, _hanyutan genetic (gene flow)_, dan _arus gen (genetic drift)_. Penting untuk dipahami bahwa satu atau beberapa pengaruh ini akan selalu hadir di lingkungan. Oleh karenanya, kesetimbangan Hardy-Weinberg sangatlah tidak mungkin terjadi di alam. Kesetimbangan genetik adalah suatu kondisi ideal yang dapat dibuat sebagai garis dasar untuk mengukur perubahan genetik.
 
