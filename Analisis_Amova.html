@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>AMOVA</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<!-- Font Awesome -->
+<!-- <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" /> -->
+<!-- <script src="https://use.fontawesome.com/54ee8c2dfd.js"></script> -->
+
+<!-- Google fonts -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic|Oswald:400,700' rel='stylesheet' type='text/css'>
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+<!-- Google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-8298649-8', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Bionesia2021</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fas fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="setup.html">
+    <span class="fas fa-cog"></span>
+     
+    Setup
+  </a>
+</li>
+<li>
+  <a href="data.html">
+    <span class="fas fa-download"></span>
+     
+    Data
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-book"></span>
+     
+    CSS Course
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Basic_Molecular.html">Basic Molecular</a>
+    </li>
+    <li>
+      <a href="Editing_Sequence.html">Editing Sequence</a>
+    </li>
+    <li>
+      <a href="DNA_Barcoding.html">DNA Barcoding</a>
+    </li>
+    <li>
+      <a href="Genetika_Populasi.html">Population Genetic</a>
+    </li>
+    <li>
+      <a href="Analisis_Amova.html">Amova Analysis</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-question fa-lg"></span>
+     
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="index.html#faq">FAQ</a>
+    </li>
+    <li>
+      <a href="help.html">Further resources</a>
+    </li>
+    <li>
+      <a href="https://github.com/metabarcodingcourse/2020Course">Source code for this site</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">AMOVA</h1>
+
+</div>
+
+
+<p>Panduan Analisis AMOVA (Analysis of Molecular Variances) menggunakan Arlequin</p>
+<ol style="list-style-type: decimal">
+<li>Pada tutorial ini, data yang dipakai merupakan sebagian dari data sequence atau subset longtail tuna (<em>Thunnus tonggol</em>) dari hasil publikasi penelitian <a href="https://repository.library.noaa.gov/view/noaa/29043">Astarini <em>et al</em>., (2021).</a> Data yang digunakan sebanyak 15 sequence dari 3 lokasi yaitu Banyuwangi, Batam, dan Bali yang sudah berbentuk format fasta. Adapun rincian ID sampelnya sebagai berikut:</li>
+</ol>
+<ul>
+<li>Data Banyuwangi</li>
+<li>BIO06048001</li>
+<li>BIO06048002</li>
+<li>BIO06048003</li>
+<li>BIO06048004</li>
+<li><p>BIO06048005</p></li>
+<li>Data Batam</li>
+<li>BIO06050001</li>
+<li>BIO06050002</li>
+<li>BIO06050003</li>
+<li>BIO06050004</li>
+<li><p>BIO06050005</p></li>
+<li>Data Bali</li>
+<li>BIO06010001</li>
+<li>BIO06010002</li>
+<li>BIO06010003</li>
+<li>BIO06010004</li>
+<li><p>BIO06010005</p></li>
+</ul>
+<p><img src="img/panduan1.JPG" /></p>
+<ol style="list-style-type: decimal">
+<li>Sebelum memulai analisis, software yang dibutuhkan yaitu <a href="http://www.ub.edu/dnasp/">DNAsp</a>, [Arlequin [<a href="http://cmpg.unibe.ch/software/arlequin35/">ver 3.5.2.2</a> dan <a href="https://notepad-plus-plus.org/downloads/">Notepad++</a></li>
+<li>Setelah software yang diperlukan telah terdownload dan terinstal (software arlequin tidak perlu di install hanya perlu di download dan langsung jalankan tanpa proses install), selanjutnya yaitu ubah format fasta file menjadiarp file format melalui DnaSP, yaitu:</li>
+</ol>
+<ul>
+<li>Buka software DnaSP lalu klik <strong>file</strong> dan pilih <strong>open data file</strong></li>
+</ul>
+<p><img src="img/panduan2.JPG" /></p>
+<ul>
+<li>Pilih data fasta, pada tutorial ini data tersimpan dengan nama <strong>“sequence_tutorial_tonggol”</strong> lalu klik <strong>Open,</strong> setelah itu akan muncul informasi dari fasta file yang kita memiliki, setelah muncul informasi fasta file klik <strong>Close</strong></li>
+</ul>
+<p><img src="img/panduan3.JPG" /></p>
+<p><img src="img/panduan4.JPG" /></p>
+<ul>
+<li>Selanjutnya, 15 data sequence yang terdapat pada fasta file dikelompokkan menjadi 3 populasi dengan cara klik Data dan pilih Define Sequence Sets.</li>
+</ul>
+<p><img src="img/panduan5.JPG" /></p>
+<ul>
+<li>Masukkan ID sequence berdasarkan populasi yang sama dari kolom <strong>List of All Sequences</strong> ke <strong>Included Lists</strong> , dengan cara <strong>blok ID</strong> sampel berdasarkan populasi yang sama lalu klik <strong>icon &amp;gt;&amp;gt; (Include sequence/s)</strong></li>
+</ul>
+<p><img src="img/panduan6.JPG" /></p>
+<p><img src="img/panduan7.JPG" /></p>
+<ul>
+<li>Setelah ID sampel berdasarkan populasi yang sama, dengan Langkah pertama yaitu 5 ID sampel dari Batam (BIO0605001 ??? BIO0605005), lalu klik <strong>Add new Sequence Set</strong> dan set nama populasi seperti <strong>“Banyuwangi”</strong></li>
+</ul>
+<p><img src="img/panduan8.JPG" /></p>
+<ul>
+<li>Lakukan hal serupa untuk kedua populasi lainnya yaitu Batam dan Bali</li>
+</ul>
+<p><img src="img/panduan9.JPG" /></p>
+<p><img src="img/panduan10.JPG" /></p>
+<ul>
+<li>Setelah ID sampel sudah terbentuk 3 populasi, selanjutnya klik <strong>Update all entries</strong></li>
+</ul>
+<p><img src="img/panduan11.JPG" /></p>
+<ul>
+<li>Klik <strong>File</strong> , pilih <strong>Save/Export Data As???.</strong> lalu pilih <strong>Arlequin File Format</strong></li>
+</ul>
+<p><img src="img/panduan12.JPG" /></p>
+<ul>
+<li>Setting default pada jendela Haplotype/DNA Sequences Data File. Options, lalu klik OK</li>
+</ul>
+<p><img src="img/panduan13.JPG" /></p>
+<ul>
+<li>Simpan .hap format berdasarkan nama file yang diinginkan, pada tutorial ini .hap file format di simpan dengan nama <strong>&quot;tutorial_amova_tonggol.hap</strong>&quot;, lalu klik <strong>Save</strong></li>
+</ul>
+<p><img src="img/panduan14.JPG" /></p>
+<ul>
+<li>Lalu simpan .arp file format dengan nama yang diinginkan, pada tutorial ini .arp file format di simpan dengan nama <strong>“tutorial_amova_tonggol.arp”</strong> , dan klik <strong>Save</strong></li>
+</ul>
+<p><img src="img/panduan15.JPG" /></p>
+<ul>
+<li>Lalu akan muncul informasi <strong>Haplotype distribution</strong> dari masing-masing ID, lalu pilih close dan keluar dari DNAsp software</li>
+</ul>
+<p><img src="img/panduan16.JPG" /></p>
+<ol style="list-style-type: decimal">
+<li>Setelah sudah menyimpan file .arp format untuk analisis AMOVA dengan menggunakan Arlequin, file .arp tersebut kita buka dan edit menggunakan Notepad++</li>
+</ol>
+<ul>
+<li><p>Buka file .arp format yang telah disimpan melalui software DNAsp, dengan menggunakan Notepad++</p></li>
+<li><p>Tambahkan kode seperti ini agar data file tersebut dapat terbaca di software Arlequin dan bisa terbaca sebagai kelompok populasi.</p></li>
+</ul>
+<p><img src="img/panduan17.JPG" /></p>
+<p><img src="img/panduan18.JPG" /></p>
+<p><strong>Sebelum:</strong></p>
+<p><img src="img/panduan19.JPG" /> <img src="img/panduan20.JPG" /></p>
+<p><img src="img/panduan21.JPG" /> 1. Setelah mengedit format .arp file, kita akan mulai menjalankan file tersebut di Arlequin</p>
+<ul>
+<li>Buka software arlequin dengan “Run as administrator” untuk yang menjalankan dengan windows</li>
+</ul>
+<p><img src="img/panduan22.JPG" /></p>
+<ul>
+<li>Pilih menu “Open project”</li>
+</ul>
+<p><img src="img/panduan23.JPG" /> - Open file .arp format yang sudah di simpan melalui software DnaSP dan diedit melalui Notepad++. Pada tutorial ini file yang tersimpan dengan nama <strong>“tutorial_amova_tonggol.arp”,</strong> lalu klik <strong>Open</strong></p>
+<p><img src="img/panduan24.JPG" /></p>
+<ul>
+<li>Akan muncul sampel group berdasarkan populasi yang telah di masukkan yaitu tiga populasi (Banyuwangi, Batam, dan Bali)</li>
+</ul>
+<p><img src="img/panduan25.JPG" /></p>
+<ul>
+<li>Pilih menu Setting dan Pilih point AMOVA, atur dengan mencentang bagian “Standard AMOVA computation (haplotypic format)” dan gunakan pengaturan seperti ini</li>
+</ul>
+<p><img src="img/panduan26.JPG" /></p>
+<p>Note: silakan bisa gunakan fitur analisis sebagai kebutuhan riset anda,karena tutorial ini hanya bertujuan untuk mendapatkan nilai AMOVA dari data sequence</p>
+<ul>
+<li>Sebelum menjalankan analisis, pilih opsi menu <strong>Option</strong> dan <strong>centang</strong> bagian <strong>“Append results”</strong> dan <strong>“Use associated settings”</strong> , untuk lainnya bisa di <strong>abaikan atau tidak di centang</strong></li>
+</ul>
+<p><img src="img/panduan27.JPG" /></p>
+<ul>
+<li>Klik Start</li>
+</ul>
+<p><img src="img/panduan28.JPG" /></p>
+<ul>
+<li>Hasil akanterlihat pada web-browser default komputeratau laptop, pada tutorial initerbuka pada Chrome</li>
+</ul>
+<p><img src="img/panduan29.JPG" /></p>
+<p>Referensi:</p>
+<p>Astarini, I. A., Ningsih, E. Y., Simanungkalit, D., Ardiana, S. A., Al Malik, M. D., Yusmalinda, N. L. A., Sembiring, A., … &amp; Collins, A. (2021). Genetic variation of longtail tuna Thunnus tonggol landed in four fish markets in Indonesia based on mitochondrial DNA.</p>
+<p>Excoffier, L., &amp;Lischer, H. E. (2010). Arlequin suite ver 3.5: a new series of programs to perform population genetics analyses under Linux and Windows. <em>Molecular ecology resources</em>, <em>10</em>(3), 564-567.</p>
+<p>Rozas, J., Ferrer-Mata, A., S??nchez-DelBarrio, J. C., Guirao-Rico, S., Librado, P., Ramos-Onsins, S. E., &amp; S??nchez-Gracia, A. (2017). DnaSP 6: DNA sequence polymorphism analysis of large data sets. <em>Molecular biology and evolution</em>, <em>34</em>(12), 3299-3302.</p>
+<p>Penyusun: Muhammad Danie Al Malik &amp;Yuliana Fitri Syamsuni</p>
+
+<div class="footer">
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><i class="fa fa-creative-commons fa-2x"></i></a>&nbsp;
+<a href="https://twitter.com/genetics_blog" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>&nbsp;
+<a href="https://github.com/4va/biodatasci" target="_blank"><i class="fa fa-github fa-2x"></i></a>&nbsp;
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

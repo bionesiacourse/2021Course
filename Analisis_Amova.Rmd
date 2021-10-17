@@ -1,0 +1,155 @@
+---
+title: "AMOVA"
+output: html_document
+---
+
+
+Panduan Analisis AMOVA (Analysis of Molecular Variances) menggunakan Arlequin
+
+1. Pada tutorial ini, data yang dipakai merupakan sebagian dari data sequence atau subset longtail tuna (_Thunnus tonggol_) dari hasil publikasi penelitian [Astarini _et al_., (2021).](https://repository.library.noaa.gov/view/noaa/29043) Data yang digunakan sebanyak 15 sequence dari 3 lokasi yaitu Banyuwangi, Batam, dan Bali yang sudah berbentuk format fasta. Adapun rincian ID sampelnya sebagai berikut:
+
+- Data Banyuwangi
+- BIO06048001
+- BIO06048002
+- BIO06048003
+- BIO06048004
+- BIO06048005
+
+- Data Batam
+- BIO06050001
+- BIO06050002
+- BIO06050003
+- BIO06050004
+- BIO06050005
+
+- Data Bali
+- BIO06010001
+- BIO06010002
+- BIO06010003
+- BIO06010004
+- BIO06010005
+
+![](img/panduan1.jpg)
+
+1. Sebelum memulai analisis, software yang dibutuhkan yaitu [DNAsp](http://www.ub.edu/dnasp/), [Arlequin [[ver 3.5.2.2](http://cmpg.unibe.ch/software/arlequin35/) dan [Notepad++](https://notepad-plus-plus.org/downloads/)
+2. Setelah software yang diperlukan telah terdownload dan terinstal (software arlequin tidak perlu di install hanya perlu di download dan langsung jalankan tanpa proses install), selanjutnya yaitu ubah format fasta file menjadiarp file format melalui DnaSP, yaitu:
+
+- Buka software DnaSP lalu klik **file** dan pilih **open data file**
+
+![](img/panduan2.jpg)
+
+- Pilih data fasta, pada tutorial ini data tersimpan dengan nama **&quot;sequence\_tutorial\_tonggol&quot;** lalu klik **Open,** setelah itu akan muncul informasi dari fasta file yang kita memiliki, setelah muncul informasi fasta file klik **Close**
+
+![](img/panduan3.jpg)
+
+![](img/panduan4.jpg)
+
+- Selanjutnya, 15 data sequence yang terdapat pada fasta file dikelompokkan menjadi 3 populasi dengan cara klik Data dan pilih Define Sequence Sets.
+
+![](img/panduan5.jpg)
+
+- Masukkan ID sequence berdasarkan populasi yang sama dari kolom **List of All Sequences** ke **Included Lists** , dengan cara **blok ID** sampel berdasarkan populasi yang sama lalu klik **icon \&gt;\&gt; (Include sequence/s)**
+
+![](img/panduan6.jpg)
+
+![](img/panduan7.jpg)
+
+- Setelah ID sampel berdasarkan populasi yang sama, dengan Langkah pertama yaitu 5 ID sampel dari Batam (BIO0605001 ??? BIO0605005), lalu klik **Add new Sequence Set** dan set nama populasi seperti **&quot;Banyuwangi&quot;**
+
+![](img/panduan8.jpg)
+
+- Lakukan hal serupa untuk kedua populasi lainnya yaitu Batam dan Bali 
+
+![](img/panduan9.jpg)
+
+![](img/panduan10.jpg)
+
+- Setelah ID sampel sudah terbentuk 3 populasi, selanjutnya klik **Update all entries**
+
+![](img/panduan11.jpg)
+
+- Klik **File** , pilih **Save/Export Data As???.** lalu pilih **Arlequin File Format**
+
+![](img/panduan12.jpg)
+
+- Setting default pada jendela Haplotype/DNA Sequences Data File. Options, lalu klik OK
+
+![](img/panduan13.jpg)
+
+- Simpan .hap format berdasarkan nama file yang diinginkan, pada tutorial ini .hap file format di simpan dengan nama **&quot;tutorial\_amova\_tonggol.hap**&quot;, lalu klik **Save**
+
+![](img/panduan14.jpg)
+
+- Lalu simpan .arp file format dengan nama yang diinginkan, pada tutorial ini .arp file format di simpan dengan nama **&quot;tutorial\_amova\_tonggol.arp&quot;** , dan klik **Save**
+
+![](img/panduan15.jpg)
+
+
+- Lalu akan muncul informasi **Haplotype distribution** dari masing-masing ID, lalu pilih close dan keluar dari DNAsp software
+
+![](img/panduan16.jpg)
+
+1. Setelah sudah menyimpan file .arp format untuk analisis AMOVA dengan menggunakan Arlequin, file .arp tersebut kita buka dan edit menggunakan Notepad++
+
+- Buka file .arp format yang telah disimpan melalui software DNAsp, dengan menggunakan Notepad++
+
+
+
+
+- Tambahkan kode seperti ini agar data file tersebut dapat terbaca di software Arlequin dan bisa terbaca sebagai kelompok populasi.
+
+
+![](img/panduan17.jpg)
+
+![](img/panduan18.jpg)
+
+**Sebelum:**
+
+![](img/panduan19.jpg)
+![](img/panduan20.jpg)
+
+![](img/panduan21.jpg)
+1. Setelah mengedit format .arp file, kita akan mulai menjalankan file tersebut di Arlequin
+
+- Buka software arlequin dengan &quot;Run as administrator&quot; untuk yang menjalankan dengan windows
+
+![](img/panduan22.jpg)
+
+- Pilih menu &quot;Open project&quot;
+
+![](img/panduan23.jpg)
+- Open file .arp format yang sudah di simpan melalui software DnaSP dan diedit melalui Notepad++. Pada tutorial ini file yang tersimpan dengan nama **&quot;tutorial\_amova\_tonggol.arp&quot;,** lalu klik **Open**
+
+![](img/panduan24.jpg)
+
+- Akan muncul sampel group berdasarkan populasi yang telah di masukkan yaitu tiga populasi (Banyuwangi, Batam, dan Bali)
+
+![](img/panduan25.jpg)
+
+- Pilih menu Setting dan Pilih point AMOVA, atur dengan mencentang bagian &quot;Standard AMOVA computation (haplotypic format)&quot; dan gunakan pengaturan seperti ini
+
+![](img/panduan26.jpg)
+
+Note: silakan bisa gunakan fitur analisis sebagai kebutuhan riset anda,karena tutorial ini hanya bertujuan untuk mendapatkan nilai AMOVA dari data sequence
+
+- Sebelum menjalankan analisis, pilih opsi menu **Option** dan **centang** bagian **&quot;Append results&quot;** dan **&quot;Use associated settings&quot;** , untuk lainnya bisa di **abaikan atau tidak di centang**
+
+![](img/panduan27.jpg)
+
+- Klik Start
+
+![](img/panduan28.jpg)
+
+- Hasil akanterlihat pada web-browser default komputeratau laptop, pada tutorial initerbuka pada Chrome
+
+![](img/panduan29.jpg)
+
+Referensi:
+
+Astarini, I. A., Ningsih, E. Y., Simanungkalit, D., Ardiana, S. A., Al Malik, M. D., Yusmalinda, N. L. A., Sembiring, A., ... &amp; Collins, A. (2021). Genetic variation of longtail tuna Thunnus tonggol landed in four fish markets in Indonesia based on mitochondrial DNA.
+
+Excoffier, L., &amp;Lischer, H. E. (2010). Arlequin suite ver 3.5: a new series of programs to perform population genetics analyses under Linux and Windows. _Molecular ecology resources_, _10_(3), 564-567.
+
+Rozas, J., Ferrer-Mata, A., S??nchez-DelBarrio, J. C., Guirao-Rico, S., Librado, P., Ramos-Onsins, S. E., &amp; S??nchez-Gracia, A. (2017). DnaSP 6: DNA sequence polymorphism analysis of large data sets. _Molecular biology and evolution_, _34_(12), 3299-3302.
+
+Penyusun: Muhammad Danie Al Malik &amp;Yuliana Fitri Syamsuni
