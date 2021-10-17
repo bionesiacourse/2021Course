@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>DNA_Barcoding.utf8</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<!-- Font Awesome -->
+<!-- <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" /> -->
+<!-- <script src="https://use.fontawesome.com/54ee8c2dfd.js"></script> -->
+
+<!-- Google fonts -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic|Oswald:400,700' rel='stylesheet' type='text/css'>
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+<!-- Google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-8298649-8', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Bionesia2021</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fas fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="setup.html">
+    <span class="fas fa-cog"></span>
+     
+    Setup
+  </a>
+</li>
+<li>
+  <a href="data.html">
+    <span class="fas fa-download"></span>
+     
+    Data
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-book"></span>
+     
+    CSS Course
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Basic_Molecular.html">Basic Molecular</a>
+    </li>
+    <li>
+      <a href="Editing_Sequence.html">Editing Sequence</a>
+    </li>
+    <li>
+      <a href="DNA_Barcoding.html">DNA Barcoding</a>
+    </li>
+    <li>
+      <a href="Genetika_Populasi.html">Population Genetic</a>
+    </li>
+    <li>
+      <a href="Analisis_Amova.html">Amova Analysis</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-question fa-lg"></span>
+     
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="index.html#faq">FAQ</a>
+    </li>
+    <li>
+      <a href="help.html">Further resources</a>
+    </li>
+    <li>
+      <a href="https://github.com/metabarcodingcourse/2020Course">Source code for this site</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div id="dna-barcoding" class="section level1">
+<h1>DNA Barcoding</h1>
+<div id="pendahuluan" class="section level2">
+<h2>Pendahuluan</h2>
+<p><strong>DNA Barcoding</strong> adalah cara untuk mengidentifikasi organisme atau spesies menggunakan sekuen DNA pendek dari gen spesifik yang dipilih sesuai taxa yang diidentifikasi. Pada metode DNA Barcoding, sekuen pendek DNA dari gen tertentu akan diamplifikasi atau diperbanyak dengan metode PCR (<em>Polymerase Chain Reaction</em>). Kemudian, hasil sekuen akan dibandingkan dengan database untuk melihat kesamaan urutan sekuen sekaligus mengidentifikasi organisme atau spesies. Pada intinya, susunan DNA yang unik pada setiap organisme atau taxa, digunakan sebagai penanda spesifik atau “<em>Barcode</em>” untuk menentukan jenis organisme.</p>
+</div>
+<div id="penanda" class="section level2">
+<h2>Penanda</h2>
+<p>Analisis DNA Barcoding memerlukan penanda genetik atau <em>marker</em> yang sesuai dengan taxa yang akan diidentifikasi. Penanda genetik yang dipilih umumnya adalah gen yang bersifat <em>variable</em> (gen yang susunan DNA nya cenderung berubah-ubah melalui mutasi) untuk bisa membedakan satu organisme dengan organisme lainnya. Jika penanda genetik yang dipilih adalah lokus dari gen yang <em>conserved</em> atau jarang berubah, maka kemungkinan akan sulit mengidentifikasi atau membedakan spesies satu dengan spesies lainnya. Penanda genetik yang <em>conserved</em> umumnya adalah gen yang mengkode protein (<em>protein coding</em>), karena perubahan atau mutasi pada susunan DNA nya menyebabkan perubahan susunan protein yang dapat mengakibatkan perubahan regulasi protein pada tubuh yang kadang bersifat letal. Sebagai contoh, gen 16S rRNA. Penanda genetik ini merupakan gen yang <em>conserved</em> untuk mengidentifkasi eukaryote secara umum tetapi cukup variable bagi mikrobia. COI (<em>cytochrome c oxidase subunit 1</em>) merupakan penanda genetik yang cukup baik digunakan pada eukaryote, sedangkan untuk mikrobia adalah 16S rRNA (Hebert., et al. 2003a; Hebert., et al. 2003b; Bucklin., et al. 2011). Pada beberapa taxa, misalnya coral, penanda genetik terbaik adalah ITS (<em>Internal Transcribe Spacer</em>) dan untuk tumbuhan, DNA yang umumnya digunakan adalah <em>DNA chloroplast</em> (Lucas., et al. 2012; Nguyen., et al. 2015). Untuk itu, sebelum memulai penelitian menggunakan DNA Barcoding, salah satu hal pertama yang harus ditentukan adalah penanda genetik atau <em>marker</em> yang akan digunakan.</p>
+</div>
+<div id="ncbi-dan-blast" class="section level2">
+<h2>NCBI dan BLAST</h2>
+<p>Langkah pertama setelah mendapatkan sekuen yang telah di edit adalah membandingkan sekuen tersebut dengan database untuk menentukan jenisnya. Database yang umumnya digunakan adalah NCBI (<em>The National Center for Biotechnology Information</em>; <a href="https://www.ncbi.nlm.nih.gov" class="uri">https://www.ncbi.nlm.nih.gov</a>). NCBI menyediakan database yang dapat diakses oleh publik dan mempunyai sebuah program yang disebut BLAST (<em>Basic Local Alignment Search Tool</em>; <a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi" class="uri">https://blast.ncbi.nlm.nih.gov/Blast.cgi</a>). BLAST dikembangkan untuk menganalisa kesamaan antara sekuen-sekuen DNA. Program ini membandingkan sekuen nukleotida atau sekuen protein dengan sekuen yang tersedia di database dan mengkalkulasi signifikansinya secara statistik.</p>
+</div>
+<div id="kriteria-hasil-blast" class="section level2">
+<h2>Kriteria Hasil BLAST :</h2>
+<ul>
+<li><strong>E value</strong> atau (<em>Expected Value</em>) adalah nilai yang menunjukkan berapa kali kita mengharapkan padanan yang didapat secara kebetulan antara <em>query sequence</em> (sekuen yang kita miliki atau kita masukkan) dengan sekuen target yang ada dalam database. Semakin kecil E value, semakin signifikan kesamaannya.</li>
+<li><strong>Percent Identity</strong> adalah nilai yang menunjukkan seberapa sama sebuah <em>query sequence</em> dibandingkan dengan sekuen target pada database atau berapa banyak karakter yang identik pada kedua sekuen tersebut. Semakin tinggi <em>percent identity</em>, semakin signifikan kesamaannya.</li>
+<li><strong>Query Cover</strong> adalah seberapa besar atau seberapa panjang kesesuaian <em>query sequence</em> dibandingkan dengan sekuen target pada database. Jika <em>query sequence</em> memiliki kesesuaian sepanjang sekuen DNA taret (<em>covering target DNA)</em>, maka nilai dari <em>query cover</em> adalah 100%.</li>
+</ul>
+</div>
+<div id="analisis-dna-barcoding" class="section level2">
+<h2>Analisis DNA Barcoding</h2>
+<ul>
+<li>Disini disiapkan lima sekuen tanpa nama dalam bentuk fasta file (Latihan_barcoding_1.fas). Sekuen-sekuen tersebut memiliki panjang basa yang berbeda-beda dan sudah melalui proses editing.</li>
+<li>Pertama, kita akan mengunggah fasta file tersebut ke dalam MEGA dengan cara klik: <code>Data – Open a File/Session – Pilih fasta file (Latihan_barcoding_1.fasta) – Open – Analyze or Align File? – Align</code></li>
+<li><strong>Catatan</strong>: Untuk membandingkan sekuen ke NCBI, sekuen tidak perlu di sejajarkan (<em>Align</em>) dengan sekuen lainnya. Sekuen juga harus dihilangkan <em>gap</em>-nya.</li>
+</ul>
+<p><img src="img/Fig1.png" /></p>
+<ul>
+<li>Untuk membandingkan sebuah sekuen dengan sekuen dari NCBI, cukup klik sekuen yang akan dibandingkan (sekuen pertama: Barcoding anonim 1), lalu klik <code>BLAST selected sequence(s)</code> – Ini akan membawa kita ke halaman NCBI-BLAST.</li>
+</ul>
+<p><img src="img/Fig2.png" /></p>
+<ul>
+<li>Selanjutnya klik <code>Somewhat similar sequences (blastn) - klik tombol BLAST</code>.</li>
+</ul>
+<p><img src="img/Fig3.png" /></p>
+<ul>
+<li>Setelah ini, kita akan diberikan daftar dari sekuen- sekuen yang mirip dengan sekuen yang kita input (<em>query sequence</em>).</li>
+<li>Sekuen yang berada paling atas, umumnya merupakan sekuen dari database yang memiliki kesesuian yang paling tinggi dengan <em>query sekuen kita</em>.</li>
+</ul>
+<p><img src="img/Fig4.png" /></p>
+<ul>
+<li>Untuk bisa melihat keterangan spesifik dari sekuen NCBI yang kita perbandingkan, cukup dengan klik di bagian <em>Accession number</em>, dan kita akan diarahkan ke halaman baru seperti gambar di bawah ini.</li>
+</ul>
+<p><img src="img/Fig5.png" /></p>
+<ul>
+<li>Sekuen tersebut dapat disimpan dalam bentuk file (tanda panah merah), atau diunduh langsung ke dalam <em>Allignment explorer</em> Mega dengan menekan <strong>“Add To Alignment”</strong> (tanda panah Biru).</li>
+<li>Kita juga dapat mengganti atau menyingkat nama sekuen sesuai dengan yang kita inginkan.</li>
+</ul>
+<p><img src="img/Fig6.png" /></p>
+<ul>
+<li>Setelah sekuen dari NCBI masuk ke dalam <em>Alignment Explorer</em> MEGA, kita dapat menyimpan data tersebut dalam Mega file atau Fasta file (Latihan_barcoding_1_edit.fas dan Latihan_barcoding_1_edit.meg).</li>
+</ul>
+<p>Tahap selanjutnya dalam menganalisis data DNA barcoding adalah menghitung jarak genetik dan visualisasi data yang dapat ditunjukkan sebagai pohon filogenetic. Kita akan mengikuti alur seperti workshop sebelumnya tentang editing sekuen, tetapi dengan contoh data yang berbeda (Latihan_barcoding_2.fas).</p>
+</div>
+<div id="tugas" class="section level2">
+<h2>Tugas</h2>
+<p>Bukalah file “Tugas_barcoding_1.fasta”, kemudian lakukan BLAST terhadap masing-masing sekuen dan masukkan sekuen yang paling mirip dengan masing-masing sekuen ke dalam sebuah fasta file dan mega file (untuk ke-lima sekuen). Cobalah membuat jarak genetik (simpan dalam bentuk excel), dan pohon filogenetik menggunakan <em>Neighor Joining</em> (simpan dalam bentuk newick tree). Jika ada yang belum jelas, silakan menghubungi tim pengajar.</p>
+</div>
+<div id="data-citation" class="section level2">
+<h2>Data citation:</h2>
+<p>Lihat halaman depan web ini untuk mendapatkan detail tentang hak cipta atau lihat di tautan berikut.</p>
+</div>
+<div id="references" class="section level2">
+<h2>References:</h2>
+<p>Bucklin A, Steinke D, Blanco-bercial L (2011) DNA Barcoding of Marine Metazoa. <em>Annu Rev Mar Sci</em> 3:471–508</p>
+<p>Hebert PDN, Cywinska A, Ball SL, Jeremy R, B PRSL (2003a) Biological identifications through DNA barcodes. <em>Proc R Soc B Biol Sci</em> 270:313–321</p>
+<p>Hebert PDN, Ratnasingham S, Waard JR De, B PRSL, Jeremy R (2003b) Barcoding animal life: cytochrome c oxidase subunit 1 divergences among closely related species. <em>Proc R Soc B Biol Sci</em> 270</p>
+<p>Lucas C, Thangaradjou T, Papenbrock J (2012) Development of a DNA barcoding system for seagrasses: Successful but not simple. <em>PLoS ONE</em> 7(1): e29987</p>
+<p>Nguyen XV, Höfler S, Glasenapp Y, Thangaradjou T, Lucas C, Papenbrock J (2015) New insights into DNA barcoding of seagrasses. <em>Syst Biodivers</em> 13(5):496-508</p>
+<div id="how-to-cite-this-page" class="section level3">
+<h3>How to cite this page?</h3>
+<p>Lihat halaman depan web ini untuk mendapatkan detail tentang hak cipta</p>
+</div>
+</div>
+</div>
+
+<div class="footer">
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><i class="fa fa-creative-commons fa-2x"></i></a>&nbsp;
+<a href="https://twitter.com/genetics_blog" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>&nbsp;
+<a href="https://github.com/4va/biodatasci" target="_blank"><i class="fa fa-github fa-2x"></i></a>&nbsp;
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
