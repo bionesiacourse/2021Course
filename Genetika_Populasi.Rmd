@@ -1,0 +1,85 @@
+---
+title: "Genetic Populasi"
+output: html_document
+---
+
+**GENETIKA POPULASI**
+
+**Pendahuluan**
+
+Populasi hewan dan tumbuhan memperlihatkan keragaman jumlah, struktur dan dinamika yang sangat besar. Satu contoh ekstrim, dimana dalam suatu populasi hanya terdapat struktur tunggal, terpisah dari satu sama lain dimana semua individu memiliki peluang yang sama untuk kawin dengan satu sama lain. Fenomena di atas biasa disebut dengan istilah model _ **panmictic** _ atau _ **random breeding/mating** _. Sebaliknya, ada populasi yang terpisah secara internal akibat adanya barrier seperti jalan raya, arus laut, pegunungan, tebing dsb, menjadi kelompok-kelompok individu atau biasa disebut _ **subpopulasi** _. Dinamika struktur populasi dipengaruhi oleh sifat-sifat penting seperti keragaman genetika (genetic diversity), jumlah populasi efektif/_effective population size__(N__e__)_, diferensiasi subpopulasi dan migrasi antar subpopulasi.
+
+**Konsep Dasar**
+
+- **Keragaman Genetik Populasi**
+
+**Frekuensi alel** merupakan tingkat kemunculan suatu varian gen di lokus tertentu. Ilustrasi di bawah ini menjelaskan bahwa alel bintik putih yang muncul pada beberapa individu ikan merupakan alel yang dominan pada populasi, sehingga bisa dikatakan bahwa alel bintik putih memiliki &quot;frekuensi alel tinggi&quot;. Sedangkan, alel bintik hijau, biru, kuning dan jingga merupakan alel yang langka dan hanya ditemukan pada sedikit individu pada satu populasi, sehingga disebut memiliki &quot;frekuensi alel rendah&quot;.
+
+![](img/teori1.JPG)
+
+Gambar 1. Ilustrasi kemunculan alel berbeda pada suatu populasi
+
+Perubahan frekuensi alel terjadi dari waktu ke waktu pada level populasi yang menuntun kepada terjadinya **evolusi**. Evolusi tidak disebabkan oleh perubahan pada level individu. Faktor - faktor yang menyebabkan perubahan pada frekuensi alel adalah sebagai berikut:
+
+1. Seleksi alami ??? memihak pada alel yang memberikan keunggulan fitness
+2. Mutasi ??? munculnya alel baru karena ???kesalahan&quot; dalam mengcopy DNA
+3. _Gene Flow_ ??? munculnya alel baru karena adanya persebaran (imigrasi/emigrasi)
+4. _Genetic Drift_ ??? Perubahan acak pada frekuensi alel, misal isolasi demografik
+5. _Genetic Bottleneck_ ??? Penurunan keragaman dikarenakan adanya peristiwa pemusnahan atau penurunan jumlah populasi
+6. Seleksi Seksual ??? lebih memihak kepada alel yang &quot;menarik&quot; saja, missal bentuk tubuh
+
+- **Prinsip Hardy Weinberg Equilibrium**
+
+**Prinsip Hardy-Weinberg**  menyatakan bahwa frekuensi alel dan frekuensi [**genotipe**](https://wiki.edunitas.com/ind/114-10/Genotipe_225874__eduNitas.html) dalam suatu populasi akan tetap konstan, yakni berada dalam kesetimbangan dari satu generasi ke generasi lainnya kecuali apabila terdapat pengaruh-pengaruh tertentu yang mengganggu kesetimbangan tersebut. Pengaruh-pengaruh tersebut mencakup _perkawinan tak acak_, _mutasi_, _seleksi_, _jumlah populasi terbatas_, _hanyutan genetic (gene flow)_, dan _arus gen (genetic drift)_. Penting untuk dipahami bahwa satu atau beberapa pengaruh ini akan selalu hadir di lingkungan. Oleh karenanya, kesetimbangan Hardy-Weinberg sangatlah tidak mungkin terjadi di alam. Kesetimbangan genetik adalah suatu kondisi ideal yang dapat dibuat sebagai garis dasar untuk mengukur perubahan genetik.
+
+Contoh paling sederhana dapat terlihat pada suatu lokus tunggal beralel ganda; alel yang dominan ditandai  dengan **A**   dan yang resesif ditandai dengan **a**. Kedua frekuensi alel tersebut ditandai dengan _ **p** _ dan _ **q** _ secara berurutan; freq( **A** ) = _p_; freq( **a** ) = _q_;  _p_ + _q_ = 1. Apabila populasi berada dalam kesetimbangan, karenanya freq( **AA** ) = _p_2 untuk [**homozigot**](http://homozigot.pe.web.id/id3/1734-1614/Homozigot_242030_homozigot-pe.html)  **AA**  dalam populasi, freq( **aa** ) = _q_2 untuk homozigot  **aa** , dan freq( **Aa** ) = 2_pq_ untuk heterozigot **Aa**.
+
+Konsep ini juga dikenal dalam bermacam nama:  **Kesetimbangan Hardy-Weinberg** ,  **Teorema Hardy-Weinberg** , ataupun  **Hukum Hardy-Weinberg**. Asas ini dinamakan dari [**G. H. Hardy**](http://g-h-hardy.ro.web.id/id1/1780-1660/G-H-Hardy_23145_g-h-hardy-ro.html) dan Wilhelm Weinberg.
+
+**Syarat berlangsungnya asas Hardy-Weinberg**
+
+- Setiap gen mempunyai viabilitas dan fertilitas yang sama (_Mendelian inheritance_)
+- Perkawinan terjadi secara acak (_random mating_)
+- Tidak terjadi [**mutasi**](http://p2k.itbu.ac.id/id3/3070-2950/Mutasi_24685_ensiklopedia-dunia-q-itbu.html) [**gen**](http://p2k.itbu.ac.id/id3/3053-2950/Gen_49959_gen-itbu.html) atau migrasi (populasi sistem tertutup)
+- Jumlah populasi tak hingga
+- Tidak ada seleksi
+
+Jika syarat-syarat tersebut terpenuhi, karenanya frekuensi alel dan frekuensi [**genotipe**](https://wiki.edunitas.com/ind/114-10/Genotipe_225874__eduNitas.html) dalam suatu populasi akan konstan dan evolusi pun tidak akan terjadi. Tetapi dalam kehidupan, syarat-syarat tersebut sulit atau tidak mungkin terpenuhi untuk evolusi dapat terjadi.
+
+- **Jarak Genetik (Fst)**
+
+Fst atau Indeks Fiksasi bertujuan mengukur tingkat inbreeding suatu subpopulasi terhadap populasi total. Indeks ini biasa digunakan untuk mengestimasi differensiasi subpopulasi atau struktur populasi. Nilai Fst berkisar 0 ??? 1. **Nilai 0** menandakan bahwa **antar subpopulasi terjadi percampuran gen atau bisa dikatakan bahwa** populasi tidak memiliki struktur. Sebaliknya, untuk **nilai** 1 bahwa antar subpopulasi **tidak terjadi percampuran gen** atau **populasi memiliki struktur**.
+
+$$
+Fst=\frac{(Ht-Hs)}{Ht}
+$$
+
+Dimana:
+
+Ht : Heterozigositas expected dari total populasi
+
+Hs : Rata-rata heterozigositas expected subpopulasi
+
+- **Marker molekular untuk mengkaji genetika populasi**
+
+Ada beberapa marker dan metode berbeda yang biasa digunakan untuk studi genetika populasi, yaitu di antaranya:
+
+1. Sekuen DNA ??? dengan basis membandingkan basa nukleotida untuk mengidentifikasi spesies, populasi dan individu
+2. Microsatellite DNA ??? sekuens DNA repetitif yang bermutasi cepat dan sering dipakai untuk mengidentifikasi individu
+3. Minisatellite DNA ??? mirip dengan microsatellite namun dengan repetitif sekuens yang lebih panjang
+4. Restriction Fragment Length Polymorphisms (RFLP) ??? spesifik site DNA yang dapat dipotong menggunakan enzim dengan menghasilkan beragam ukuran fragmen DNA pada level spesies, populasi , individu (namun jarang)
+
+**Software yang umum digunakan**
+
+- GENEPOP (Raymond and Rousset 1995). Software tersedia dalam versi aplikasi download atau _web-based_, kegunaan untuk mengestimasi kepatuhan terhadap hokum HWE, linkage disequilibrium, frekuensi allel, F dan R statistic dan isolation by distance. [http://genepop.curtin.edu.au/](http://genepop.curtin.edu.au/)
+- FSTAT (Goudet 1995) untuk menghitung heterozigositas (expected dan observed), allelic richness, F dan R statistics. [http://www2.unil.ch/popgen/software/fstat.htm](http://www2.unil.ch/popgen/software/fstat.htm)
+- ARLEQUIN (Schneider et al. 2000) untuk menghitung keragaman genetik, jarak genetik, struktur populasi menggunakan analisis AMOVA. Dapat bekerja dengan beragam data molekular, dari data sekuens DNA, marker kodominan dan marker dominan. [http://anthro.unige.ch/arlequin/](http://anthro.unige.ch/arlequin/)
+- NeESTIMATOR (Peel et al. 2004) untuk menghitung ukuran populasi efektif (effective population size) dari data molekuler dengan beragam metode/model. [http://www2.dpi.qld.gov.au/fishweb/13887.html](http://www2.dpi.qld.gov.au/fishweb/13887.html)
+- BOTTLENECK (Cornuet and Luikart 1996) untuk mengestimasi kemungkinan terjadinya efek leher botol pada suatu populasi
+- STRUCTURE (Pritchard et al. 2000) menggunakan data marker molekular untuk mengestimasi jumlah populasi yang berbeda dalam suatu dataset sampel dan sejauh mana tingkat percampurannya. [http://pritch.bsd.uchicago.edu/software.html](http://pritch.bsd.uchicago.edu/software.html)
+
+**Referensi**
+
+Beebee, Trevor and Rowe, Graham. 2008. An Introduction to Molecular Ecology (Second Edition). Oxford University Press Inc., New York [buku]
+
+Hartl, Daniel L and Clark, Andrew G. 1997. Principles of Population Genetics (Third Edition). Sinauer Associates, Inc. USA [buku]

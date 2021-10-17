@@ -24,7 +24,7 @@ navbar:
         - text: "DNA Barcoding"
           href: DNA_Barcoding.html
         - text: "Population Genetic"
-          href: GEnetika_Populasi.html
+          href: Genetika_Populasi.html
         - text: "Amova Analysis"
           href: Analisis_Amova.html
 
