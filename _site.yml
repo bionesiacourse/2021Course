@@ -8,9 +8,13 @@ navbar:
     - text: "Home"
       icon: fa-home
       href: index.html
-    - text: "Setup"
+    - text: "Intro to R"
       icon: fa-cog
-      href: setup.html
+      menu:
+          - text : "Plot in R"
+            href: setup.html
+          - text : "Plot in R"
+            href: r-ggtree_edit.html
     - text: "Data"
       icon: fa-download
       href: "data.html"
