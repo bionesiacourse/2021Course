@@ -1,7 +1,11 @@
 ---
 title: "Visualizing and Annotating Phylogenetic Trees with R+ggtree"
+output: html_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 ```{r init, include=F}
 library(knitr)
