@@ -13,7 +13,7 @@ navbar:
       menu:
           - text : "Plot in R"
             href: setup.html
-          - text : "Plot in R"
+          - text : "Ggtree"
             href: r-ggtree_edit.html
     - text: "Data"
       icon: fa-download

@@ -27,7 +27,7 @@ R and RStudio are separate downloads and installations. **R** is the underlying 
 
 **R studio Interfaces** 
 
-![](/Users/IBRC/Downloads/anatomyofrstudio.png)  
+![](img/anatomyofrstudio.png)  
 
 #### 3. Understanding R Components
 
@@ -47,13 +47,13 @@ $$\\[0.1in]$$
 
 #### 3. Opening Rstudio and Determining Working Directory 
 
-![](/Users/IBRC/Downloads/wd.png)
+![](img/wd.png)
 
 or through simple script   
 
 
 ```{r}
-setwd("/Users/IBRC/Downloads/2021Course-master")
+#setwd("/Users/IBRC/Downloads/2021Course-master")
 ```
 $$\\[0.05in]$$
 
@@ -103,7 +103,7 @@ Check that you've installed everything correctly by closing and reopening RStudi
 $$\\[0.02in]$$
 **Another way of Installing Packages**
 
-![](/Users/IBRC/Desktop/library.png)
+![](img/library.png)
 $$\\[0.05in]$$
 
 **4.1 Activating packages from CRAN packages**
@@ -125,7 +125,7 @@ $$\\[0.2in]$$
 
 - See Following Example
 ```{r}
-data <- read.csv("/Users/IBRC/Downloads/datafile.txt")
+data <- read.csv("data/datafile.txt")
 head (data) 
 
 ```
@@ -139,7 +139,7 @@ $$\\[0.2in]$$
 ```{r}
 #install.packages("readxl")
 library(readxl)
-data <- read_excel("/Users/IBRC/Downloads/datafile.xlsx", 1)
+data <- read_excel("data/datafile.xlsx", 1)
 head(data)
 ```
 
@@ -169,8 +169,8 @@ data
 $$\\[0.2in]$$
 **Importing from R interface**
 
-![](/Users/IBRC/Desktop/import_f2.png) 
-![](/Users/IBRC/Desktop/import_f1.png)
+![](img/import_f2.png) 
+![](img/import_f1.png)
 
 $$\\[0.1in]$$
 
@@ -184,7 +184,7 @@ $$\\[0.1in]$$
 
 #### 6. Exploring data through plots
 
-![](/Users/IBRC/Downloads/chart-chooser-data-visualization.png)
+![](img/chart-chooser-data-visualization.png)
 $$\\[0.2in]$$
 
 #### 6.1 Exploring data through plots
@@ -215,7 +215,7 @@ ggplot(heightweight, aes(x = ageYear, y = heightIn)) + geom_point(shape = 21) +
 $$\\[0.2in]$$
 
 **Shapes and its associated numbering category**
-![](/Users/IBRC/Downloads/FIG-SCATTER-SHAPES-CHART-1.png)
+![](img/FIG-SCATTER-SHAPES-CHART-1.png)
 
  <b>Image Credits - Fig.2 - 4K Mountains Wallpaper</b>
 
@@ -241,7 +241,7 @@ $$\\[0.2in]$$
 
 A plot example as published in the economist 
 
-![](/Users/IBRC/Downloads/theeconomist.png)
+![](img/theeconomist.png)
 
 ```{r}
 library(gapminder)
