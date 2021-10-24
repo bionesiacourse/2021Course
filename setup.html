@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Introduction to R</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<!-- Font Awesome -->
+<!-- <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" /> -->
+<!-- <script src="https://use.fontawesome.com/54ee8c2dfd.js"></script> -->
+
+<!-- Google fonts -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic|Oswald:400,700' rel='stylesheet' type='text/css'>
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+<!-- Google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-8298649-8', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Bionesia2021</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fas fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-cog"></span>
+     
+    Intro to R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="setup.html">Plot in R</a>
+    </li>
+    <li>
+      <a href="r-ggtree_edit.html">Ggtree</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="data.html">
+    <span class="fas fa-download"></span>
+     
+    Data
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-book"></span>
+     
+    CSS Course
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Basic_Molecular.html">Basic Molecular</a>
+    </li>
+    <li>
+      <a href="Editing_Sequence.html">Editing Sequence</a>
+    </li>
+    <li>
+      <a href="DNA_Barcoding.html">DNA Barcoding</a>
+    </li>
+    <li>
+      <a href="Genetika_Populasi.html">Population Genetic</a>
+    </li>
+    <li>
+      <a href="Analisis_Amova.html">Amova Analysis</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-question fa-lg"></span>
+     
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="index.html#faq">FAQ</a>
+    </li>
+    <li>
+      <a href="help.html">Further resources</a>
+    </li>
+    <li>
+      <a href="https://github.com/metabarcodingcourse/2020Course">Source code for this site</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Introduction to R</h1>
+
+</div>
+
+
+<p><span class="math display">\[\\[0.1in]\]</span></p>
+<div id="sofware-installation" class="section level3">
+<h3>Sofware Installation</h3>
+<div id="installing-r" class="section level4">
+<h4>1. Installing R</h4>
+<p><strong>Install R.</strong> You’ll need R version <strong>3.4.0</strong> or higher.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Download and install R for <a href="http://cran.r-project.org/bin/windows/base/">Windows</a> or <a href="http://cran.r-project.org/bin/macosx/">Mac</a> (download the latest R-3.x.x.pkg file for your appropriate version of Mac OS).</p>
+</div>
+<div id="installing-rstudio" class="section level4">
+<h4>2. Installing RStudio</h4>
+<p>Download and install <strong><a href="https://www.rstudio.com/products/rstudio/download/">RStudio Desktop</a></strong> version &gt;= 1.0.143.</p>
+<p>R and RStudio are separate downloads and installations. <strong>R</strong> is the underlying statistical computing environment, but using R alone is no fun. <strong>RStudio</strong> is a graphical integrated development environment that makes using R much easier. You need R installed before you install RStudio.</p>
+<p><strong>Open your RStudio and see how it looks like</strong></p>
+<p><strong>R studio Interfaces</strong></p>
+<p><img src="img/anatomyofrstudio.png" /></p>
+</div>
+<div id="understanding-r-components" class="section level4">
+<h4>3. Understanding R Components</h4>
+<p><strong>Two Components of R that we need to Understand</strong></p>
+<ol style="list-style-type: decimal">
+<li>Data and packages</li>
+</ol>
+<ul>
+<li>A group of pre-made scripts that have been writen to answer or analyze specific type of questions or data</li>
+<li>Data from your observations</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Syntax or script related with the packages</li>
+</ol>
+<ul>
+<li>Modifying scripts that suits your needs and the plots that you are about to produce</li>
+</ul>
+<p><span class="math display">\[\\[0.1in]\]</span></p>
+</div>
+</div>
+<div id="working-directory" class="section level3">
+<h3>Working Directory</h3>
+<div id="opening-rstudio-and-determining-working-directory" class="section level4">
+<h4>3. Opening Rstudio and Determining Working Directory</h4>
+<p><img src="img/wd.png" /></p>
+<p>or through simple script</p>
+<pre class="r"><code>#setwd(&quot;/Users/IBRC/Downloads/2021Course-master&quot;)</code></pre>
+<p><span class="math display">\[\\[0.05in]\]</span></p>
+</div>
+</div>
+<div id="package-installation-and-activation" class="section level3">
+<h3>Package installation and Activation</h3>
+<p><span class="math display">\[\\[0.05in]\]</span></p>
+<div id="installing-packages-from-cran-packages" class="section level4">
+<h4>4. Installing packages from CRAN packages</h4>
+<p>Launch RStudio (RStudio, <em>not R itself</em>). Ensure that you have internet access, then copy and paste the following command into the <strong>Console</strong> panel (usually the lower-left panel, by default) and hit the Enter/Return key.</p>
+<p><strong>Skip this step, as many of you hopefully have done this before the course is started</strong></p>
+<pre class="r"><code>#install.packages(c(&quot;tidyverse&quot;,&quot;ggplot2&quot;,&quot;ggtree&quot;, &quot;dplyr&quot;, &quot;gapminder&quot;,&quot;phylobase&quot;, &quot;ape&quot;,&quot;remotes&quot;,&quot;readxl&quot;,&quot;gcookbook&quot;,&quot;haven&quot;,&quot;remotes&quot;))
+#remotes::install_github(&quot;YuLab-SMU/ggtree&quot;)
+#library(&quot;ggtree&quot;))
+</code></pre>
+<p><em>A few notes</em>:</p>
+<ul>
+<li>Commands are case-sensitive.</li>
+<li>You must be connected to the internet.</li>
+<li>The <a href="http://tidyverse.org/">tidyverse</a> package is kind of a meta-package that automatically installs/loads many core packages that we use throughout the workshops.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></li>
+<li>Even if you’ve installed these packages in the past, do re-install the most recent version. Many of these packages are updated often, and we may use new features in the workshop that aren’t available in older versions.</li>
+</ul>
+<!-- [^tidyverse] Installing/loading the tidyverse **tidyverse** will install/load the core tidyverse packages that you are likely to use in almost every analysis:  -->
+<!-- - **ggplot2** (for data visualisation)   -->
+<!-- - **dplyr** (for data manipulation)    -->
+<!-- - **tidyr** (for data tidying) -->
+<!-- - **readr** (for data import) -->
+<!-- - **purrr** (for functional programming) -->
+<!-- - **tibble** (for tibbles, a modern re-imagining of data frames).  -->
+<p><strong>Find pacakges that suits your needs. This mostly can come from papers or publications in your fields or from R community through social media</strong></p>
+<p>Check that you’ve installed everything correctly by closing and reopening RStudio and entering the following commands at the console window (don’t worry about the <em>Conflicts with tidy packages</em> warning):</p>
+<p><span class="math display">\[\\[0.02in]\]</span> <strong>Another way of Installing Packages</strong></p>
+<p><img src="img/library.png" /> <span class="math display">\[\\[0.05in]\]</span></p>
+<p><strong>4.1 Activating packages from CRAN packages</strong></p>
+<pre class="r"><code>#library(c(&quot;tidyverse&quot;,&quot;ggplot2&quot;, &quot;dplyr&quot;, &quot;gapminder&quot;,&quot;phylobase&quot;, &quot;ape&quot;,&quot;remotes&quot;,&quot;readxl&quot;,&quot;gcookbook&quot;,&quot;haven&quot;,&quot;remotes&quot;))</code></pre>
+<p>This may produce some notes or other output, but as long as you don’t get an error message, you’re good to go. If you get a message that says something like: <code>Error in library(somePackageName) : there is no package called 'somePackageName'</code>, then the required packages did not install correctly.</p>
+<p><span class="math display">\[\\[0.2in]\]</span></p>
+</div>
+<div id="importing-and-exporting-files-into-r-environment" class="section level4">
+<h4>5. Importing and Exporting Files into R Environment</h4>
+<p><strong>Loading Delimited Text Data File into R environment</strong></p>
+<ul>
+<li><p>Make sure you know the path of the your file or simply place the file on your working directory</p></li>
+<li><p>See Following Example</p></li>
+</ul>
+<pre class="r"><code>data &lt;- read.csv(&quot;data/datafile.txt&quot;)
+head (data) </code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["X"],"name":[1],"type":["int"],"align":["right"]},{"label":["hospid"],"name":[2],"type":["int"],"align":["right"]},{"label":["age"],"name":[3],"type":["int"],"align":["right"]},{"label":["sdate"],"name":[4],"type":["int"],"align":["right"]},{"label":["ck"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["h"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["pk"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["ld"],"name":[8],"type":["int"],"align":["right"]},{"label":["carrier"],"name":[9],"type":["int"],"align":["right"]},{"label":["obsno"],"name":[10],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"657","3":"27","4":"6497","5":"22","6":"99.00000","7":"10.79883","8":"NA","9":"0","10":"1","_rn_":"1"},{"1":"2","2":"667","3":"31","4":"6528","5":"29","6":"94.00000","7":"11.79883","8":"NA","9":"0","10":"1","_rn_":"2"},{"1":"3","2":"669","3":"22","4":"6558","5":"22","6":"85.50000","7":"15.00000","8":"NA","9":"0","10":"1","_rn_":"3"},{"1":"4","2":"671","3":"25","4":"6497","5":"41","6":"87.29688","7":"15.00000","8":"NA","9":"0","10":"1","_rn_":"4"},{"1":"5","2":"673","3":"26","4":"6558","5":"28","6":"93.50000","7":"7.00000","8":"NA","9":"0","10":"1","_rn_":"5"},{"1":"6","2":"675","3":"38","4":"6558","5":"45","6":"108.00000","7":"13.69922","8":"NA","9":"0","10":"1","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p><span class="math display">\[\\[0.2in]\]</span></p>
+<p><strong>Loading Data from an Excel File</strong></p>
+<pre class="r"><code>#install.packages(&quot;readxl&quot;)
+library(readxl)
+data &lt;- read_excel(&quot;data/datafile.xlsx&quot;, 1)
+head(data)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Samples"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Site Name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Polution Level"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"INDO_13","2":"Bali","3":"Low"},{"1":"INDO_15","2":"Bali","3":"Low"},{"1":"INDO_30","2":"Bali","3":"Low"},{"1":"INDO_31","2":"Bali","3":"Low"},{"1":"SRB_100","2":"Seribu","3":"High"},{"1":"SRB_101","2":"Seribu","3":"High"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code># Only need to install the first time
+#install.packages(&quot;haven&quot;)
+
+#library(haven)
+#data &lt;- read_sav(&quot;/Users/IBRC/Downloads/datafile.sav&quot;)</code></pre>
+<p><span class="math display">\[\\[0.2in]\]</span></p>
+<p><strong>Typing Data Manually from R Environment</strong></p>
+<pre class="r"><code>data &lt;- data.frame(x1 = c(1, 2, 3, 4),          
+                  x2 = c(5, 6, 7, 8),
+                  x3 = c(9, 10, 11, 12))
+data</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["x1"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["x2"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["x3"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"5","3":"9"},{"1":"2","2":"6","3":"10"},{"1":"3","2":"7","3":"11"},{"1":"4","2":"8","3":"12"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>#write.table(data, file = &quot;data.csv&quot;,sep=&quot;\t&quot;, row.names=FALSE)</code></pre>
+<p><span class="math display">\[\\[0.2in]\]</span> <strong>Importing from R interface</strong></p>
+<p><img src="img/import_f2.png" /> <img src="img/import_f1.png" /></p>
+<p><span class="math display">\[\\[0.1in]\]</span></p>
+</div>
+<div id="quick-review-of-what-we-just-learned" class="section level4">
+<h4>Quick Review of what we just learned</h4>
+<ul>
+<li>Installing Rstudio and R<br />
+</li>
+<li>Installing and activating Packages</li>
+<li>Importing data from various sources</li>
+</ul>
+<p><span class="math display">\[\\[0.1in]\]</span></p>
+</div>
+<div id="exploring-data-through-plots" class="section level4">
+<h4>6. Exploring data through plots</h4>
+<p><img src="img/chart-chooser-data-visualization.png" /> <span class="math display">\[\\[0.2in]\]</span></p>
+</div>
+<div id="exploring-data-through-plots-1" class="section level4">
+<h4>6.1 Exploring data through plots</h4>
+<p><strong>Making a Basic and Modified Scatter Plot</strong></p>
+<pre class="r"><code>#install.packages(c(&quot;gcookbook&quot;,&quot;dplyr&quot;,&quot;ggplot2&quot;))
+library(gcookbook) # Load gcookbook for the heightweight data set
+library(dplyr) # Load dplyr package</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.2</code></pre>
+<pre class="r"><code>data(heightweight)
+heightweight=select(heightweight,ageYear, heightIn)
+ggplot(heightweight, aes(x = ageYear, y = heightIn)) + 
+geom_point() +
+ggtitle(&quot;Basic R Scatter Plot&quot;) + 
+theme(plot.title = element_text(hjust = 0.5))</code></pre>
+<p><img src="setup_files/figure-html/unnamed-chunk-7-1.png" width="672" /> <span class="math display">\[\\[0.1in]\]</span></p>
+<pre class="r"><code>ggplot(heightweight, aes(x = ageYear, y = heightIn)) + geom_point(shape = 21) +
+  ggtitle(&quot;Basic R Scatter Plot With Different Shape&quot;) + 
+  theme(plot.title = element_text(hjust = 0.5))</code></pre>
+<p><img src="setup_files/figure-html/unnamed-chunk-8-1.png" width="672" /> <span class="math display">\[\\[0.2in]\]</span></p>
+<p><strong>Shapes and its associated numbering category</strong> <img src="img/FIG-SCATTER-SHAPES-CHART-1.png" /></p>
+<p><b>Image Credits - Fig.2 - 4K Mountains Wallpaper</b></p>
+<p><span class="math display">\[\\[0.2in]\]</span></p>
+<pre class="r"><code>ggplot(heightweight, aes(x = ageYear, y = heightIn)) + geom_point(size = 4) +
+    ggtitle(&quot;Basic R Scatter Plot With Bigger Point Size&quot;) + 
+    theme(plot.title = element_text(hjust = 0.5))</code></pre>
+<p><img src="setup_files/figure-html/unnamed-chunk-9-1.png" width="672" /> <span class="math display">\[\\[0.2in]\]</span></p>
+<pre class="r"><code>data(heightweight)
+ggplot(heightweight, aes(x = ageYear, y = heightIn, shape = sex, colour = sex)) + geom_point(size = 3) + 
+  ggtitle(&quot;Scatter Plot With Colour Based on Factors&quot;) + theme(plot.title = element_text(hjust = 0.5))</code></pre>
+<p><img src="setup_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><span class="math display">\[\\[0.2in]\]</span> <strong>Creating Unique Plot in R</strong></p>
+<p>A plot example as published in the economist</p>
+<p><img src="img/theeconomist.png" /></p>
+<pre class="r"><code>library(gapminder)
+library(dplyr)
+library(ggplot2)
+
+data(gapminder)
+head(gapminder)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["fct"],"align":["left"]},{"label":["continent"],"name":[2],"type":["fct"],"align":["left"]},{"label":["year"],"name":[3],"type":["int"],"align":["right"]},{"label":["lifeExp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["pop"],"name":[5],"type":["int"],"align":["right"]},{"label":["gdpPercap"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"Asia","3":"1952","4":"28.801","5":"8425333","6":"779.4453"},{"1":"Afghanistan","2":"Asia","3":"1957","4":"30.332","5":"9240934","6":"820.8530"},{"1":"Afghanistan","2":"Asia","3":"1962","4":"31.997","5":"10267083","6":"853.1007"},{"1":"Afghanistan","2":"Asia","3":"1967","4":"34.020","5":"11537966","6":"836.1971"},{"1":"Afghanistan","2":"Asia","3":"1972","4":"36.088","5":"13079460","6":"739.9811"},{"1":"Afghanistan","2":"Asia","3":"1977","4":"38.438","5":"14880372","6":"786.1134"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>data &lt;- gapminder %&gt;% filter(year==&quot;2007&quot;) %&gt;% dplyr::select(-year)
+head(data)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["fct"],"align":["left"]},{"label":["continent"],"name":[2],"type":["fct"],"align":["left"]},{"label":["lifeExp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["pop"],"name":[4],"type":["int"],"align":["right"]},{"label":["gdpPercap"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"Asia","3":"43.828","4":"31889923","5":"974.5803"},{"1":"Albania","2":"Europe","3":"76.423","4":"3600523","5":"5937.0295"},{"1":"Algeria","2":"Africa","3":"72.301","4":"33333216","5":"6223.3675"},{"1":"Angola","2":"Africa","3":"42.731","4":"12420476","5":"4797.2313"},{"1":"Argentina","2":"Americas","3":"75.320","4":"40301927","5":"12779.3796"},{"1":"Australia","2":"Oceania","3":"81.235","4":"20434176","5":"34435.3674"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code># Most basic bubble plot
+ggplot(data, aes(x=gdpPercap, y=lifeExp, size = pop)) + 
+geom_point(alpha=0.7)</code></pre>
+<p><img src="setup_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre class="r"><code># Most basic bubble plot
+
+data %&gt;% arrange(desc(pop)) %&gt;% mutate(country = factor(country, country))</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["fct"],"align":["left"]},{"label":["continent"],"name":[2],"type":["fct"],"align":["left"]},{"label":["lifeExp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["pop"],"name":[4],"type":["int"],"align":["right"]},{"label":["gdpPercap"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"China","2":"Asia","3":"72.961","4":"1318683096","5":"4959.1149"},{"1":"India","2":"Asia","3":"64.698","4":"1110396331","5":"2452.2104"},{"1":"United States","2":"Americas","3":"78.242","4":"301139947","5":"42951.6531"},{"1":"Indonesia","2":"Asia","3":"70.650","4":"223547000","5":"3540.6516"},{"1":"Brazil","2":"Americas","3":"72.390","4":"190010647","5":"9065.8008"},{"1":"Pakistan","2":"Asia","3":"65.483","4":"169270617","5":"2605.9476"},{"1":"Bangladesh","2":"Asia","3":"64.062","4":"150448339","5":"1391.2538"},{"1":"Nigeria","2":"Africa","3":"46.859","4":"135031164","5":"2013.9773"},{"1":"Japan","2":"Asia","3":"82.603","4":"127467972","5":"31656.0681"},{"1":"Mexico","2":"Americas","3":"76.195","4":"108700891","5":"11977.5750"},{"1":"Philippines","2":"Asia","3":"71.688","4":"91077287","5":"3190.4810"},{"1":"Vietnam","2":"Asia","3":"74.249","4":"85262356","5":"2441.5764"},{"1":"Germany","2":"Europe","3":"79.406","4":"82400996","5":"32170.3744"},{"1":"Egypt","2":"Africa","3":"71.338","4":"80264543","5":"5581.1810"},{"1":"Ethiopia","2":"Africa","3":"52.947","4":"76511887","5":"690.8056"},{"1":"Turkey","2":"Europe","3":"71.777","4":"71158647","5":"8458.2764"},{"1":"Iran","2":"Asia","3":"70.964","4":"69453570","5":"11605.7145"},{"1":"Thailand","2":"Asia","3":"70.616","4":"65068149","5":"7458.3963"},{"1":"Congo, Dem. Rep.","2":"Africa","3":"46.462","4":"64606759","5":"277.5519"},{"1":"France","2":"Europe","3":"80.657","4":"61083916","5":"30470.0167"},{"1":"United Kingdom","2":"Europe","3":"79.425","4":"60776238","5":"33203.2613"},{"1":"Italy","2":"Europe","3":"80.546","4":"58147733","5":"28569.7197"},{"1":"Korea, Rep.","2":"Asia","3":"78.623","4":"49044790","5":"23348.1397"},{"1":"Myanmar","2":"Asia","3":"62.069","4":"47761980","5":"944.0000"},{"1":"Colombia","2":"Americas","3":"72.889","4":"44227550","5":"7006.5804"},{"1":"South Africa","2":"Africa","3":"49.339","4":"43997828","5":"9269.6578"},{"1":"Sudan","2":"Africa","3":"58.556","4":"42292929","5":"2602.3950"},{"1":"Spain","2":"Europe","3":"80.941","4":"40448191","5":"28821.0637"},{"1":"Argentina","2":"Americas","3":"75.320","4":"40301927","5":"12779.3796"},{"1":"Poland","2":"Europe","3":"75.563","4":"38518241","5":"15389.9247"},{"1":"Tanzania","2":"Africa","3":"52.517","4":"38139640","5":"1107.4822"},{"1":"Kenya","2":"Africa","3":"54.110","4":"35610177","5":"1463.2493"},{"1":"Morocco","2":"Africa","3":"71.164","4":"33757175","5":"3820.1752"},{"1":"Canada","2":"Americas","3":"80.653","4":"33390141","5":"36319.2350"},{"1":"Algeria","2":"Africa","3":"72.301","4":"33333216","5":"6223.3675"},{"1":"Afghanistan","2":"Asia","3":"43.828","4":"31889923","5":"974.5803"},{"1":"Uganda","2":"Africa","3":"51.542","4":"29170398","5":"1056.3801"},{"1":"Nepal","2":"Asia","3":"63.785","4":"28901790","5":"1091.3598"},{"1":"Peru","2":"Americas","3":"71.421","4":"28674757","5":"7408.9056"},{"1":"Saudi Arabia","2":"Asia","3":"72.777","4":"27601038","5":"21654.8319"},{"1":"Iraq","2":"Asia","3":"59.545","4":"27499638","5":"4471.0619"},{"1":"Venezuela","2":"Americas","3":"73.747","4":"26084662","5":"11415.8057"},{"1":"Malaysia","2":"Asia","3":"74.241","4":"24821286","5":"12451.6558"},{"1":"Korea, Dem. Rep.","2":"Asia","3":"67.297","4":"23301725","5":"1593.0655"},{"1":"Taiwan","2":"Asia","3":"78.400","4":"23174294","5":"28718.2768"},{"1":"Ghana","2":"Africa","3":"60.022","4":"22873338","5":"1327.6089"},{"1":"Romania","2":"Europe","3":"72.476","4":"22276056","5":"10808.4756"},{"1":"Yemen, Rep.","2":"Asia","3":"62.698","4":"22211743","5":"2280.7699"},{"1":"Australia","2":"Oceania","3":"81.235","4":"20434176","5":"34435.3674"},{"1":"Sri Lanka","2":"Asia","3":"72.396","4":"20378239","5":"3970.0954"},{"1":"Mozambique","2":"Africa","3":"42.082","4":"19951656","5":"823.6856"},{"1":"Syria","2":"Asia","3":"74.143","4":"19314747","5":"4184.5481"},{"1":"Madagascar","2":"Africa","3":"59.443","4":"19167654","5":"1044.7701"},{"1":"Cote d'Ivoire","2":"Africa","3":"48.328","4":"18013409","5":"1544.7501"},{"1":"Cameroon","2":"Africa","3":"50.430","4":"17696293","5":"2042.0952"},{"1":"Netherlands","2":"Europe","3":"79.762","4":"16570613","5":"36797.9333"},{"1":"Chile","2":"Americas","3":"78.553","4":"16284741","5":"13171.6388"},{"1":"Burkina Faso","2":"Africa","3":"52.295","4":"14326203","5":"1217.0330"},{"1":"Cambodia","2":"Asia","3":"59.723","4":"14131858","5":"1713.7787"},{"1":"Ecuador","2":"Americas","3":"74.994","4":"13755680","5":"6873.2623"},{"1":"Malawi","2":"Africa","3":"48.303","4":"13327079","5":"759.3499"},{"1":"Niger","2":"Africa","3":"56.867","4":"12894865","5":"619.6769"},{"1":"Guatemala","2":"Americas","3":"70.259","4":"12572928","5":"5186.0500"},{"1":"Angola","2":"Africa","3":"42.731","4":"12420476","5":"4797.2313"},{"1":"Zimbabwe","2":"Africa","3":"43.487","4":"12311143","5":"469.7093"},{"1":"Senegal","2":"Africa","3":"63.062","4":"12267493","5":"1712.4721"},{"1":"Mali","2":"Africa","3":"54.467","4":"12031795","5":"1042.5816"},{"1":"Zambia","2":"Africa","3":"42.384","4":"11746035","5":"1271.2116"},{"1":"Cuba","2":"Americas","3":"78.273","4":"11416987","5":"8948.1029"},{"1":"Greece","2":"Europe","3":"79.483","4":"10706290","5":"27538.4119"},{"1":"Portugal","2":"Europe","3":"78.098","4":"10642836","5":"20509.6478"},{"1":"Belgium","2":"Europe","3":"79.441","4":"10392226","5":"33692.6051"},{"1":"Tunisia","2":"Africa","3":"73.923","4":"10276158","5":"7092.9230"},{"1":"Chad","2":"Africa","3":"50.651","4":"10238807","5":"1704.0637"},{"1":"Czech Republic","2":"Europe","3":"76.486","4":"10228744","5":"22833.3085"},{"1":"Serbia","2":"Europe","3":"74.002","4":"10150265","5":"9786.5347"},{"1":"Hungary","2":"Europe","3":"73.338","4":"9956108","5":"18008.9444"},{"1":"Guinea","2":"Africa","3":"56.007","4":"9947814","5":"942.6542"},{"1":"Dominican Republic","2":"Americas","3":"72.235","4":"9319622","5":"6025.3748"},{"1":"Bolivia","2":"Americas","3":"65.554","4":"9119152","5":"3822.1371"},{"1":"Somalia","2":"Africa","3":"48.159","4":"9118773","5":"926.1411"},{"1":"Sweden","2":"Europe","3":"80.884","4":"9031088","5":"33859.7484"},{"1":"Rwanda","2":"Africa","3":"46.242","4":"8860588","5":"863.0885"},{"1":"Haiti","2":"Americas","3":"60.916","4":"8502814","5":"1201.6372"},{"1":"Burundi","2":"Africa","3":"49.580","4":"8390505","5":"430.0707"},{"1":"Austria","2":"Europe","3":"79.829","4":"8199783","5":"36126.4927"},{"1":"Benin","2":"Africa","3":"56.728","4":"8078314","5":"1441.2849"},{"1":"Switzerland","2":"Europe","3":"81.701","4":"7554661","5":"37506.4191"},{"1":"Honduras","2":"Americas","3":"70.198","4":"7483763","5":"3548.3308"},{"1":"Bulgaria","2":"Europe","3":"73.005","4":"7322858","5":"10680.7928"},{"1":"Hong Kong, China","2":"Asia","3":"82.208","4":"6980412","5":"39724.9787"},{"1":"El Salvador","2":"Americas","3":"71.878","4":"6939688","5":"5728.3535"},{"1":"Paraguay","2":"Americas","3":"71.752","4":"6667147","5":"4172.8385"},{"1":"Israel","2":"Asia","3":"80.745","4":"6426679","5":"25523.2771"},{"1":"Sierra Leone","2":"Africa","3":"42.568","4":"6144562","5":"862.5408"},{"1":"Jordan","2":"Asia","3":"72.535","4":"6053193","5":"4519.4612"},{"1":"Libya","2":"Africa","3":"73.952","4":"6036914","5":"12057.4993"},{"1":"Togo","2":"Africa","3":"58.420","4":"5701579","5":"882.9699"},{"1":"Nicaragua","2":"Americas","3":"72.899","4":"5675356","5":"2749.3210"},{"1":"Denmark","2":"Europe","3":"78.332","4":"5468120","5":"35278.4187"},{"1":"Slovak Republic","2":"Europe","3":"74.663","4":"5447502","5":"18678.3144"},{"1":"Finland","2":"Europe","3":"79.313","4":"5238460","5":"33207.0844"},{"1":"Eritrea","2":"Africa","3":"58.040","4":"4906585","5":"641.3695"},{"1":"Norway","2":"Europe","3":"80.196","4":"4627926","5":"49357.1902"},{"1":"Singapore","2":"Asia","3":"79.972","4":"4553009","5":"47143.1796"},{"1":"Bosnia and Herzegovina","2":"Europe","3":"74.852","4":"4552198","5":"7446.2988"},{"1":"Croatia","2":"Europe","3":"75.748","4":"4493312","5":"14619.2227"},{"1":"Central African Republic","2":"Africa","3":"44.741","4":"4369038","5":"706.0165"},{"1":"Costa Rica","2":"Americas","3":"78.782","4":"4133884","5":"9645.0614"},{"1":"New Zealand","2":"Oceania","3":"80.204","4":"4115771","5":"25185.0091"},{"1":"Ireland","2":"Europe","3":"78.885","4":"4109086","5":"40675.9964"},{"1":"West Bank and Gaza","2":"Asia","3":"73.422","4":"4018332","5":"3025.3498"},{"1":"Puerto Rico","2":"Americas","3":"78.746","4":"3942491","5":"19328.7090"},{"1":"Lebanon","2":"Asia","3":"71.993","4":"3921278","5":"10461.0587"},{"1":"Congo, Rep.","2":"Africa","3":"55.322","4":"3800610","5":"3632.5578"},{"1":"Albania","2":"Europe","3":"76.423","4":"3600523","5":"5937.0295"},{"1":"Uruguay","2":"Americas","3":"76.384","4":"3447496","5":"10611.4630"},{"1":"Mauritania","2":"Africa","3":"64.164","4":"3270065","5":"1803.1515"},{"1":"Panama","2":"Americas","3":"75.537","4":"3242173","5":"9809.1856"},{"1":"Oman","2":"Asia","3":"75.640","4":"3204897","5":"22316.1929"},{"1":"Liberia","2":"Africa","3":"45.678","4":"3193942","5":"414.5073"},{"1":"Mongolia","2":"Asia","3":"66.803","4":"2874127","5":"3095.7723"},{"1":"Jamaica","2":"Americas","3":"72.567","4":"2780132","5":"7320.8803"},{"1":"Kuwait","2":"Asia","3":"77.588","4":"2505559","5":"47306.9898"},{"1":"Namibia","2":"Africa","3":"52.906","4":"2055080","5":"4811.0604"},{"1":"Lesotho","2":"Africa","3":"42.592","4":"2012649","5":"1569.3314"},{"1":"Slovenia","2":"Europe","3":"77.926","4":"2009245","5":"25768.2576"},{"1":"Gambia","2":"Africa","3":"59.448","4":"1688359","5":"752.7497"},{"1":"Botswana","2":"Africa","3":"50.728","4":"1639131","5":"12569.8518"},{"1":"Guinea-Bissau","2":"Africa","3":"46.388","4":"1472041","5":"579.2317"},{"1":"Gabon","2":"Africa","3":"56.735","4":"1454867","5":"13206.4845"},{"1":"Mauritius","2":"Africa","3":"72.801","4":"1250882","5":"10956.9911"},{"1":"Swaziland","2":"Africa","3":"39.613","4":"1133066","5":"4513.4806"},{"1":"Trinidad and Tobago","2":"Americas","3":"69.819","4":"1056608","5":"18008.5092"},{"1":"Reunion","2":"Africa","3":"76.442","4":"798094","5":"7670.1226"},{"1":"Comoros","2":"Africa","3":"65.152","4":"710960","5":"986.1479"},{"1":"Bahrain","2":"Asia","3":"75.635","4":"708573","5":"29796.0483"},{"1":"Montenegro","2":"Europe","3":"74.543","4":"684736","5":"9253.8961"},{"1":"Equatorial Guinea","2":"Africa","3":"51.579","4":"551201","5":"12154.0897"},{"1":"Djibouti","2":"Africa","3":"54.791","4":"496374","5":"2082.4816"},{"1":"Iceland","2":"Europe","3":"81.757","4":"301931","5":"36180.7892"},{"1":"Sao Tome and Principe","2":"Africa","3":"65.528","4":"199579","5":"1598.4351"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>data %&gt;%
+  arrange(desc(pop)) %&gt;% # Arrange population as descending 
+  mutate(country = factor(country, country)) %&gt;% #creating and converting &quot;country&quot; into factor
+  ggplot(aes(x=gdpPercap, y=lifeExp, size = pop)) + # Deciding x and y axes
+    geom_point(alpha=0.5) +
+    scale_size(range = c(.1, 15), name=&quot;Population (M)&quot;) # maximum circle size</code></pre>
+<p><img src="setup_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre class="r"><code># Adding fourth dimension and embed colour
+
+data %&gt;% arrange(desc(pop)) %&gt;% mutate(country = factor(country, country))</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["fct"],"align":["left"]},{"label":["continent"],"name":[2],"type":["fct"],"align":["left"]},{"label":["lifeExp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["pop"],"name":[4],"type":["int"],"align":["right"]},{"label":["gdpPercap"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"China","2":"Asia","3":"72.961","4":"1318683096","5":"4959.1149"},{"1":"India","2":"Asia","3":"64.698","4":"1110396331","5":"2452.2104"},{"1":"United States","2":"Americas","3":"78.242","4":"301139947","5":"42951.6531"},{"1":"Indonesia","2":"Asia","3":"70.650","4":"223547000","5":"3540.6516"},{"1":"Brazil","2":"Americas","3":"72.390","4":"190010647","5":"9065.8008"},{"1":"Pakistan","2":"Asia","3":"65.483","4":"169270617","5":"2605.9476"},{"1":"Bangladesh","2":"Asia","3":"64.062","4":"150448339","5":"1391.2538"},{"1":"Nigeria","2":"Africa","3":"46.859","4":"135031164","5":"2013.9773"},{"1":"Japan","2":"Asia","3":"82.603","4":"127467972","5":"31656.0681"},{"1":"Mexico","2":"Americas","3":"76.195","4":"108700891","5":"11977.5750"},{"1":"Philippines","2":"Asia","3":"71.688","4":"91077287","5":"3190.4810"},{"1":"Vietnam","2":"Asia","3":"74.249","4":"85262356","5":"2441.5764"},{"1":"Germany","2":"Europe","3":"79.406","4":"82400996","5":"32170.3744"},{"1":"Egypt","2":"Africa","3":"71.338","4":"80264543","5":"5581.1810"},{"1":"Ethiopia","2":"Africa","3":"52.947","4":"76511887","5":"690.8056"},{"1":"Turkey","2":"Europe","3":"71.777","4":"71158647","5":"8458.2764"},{"1":"Iran","2":"Asia","3":"70.964","4":"69453570","5":"11605.7145"},{"1":"Thailand","2":"Asia","3":"70.616","4":"65068149","5":"7458.3963"},{"1":"Congo, Dem. Rep.","2":"Africa","3":"46.462","4":"64606759","5":"277.5519"},{"1":"France","2":"Europe","3":"80.657","4":"61083916","5":"30470.0167"},{"1":"United Kingdom","2":"Europe","3":"79.425","4":"60776238","5":"33203.2613"},{"1":"Italy","2":"Europe","3":"80.546","4":"58147733","5":"28569.7197"},{"1":"Korea, Rep.","2":"Asia","3":"78.623","4":"49044790","5":"23348.1397"},{"1":"Myanmar","2":"Asia","3":"62.069","4":"47761980","5":"944.0000"},{"1":"Colombia","2":"Americas","3":"72.889","4":"44227550","5":"7006.5804"},{"1":"South Africa","2":"Africa","3":"49.339","4":"43997828","5":"9269.6578"},{"1":"Sudan","2":"Africa","3":"58.556","4":"42292929","5":"2602.3950"},{"1":"Spain","2":"Europe","3":"80.941","4":"40448191","5":"28821.0637"},{"1":"Argentina","2":"Americas","3":"75.320","4":"40301927","5":"12779.3796"},{"1":"Poland","2":"Europe","3":"75.563","4":"38518241","5":"15389.9247"},{"1":"Tanzania","2":"Africa","3":"52.517","4":"38139640","5":"1107.4822"},{"1":"Kenya","2":"Africa","3":"54.110","4":"35610177","5":"1463.2493"},{"1":"Morocco","2":"Africa","3":"71.164","4":"33757175","5":"3820.1752"},{"1":"Canada","2":"Americas","3":"80.653","4":"33390141","5":"36319.2350"},{"1":"Algeria","2":"Africa","3":"72.301","4":"33333216","5":"6223.3675"},{"1":"Afghanistan","2":"Asia","3":"43.828","4":"31889923","5":"974.5803"},{"1":"Uganda","2":"Africa","3":"51.542","4":"29170398","5":"1056.3801"},{"1":"Nepal","2":"Asia","3":"63.785","4":"28901790","5":"1091.3598"},{"1":"Peru","2":"Americas","3":"71.421","4":"28674757","5":"7408.9056"},{"1":"Saudi Arabia","2":"Asia","3":"72.777","4":"27601038","5":"21654.8319"},{"1":"Iraq","2":"Asia","3":"59.545","4":"27499638","5":"4471.0619"},{"1":"Venezuela","2":"Americas","3":"73.747","4":"26084662","5":"11415.8057"},{"1":"Malaysia","2":"Asia","3":"74.241","4":"24821286","5":"12451.6558"},{"1":"Korea, Dem. Rep.","2":"Asia","3":"67.297","4":"23301725","5":"1593.0655"},{"1":"Taiwan","2":"Asia","3":"78.400","4":"23174294","5":"28718.2768"},{"1":"Ghana","2":"Africa","3":"60.022","4":"22873338","5":"1327.6089"},{"1":"Romania","2":"Europe","3":"72.476","4":"22276056","5":"10808.4756"},{"1":"Yemen, Rep.","2":"Asia","3":"62.698","4":"22211743","5":"2280.7699"},{"1":"Australia","2":"Oceania","3":"81.235","4":"20434176","5":"34435.3674"},{"1":"Sri Lanka","2":"Asia","3":"72.396","4":"20378239","5":"3970.0954"},{"1":"Mozambique","2":"Africa","3":"42.082","4":"19951656","5":"823.6856"},{"1":"Syria","2":"Asia","3":"74.143","4":"19314747","5":"4184.5481"},{"1":"Madagascar","2":"Africa","3":"59.443","4":"19167654","5":"1044.7701"},{"1":"Cote d'Ivoire","2":"Africa","3":"48.328","4":"18013409","5":"1544.7501"},{"1":"Cameroon","2":"Africa","3":"50.430","4":"17696293","5":"2042.0952"},{"1":"Netherlands","2":"Europe","3":"79.762","4":"16570613","5":"36797.9333"},{"1":"Chile","2":"Americas","3":"78.553","4":"16284741","5":"13171.6388"},{"1":"Burkina Faso","2":"Africa","3":"52.295","4":"14326203","5":"1217.0330"},{"1":"Cambodia","2":"Asia","3":"59.723","4":"14131858","5":"1713.7787"},{"1":"Ecuador","2":"Americas","3":"74.994","4":"13755680","5":"6873.2623"},{"1":"Malawi","2":"Africa","3":"48.303","4":"13327079","5":"759.3499"},{"1":"Niger","2":"Africa","3":"56.867","4":"12894865","5":"619.6769"},{"1":"Guatemala","2":"Americas","3":"70.259","4":"12572928","5":"5186.0500"},{"1":"Angola","2":"Africa","3":"42.731","4":"12420476","5":"4797.2313"},{"1":"Zimbabwe","2":"Africa","3":"43.487","4":"12311143","5":"469.7093"},{"1":"Senegal","2":"Africa","3":"63.062","4":"12267493","5":"1712.4721"},{"1":"Mali","2":"Africa","3":"54.467","4":"12031795","5":"1042.5816"},{"1":"Zambia","2":"Africa","3":"42.384","4":"11746035","5":"1271.2116"},{"1":"Cuba","2":"Americas","3":"78.273","4":"11416987","5":"8948.1029"},{"1":"Greece","2":"Europe","3":"79.483","4":"10706290","5":"27538.4119"},{"1":"Portugal","2":"Europe","3":"78.098","4":"10642836","5":"20509.6478"},{"1":"Belgium","2":"Europe","3":"79.441","4":"10392226","5":"33692.6051"},{"1":"Tunisia","2":"Africa","3":"73.923","4":"10276158","5":"7092.9230"},{"1":"Chad","2":"Africa","3":"50.651","4":"10238807","5":"1704.0637"},{"1":"Czech Republic","2":"Europe","3":"76.486","4":"10228744","5":"22833.3085"},{"1":"Serbia","2":"Europe","3":"74.002","4":"10150265","5":"9786.5347"},{"1":"Hungary","2":"Europe","3":"73.338","4":"9956108","5":"18008.9444"},{"1":"Guinea","2":"Africa","3":"56.007","4":"9947814","5":"942.6542"},{"1":"Dominican Republic","2":"Americas","3":"72.235","4":"9319622","5":"6025.3748"},{"1":"Bolivia","2":"Americas","3":"65.554","4":"9119152","5":"3822.1371"},{"1":"Somalia","2":"Africa","3":"48.159","4":"9118773","5":"926.1411"},{"1":"Sweden","2":"Europe","3":"80.884","4":"9031088","5":"33859.7484"},{"1":"Rwanda","2":"Africa","3":"46.242","4":"8860588","5":"863.0885"},{"1":"Haiti","2":"Americas","3":"60.916","4":"8502814","5":"1201.6372"},{"1":"Burundi","2":"Africa","3":"49.580","4":"8390505","5":"430.0707"},{"1":"Austria","2":"Europe","3":"79.829","4":"8199783","5":"36126.4927"},{"1":"Benin","2":"Africa","3":"56.728","4":"8078314","5":"1441.2849"},{"1":"Switzerland","2":"Europe","3":"81.701","4":"7554661","5":"37506.4191"},{"1":"Honduras","2":"Americas","3":"70.198","4":"7483763","5":"3548.3308"},{"1":"Bulgaria","2":"Europe","3":"73.005","4":"7322858","5":"10680.7928"},{"1":"Hong Kong, China","2":"Asia","3":"82.208","4":"6980412","5":"39724.9787"},{"1":"El Salvador","2":"Americas","3":"71.878","4":"6939688","5":"5728.3535"},{"1":"Paraguay","2":"Americas","3":"71.752","4":"6667147","5":"4172.8385"},{"1":"Israel","2":"Asia","3":"80.745","4":"6426679","5":"25523.2771"},{"1":"Sierra Leone","2":"Africa","3":"42.568","4":"6144562","5":"862.5408"},{"1":"Jordan","2":"Asia","3":"72.535","4":"6053193","5":"4519.4612"},{"1":"Libya","2":"Africa","3":"73.952","4":"6036914","5":"12057.4993"},{"1":"Togo","2":"Africa","3":"58.420","4":"5701579","5":"882.9699"},{"1":"Nicaragua","2":"Americas","3":"72.899","4":"5675356","5":"2749.3210"},{"1":"Denmark","2":"Europe","3":"78.332","4":"5468120","5":"35278.4187"},{"1":"Slovak Republic","2":"Europe","3":"74.663","4":"5447502","5":"18678.3144"},{"1":"Finland","2":"Europe","3":"79.313","4":"5238460","5":"33207.0844"},{"1":"Eritrea","2":"Africa","3":"58.040","4":"4906585","5":"641.3695"},{"1":"Norway","2":"Europe","3":"80.196","4":"4627926","5":"49357.1902"},{"1":"Singapore","2":"Asia","3":"79.972","4":"4553009","5":"47143.1796"},{"1":"Bosnia and Herzegovina","2":"Europe","3":"74.852","4":"4552198","5":"7446.2988"},{"1":"Croatia","2":"Europe","3":"75.748","4":"4493312","5":"14619.2227"},{"1":"Central African Republic","2":"Africa","3":"44.741","4":"4369038","5":"706.0165"},{"1":"Costa Rica","2":"Americas","3":"78.782","4":"4133884","5":"9645.0614"},{"1":"New Zealand","2":"Oceania","3":"80.204","4":"4115771","5":"25185.0091"},{"1":"Ireland","2":"Europe","3":"78.885","4":"4109086","5":"40675.9964"},{"1":"West Bank and Gaza","2":"Asia","3":"73.422","4":"4018332","5":"3025.3498"},{"1":"Puerto Rico","2":"Americas","3":"78.746","4":"3942491","5":"19328.7090"},{"1":"Lebanon","2":"Asia","3":"71.993","4":"3921278","5":"10461.0587"},{"1":"Congo, Rep.","2":"Africa","3":"55.322","4":"3800610","5":"3632.5578"},{"1":"Albania","2":"Europe","3":"76.423","4":"3600523","5":"5937.0295"},{"1":"Uruguay","2":"Americas","3":"76.384","4":"3447496","5":"10611.4630"},{"1":"Mauritania","2":"Africa","3":"64.164","4":"3270065","5":"1803.1515"},{"1":"Panama","2":"Americas","3":"75.537","4":"3242173","5":"9809.1856"},{"1":"Oman","2":"Asia","3":"75.640","4":"3204897","5":"22316.1929"},{"1":"Liberia","2":"Africa","3":"45.678","4":"3193942","5":"414.5073"},{"1":"Mongolia","2":"Asia","3":"66.803","4":"2874127","5":"3095.7723"},{"1":"Jamaica","2":"Americas","3":"72.567","4":"2780132","5":"7320.8803"},{"1":"Kuwait","2":"Asia","3":"77.588","4":"2505559","5":"47306.9898"},{"1":"Namibia","2":"Africa","3":"52.906","4":"2055080","5":"4811.0604"},{"1":"Lesotho","2":"Africa","3":"42.592","4":"2012649","5":"1569.3314"},{"1":"Slovenia","2":"Europe","3":"77.926","4":"2009245","5":"25768.2576"},{"1":"Gambia","2":"Africa","3":"59.448","4":"1688359","5":"752.7497"},{"1":"Botswana","2":"Africa","3":"50.728","4":"1639131","5":"12569.8518"},{"1":"Guinea-Bissau","2":"Africa","3":"46.388","4":"1472041","5":"579.2317"},{"1":"Gabon","2":"Africa","3":"56.735","4":"1454867","5":"13206.4845"},{"1":"Mauritius","2":"Africa","3":"72.801","4":"1250882","5":"10956.9911"},{"1":"Swaziland","2":"Africa","3":"39.613","4":"1133066","5":"4513.4806"},{"1":"Trinidad and Tobago","2":"Americas","3":"69.819","4":"1056608","5":"18008.5092"},{"1":"Reunion","2":"Africa","3":"76.442","4":"798094","5":"7670.1226"},{"1":"Comoros","2":"Africa","3":"65.152","4":"710960","5":"986.1479"},{"1":"Bahrain","2":"Asia","3":"75.635","4":"708573","5":"29796.0483"},{"1":"Montenegro","2":"Europe","3":"74.543","4":"684736","5":"9253.8961"},{"1":"Equatorial Guinea","2":"Africa","3":"51.579","4":"551201","5":"12154.0897"},{"1":"Djibouti","2":"Africa","3":"54.791","4":"496374","5":"2082.4816"},{"1":"Iceland","2":"Europe","3":"81.757","4":"301931","5":"36180.7892"},{"1":"Sao Tome and Principe","2":"Africa","3":"65.528","4":"199579","5":"1598.4351"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>data %&gt;%
+  arrange(desc(pop)) %&gt;% # Arrange population as descending 
+  mutate(country = factor(country, country)) %&gt;% #creating and converting &quot;country&quot; into factor
+  ggplot(aes(x=gdpPercap, y=lifeExp, size = pop, color=continent)) + # Deciding x and y axes
+    geom_point(alpha=0.5) +
+    scale_size(range = c(.1, 24), name=&quot;Population (M)&quot;)</code></pre>
+<p><img src="setup_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>R version 3.4.0 was released April 2017. If you have not updated your R installation since then, you need to upgrade to a more recent version, since several of the required packages depend on a version at least this recent. You can check your R version with the <code>sessionInfo()</code> command.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>It also installs a selection of other tidyverse packages that you’re likely to use frequently, but probably not in every analysis (these are installed, but you’ll have to load them separately with <code>library(packageName)</code>). This includes: <strong>hms</strong> (for times), <strong>stringr</strong> (for strings), <strong>lubridate</strong> (for date/times), <strong>forcats</strong> (for factors), <strong>DBI</strong> (for databases), <strong>haven</strong> (for SPSS, SAS and Stata files), <strong>httr</strong> (for web apis), <strong>jsonlite</strong> (or JSON), <strong>readxl</strong> (for .xls and .xlsx files), <strong>rvest</strong> (for web scraping), <strong>xml2</strong> (for XML), <strong>modelr</strong> (for modelling within a pipeline), and <strong>broom</strong> (for turning models into tidy data). After installing tidyverse with <code>install.packages(&quot;tidyverse&quot;)</code> and loading it with <code>library(tidyverse)</code>, you can use <code>tidyverse_update()</code> to update all the tidyverse packages installed on your system at once.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+
+<div class="footer">
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><i class="fa fa-creative-commons fa-2x"></i></a>&nbsp;
+<a href="https://twitter.com/genetics_blog" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>&nbsp;
+<a href="https://github.com/4va/biodatasci" target="_blank"><i class="fa fa-github fa-2x"></i></a>&nbsp;
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
