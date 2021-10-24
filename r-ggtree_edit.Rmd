@@ -121,7 +121,7 @@ There's also the treescale geom, which adds a scale bar, or alternatively, you c
 - The horizontal dimension in this plot shows the amount of genetic change, and the branches and represent evolutionary lineages changing over time.  
 - The longer the branch in the horizonal dimension, the larger the amount of change, and the scale tells you this. The units of branch length are usually nucleotide substitutions per site -- that is, the number of changes or substitutions divided by the length of the sequence (alternatively, it could represent the percent change, i.e., the number of changes per 100 bases). See [this article](http://epidemic.bio.ed.ac.uk/how_to_read_a_phylogeny) for more.
 
-```{r scales, fig.keep="last"}
+```{r scales}
 # add a scale
 ggtree(tree) + geom_treescale()
 ```
@@ -183,6 +183,7 @@ Let's add additional layers. As we did in the [ggplot2 lesson](r-viz-gapminder.h
 ```{r node_tip_points}
 # create the basic plot
 p <- ggtree(tree)
+p
 ```
 $$\\[0.05in]$$
 **Creating Nodepoints from The basic Plot**
