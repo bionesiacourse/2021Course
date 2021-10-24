@@ -15,6 +15,8 @@ navbar:
             href: setup.html
           - text : "Ggtree"
             href: r-ggtree_edit.html
+          - text : "Ggtree1"
+            href: r-ggtree.html
     - text: "Data"
       icon: fa-download
       href: "data.html"
