@@ -116,7 +116,6 @@ ggplot(tree) + geom_tree() + theme_tree()
 # This is convenient shorthand
 ggtree(tree)
 ```
-$$\\[0.1in]$$
 
 **Adding a Scale Bar**
 
@@ -135,7 +134,6 @@ ggtree(tree) + geom_treescale()
 ggtree(tree) + theme_tree2()
 ```
 
-$$\\[0.1in]$$
 
 **Removing Scale Bar and Convert into Phylogram**
 
@@ -146,7 +144,7 @@ The default is to plot a phylogram, where the x-axis shows the genetic change / 
 ggtree(tree, branch.length="none")
 ```
 
-$$\\[0.1in]$$
+
 
 The `...` option in the help for `?ggtree` represents additional options that are further passed to `ggplot()`. You can use this to change aesthetics of the plot. Let's draw a cladogram (no branch scaling) using thick blue dotted lines (note that I'm not mapping these aesthetics to features of the data with `aes()` -- we'll get to that later).
 
@@ -189,7 +187,7 @@ Let's add additional layers. As we did in the [ggplot2 lesson](r-viz-gapminder.h
 p <- ggtree(tree)
 p
 ```
-$$\\[0.05in]$$
+
 **Creating Nodepoints from The basic Plot**
 ```{r node_tip_points1}
 p + geom_nodepoint()
